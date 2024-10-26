@@ -123,6 +123,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.Inventory_move_draftScalarFieldEnum = {
   org_id: 'org_id',
   creation_date_time: 'creation_date_time',
+  movement_id: 'movement_id',
   data: 'data'
 };
 

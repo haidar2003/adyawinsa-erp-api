@@ -23,6 +23,7 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
         const draftData = {
             org_id: req.body.org_id,
             creation_date_time: new Date(req.body.creation_date_time),
+            movement_id: req.body.movement_id,
             data: req.body.data
         };
 
@@ -36,15 +37,18 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 
 export const getInventoryMoveDraft = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { orgId, creationDateTime } = req.query;
+        const { orgId, creationDateTime, movementId } = req.query;
+
+        if (movementId) {
+            const movement_id = parseInt(movementId as string);
+            const draft = await inventoryMoveDraftService.getInventoryMoveDraftByMovementId(movement_id);
+            return res.json(draft);
+        }
 
         if (orgId && creationDateTime) {
             const org_id = parseInt(orgId as string);
-            
-            const creation_date_time = new Date(creationDateTime as string); 
-
+            const creation_date_time = new Date(creationDateTime as string);
             const draft = await inventoryMoveDraftService.getInventoryMoveDraftById(org_id, creation_date_time);
-
             return res.json(draft);
         }
 

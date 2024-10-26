@@ -20,6 +20,7 @@ export const createInventoryMoveDraft = async (InventoryMoveDraftDTO: InventoryM
             data: {
                 org_id: InventoryMoveDraftDTO.org_id,
                 creation_date_time: InventoryMoveDraftDTO.creation_date_time,
+                movement_id: InventoryMoveDraftDTO.movement_id,
                 data: InventoryMoveDraftDTO.data,
             },
         });
@@ -44,6 +45,14 @@ export const getInventoryMoveDraftById = async (org_id: number, creation_date_ti
            }
        }
    });
+};
+
+export const getInventoryMoveDraftByMovementId = async (movement_id: number) => {
+    return prisma.inventory_move_draft.findFirst({
+        where: {
+            movement_id
+        }
+    });
 };
 
 export const updateInventoryMoveDraft = async (
