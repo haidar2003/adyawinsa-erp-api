@@ -10,19 +10,19 @@ const { inventoryMoveDraftValidationRules } = inventoryMoveDraftController;
 
 // Routes
 inventoryMoveDraftRouter.post('/', 
-    inventoryMoveDraftValidationRules,
-    inventoryMoveDraftController.createInventoryMoveDraft
+	inventoryMoveDraftValidationRules,
+	inventoryMoveDraftController.createInventoryMoveDraft
 );
 
 inventoryMoveDraftRouter.get('/', inventoryMoveDraftController.getInventoryMoveDraft);
 
 inventoryMoveDraftRouter.put('/',
-    inventoryMoveDraftValidationRules,
-    inventoryMoveDraftController.updateInventoryMoveDraft
+	inventoryMoveDraftValidationRules,
+	inventoryMoveDraftController.updateInventoryMoveDraft
 );
 
 inventoryMoveDraftRouter.delete('/',
-    inventoryMoveDraftController.deleteInventoryMoveDraft
+	inventoryMoveDraftController.deleteInventoryMoveDraft
 );
 
 export default inventoryMoveDraftRouter;

@@ -30,11 +30,11 @@ exports.Prisma = Prisma
 
 /**
  * Prisma Client JS version: 5.1.0
- * Query Engine version: e95e739751f42d8ca026f6b910f5a2dc5adeaeee
+ * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
  */
 Prisma.prismaVersion = {
   client: "5.1.0",
-  engine: "e95e739751f42d8ca026f6b910f5a2dc5adeaeee"
+  engine: "bf0e5e8a04cada8225617067eaa03d041e2bba36"
 }
 
 false
@@ -132,7 +132,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Haidar\\OneDrive - Institut Teknologi Bandung\\Desktop\\Internship\\KP\\adyawinsaNew\\adyawinsa-erp-api\\prisma\\generated",
+      "value": "/Users/mikaelhsubianto/ecom/adw-project/adyawinsa-erp-api/prisma/generated",
       "fromEnvVar": null
     },
     "config": {
@@ -141,7 +141,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin",
         "native": true
       },
       {
@@ -150,20 +150,20 @@ const config = {
       }
     ],
     "previewFeatures": [],
+    "sourceFilePath": "/Users/mikaelhsubianto/ecom/adw-project/adyawinsa-erp-api/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../.env",
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "..",
   "clientVersion": "5.1.0",
-  "engineVersion": "e95e739751f42d8ca026f6b910f5a2dc5adeaeee",
+  "engineVersion": "bf0e5e8a04cada8225617067eaa03d041e2bba36",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false
+  "postinstall": true
 }
 
 const fs = require('fs')
@@ -201,8 +201,8 @@ const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
-path.join(__dirname, "query_engine-windows.dll.node");
-path.join(process.cwd(), "prisma/generated/query_engine-windows.dll.node")
+path.join(__dirname, "libquery_engine-darwin.dylib.node");
+path.join(process.cwd(), "prisma/generated/libquery_engine-darwin.dylib.node")
 
 path.join(__dirname, "libquery_engine-debian-openssl-1.1.x.so.node");
 path.join(process.cwd(), "prisma/generated/libquery_engine-debian-openssl-1.1.x.so.node")
