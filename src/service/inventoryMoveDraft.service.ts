@@ -36,42 +36,66 @@ export const getAllInventoryMoveDrafts = async () => {
 };
 
 
-export const getInventoryMoveDraftById = async (org_id: number, creation_date_time: Date) => {
-   return prisma.inventory_move_draft.findUnique({
-       where: {
-           org_id_creation_date_time: {
-               org_id,
-               creation_date_time
-           }
-       }
-   });
-};
+// export const getInventoryMoveDraftByOrgIdAndCreationDateTime = async (org_id: number, creation_date_time: Date) => {
+//    return prisma.inventory_move_draft.findUnique({
+//        where: {
+//            org_id_creation_date_time: {
+//                org_id,
+//                creation_date_time
+//            }
+//        }
+//    });
+// };
 
 export const getInventoryMoveDraftByMovementId = async (movement_id: number) => {
-    return prisma.inventory_move_draft.findFirst({
+    return prisma.inventory_move_draft.findUnique({
         where: {
             movement_id
         }
     });
 };
 
-export const updateInventoryMoveDraft = async (
-   org_id: number, 
-   creation_date_time: Date, 
-   data: Partial<Pick<InventoryMoveDraftDTO, 'data'>>
-) => {
-   return prisma.inventory_move_draft.update({
-       where: {
-           org_id_creation_date_time: {
-               org_id,
-               creation_date_time
-           }
-       },
-       data: {
-           data: data.data
-       }
-   });
+// export const updateInventoryMoveDraft = async (
+//    org_id: number, 
+//    creation_date_time: Date, 
+//    data: Partial<Pick<InventoryMoveDraftDTO, 'data'>>
+// ) => {
+//    return prisma.inventory_move_draft.update({
+//        where: {
+//            org_id_creation_date_time: {
+//                org_id,
+//                creation_date_time
+//            }
+//        },
+//        data: {
+//            data: data.data
+//        }
+//    });
+// };
+
+export const updateInventoryMoveDraftByMovementId = async (
+    movementId: number,
+    data: Partial<InventoryMoveDraftDTO['data']>
+): Promise<InventoryMoveDraftDTO> => {
+    try {
+        const existingDraft = await prisma.inventory_move_draft.findUnique({
+            where: { movement_id: movementId },
+        });
+
+        if (!existingDraft) {
+            throw new Error(`InventoryMoveDraft with movement_id ${movementId} not found.`);
+        }
+
+        return prisma.inventory_move_draft.update({
+            where: { movement_id: movementId },
+            data: { data: data },
+        });
+    } catch (error) {
+        console.error(`Error updating InventoryMoveDraft with movement_id ${movementId}:`, error);
+        throw error;
+    }
 };
+
 
 export const deleteInventoryMoveDraft = async (org_id: number, creation_date_time: Date) => {
    return prisma.inventory_move_draft.delete({

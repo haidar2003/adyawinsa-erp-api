@@ -13,8 +13,8 @@ datasource db {
 model inventory_move_draft {
   org_id             Int
   creation_date_time DateTime @db.Timestamptz(6)
-  movement_id        Int?
-  data               Json?    @db.Json
+  movement_id        Int      @unique
+  data               Json     @db.Json
 
   @@id([org_id, creation_date_time])
 }

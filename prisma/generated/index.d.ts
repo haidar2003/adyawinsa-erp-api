@@ -1017,8 +1017,8 @@ export namespace Prisma {
   export type Inventory_move_draftGroupByOutputType = {
     org_id: number
     creation_date_time: Date
-    movement_id: number | null
-    data: JsonValue | null
+    movement_id: number
+    data: JsonValue
     _count: Inventory_move_draftCountAggregateOutputType | null
     _avg: Inventory_move_draftAvgAggregateOutputType | null
     _sum: Inventory_move_draftSumAggregateOutputType | null
@@ -1061,8 +1061,8 @@ export namespace Prisma {
     scalars: $Extensions.GetResult<{
       org_id: number
       creation_date_time: Date
-      movement_id: number | null
-      data: Prisma.JsonValue | null
+      movement_id: number
+      data: Prisma.JsonValue
     }, ExtArgs["result"]["inventory_move_draft"]>
     composites: {}
   }
@@ -1780,12 +1780,11 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const NullableJsonNullValueInput: {
-    DbNull: typeof DbNull,
+  export const JsonNullValueInput: {
     JsonNull: typeof JsonNull
   };
 
-  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const JsonNullValueFilter: {
@@ -1795,14 +1794,6 @@ export namespace Prisma {
   };
 
   export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
-
-
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -1875,33 +1866,33 @@ export namespace Prisma {
     NOT?: inventory_move_draftWhereInput | inventory_move_draftWhereInput[]
     org_id?: IntFilter<"inventory_move_draft"> | number
     creation_date_time?: DateTimeFilter<"inventory_move_draft"> | Date | string
-    movement_id?: IntNullableFilter<"inventory_move_draft"> | number | null
-    data?: JsonNullableFilter<"inventory_move_draft">
+    movement_id?: IntFilter<"inventory_move_draft"> | number
+    data?: JsonFilter<"inventory_move_draft">
   }
 
   export type inventory_move_draftOrderByWithRelationInput = {
     org_id?: SortOrder
     creation_date_time?: SortOrder
-    movement_id?: SortOrderInput | SortOrder
-    data?: SortOrderInput | SortOrder
+    movement_id?: SortOrder
+    data?: SortOrder
   }
 
   export type inventory_move_draftWhereUniqueInput = Prisma.AtLeast<{
+    movement_id?: number
     org_id_creation_date_time?: inventory_move_draftOrg_idCreation_date_timeCompoundUniqueInput
     AND?: inventory_move_draftWhereInput | inventory_move_draftWhereInput[]
     OR?: inventory_move_draftWhereInput[]
     NOT?: inventory_move_draftWhereInput | inventory_move_draftWhereInput[]
     org_id?: IntFilter<"inventory_move_draft"> | number
     creation_date_time?: DateTimeFilter<"inventory_move_draft"> | Date | string
-    movement_id?: IntNullableFilter<"inventory_move_draft"> | number | null
-    data?: JsonNullableFilter<"inventory_move_draft">
-  }, "org_id_creation_date_time">
+    data?: JsonFilter<"inventory_move_draft">
+  }, "org_id_creation_date_time" | "movement_id">
 
   export type inventory_move_draftOrderByWithAggregationInput = {
     org_id?: SortOrder
     creation_date_time?: SortOrder
-    movement_id?: SortOrderInput | SortOrder
-    data?: SortOrderInput | SortOrder
+    movement_id?: SortOrder
+    data?: SortOrder
     _count?: inventory_move_draftCountOrderByAggregateInput
     _avg?: inventory_move_draftAvgOrderByAggregateInput
     _max?: inventory_move_draftMaxOrderByAggregateInput
@@ -1915,57 +1906,57 @@ export namespace Prisma {
     NOT?: inventory_move_draftScalarWhereWithAggregatesInput | inventory_move_draftScalarWhereWithAggregatesInput[]
     org_id?: IntWithAggregatesFilter<"inventory_move_draft"> | number
     creation_date_time?: DateTimeWithAggregatesFilter<"inventory_move_draft"> | Date | string
-    movement_id?: IntNullableWithAggregatesFilter<"inventory_move_draft"> | number | null
-    data?: JsonNullableWithAggregatesFilter<"inventory_move_draft">
+    movement_id?: IntWithAggregatesFilter<"inventory_move_draft"> | number
+    data?: JsonWithAggregatesFilter<"inventory_move_draft">
   }
 
   export type inventory_move_draftCreateInput = {
     org_id: number
     creation_date_time: Date | string
-    movement_id?: number | null
-    data?: NullableJsonNullValueInput | InputJsonValue
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
   }
 
   export type inventory_move_draftUncheckedCreateInput = {
     org_id: number
     creation_date_time: Date | string
-    movement_id?: number | null
-    data?: NullableJsonNullValueInput | InputJsonValue
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
   }
 
   export type inventory_move_draftUpdateInput = {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
-    movement_id?: NullableIntFieldUpdateOperationsInput | number | null
-    data?: NullableJsonNullValueInput | InputJsonValue
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
   }
 
   export type inventory_move_draftUncheckedUpdateInput = {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
-    movement_id?: NullableIntFieldUpdateOperationsInput | number | null
-    data?: NullableJsonNullValueInput | InputJsonValue
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
   }
 
   export type inventory_move_draftCreateManyInput = {
     org_id: number
     creation_date_time: Date | string
-    movement_id?: number | null
-    data?: NullableJsonNullValueInput | InputJsonValue
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
   }
 
   export type inventory_move_draftUpdateManyMutationInput = {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
-    movement_id?: NullableIntFieldUpdateOperationsInput | number | null
-    data?: NullableJsonNullValueInput | InputJsonValue
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
   }
 
   export type inventory_move_draftUncheckedUpdateManyInput = {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
-    movement_id?: NullableIntFieldUpdateOperationsInput | number | null
-    data?: NullableJsonNullValueInput | InputJsonValue
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -1989,25 +1980,14 @@ export namespace Prisma {
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-  export type JsonNullableFilter<$PrismaModel = never> = 
+  export type JsonFilter<$PrismaModel = never> = 
     | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
       >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
 
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
+  export type JsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
     string_contains?: string | StringFieldRefInput<$PrismaModel>
@@ -2021,11 +2001,6 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type inventory_move_draftOrg_idCreation_date_timeCompoundUniqueInput = {
@@ -2091,30 +2066,14 @@ export namespace Prisma {
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
     | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
       >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
 
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
     string_contains?: string | StringFieldRefInput<$PrismaModel>
@@ -2128,9 +2087,9 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -2143,14 +2102,6 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -2173,17 +2124,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2226,41 +2166,14 @@ export namespace Prisma {
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-  export type NestedJsonNullableFilter<$PrismaModel = never> = 
+  export type NestedJsonFilter<$PrismaModel = never> = 
     | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
       >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
 
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
     string_contains?: string | StringFieldRefInput<$PrismaModel>

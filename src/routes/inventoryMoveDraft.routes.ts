@@ -6,18 +6,18 @@ import * as inventoryMoveDraftController from '../controller/inventoryMoveDraft.
 const inventoryMoveDraftRouter: Router = express.Router();
 
 // Apply validation middleware where needed
-const { inventoryMoveDraftValidationRules } = inventoryMoveDraftController;
+const { inventoryMoveDraftCreateValidationRules, inventoryMoveDraftUpdateValidationRules } = inventoryMoveDraftController;
 
 // Routes
 inventoryMoveDraftRouter.post('/', 
-	inventoryMoveDraftValidationRules,
+	inventoryMoveDraftCreateValidationRules,
 	inventoryMoveDraftController.createInventoryMoveDraft
 );
 
 inventoryMoveDraftRouter.get('/', inventoryMoveDraftController.getInventoryMoveDraft);
 
 inventoryMoveDraftRouter.put('/',
-	inventoryMoveDraftValidationRules,
+	inventoryMoveDraftUpdateValidationRules,
 	inventoryMoveDraftController.updateInventoryMoveDraft
 );
 

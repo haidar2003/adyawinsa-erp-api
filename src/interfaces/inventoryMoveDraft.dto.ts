@@ -4,7 +4,7 @@ export interface InventoryMoveDraftDTO {
     org_id: number;
     creation_date_time: Date;
     movement_id: number;
-    data?: any;  // Using any for JSON
+    data: any;  // Using any for JSON
 }
 
 export const extractInventoryMoveDraftDTO = extractObject<InventoryMoveDraftDTO>({
