@@ -22,18 +22,18 @@ inventoryMoveDraftRouter.get('/:id', inventoryMoveDraftController.getInventoryMo
 
 // Endpoint untuk memperbarui Umum
 inventoryMoveDraftRouter.put('/:id', 
-    inventoryMoveDraftUpdateValidationRules, 
-    inventoryMoveDraftController.updateInventoryMoveDraftRegular
+	inventoryMoveDraftUpdateValidationRules, 
+	inventoryMoveDraftController.updateInventoryMoveDraftRegular
 );
 
 // Endpoint untuk menandai Selesai (Complete)
 inventoryMoveDraftRouter.put('/:id/complete', 
-    inventoryMoveDraftController.updateInventoryMoveDraftComplete
+	inventoryMoveDraftController.updateInventoryMoveDraftComplete
 );
 
 // Endpoint untuk menandai Reverse (Reverse)
 inventoryMoveDraftRouter.put('/:id/reverse', 
-    inventoryMoveDraftController.updateInventoryMoveDraftReverse
+	inventoryMoveDraftController.updateInventoryMoveDraftReverse
 );
 
 inventoryMoveDraftRouter.delete('/',

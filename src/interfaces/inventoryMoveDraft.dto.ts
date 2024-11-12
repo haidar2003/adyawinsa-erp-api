@@ -8,8 +8,8 @@ export interface InventoryMoveDraftDTO {
 }
 
 export const extractInventoryMoveDraftDTO = extractObject<InventoryMoveDraftDTO>({
-    org_id: true,
-    creation_date_time: true,
-    movement_id: true,
-    data: true
+	org_id: true,
+	creation_date_time: true,
+	movement_id: true,
+	data: true
 });
