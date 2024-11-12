@@ -898,7 +898,39 @@ const checkConsistencyStatus = (shadowData: any, realData: any):
 
 // NOT USED IN CREATE.
 const hydrateInventoryMove = (combinedData: any) => {
+	const M_MovementLine = combinedData?.M_MovementLine ?? [];
+	let lineCounter = 1;
 
+	for (const productId of Object.keys(combinedData.materialMovementProductDict)) {
+		let productIdQty = 0;
+
+		for (const trackId of Object.keys(combinedData.materialMovementProductDict[productId].trackIdAndQuantityDict)) {
+			productIdQty = productIdQty +
+			combinedData.materialMovementProductDict[productId].trackIdAndQuantityDict[trackId].trackIdList
+					.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
+		}
+
+		M_MovementLine.push({
+			'AD_Client_ID':  1000000,
+			'AD_Org_ID': combinedData.AD_Org_ID,
+			'IsActive': true,
+			'M_Locator_ID': combinedData.M_Locator_ID,
+			'M_LocatorTo_ID': combinedData.M_LocatorTo_ID,
+			'M_Product_ID': Number(productId), 
+			'MovementQty': productIdQty, 
+			'Line': lineCounter, 
+			'BoxQty': 0,
+			'PalletQty': 0,
+		});
+		lineCounter += 1;
+	}
+
+	const hydratedCombinedData = {
+		...combinedData,
+		'M_MovementLine': M_MovementLine,
+	};
+
+	const updatedErpObject = getInventoryMoveErpObjectFromCombinedData(hydratedCombinedData);
 };
 
 const getInventoryMoveErpObjectFromCombinedData = (combinedData: any) => {
