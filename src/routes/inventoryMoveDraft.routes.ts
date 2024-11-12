@@ -18,7 +18,15 @@ inventoryMoveDraftRouter.get('/', inventoryMoveDraftController.getInventoryMoveD
 
 inventoryMoveDraftRouter.put('/',
 	inventoryMoveDraftUpdateValidationRules,
-	inventoryMoveDraftController.updateInventoryMoveDraft
+	inventoryMoveDraftController.updateInventoryMoveDraftRegular
+);
+
+inventoryMoveDraftRouter.put('/complete',
+	inventoryMoveDraftController.updateInventoryMoveDraftComplete
+);
+
+inventoryMoveDraftRouter.put('/reverse',
+	inventoryMoveDraftController.updateInventoryMoveDraftReverse
 );
 
 inventoryMoveDraftRouter.delete('/',
