@@ -92,15 +92,6 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 			};
 		});
 
-		const shadowResponse = {
-			...response.data,
-			returnBody: {
-				...response.data.returnBody,
-				employeeNumber: imDraft.employeeNumber,
-				M_MovementLine: shadowMovementLines
-			}
-		};
-
 		const shadowData = {
 			...response.data.returnBody,
 			employeeNumber: imDraft.employeeNumber,
@@ -896,4 +887,27 @@ const compareDrafts = (shadowData: any, realData: any): any => {
 	}
 
 	return inconsistencies;
+};
+
+// STARTER FUNCTIONS
+
+const checkConsistencyStatus = (shadowData: any, realData: any): 
+	'OK' | 'CONTINUE-UPDATE' | 'CONTINUE-COMPLETE' | 'CONTINUE-REVERSE' => {
+	return 'OK';
+};
+
+// NOT USED IN CREATE.
+const hydrateInventoryMove = (combinedData: any) => {
+
+};
+
+const getInventoryMoveErpObjectFromCombinedData = (combinedData: any) => {
+	return {
+		...combinedData,
+
+		'employeeNumber': undefined,
+		'materialMovementProductDict': undefined,
+		'M_Locator_ID': undefined,
+		'M_LocatorTo_ID': undefined,
+	};
 };
