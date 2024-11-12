@@ -14,19 +14,26 @@ inventoryMoveDraftRouter.post('/',
 	inventoryMoveDraftController.createInventoryMoveDraft
 );
 
-inventoryMoveDraftRouter.get('/', inventoryMoveDraftController.getInventoryMoveDraft);
+// Endpoint untuk mengambil semua
+inventoryMoveDraftRouter.get('/', inventoryMoveDraftController.getInventoryMoveDraftAll);
 
-inventoryMoveDraftRouter.put('/',
-	inventoryMoveDraftUpdateValidationRules,
-	inventoryMoveDraftController.updateInventoryMoveDraftRegular
+// Endpoint untuk mengambil berdasarkan ID
+inventoryMoveDraftRouter.get('/:id', inventoryMoveDraftController.getInventoryMoveDraft);
+
+// Endpoint untuk memperbarui Umum
+inventoryMoveDraftRouter.put('/:id', 
+    inventoryMoveDraftUpdateValidationRules, 
+    inventoryMoveDraftController.updateInventoryMoveDraftRegular
 );
 
-inventoryMoveDraftRouter.put('/complete',
-	inventoryMoveDraftController.updateInventoryMoveDraftComplete
+// Endpoint untuk menandai Selesai (Complete)
+inventoryMoveDraftRouter.put('/:id/complete', 
+    inventoryMoveDraftController.updateInventoryMoveDraftComplete
 );
 
-inventoryMoveDraftRouter.put('/reverse',
-	inventoryMoveDraftController.updateInventoryMoveDraftReverse
+// Endpoint untuk menandai Reverse (Reverse)
+inventoryMoveDraftRouter.put('/:id/reverse', 
+    inventoryMoveDraftController.updateInventoryMoveDraftReverse
 );
 
 inventoryMoveDraftRouter.delete('/',

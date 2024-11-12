@@ -126,64 +126,67 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 
 export const getInventoryMoveDraft = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        // Parameter Query
-        const { movementId } = req.query;
+        const { id } = req.params;
 
-        // Case 1: Ambil Satuan
-        if (movementId) {
-            const parsedMovementId = parseInt(movementId as string, 10);
-            if (isNaN(parsedMovementId)) {
-                return res.status(400).json({ error: 'Invalid movement ID' });
-            }
-
-            // Ambil dari Supabase
-            const shadowDraft = await inventoryMoveDraftService.getInventoryMoveDraftByMovementId(parsedMovementId);
-
-            if (!shadowDraft) {
-                return res.status(404).json({ error: 'InventoryMove not found in shadow database' });
-            }
-
-            // Ambil dari server asli
-            let realDraft: any = null;
-            try {
-                const reqBody = {
-                    method: 'post',
-                    maxBodyLength: Infinity,
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
-                    data: JSON.stringify({
-                        "axiosConfig": {
-                            "method": "get",
-                            "url": `${endpointApiUrl}/api/v1/models/M_Movement/${parsedMovementId}`,
-                            "params": {
-                                "$orderby": "Created desc",
-                                "$expand": "M_MovementLine",
-                            }
-                        }
-                    })
-                };
-
-                const response = await axios(reqBody);
-                realDraft = response.data.returnBody;
-            } catch (error: any) {
-                console.error('Failed to fetch from real server:', error);
-                return res.status(500).json({ error: 'Failed to fetch data from real server'});
-            }
-
-            // Bandingkan untuk mendapat daftar ketidakkonsistenan
-            const inconsistencies = compareDrafts(shadowDraft.data, realDraft);
-            const enrichedDraft = {
-                ...(shadowDraft.data as any),
-                inconsistencies
-            };
-
-            // Kirim response
-            return res.json(enrichedDraft);
+        const movementId = parseInt(id as string, 10);
+        if (isNaN(movementId)) {
+            return res.status(400).json({ error: 'Invalid movement ID' });
         }
 
-        // Case 2: Ambil semua
+        // Ambil dari Supabase
+        const shadowDraft = await inventoryMoveDraftService.getInventoryMoveDraftByMovementId(movementId);
+
+        if (!shadowDraft) {
+            return res.status(404).json({ error: 'InventoryMove not found in shadow database' });
+        }
+
+        // Ambil dari server asli
+        let realDraft: any = null;
+        try {
+            const reqBody = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
+                data: JSON.stringify({
+                    "axiosConfig": {
+                        "method": "get",
+                        "url": `${endpointApiUrl}/api/v1/models/M_Movement/${movementId}`,
+                        "params": {
+                            "$orderby": "Created desc",
+                            "$expand": "M_MovementLine",
+                        }
+                    }
+                })
+            };
+
+            const response = await axios(reqBody);
+            realDraft = response.data.returnBody;
+        } catch (error: any) {
+            console.error('Failed to fetch from real server:', error);
+            return res.status(500).json({ error: 'Failed to fetch data from real server'});
+        }
+
+        // Bandingkan untuk mendapat daftar ketidakkonsistenan
+        const inconsistencies = compareDrafts(shadowDraft.data, realDraft);
+        const enrichedDraft = {
+            ...(shadowDraft.data as any),
+            inconsistencies
+        };
+
+        // Kirim response
+        return res.json(enrichedDraft);
+        
+    } catch (error: any) {
+        console.error('Unexpected server error:', error);
+        next(error);
+    }
+};
+
+export const getInventoryMoveDraftAll = async (req: Request, res: Response, next: NextFunction) => {
+    try {
         let realDraftsList: any[] = [];
         let shadowDraftsList: any[] = [];
 
@@ -281,7 +284,8 @@ export const getInventoryMoveDraft = async (req: Request, res: Response, next: N
 
 export const updateInventoryMoveDraftRegular = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { id, continue: continueQuery } = req.query;
+        const { id } = req.params;
+        const { continue: continueQuery } = req.query;
         const data = req.body.data;
 
         const errors = validationResult(req);
@@ -466,7 +470,8 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 
 export const updateInventoryMoveDraftComplete = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { id, continue: continueQuery } = req.query;
+        const { id } = req.params;
+        const { continue: continueQuery } = req.query;
 
         const movementId = parseInt(id as string, 10);
         if (isNaN(movementId)) {
@@ -574,7 +579,15 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
                     id: "CO",
                     identifier: "Completed",
                     "model-name": "ad_ref_list"
-                }
+                },
+                IsApproved: true,
+                Processed: true,
+                M_MovementLine: currentData.M_MovementLine.map((line: any) => {
+                    return {
+                        ...line,
+                        Processed: true
+                    }
+                })
             };
 
             // Update Supabase
@@ -625,7 +638,8 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 
 export const updateInventoryMoveDraftReverse = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { id, continue: continueQuery } = req.query;
+        const { id } = req.params;
+        const { continue: continueQuery } = req.query;
 
         const movementId = parseInt(id as string, 10);
         if (isNaN(movementId)) {
@@ -804,7 +818,7 @@ const compareDrafts = (shadowData: any, realData: any): any => {
     // Membandingkan Header kecuali employeeNumber dan Updated
     const headerInconsistencies: string[] = [];
     for (const key of Object.keys(shadowData)) {
-        if (key !== 'M_MovementLine' && key !== 'employeeNumber' && key !== 'Updated') {
+        if (key !== 'M_MovementLine' && key !== 'employeeNumber' && key !== 'Updated' && key !== 'Description') {
             const shadowValue = JSON.stringify(shadowData[key]);
             const realValue = JSON.stringify(realData[key]);
 
