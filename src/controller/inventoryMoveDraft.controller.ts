@@ -89,7 +89,7 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 			const productId = line.M_Product_ID.id.toString()
             return {
                 ...line,
-                trackIdAndQuantityDict: materialMovementProductDict[productId] || {},
+                trackIdAndQuantityDict: materialMovementProductDict[productId].trackIdAndQuantityDict || {},
             };
         });
 
