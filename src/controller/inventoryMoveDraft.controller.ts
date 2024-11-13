@@ -121,7 +121,7 @@ export const getInventoryMoveDraft = async (req: Request, res: Response, next: N
 		// Bandingkan untuk mendapat daftar ketidakkonsistenan
 		const enrichedDraft = {
 			...(shadowDraft.data as any),
-			status: checkConsistencyStatus(shadowDraft, realDraft)
+			status: checkConsistencyStatus(shadowDraft.data, realDraft)
 		};
 
 		// Kirim response
@@ -667,6 +667,13 @@ const checkConsistencyStatus = (shadowData: any, realData: any):
 			return 'OK';
 		}
 	} 
+
+	console.log('Updated not found')
+
+	// console.log(shadowData)
+	
+	console.log('Shadow Data: ' + shadowData.Updated)
+	console.log('Real Data: ' + realData.Updated)
 		
 	return 'CONTINUE-UPDATE';
 };
