@@ -18,6 +18,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
  */
 export type inventory_move_draft = $Result.DefaultSelection<Prisma.$inventory_move_draftPayload>
+/**
+ * Model shipment_draft
+ * 
+ */
+export type shipment_draft = $Result.DefaultSelection<Prisma.$shipment_draftPayload>
+/**
+ * Model production_single_product_draft
+ * 
+ */
+export type production_single_product_draft = $Result.DefaultSelection<Prisma.$production_single_product_draftPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -150,6 +160,26 @@ export class PrismaClient<
     * ```
     */
   get inventory_move_draft(): Prisma.inventory_move_draftDelegate<ExtArgs>;
+
+  /**
+   * `prisma.shipment_draft`: Exposes CRUD operations for the **shipment_draft** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Shipment_drafts
+    * const shipment_drafts = await prisma.shipment_draft.findMany()
+    * ```
+    */
+  get shipment_draft(): Prisma.shipment_draftDelegate<ExtArgs>;
+
+  /**
+   * `prisma.production_single_product_draft`: Exposes CRUD operations for the **production_single_product_draft** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Production_single_product_drafts
+    * const production_single_product_drafts = await prisma.production_single_product_draft.findMany()
+    * ```
+    */
+  get production_single_product_draft(): Prisma.production_single_product_draftDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -620,7 +650,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    inventory_move_draft: 'inventory_move_draft'
+    inventory_move_draft: 'inventory_move_draft',
+    shipment_draft: 'shipment_draft',
+    production_single_product_draft: 'production_single_product_draft'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -637,7 +669,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'inventory_move_draft'
+      modelProps: 'inventory_move_draft' | 'shipment_draft' | 'production_single_product_draft'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -704,6 +736,138 @@ export namespace Prisma {
           count: {
             args: Prisma.inventory_move_draftCountArgs<ExtArgs>,
             result: $Utils.Optional<Inventory_move_draftCountAggregateOutputType> | number
+          }
+        }
+      }
+      shipment_draft: {
+        payload: Prisma.$shipment_draftPayload<ExtArgs>
+        fields: Prisma.shipment_draftFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.shipment_draftFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$shipment_draftPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.shipment_draftFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$shipment_draftPayload>
+          }
+          findFirst: {
+            args: Prisma.shipment_draftFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$shipment_draftPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.shipment_draftFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$shipment_draftPayload>
+          }
+          findMany: {
+            args: Prisma.shipment_draftFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$shipment_draftPayload>[]
+          }
+          create: {
+            args: Prisma.shipment_draftCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$shipment_draftPayload>
+          }
+          createMany: {
+            args: Prisma.shipment_draftCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.shipment_draftDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$shipment_draftPayload>
+          }
+          update: {
+            args: Prisma.shipment_draftUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$shipment_draftPayload>
+          }
+          deleteMany: {
+            args: Prisma.shipment_draftDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.shipment_draftUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.shipment_draftUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$shipment_draftPayload>
+          }
+          aggregate: {
+            args: Prisma.Shipment_draftAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateShipment_draft>
+          }
+          groupBy: {
+            args: Prisma.shipment_draftGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Shipment_draftGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.shipment_draftCountArgs<ExtArgs>,
+            result: $Utils.Optional<Shipment_draftCountAggregateOutputType> | number
+          }
+        }
+      }
+      production_single_product_draft: {
+        payload: Prisma.$production_single_product_draftPayload<ExtArgs>
+        fields: Prisma.production_single_product_draftFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.production_single_product_draftFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$production_single_product_draftPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.production_single_product_draftFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$production_single_product_draftPayload>
+          }
+          findFirst: {
+            args: Prisma.production_single_product_draftFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$production_single_product_draftPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.production_single_product_draftFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$production_single_product_draftPayload>
+          }
+          findMany: {
+            args: Prisma.production_single_product_draftFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$production_single_product_draftPayload>[]
+          }
+          create: {
+            args: Prisma.production_single_product_draftCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$production_single_product_draftPayload>
+          }
+          createMany: {
+            args: Prisma.production_single_product_draftCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.production_single_product_draftDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$production_single_product_draftPayload>
+          }
+          update: {
+            args: Prisma.production_single_product_draftUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$production_single_product_draftPayload>
+          }
+          deleteMany: {
+            args: Prisma.production_single_product_draftDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.production_single_product_draftUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.production_single_product_draftUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$production_single_product_draftPayload>
+          }
+          aggregate: {
+            args: Prisma.Production_single_product_draftAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateProduction_single_product_draft>
+          }
+          groupBy: {
+            args: Prisma.production_single_product_draftGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Production_single_product_draftGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.production_single_product_draftCountArgs<ExtArgs>,
+            result: $Utils.Optional<Production_single_product_draftCountAggregateOutputType> | number
           }
         }
       }
@@ -1749,6 +1913,1792 @@ export namespace Prisma {
 
 
   /**
+   * Model shipment_draft
+   */
+
+  export type AggregateShipment_draft = {
+    _count: Shipment_draftCountAggregateOutputType | null
+    _avg: Shipment_draftAvgAggregateOutputType | null
+    _sum: Shipment_draftSumAggregateOutputType | null
+    _min: Shipment_draftMinAggregateOutputType | null
+    _max: Shipment_draftMaxAggregateOutputType | null
+  }
+
+  export type Shipment_draftAvgAggregateOutputType = {
+    org_id: number | null
+    erp_id: number | null
+  }
+
+  export type Shipment_draftSumAggregateOutputType = {
+    org_id: number | null
+    erp_id: number | null
+  }
+
+  export type Shipment_draftMinAggregateOutputType = {
+    org_id: number | null
+    creation_date_time: Date | null
+    erp_id: number | null
+  }
+
+  export type Shipment_draftMaxAggregateOutputType = {
+    org_id: number | null
+    creation_date_time: Date | null
+    erp_id: number | null
+  }
+
+  export type Shipment_draftCountAggregateOutputType = {
+    org_id: number
+    creation_date_time: number
+    erp_id: number
+    data: number
+    _all: number
+  }
+
+
+  export type Shipment_draftAvgAggregateInputType = {
+    org_id?: true
+    erp_id?: true
+  }
+
+  export type Shipment_draftSumAggregateInputType = {
+    org_id?: true
+    erp_id?: true
+  }
+
+  export type Shipment_draftMinAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    erp_id?: true
+  }
+
+  export type Shipment_draftMaxAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    erp_id?: true
+  }
+
+  export type Shipment_draftCountAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    erp_id?: true
+    data?: true
+    _all?: true
+  }
+
+  export type Shipment_draftAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which shipment_draft to aggregate.
+     */
+    where?: shipment_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of shipment_drafts to fetch.
+     */
+    orderBy?: shipment_draftOrderByWithRelationInput | shipment_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: shipment_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` shipment_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` shipment_drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned shipment_drafts
+    **/
+    _count?: true | Shipment_draftCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Shipment_draftAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Shipment_draftSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Shipment_draftMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Shipment_draftMaxAggregateInputType
+  }
+
+  export type GetShipment_draftAggregateType<T extends Shipment_draftAggregateArgs> = {
+        [P in keyof T & keyof AggregateShipment_draft]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateShipment_draft[P]>
+      : GetScalarType<T[P], AggregateShipment_draft[P]>
+  }
+
+
+
+
+  export type shipment_draftGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: shipment_draftWhereInput
+    orderBy?: shipment_draftOrderByWithAggregationInput | shipment_draftOrderByWithAggregationInput[]
+    by: Shipment_draftScalarFieldEnum[] | Shipment_draftScalarFieldEnum
+    having?: shipment_draftScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Shipment_draftCountAggregateInputType | true
+    _avg?: Shipment_draftAvgAggregateInputType
+    _sum?: Shipment_draftSumAggregateInputType
+    _min?: Shipment_draftMinAggregateInputType
+    _max?: Shipment_draftMaxAggregateInputType
+  }
+
+  export type Shipment_draftGroupByOutputType = {
+    org_id: number
+    creation_date_time: Date
+    erp_id: number
+    data: JsonValue
+    _count: Shipment_draftCountAggregateOutputType | null
+    _avg: Shipment_draftAvgAggregateOutputType | null
+    _sum: Shipment_draftSumAggregateOutputType | null
+    _min: Shipment_draftMinAggregateOutputType | null
+    _max: Shipment_draftMaxAggregateOutputType | null
+  }
+
+  type GetShipment_draftGroupByPayload<T extends shipment_draftGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Shipment_draftGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Shipment_draftGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Shipment_draftGroupByOutputType[P]>
+            : GetScalarType<T[P], Shipment_draftGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type shipment_draftSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    org_id?: boolean
+    creation_date_time?: boolean
+    erp_id?: boolean
+    data?: boolean
+  }, ExtArgs["result"]["shipment_draft"]>
+
+  export type shipment_draftSelectScalar = {
+    org_id?: boolean
+    creation_date_time?: boolean
+    erp_id?: boolean
+    data?: boolean
+  }
+
+
+  export type $shipment_draftPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "shipment_draft"
+    objects: {}
+    scalars: $Extensions.GetResult<{
+      org_id: number
+      creation_date_time: Date
+      erp_id: number
+      data: Prisma.JsonValue
+    }, ExtArgs["result"]["shipment_draft"]>
+    composites: {}
+  }
+
+
+  type shipment_draftGetPayload<S extends boolean | null | undefined | shipment_draftDefaultArgs> = $Result.GetResult<Prisma.$shipment_draftPayload, S>
+
+  type shipment_draftCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<shipment_draftFindManyArgs, 'select' | 'include'> & {
+      select?: Shipment_draftCountAggregateInputType | true
+    }
+
+  export interface shipment_draftDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['shipment_draft'], meta: { name: 'shipment_draft' } }
+    /**
+     * Find zero or one Shipment_draft that matches the filter.
+     * @param {shipment_draftFindUniqueArgs} args - Arguments to find a Shipment_draft
+     * @example
+     * // Get one Shipment_draft
+     * const shipment_draft = await prisma.shipment_draft.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends shipment_draftFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, shipment_draftFindUniqueArgs<ExtArgs>>
+    ): Prisma__shipment_draftClient<$Result.GetResult<Prisma.$shipment_draftPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Shipment_draft that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {shipment_draftFindUniqueOrThrowArgs} args - Arguments to find a Shipment_draft
+     * @example
+     * // Get one Shipment_draft
+     * const shipment_draft = await prisma.shipment_draft.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends shipment_draftFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, shipment_draftFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__shipment_draftClient<$Result.GetResult<Prisma.$shipment_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Shipment_draft that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shipment_draftFindFirstArgs} args - Arguments to find a Shipment_draft
+     * @example
+     * // Get one Shipment_draft
+     * const shipment_draft = await prisma.shipment_draft.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends shipment_draftFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, shipment_draftFindFirstArgs<ExtArgs>>
+    ): Prisma__shipment_draftClient<$Result.GetResult<Prisma.$shipment_draftPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Shipment_draft that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shipment_draftFindFirstOrThrowArgs} args - Arguments to find a Shipment_draft
+     * @example
+     * // Get one Shipment_draft
+     * const shipment_draft = await prisma.shipment_draft.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends shipment_draftFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, shipment_draftFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__shipment_draftClient<$Result.GetResult<Prisma.$shipment_draftPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Shipment_drafts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shipment_draftFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Shipment_drafts
+     * const shipment_drafts = await prisma.shipment_draft.findMany()
+     * 
+     * // Get first 10 Shipment_drafts
+     * const shipment_drafts = await prisma.shipment_draft.findMany({ take: 10 })
+     * 
+     * // Only select the `org_id`
+     * const shipment_draftWithOrg_idOnly = await prisma.shipment_draft.findMany({ select: { org_id: true } })
+     * 
+    **/
+    findMany<T extends shipment_draftFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, shipment_draftFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$shipment_draftPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Shipment_draft.
+     * @param {shipment_draftCreateArgs} args - Arguments to create a Shipment_draft.
+     * @example
+     * // Create one Shipment_draft
+     * const Shipment_draft = await prisma.shipment_draft.create({
+     *   data: {
+     *     // ... data to create a Shipment_draft
+     *   }
+     * })
+     * 
+    **/
+    create<T extends shipment_draftCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, shipment_draftCreateArgs<ExtArgs>>
+    ): Prisma__shipment_draftClient<$Result.GetResult<Prisma.$shipment_draftPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Shipment_drafts.
+     *     @param {shipment_draftCreateManyArgs} args - Arguments to create many Shipment_drafts.
+     *     @example
+     *     // Create many Shipment_drafts
+     *     const shipment_draft = await prisma.shipment_draft.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends shipment_draftCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, shipment_draftCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Shipment_draft.
+     * @param {shipment_draftDeleteArgs} args - Arguments to delete one Shipment_draft.
+     * @example
+     * // Delete one Shipment_draft
+     * const Shipment_draft = await prisma.shipment_draft.delete({
+     *   where: {
+     *     // ... filter to delete one Shipment_draft
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends shipment_draftDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, shipment_draftDeleteArgs<ExtArgs>>
+    ): Prisma__shipment_draftClient<$Result.GetResult<Prisma.$shipment_draftPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Shipment_draft.
+     * @param {shipment_draftUpdateArgs} args - Arguments to update one Shipment_draft.
+     * @example
+     * // Update one Shipment_draft
+     * const shipment_draft = await prisma.shipment_draft.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends shipment_draftUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, shipment_draftUpdateArgs<ExtArgs>>
+    ): Prisma__shipment_draftClient<$Result.GetResult<Prisma.$shipment_draftPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Shipment_drafts.
+     * @param {shipment_draftDeleteManyArgs} args - Arguments to filter Shipment_drafts to delete.
+     * @example
+     * // Delete a few Shipment_drafts
+     * const { count } = await prisma.shipment_draft.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends shipment_draftDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, shipment_draftDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Shipment_drafts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shipment_draftUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Shipment_drafts
+     * const shipment_draft = await prisma.shipment_draft.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends shipment_draftUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, shipment_draftUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Shipment_draft.
+     * @param {shipment_draftUpsertArgs} args - Arguments to update or create a Shipment_draft.
+     * @example
+     * // Update or create a Shipment_draft
+     * const shipment_draft = await prisma.shipment_draft.upsert({
+     *   create: {
+     *     // ... data to create a Shipment_draft
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Shipment_draft we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends shipment_draftUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, shipment_draftUpsertArgs<ExtArgs>>
+    ): Prisma__shipment_draftClient<$Result.GetResult<Prisma.$shipment_draftPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Shipment_drafts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shipment_draftCountArgs} args - Arguments to filter Shipment_drafts to count.
+     * @example
+     * // Count the number of Shipment_drafts
+     * const count = await prisma.shipment_draft.count({
+     *   where: {
+     *     // ... the filter for the Shipment_drafts we want to count
+     *   }
+     * })
+    **/
+    count<T extends shipment_draftCountArgs>(
+      args?: Subset<T, shipment_draftCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Shipment_draftCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Shipment_draft.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Shipment_draftAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Shipment_draftAggregateArgs>(args: Subset<T, Shipment_draftAggregateArgs>): Prisma.PrismaPromise<GetShipment_draftAggregateType<T>>
+
+    /**
+     * Group by Shipment_draft.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shipment_draftGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends shipment_draftGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: shipment_draftGroupByArgs['orderBy'] }
+        : { orderBy?: shipment_draftGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, shipment_draftGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetShipment_draftGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the shipment_draft model
+   */
+  readonly fields: shipment_draftFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for shipment_draft.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__shipment_draftClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the shipment_draft model
+   */ 
+  interface shipment_draftFieldRefs {
+    readonly org_id: FieldRef<"shipment_draft", 'Int'>
+    readonly creation_date_time: FieldRef<"shipment_draft", 'DateTime'>
+    readonly erp_id: FieldRef<"shipment_draft", 'Int'>
+    readonly data: FieldRef<"shipment_draft", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * shipment_draft findUnique
+   */
+  export type shipment_draftFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shipment_draft
+     */
+    select?: shipment_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which shipment_draft to fetch.
+     */
+    where: shipment_draftWhereUniqueInput
+  }
+
+
+  /**
+   * shipment_draft findUniqueOrThrow
+   */
+  export type shipment_draftFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shipment_draft
+     */
+    select?: shipment_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which shipment_draft to fetch.
+     */
+    where: shipment_draftWhereUniqueInput
+  }
+
+
+  /**
+   * shipment_draft findFirst
+   */
+  export type shipment_draftFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shipment_draft
+     */
+    select?: shipment_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which shipment_draft to fetch.
+     */
+    where?: shipment_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of shipment_drafts to fetch.
+     */
+    orderBy?: shipment_draftOrderByWithRelationInput | shipment_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for shipment_drafts.
+     */
+    cursor?: shipment_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` shipment_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` shipment_drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of shipment_drafts.
+     */
+    distinct?: Shipment_draftScalarFieldEnum | Shipment_draftScalarFieldEnum[]
+  }
+
+
+  /**
+   * shipment_draft findFirstOrThrow
+   */
+  export type shipment_draftFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shipment_draft
+     */
+    select?: shipment_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which shipment_draft to fetch.
+     */
+    where?: shipment_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of shipment_drafts to fetch.
+     */
+    orderBy?: shipment_draftOrderByWithRelationInput | shipment_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for shipment_drafts.
+     */
+    cursor?: shipment_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` shipment_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` shipment_drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of shipment_drafts.
+     */
+    distinct?: Shipment_draftScalarFieldEnum | Shipment_draftScalarFieldEnum[]
+  }
+
+
+  /**
+   * shipment_draft findMany
+   */
+  export type shipment_draftFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shipment_draft
+     */
+    select?: shipment_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which shipment_drafts to fetch.
+     */
+    where?: shipment_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of shipment_drafts to fetch.
+     */
+    orderBy?: shipment_draftOrderByWithRelationInput | shipment_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing shipment_drafts.
+     */
+    cursor?: shipment_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` shipment_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` shipment_drafts.
+     */
+    skip?: number
+    distinct?: Shipment_draftScalarFieldEnum | Shipment_draftScalarFieldEnum[]
+  }
+
+
+  /**
+   * shipment_draft create
+   */
+  export type shipment_draftCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shipment_draft
+     */
+    select?: shipment_draftSelect<ExtArgs> | null
+    /**
+     * The data needed to create a shipment_draft.
+     */
+    data: XOR<shipment_draftCreateInput, shipment_draftUncheckedCreateInput>
+  }
+
+
+  /**
+   * shipment_draft createMany
+   */
+  export type shipment_draftCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many shipment_drafts.
+     */
+    data: shipment_draftCreateManyInput | shipment_draftCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * shipment_draft update
+   */
+  export type shipment_draftUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shipment_draft
+     */
+    select?: shipment_draftSelect<ExtArgs> | null
+    /**
+     * The data needed to update a shipment_draft.
+     */
+    data: XOR<shipment_draftUpdateInput, shipment_draftUncheckedUpdateInput>
+    /**
+     * Choose, which shipment_draft to update.
+     */
+    where: shipment_draftWhereUniqueInput
+  }
+
+
+  /**
+   * shipment_draft updateMany
+   */
+  export type shipment_draftUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update shipment_drafts.
+     */
+    data: XOR<shipment_draftUpdateManyMutationInput, shipment_draftUncheckedUpdateManyInput>
+    /**
+     * Filter which shipment_drafts to update
+     */
+    where?: shipment_draftWhereInput
+  }
+
+
+  /**
+   * shipment_draft upsert
+   */
+  export type shipment_draftUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shipment_draft
+     */
+    select?: shipment_draftSelect<ExtArgs> | null
+    /**
+     * The filter to search for the shipment_draft to update in case it exists.
+     */
+    where: shipment_draftWhereUniqueInput
+    /**
+     * In case the shipment_draft found by the `where` argument doesn't exist, create a new shipment_draft with this data.
+     */
+    create: XOR<shipment_draftCreateInput, shipment_draftUncheckedCreateInput>
+    /**
+     * In case the shipment_draft was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<shipment_draftUpdateInput, shipment_draftUncheckedUpdateInput>
+  }
+
+
+  /**
+   * shipment_draft delete
+   */
+  export type shipment_draftDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shipment_draft
+     */
+    select?: shipment_draftSelect<ExtArgs> | null
+    /**
+     * Filter which shipment_draft to delete.
+     */
+    where: shipment_draftWhereUniqueInput
+  }
+
+
+  /**
+   * shipment_draft deleteMany
+   */
+  export type shipment_draftDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which shipment_drafts to delete
+     */
+    where?: shipment_draftWhereInput
+  }
+
+
+  /**
+   * shipment_draft without action
+   */
+  export type shipment_draftDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shipment_draft
+     */
+    select?: shipment_draftSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model production_single_product_draft
+   */
+
+  export type AggregateProduction_single_product_draft = {
+    _count: Production_single_product_draftCountAggregateOutputType | null
+    _avg: Production_single_product_draftAvgAggregateOutputType | null
+    _sum: Production_single_product_draftSumAggregateOutputType | null
+    _min: Production_single_product_draftMinAggregateOutputType | null
+    _max: Production_single_product_draftMaxAggregateOutputType | null
+  }
+
+  export type Production_single_product_draftAvgAggregateOutputType = {
+    org_id: number | null
+    erp_id: number | null
+  }
+
+  export type Production_single_product_draftSumAggregateOutputType = {
+    org_id: number | null
+    erp_id: number | null
+  }
+
+  export type Production_single_product_draftMinAggregateOutputType = {
+    org_id: number | null
+    creation_date_time: Date | null
+    erp_id: number | null
+  }
+
+  export type Production_single_product_draftMaxAggregateOutputType = {
+    org_id: number | null
+    creation_date_time: Date | null
+    erp_id: number | null
+  }
+
+  export type Production_single_product_draftCountAggregateOutputType = {
+    org_id: number
+    creation_date_time: number
+    erp_id: number
+    data: number
+    _all: number
+  }
+
+
+  export type Production_single_product_draftAvgAggregateInputType = {
+    org_id?: true
+    erp_id?: true
+  }
+
+  export type Production_single_product_draftSumAggregateInputType = {
+    org_id?: true
+    erp_id?: true
+  }
+
+  export type Production_single_product_draftMinAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    erp_id?: true
+  }
+
+  export type Production_single_product_draftMaxAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    erp_id?: true
+  }
+
+  export type Production_single_product_draftCountAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    erp_id?: true
+    data?: true
+    _all?: true
+  }
+
+  export type Production_single_product_draftAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which production_single_product_draft to aggregate.
+     */
+    where?: production_single_product_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of production_single_product_drafts to fetch.
+     */
+    orderBy?: production_single_product_draftOrderByWithRelationInput | production_single_product_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: production_single_product_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` production_single_product_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` production_single_product_drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned production_single_product_drafts
+    **/
+    _count?: true | Production_single_product_draftCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Production_single_product_draftAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Production_single_product_draftSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Production_single_product_draftMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Production_single_product_draftMaxAggregateInputType
+  }
+
+  export type GetProduction_single_product_draftAggregateType<T extends Production_single_product_draftAggregateArgs> = {
+        [P in keyof T & keyof AggregateProduction_single_product_draft]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProduction_single_product_draft[P]>
+      : GetScalarType<T[P], AggregateProduction_single_product_draft[P]>
+  }
+
+
+
+
+  export type production_single_product_draftGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: production_single_product_draftWhereInput
+    orderBy?: production_single_product_draftOrderByWithAggregationInput | production_single_product_draftOrderByWithAggregationInput[]
+    by: Production_single_product_draftScalarFieldEnum[] | Production_single_product_draftScalarFieldEnum
+    having?: production_single_product_draftScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Production_single_product_draftCountAggregateInputType | true
+    _avg?: Production_single_product_draftAvgAggregateInputType
+    _sum?: Production_single_product_draftSumAggregateInputType
+    _min?: Production_single_product_draftMinAggregateInputType
+    _max?: Production_single_product_draftMaxAggregateInputType
+  }
+
+  export type Production_single_product_draftGroupByOutputType = {
+    org_id: number
+    creation_date_time: Date
+    erp_id: number
+    data: JsonValue
+    _count: Production_single_product_draftCountAggregateOutputType | null
+    _avg: Production_single_product_draftAvgAggregateOutputType | null
+    _sum: Production_single_product_draftSumAggregateOutputType | null
+    _min: Production_single_product_draftMinAggregateOutputType | null
+    _max: Production_single_product_draftMaxAggregateOutputType | null
+  }
+
+  type GetProduction_single_product_draftGroupByPayload<T extends production_single_product_draftGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Production_single_product_draftGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Production_single_product_draftGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Production_single_product_draftGroupByOutputType[P]>
+            : GetScalarType<T[P], Production_single_product_draftGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type production_single_product_draftSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    org_id?: boolean
+    creation_date_time?: boolean
+    erp_id?: boolean
+    data?: boolean
+  }, ExtArgs["result"]["production_single_product_draft"]>
+
+  export type production_single_product_draftSelectScalar = {
+    org_id?: boolean
+    creation_date_time?: boolean
+    erp_id?: boolean
+    data?: boolean
+  }
+
+
+  export type $production_single_product_draftPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "production_single_product_draft"
+    objects: {}
+    scalars: $Extensions.GetResult<{
+      org_id: number
+      creation_date_time: Date
+      erp_id: number
+      data: Prisma.JsonValue
+    }, ExtArgs["result"]["production_single_product_draft"]>
+    composites: {}
+  }
+
+
+  type production_single_product_draftGetPayload<S extends boolean | null | undefined | production_single_product_draftDefaultArgs> = $Result.GetResult<Prisma.$production_single_product_draftPayload, S>
+
+  type production_single_product_draftCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<production_single_product_draftFindManyArgs, 'select' | 'include'> & {
+      select?: Production_single_product_draftCountAggregateInputType | true
+    }
+
+  export interface production_single_product_draftDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['production_single_product_draft'], meta: { name: 'production_single_product_draft' } }
+    /**
+     * Find zero or one Production_single_product_draft that matches the filter.
+     * @param {production_single_product_draftFindUniqueArgs} args - Arguments to find a Production_single_product_draft
+     * @example
+     * // Get one Production_single_product_draft
+     * const production_single_product_draft = await prisma.production_single_product_draft.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends production_single_product_draftFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, production_single_product_draftFindUniqueArgs<ExtArgs>>
+    ): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Production_single_product_draft that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {production_single_product_draftFindUniqueOrThrowArgs} args - Arguments to find a Production_single_product_draft
+     * @example
+     * // Get one Production_single_product_draft
+     * const production_single_product_draft = await prisma.production_single_product_draft.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends production_single_product_draftFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, production_single_product_draftFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Production_single_product_draft that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {production_single_product_draftFindFirstArgs} args - Arguments to find a Production_single_product_draft
+     * @example
+     * // Get one Production_single_product_draft
+     * const production_single_product_draft = await prisma.production_single_product_draft.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends production_single_product_draftFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, production_single_product_draftFindFirstArgs<ExtArgs>>
+    ): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Production_single_product_draft that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {production_single_product_draftFindFirstOrThrowArgs} args - Arguments to find a Production_single_product_draft
+     * @example
+     * // Get one Production_single_product_draft
+     * const production_single_product_draft = await prisma.production_single_product_draft.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends production_single_product_draftFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, production_single_product_draftFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Production_single_product_drafts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {production_single_product_draftFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Production_single_product_drafts
+     * const production_single_product_drafts = await prisma.production_single_product_draft.findMany()
+     * 
+     * // Get first 10 Production_single_product_drafts
+     * const production_single_product_drafts = await prisma.production_single_product_draft.findMany({ take: 10 })
+     * 
+     * // Only select the `org_id`
+     * const production_single_product_draftWithOrg_idOnly = await prisma.production_single_product_draft.findMany({ select: { org_id: true } })
+     * 
+    **/
+    findMany<T extends production_single_product_draftFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, production_single_product_draftFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Production_single_product_draft.
+     * @param {production_single_product_draftCreateArgs} args - Arguments to create a Production_single_product_draft.
+     * @example
+     * // Create one Production_single_product_draft
+     * const Production_single_product_draft = await prisma.production_single_product_draft.create({
+     *   data: {
+     *     // ... data to create a Production_single_product_draft
+     *   }
+     * })
+     * 
+    **/
+    create<T extends production_single_product_draftCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, production_single_product_draftCreateArgs<ExtArgs>>
+    ): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Production_single_product_drafts.
+     *     @param {production_single_product_draftCreateManyArgs} args - Arguments to create many Production_single_product_drafts.
+     *     @example
+     *     // Create many Production_single_product_drafts
+     *     const production_single_product_draft = await prisma.production_single_product_draft.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends production_single_product_draftCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, production_single_product_draftCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Production_single_product_draft.
+     * @param {production_single_product_draftDeleteArgs} args - Arguments to delete one Production_single_product_draft.
+     * @example
+     * // Delete one Production_single_product_draft
+     * const Production_single_product_draft = await prisma.production_single_product_draft.delete({
+     *   where: {
+     *     // ... filter to delete one Production_single_product_draft
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends production_single_product_draftDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, production_single_product_draftDeleteArgs<ExtArgs>>
+    ): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Production_single_product_draft.
+     * @param {production_single_product_draftUpdateArgs} args - Arguments to update one Production_single_product_draft.
+     * @example
+     * // Update one Production_single_product_draft
+     * const production_single_product_draft = await prisma.production_single_product_draft.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends production_single_product_draftUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, production_single_product_draftUpdateArgs<ExtArgs>>
+    ): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Production_single_product_drafts.
+     * @param {production_single_product_draftDeleteManyArgs} args - Arguments to filter Production_single_product_drafts to delete.
+     * @example
+     * // Delete a few Production_single_product_drafts
+     * const { count } = await prisma.production_single_product_draft.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends production_single_product_draftDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, production_single_product_draftDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Production_single_product_drafts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {production_single_product_draftUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Production_single_product_drafts
+     * const production_single_product_draft = await prisma.production_single_product_draft.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends production_single_product_draftUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, production_single_product_draftUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Production_single_product_draft.
+     * @param {production_single_product_draftUpsertArgs} args - Arguments to update or create a Production_single_product_draft.
+     * @example
+     * // Update or create a Production_single_product_draft
+     * const production_single_product_draft = await prisma.production_single_product_draft.upsert({
+     *   create: {
+     *     // ... data to create a Production_single_product_draft
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Production_single_product_draft we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends production_single_product_draftUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, production_single_product_draftUpsertArgs<ExtArgs>>
+    ): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Production_single_product_drafts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {production_single_product_draftCountArgs} args - Arguments to filter Production_single_product_drafts to count.
+     * @example
+     * // Count the number of Production_single_product_drafts
+     * const count = await prisma.production_single_product_draft.count({
+     *   where: {
+     *     // ... the filter for the Production_single_product_drafts we want to count
+     *   }
+     * })
+    **/
+    count<T extends production_single_product_draftCountArgs>(
+      args?: Subset<T, production_single_product_draftCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Production_single_product_draftCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Production_single_product_draft.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Production_single_product_draftAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Production_single_product_draftAggregateArgs>(args: Subset<T, Production_single_product_draftAggregateArgs>): Prisma.PrismaPromise<GetProduction_single_product_draftAggregateType<T>>
+
+    /**
+     * Group by Production_single_product_draft.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {production_single_product_draftGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends production_single_product_draftGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: production_single_product_draftGroupByArgs['orderBy'] }
+        : { orderBy?: production_single_product_draftGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, production_single_product_draftGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProduction_single_product_draftGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the production_single_product_draft model
+   */
+  readonly fields: production_single_product_draftFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for production_single_product_draft.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__production_single_product_draftClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the production_single_product_draft model
+   */ 
+  interface production_single_product_draftFieldRefs {
+    readonly org_id: FieldRef<"production_single_product_draft", 'Int'>
+    readonly creation_date_time: FieldRef<"production_single_product_draft", 'DateTime'>
+    readonly erp_id: FieldRef<"production_single_product_draft", 'Int'>
+    readonly data: FieldRef<"production_single_product_draft", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * production_single_product_draft findUnique
+   */
+  export type production_single_product_draftFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which production_single_product_draft to fetch.
+     */
+    where: production_single_product_draftWhereUniqueInput
+  }
+
+
+  /**
+   * production_single_product_draft findUniqueOrThrow
+   */
+  export type production_single_product_draftFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which production_single_product_draft to fetch.
+     */
+    where: production_single_product_draftWhereUniqueInput
+  }
+
+
+  /**
+   * production_single_product_draft findFirst
+   */
+  export type production_single_product_draftFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which production_single_product_draft to fetch.
+     */
+    where?: production_single_product_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of production_single_product_drafts to fetch.
+     */
+    orderBy?: production_single_product_draftOrderByWithRelationInput | production_single_product_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for production_single_product_drafts.
+     */
+    cursor?: production_single_product_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` production_single_product_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` production_single_product_drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of production_single_product_drafts.
+     */
+    distinct?: Production_single_product_draftScalarFieldEnum | Production_single_product_draftScalarFieldEnum[]
+  }
+
+
+  /**
+   * production_single_product_draft findFirstOrThrow
+   */
+  export type production_single_product_draftFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which production_single_product_draft to fetch.
+     */
+    where?: production_single_product_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of production_single_product_drafts to fetch.
+     */
+    orderBy?: production_single_product_draftOrderByWithRelationInput | production_single_product_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for production_single_product_drafts.
+     */
+    cursor?: production_single_product_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` production_single_product_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` production_single_product_drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of production_single_product_drafts.
+     */
+    distinct?: Production_single_product_draftScalarFieldEnum | Production_single_product_draftScalarFieldEnum[]
+  }
+
+
+  /**
+   * production_single_product_draft findMany
+   */
+  export type production_single_product_draftFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which production_single_product_drafts to fetch.
+     */
+    where?: production_single_product_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of production_single_product_drafts to fetch.
+     */
+    orderBy?: production_single_product_draftOrderByWithRelationInput | production_single_product_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing production_single_product_drafts.
+     */
+    cursor?: production_single_product_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` production_single_product_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` production_single_product_drafts.
+     */
+    skip?: number
+    distinct?: Production_single_product_draftScalarFieldEnum | Production_single_product_draftScalarFieldEnum[]
+  }
+
+
+  /**
+   * production_single_product_draft create
+   */
+  export type production_single_product_draftCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * The data needed to create a production_single_product_draft.
+     */
+    data: XOR<production_single_product_draftCreateInput, production_single_product_draftUncheckedCreateInput>
+  }
+
+
+  /**
+   * production_single_product_draft createMany
+   */
+  export type production_single_product_draftCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many production_single_product_drafts.
+     */
+    data: production_single_product_draftCreateManyInput | production_single_product_draftCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * production_single_product_draft update
+   */
+  export type production_single_product_draftUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * The data needed to update a production_single_product_draft.
+     */
+    data: XOR<production_single_product_draftUpdateInput, production_single_product_draftUncheckedUpdateInput>
+    /**
+     * Choose, which production_single_product_draft to update.
+     */
+    where: production_single_product_draftWhereUniqueInput
+  }
+
+
+  /**
+   * production_single_product_draft updateMany
+   */
+  export type production_single_product_draftUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update production_single_product_drafts.
+     */
+    data: XOR<production_single_product_draftUpdateManyMutationInput, production_single_product_draftUncheckedUpdateManyInput>
+    /**
+     * Filter which production_single_product_drafts to update
+     */
+    where?: production_single_product_draftWhereInput
+  }
+
+
+  /**
+   * production_single_product_draft upsert
+   */
+  export type production_single_product_draftUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * The filter to search for the production_single_product_draft to update in case it exists.
+     */
+    where: production_single_product_draftWhereUniqueInput
+    /**
+     * In case the production_single_product_draft found by the `where` argument doesn't exist, create a new production_single_product_draft with this data.
+     */
+    create: XOR<production_single_product_draftCreateInput, production_single_product_draftUncheckedCreateInput>
+    /**
+     * In case the production_single_product_draft was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<production_single_product_draftUpdateInput, production_single_product_draftUncheckedUpdateInput>
+  }
+
+
+  /**
+   * production_single_product_draft delete
+   */
+  export type production_single_product_draftDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Filter which production_single_product_draft to delete.
+     */
+    where: production_single_product_draftWhereUniqueInput
+  }
+
+
+  /**
+   * production_single_product_draft deleteMany
+   */
+  export type production_single_product_draftDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which production_single_product_drafts to delete
+     */
+    where?: production_single_product_draftWhereInput
+  }
+
+
+  /**
+   * production_single_product_draft without action
+   */
+  export type production_single_product_draftDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -1770,6 +3720,26 @@ export namespace Prisma {
   };
 
   export type Inventory_move_draftScalarFieldEnum = (typeof Inventory_move_draftScalarFieldEnum)[keyof typeof Inventory_move_draftScalarFieldEnum]
+
+
+  export const Shipment_draftScalarFieldEnum: {
+    org_id: 'org_id',
+    creation_date_time: 'creation_date_time',
+    erp_id: 'erp_id',
+    data: 'data'
+  };
+
+  export type Shipment_draftScalarFieldEnum = (typeof Shipment_draftScalarFieldEnum)[keyof typeof Shipment_draftScalarFieldEnum]
+
+
+  export const Production_single_product_draftScalarFieldEnum: {
+    org_id: 'org_id',
+    creation_date_time: 'creation_date_time',
+    erp_id: 'erp_id',
+    data: 'data'
+  };
+
+  export type Production_single_product_draftScalarFieldEnum = (typeof Production_single_product_draftScalarFieldEnum)[keyof typeof Production_single_product_draftScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1910,6 +3880,106 @@ export namespace Prisma {
     data?: JsonWithAggregatesFilter<"inventory_move_draft">
   }
 
+  export type shipment_draftWhereInput = {
+    AND?: shipment_draftWhereInput | shipment_draftWhereInput[]
+    OR?: shipment_draftWhereInput[]
+    NOT?: shipment_draftWhereInput | shipment_draftWhereInput[]
+    org_id?: IntFilter<"shipment_draft"> | number
+    creation_date_time?: DateTimeFilter<"shipment_draft"> | Date | string
+    erp_id?: IntFilter<"shipment_draft"> | number
+    data?: JsonFilter<"shipment_draft">
+  }
+
+  export type shipment_draftOrderByWithRelationInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    data?: SortOrder
+  }
+
+  export type shipment_draftWhereUniqueInput = Prisma.AtLeast<{
+    erp_id?: number
+    org_id_creation_date_time?: shipment_draftOrg_idCreation_date_timeCompoundUniqueInput
+    AND?: shipment_draftWhereInput | shipment_draftWhereInput[]
+    OR?: shipment_draftWhereInput[]
+    NOT?: shipment_draftWhereInput | shipment_draftWhereInput[]
+    org_id?: IntFilter<"shipment_draft"> | number
+    creation_date_time?: DateTimeFilter<"shipment_draft"> | Date | string
+    data?: JsonFilter<"shipment_draft">
+  }, "org_id_creation_date_time" | "erp_id">
+
+  export type shipment_draftOrderByWithAggregationInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    data?: SortOrder
+    _count?: shipment_draftCountOrderByAggregateInput
+    _avg?: shipment_draftAvgOrderByAggregateInput
+    _max?: shipment_draftMaxOrderByAggregateInput
+    _min?: shipment_draftMinOrderByAggregateInput
+    _sum?: shipment_draftSumOrderByAggregateInput
+  }
+
+  export type shipment_draftScalarWhereWithAggregatesInput = {
+    AND?: shipment_draftScalarWhereWithAggregatesInput | shipment_draftScalarWhereWithAggregatesInput[]
+    OR?: shipment_draftScalarWhereWithAggregatesInput[]
+    NOT?: shipment_draftScalarWhereWithAggregatesInput | shipment_draftScalarWhereWithAggregatesInput[]
+    org_id?: IntWithAggregatesFilter<"shipment_draft"> | number
+    creation_date_time?: DateTimeWithAggregatesFilter<"shipment_draft"> | Date | string
+    erp_id?: IntWithAggregatesFilter<"shipment_draft"> | number
+    data?: JsonWithAggregatesFilter<"shipment_draft">
+  }
+
+  export type production_single_product_draftWhereInput = {
+    AND?: production_single_product_draftWhereInput | production_single_product_draftWhereInput[]
+    OR?: production_single_product_draftWhereInput[]
+    NOT?: production_single_product_draftWhereInput | production_single_product_draftWhereInput[]
+    org_id?: IntFilter<"production_single_product_draft"> | number
+    creation_date_time?: DateTimeFilter<"production_single_product_draft"> | Date | string
+    erp_id?: IntFilter<"production_single_product_draft"> | number
+    data?: JsonFilter<"production_single_product_draft">
+  }
+
+  export type production_single_product_draftOrderByWithRelationInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    data?: SortOrder
+  }
+
+  export type production_single_product_draftWhereUniqueInput = Prisma.AtLeast<{
+    erp_id?: number
+    org_id_creation_date_time?: production_single_product_draftOrg_idCreation_date_timeCompoundUniqueInput
+    AND?: production_single_product_draftWhereInput | production_single_product_draftWhereInput[]
+    OR?: production_single_product_draftWhereInput[]
+    NOT?: production_single_product_draftWhereInput | production_single_product_draftWhereInput[]
+    org_id?: IntFilter<"production_single_product_draft"> | number
+    creation_date_time?: DateTimeFilter<"production_single_product_draft"> | Date | string
+    data?: JsonFilter<"production_single_product_draft">
+  }, "org_id_creation_date_time" | "erp_id">
+
+  export type production_single_product_draftOrderByWithAggregationInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    data?: SortOrder
+    _count?: production_single_product_draftCountOrderByAggregateInput
+    _avg?: production_single_product_draftAvgOrderByAggregateInput
+    _max?: production_single_product_draftMaxOrderByAggregateInput
+    _min?: production_single_product_draftMinOrderByAggregateInput
+    _sum?: production_single_product_draftSumOrderByAggregateInput
+  }
+
+  export type production_single_product_draftScalarWhereWithAggregatesInput = {
+    AND?: production_single_product_draftScalarWhereWithAggregatesInput | production_single_product_draftScalarWhereWithAggregatesInput[]
+    OR?: production_single_product_draftScalarWhereWithAggregatesInput[]
+    NOT?: production_single_product_draftScalarWhereWithAggregatesInput | production_single_product_draftScalarWhereWithAggregatesInput[]
+    org_id?: IntWithAggregatesFilter<"production_single_product_draft"> | number
+    creation_date_time?: DateTimeWithAggregatesFilter<"production_single_product_draft"> | Date | string
+    erp_id?: IntWithAggregatesFilter<"production_single_product_draft"> | number
+    data?: JsonWithAggregatesFilter<"production_single_product_draft">
+  }
+
   export type inventory_move_draftCreateInput = {
     org_id: number
     creation_date_time: Date | string
@@ -1956,6 +4026,104 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type shipment_draftCreateInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type shipment_draftUncheckedCreateInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type shipment_draftUpdateInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type shipment_draftUncheckedUpdateInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type shipment_draftCreateManyInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type shipment_draftUpdateManyMutationInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type shipment_draftUncheckedUpdateManyInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type production_single_product_draftCreateInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type production_single_product_draftUncheckedCreateInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type production_single_product_draftUpdateInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type production_single_product_draftUncheckedUpdateInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type production_single_product_draftCreateManyInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type production_single_product_draftUpdateManyMutationInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type production_single_product_draftUncheckedUpdateManyInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
   }
 
@@ -2092,6 +4260,74 @@ export namespace Prisma {
     _max?: NestedJsonFilter<$PrismaModel>
   }
 
+  export type shipment_draftOrg_idCreation_date_timeCompoundUniqueInput = {
+    org_id: number
+    creation_date_time: Date | string
+  }
+
+  export type shipment_draftCountOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    data?: SortOrder
+  }
+
+  export type shipment_draftAvgOrderByAggregateInput = {
+    org_id?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type shipment_draftMaxOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type shipment_draftMinOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type shipment_draftSumOrderByAggregateInput = {
+    org_id?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type production_single_product_draftOrg_idCreation_date_timeCompoundUniqueInput = {
+    org_id: number
+    creation_date_time: Date | string
+  }
+
+  export type production_single_product_draftCountOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    data?: SortOrder
+  }
+
+  export type production_single_product_draftAvgOrderByAggregateInput = {
+    org_id?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type production_single_product_draftMaxOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type production_single_product_draftMinOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type production_single_product_draftSumOrderByAggregateInput = {
+    org_id?: SortOrder
+    erp_id?: SortOrder
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -2198,6 +4434,14 @@ export namespace Prisma {
      * @deprecated Use inventory_move_draftDefaultArgs instead
      */
     export type inventory_move_draftArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = inventory_move_draftDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use shipment_draftDefaultArgs instead
+     */
+    export type shipment_draftArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = shipment_draftDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use production_single_product_draftDefaultArgs instead
+     */
+    export type production_single_product_draftArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = production_single_product_draftDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

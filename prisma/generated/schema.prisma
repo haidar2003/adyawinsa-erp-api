@@ -18,3 +18,21 @@ model inventory_move_draft {
 
   @@id([org_id, creation_date_time])
 }
+
+model shipment_draft {
+  org_id             Int
+  creation_date_time DateTime @db.Timestamptz(6)
+  erp_id        Int      @unique
+  data               Json     @db.Json
+
+  @@id([org_id, creation_date_time])
+}
+
+model production_single_product_draft {
+  org_id             Int
+  creation_date_time DateTime @db.Timestamptz(6)
+  erp_id        Int      @unique
+  data               Json     @db.Json
+
+  @@id([org_id, creation_date_time])
+}

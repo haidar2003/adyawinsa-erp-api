@@ -127,6 +127,20 @@ exports.Prisma.Inventory_move_draftScalarFieldEnum = {
   data: 'data'
 };
 
+exports.Prisma.Shipment_draftScalarFieldEnum = {
+  org_id: 'org_id',
+  creation_date_time: 'creation_date_time',
+  erp_id: 'erp_id',
+  data: 'data'
+};
+
+exports.Prisma.Production_single_product_draftScalarFieldEnum = {
+  org_id: 'org_id',
+  creation_date_time: 'creation_date_time',
+  erp_id: 'erp_id',
+  data: 'data'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -144,7 +158,9 @@ exports.Prisma.JsonNullValueFilter = {
 
 
 exports.Prisma.ModelName = {
-  inventory_move_draft: 'inventory_move_draft'
+  inventory_move_draft: 'inventory_move_draft',
+  shipment_draft: 'shipment_draft',
+  production_single_product_draft: 'production_single_product_draft'
 };
 
 /**
