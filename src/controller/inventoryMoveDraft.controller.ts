@@ -154,10 +154,9 @@ export const getInventoryMoveDraft = async (req: Request, res: Response, next: N
 		}
 
 		// Bandingkan untuk mendapat daftar ketidakkonsistenan
-		const inconsistencies = compareDrafts(shadowDraft.data, realDraft);
 		const enrichedDraft = {
 			...(shadowDraft.data as any),
-			inconsistencies
+			status: checkConsistencyStatus(shadowDraft, realDraft)
 		};
 
 		// Kirim response
@@ -235,10 +234,9 @@ export const getInventoryMoveDraftAll = async (req: Request, res: Response, next
 			// Apabila ada pasangannya di Supabase
 			if (shadowDraft && shadowDraft.data) {
 				// Bandingkan untuk mendapat daftar ketidakkonsistenan
-				const inconsistencies: any = compareDrafts(shadowDraft.data, obj);
 				const enrichedDraft = {
 					...shadowDraft.data,
-					inconsistencies
+					status: checkConsistencyStatus(shadowDraft.data, obj)
 				};
 
 				// Push data ke finalDraftsList bersama dengan creation_date_time untuk sorting
@@ -400,6 +398,8 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 };
 
 export const updateInventoryMoveDraftComplete = async (req: Request, res: Response, next: NextFunction) => {
+	const updateTimestamp = new Date().toISOString()
+	
 	try {
 		const { id } = req.params;
 		const { continue: continueQuery } = req.query;
@@ -425,77 +425,37 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 		}
 
 		if (shouldContinue) {
-			// Ambil dari server asli
-			let realData: any = null;
+			// Pastikan data terkini memiliki status 'Completed'
+			if (currentData.DocStatus?.id !== 'CO') {
+				return res.status(400).json({ error: 'Cannot reverse movement draft. The shadow data is not completed yet' });
+			}
+
+			// Update server asli
+			const reqBodyContinue = {
+				method: 'post',
+				maxBodyLength: Infinity,
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
+				data: JSON.stringify({
+					axiosConfig: {
+						method: 'put',
+						url: `${endpointApiUrl}/api/v1/models/M_Movement/${movementId}`,
+						data: {'doc-action': 'CO'},
+					}
+				})
+			};
+
 			try {
-				const reqBody = {
-					method: 'post',
-					maxBodyLength: Infinity,
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
-					data: JSON.stringify({
-						'axiosConfig': {
-							'method': 'get',
-							'url': `${endpointApiUrl}/api/v1/models/M_Movement/${currentData.id}`,
-							'params': {
-								'$orderby': 'Created desc',
-								'$expand': 'M_MovementLine',
-							}
-						}
-					})
-				};
-
-				const response = await axios(reqBody);
-				realData = response.data.returnBody;
-			} catch (error: any) {
-				console.error('Failed to fetch from real server:', error);
-				return res.status(500).json({ error: 'Failed to fetch data from real server'});
+				const response = await axios(reqBodyContinue);
+				return res.json(response.data);
+			} catch (apiError: any) {
+				console.error('Failed to update real server:', apiError);
+				return res.status(500).json({ error: 'Failed to update real server', details: apiError.message });
 			}
 
-			// Bandingkan untuk mendapat daftar ketidakkonsistenan
-			const inconsistencies: any = compareDrafts(shadowDraft.data, realData);
-
-			// Yang akan dikirim ke server asli
-			const realServerData: any = {};
-            
-			if (inconsistencies.headerInconsistencies  && inconsistencies.headerInconsistencies.includes('DocStatus')) {
-				if (currentData.DocStatus.id === 'CO' && realData.DocStatus.id === 'DR') {
-					realServerData['doc-action'] = 'CO';
-				}
-			}
-
-			if (Object.keys(realServerData).length !== 0) {
-				// Update server asli
-				const reqBodyContinue = {
-					method: 'post',
-					maxBodyLength: Infinity,
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
-					data: JSON.stringify({
-						axiosConfig: {
-							method: 'put',
-							url: `${endpointApiUrl}/api/v1/models/M_Movement/${movementId}`,
-							data: realServerData,
-						}
-					})
-				};
-
-				try {
-					const response = await axios(reqBodyContinue);
-					return res.json(response.data);
-				} catch (apiError: any) {
-					console.error('Failed to update real server:', apiError);
-					return res.status(500).json({ error: 'Failed to update real server', details: apiError.message });
-				}
-
-			} else {
-				return res.status(500).json({ error: 'No synchronization data to be sent to the real server' });
-			}
-
+			
 		} else {
 			// Pastikan data terkini memiliki status 'Drafted'
 			if (currentData.DocStatus?.id !== 'DR') {
@@ -513,17 +473,21 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 				},
 				IsApproved: true,
 				Processed: true,
+				Updated: updateTimestamp,
 				M_MovementLine: currentData.M_MovementLine.map((line: any) => {
 					return {
 						...line,
-						Processed: true
+						Processed: true,
+						Updated: updateTimestamp
 					};
 				})
 			};
 
+			const hydratedData = hydrateInventoryMove(updatedData)
+
 			// Update Supabase
 			try {
-				await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, updatedData);
+				await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, hydratedData);
 			} catch (updateError: any) {
 				if (updateError instanceof PrismaClientKnownRequestError) {
 					console.error('Prisma update failed:', updateError);
@@ -534,7 +498,6 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 			}
 
 			// Update server asli
-			const realServerData = { 'doc-action': 'CO' };
 			const reqBody = {
 				method: 'post',
 				maxBodyLength: Infinity,
@@ -546,7 +509,7 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 					axiosConfig: {
 						method: 'put',
 						url: `${endpointApiUrl}/api/v1/models/M_Movement/${movementId}`,
-						data: realServerData,
+						data: { 'doc-action': 'CO' },
 					}
 				})
 			};
@@ -568,6 +531,8 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 };
 
 export const updateInventoryMoveDraftReverse = async (req: Request, res: Response, next: NextFunction) => {
+	const updateTimestamp = new Date().toISOString()
+	
 	try {
 		const { id } = req.params;
 		const { continue: continueQuery } = req.query;
@@ -593,81 +558,40 @@ export const updateInventoryMoveDraftReverse = async (req: Request, res: Respons
 		}
 
 		if (shouldContinue) {
-			// Ambil dari server asli
-			let realData: any = null;
+			// Pastikan data terkini memiliki status 'Reversed'
+			if (currentData.DocStatus?.id !== 'RE') {
+				return res.status(400).json({ error: 'Cannot reverse movement draft. The shadow data is not reversed yet' });
+			}
+			
+			// Update server asli
+			const reqBodyContinue = {
+				method: 'post',
+				maxBodyLength: Infinity,
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
+				data: JSON.stringify({
+					axiosConfig: {
+						method: 'put',
+						url: `${endpointApiUrl}/api/v1/models/M_Movement/${movementId}`,
+						data: {'doc-action': 'CO'},
+					}
+				})
+			};
+
 			try {
-				const reqBody = {
-					method: 'post',
-					maxBodyLength: Infinity,
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
-					data: JSON.stringify({
-						'axiosConfig': {
-							'method': 'get',
-							'url': `${endpointApiUrl}/api/v1/models/M_Movement/${currentData.id}`,
-							'params': {
-								'$orderby': 'Created desc',
-								'$expand': 'M_MovementLine',
-							}
-						}
-					})
-				};
-
-				const response = await axios(reqBody);
-				realData = response.data.returnBody;
-			} catch (error: any) {
-				console.error('Failed to fetch from real server:', error);
-				return res.status(500).json({ error: 'Failed to fetch data from real server'});
+				const response = await axios(reqBodyContinue);
+				return res.json(response.data);
+			} catch (apiError: any) {
+				console.error('Failed to update real server:', apiError);
+				return res.status(500).json({ error: 'Failed to update real server', details: apiError.message });
 			}
 
-			// Bandingkan untuk mendapat daftar ketidakkonsistenan
-			const inconsistencies: any = compareDrafts(shadowDraft.data, realData);
-
-			// Yang akan dikirim ke server asli
-			const realServerData: any = {};
-            
-			if (inconsistencies.headerInconsistencies  && inconsistencies.headerInconsistencies.includes('DocStatus')) {
-				if (currentData.DocStatus.id === 'RE' && realData.DocStatus.id === 'CO') {
-					realServerData['doc-action'] = 'RC';
-				}
-			}
-
-			if (Object.keys(realServerData).length !== 0) {
-				// Update server asli
-				const reqBodyContinue = {
-					method: 'post',
-					maxBodyLength: Infinity,
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
-					data: JSON.stringify({
-						axiosConfig: {
-							method: 'put',
-							url: `${endpointApiUrl}/api/v1/models/M_Movement/${movementId}`,
-							data: realServerData,
-						}
-					})
-				};
-
-				try {
-					const response = await axios(reqBodyContinue);
-					return res.json(response.data);
-				} catch (apiError: any) {
-					console.error('Failed to update real server:', apiError);
-					return res.status(500).json({ error: 'Failed to update real server', details: apiError.message });
-				}
-
-			} else {
-				return res.status(500).json({ error: 'No synchronization data to be sent to the real server' });
-			}
-            
 		} else {
 			// Pastikan data terkini memiliki status 'Completed'
 			if (currentData.DocStatus?.id !== 'CO') {
-				return res.status(400).json({ error: 'Cannot complete movement draft. Current DocStatus is not Completed' });
+				return res.status(400).json({ error: 'Cannot reverse movement draft. Current DocStatus is not Completed' });
 			}
 
 			// Ubah DocStatus ke 'Reversed'
@@ -678,12 +602,24 @@ export const updateInventoryMoveDraftReverse = async (req: Request, res: Respons
 					id: 'RE',
 					identifier: 'Reversed',
 					'model-name': 'ad_ref_list'
-				}
+				},
+				IsApproved: true,
+				Processed: true,
+				Updated: updateTimestamp,
+				M_MovementLine: currentData.M_MovementLine.map((line: any) => {
+					return {
+						...line,
+						Processed: true,
+						Updated: updateTimestamp
+					};
+				})
 			};
+
+			const hydratedData = hydrateInventoryMove(updatedData)
 
 			// Update Supabase
 			try {
-				await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, updatedData);
+				await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, hydratedData);
 			} catch (updateError: any) {
 				if (updateError instanceof PrismaClientKnownRequestError) {
 					console.error('Prisma update failed:', updateError);
@@ -694,7 +630,6 @@ export const updateInventoryMoveDraftReverse = async (req: Request, res: Respons
 			}
 
 			// Update server asli
-			const realServerData = { 'doc-action': 'RC' };
 			const reqBody = {
 				method: 'post',
 				maxBodyLength: Infinity,
@@ -706,7 +641,7 @@ export const updateInventoryMoveDraftReverse = async (req: Request, res: Respons
 					axiosConfig: {
 						method: 'put',
 						url: `${endpointApiUrl}/api/v1/models/M_Movement/${movementId}`,
-						data: realServerData,
+						data: { 'doc-action': 'RC' },
 					}
 				})
 			};
