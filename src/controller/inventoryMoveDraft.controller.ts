@@ -708,34 +708,13 @@ const checkConsistencyStatus = (shadowData: any, realData: any):
 
 // NOT USED IN CREATE.
 const hydrateInventoryMove = (combinedData: any) => {
-	const M_MovementLine = combinedData?.M_MovementLine ?? [];
-	let lineCounter = 1;
+	// Needs to hydrate: M_MovementLine
+	const M_MovementLine = JSON.parse(JSON.stringify(combinedData?.M_MovementLine ?? []));
 
-	// combinedData.M_MovementLine.forEach((line: any) => {
-	// 	const productId  = line?.M_Product_ID?.id.toString()
-	// 	let productIdQty = 0;
+	const productIdToAmountDict: {[key:string]: number} = {};
+	const productIdExistsDict: {[key:string]: boolean} = {};
 
-	// 	for (const trackId of Object.keys(combinedData.materialMovementProductDict[productId].trackIdAndQuantityDict)) {
-	// 		productIdQty = productIdQty +
-	// 		combinedData.materialMovementProductDict[productId].trackIdAndQuantityDict[trackId].trackIdList
-	// 				.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
-	// 	}
-
-	// 	M_MovementLine.push({
-	// 		'AD_Client_ID':  1000000,
-	// 		'AD_Org_ID': combinedData.AD_Org_ID,
-	// 		'IsActive': true,
-	// 		'M_Locator_ID': combinedData.M_Locator_ID,
-	// 		'M_LocatorTo_ID': combinedData.M_LocatorTo_ID,
-	// 		'M_Product_ID': Number(productId), 
-	// 		'MovementQty': productIdQty, 
-	// 		'Line': lineCounter, 
-	// 		'BoxQty': 0,
-	// 		'PalletQty': 0,
-	// 	});
-	// 	lineCounter += 1;
-	// })
-
+	// STEP 1. Get total amount for each product.
 	for (const productId of Object.keys(combinedData.materialMovementProductDict)) {
 		let productIdQty = 0;
 
@@ -745,19 +724,42 @@ const hydrateInventoryMove = (combinedData: any) => {
 				.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
 		}
 
-		M_MovementLine.push({
-			'AD_Client_ID':  1000000,
-			'AD_Org_ID': combinedData.AD_Org_ID,
-			'IsActive': true,
-			'M_Locator_ID': combinedData.M_Locator_ID,
-			'M_LocatorTo_ID': combinedData.M_LocatorTo_ID,
-			'M_Product_ID': Number(productId), 
-			'MovementQty': productIdQty, 
-			'Line': lineCounter, 
-			'BoxQty': 0,
-			'PalletQty': 0,
-		});
-		lineCounter += 1;
+		productIdToAmountDict[productId] = productIdQty;
+
+		if (productIdQty > 0) {
+			productIdExistsDict[productId] = false;
+		}
+	}
+
+	// STEP 2. Update total amount for all products previously existing in M_MovementLine.
+	for (let i = 0; i < M_MovementLine.length; i++) {
+		const productIdCur = M_MovementLine[i].M_Product_ID?.id ?? M_MovementLine[i].M_Product_ID;
+
+		M_MovementLine[i].MovementQty = productIdToAmountDict?.[productIdCur] ?? 0;
+
+		productIdExistsDict[productIdCur] = true;
+	}
+
+	// STEP 3. For new products, we add new M_MovementLine items.
+	let lineCounter = 0;
+	for (const productIdCur of Object.keys(productIdExistsDict)) {
+		if (!productIdExistsDict[productIdCur]) {
+			M_MovementLine.push({
+				'AD_Client_ID':  1000000,
+				'AD_Org_ID': combinedData.AD_Org_ID,
+				'IsActive': true,
+				'M_Locator_ID': combinedData.M_Locator_ID,
+				'M_LocatorTo_ID': combinedData.M_LocatorTo_ID,
+				'M_Product_ID': Number(productIdCur),
+				'MovementQty': productIdToAmountDict[productIdCur],
+				'Line': lineCounter + M_MovementLine.length,
+				'BoxQty': 0,
+				'PalletQty': 0,
+			});
+			lineCounter += 1;
+		}
+
+		productIdExistsDict[productIdCur] = true;
 	}
 
 	return {
