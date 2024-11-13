@@ -64,11 +64,116 @@ export const createTrackIdHistoryObject = async (trackIdHistoryObjectDTO: any) =
 	}
 };
 
-export const incrementTrackIdStock = async (
+export const createManyTrackIdHistory = async (
+	locatorFromId: string,
+	locatorToId: string,
+	productTrackQuantityDict: ProductTrackQuantityDict
+) => {
+	const createBulkTransactionArray: any[] = [];
+
+	for (const productId of Object.keys(productTrackQuantityDict)) {
+		for (const trackId of Object.keys(productTrackQuantityDict[productId].trackIdAndQuantityDict)) {
+			if (locatorFromId) {
+				createBulkTransactionArray.push({
+					locator_id: locatorFromId,
+					key23: productId + '-' + trackId,
+					product_id: productId,
+					track_id: trackId,
+					quantity: 0,
+					data: {}
+				});
+			}
+			if (locatorToId) {
+				createBulkTransactionArray.push({
+					locator_id: locatorToId,
+					key23: productId + '-' + trackId,
+					product_id: productId,
+					track_id: trackId,
+					quantity: 0,
+					data: {}
+				});
+			}
+		}
+	}
+
+	const createMany = await prisma.track_id_stock.createMany({
+		data: createBulkTransactionArray,
+		skipDuplicates: true, // Skip duplicates (If it already exists, we don't create it)
+	});
+
+	return createMany;
+};
+
+export interface ProductTrackQuantityDict {
+	[key:string]: {
+		trackIdAndQuantityDict: {
+			[key:string]: {
+				trackIdList: {
+					quantity: number
+				}[]
+			}
+		}
+	}
+}
+
+// Need to make faster + atomic (using transactions)
+export const getTransferItems = (
+	locatorFromId: string,
+	locatorToId: string,
+	productTrackQuantityDict: ProductTrackQuantityDict
+) => {
+	const transactionArray: any[] = [];
+
+	for (const productId of Object.keys(productTrackQuantityDict)) {
+		for (const trackId of Object.keys(productTrackQuantityDict[productId].trackIdAndQuantityDict)) {
+			const currentQuantity = productTrackQuantityDict[productId].trackIdAndQuantityDict[trackId].trackIdList
+				.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
+
+			transactionArray.push(prisma.track_id_stock.update({
+				where: {
+					locator_id_key23: {
+						locator_id: locatorToId,
+						key23: productId + '-' + trackId
+					}
+				},
+				data: {
+					quantity: {
+						increment: currentQuantity
+					}
+				}
+			}));
+			transactionArray.push(prisma.track_id_stock.update({
+				where: {
+					locator_id_key23: {
+						locator_id: locatorFromId,
+						key23: productId + '-' + trackId
+					}
+				},
+				data: {
+					quantity: {
+						increment: -1 * currentQuantity
+					}
+				}
+			}));
+		}
+	}
+
+	return transactionArray;
+};
+
+export const getTrackIdStock = async (locatorId: string) => {
+	return prisma.track_id_stock.findMany({
+		where: {
+			locator_id: locatorId
+		}
+	});
+};
+
+export const setTrackIdStock = async (
 	locatorId: string, 
 	productId: string,
 	trackId: string,
-	quantityToChange: number
+	newQuantity: number
 ) => {
 	const existingDraft = await prisma.track_id_stock.findUnique({
 		where: {
@@ -100,9 +205,7 @@ export const incrementTrackIdStock = async (
 			}
 		},
 		data: {
-			quantity: {
-				increment: quantityToChange
-			}
+			quantity: newQuantity
 		}
 	});
 };
