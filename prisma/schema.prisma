@@ -39,15 +39,19 @@ model production_single_product_draft {
 
 model track_id_object {
   track_id                String @id
-  data                    Json     @db.Json
+  track_type              String
+  creation_date_time      DateTime @unique(sort: Desc) @default(now())
+  source_data             Json     @db.Json
+  object_data             Json     @db.Json
   track_id_history        track_id_history[]
 }
 
 model track_id_history {
   track_id_object           track_id_object @relation(fields: [track_id], references: [track_id])
   track_id                  String
-  update_date_time          DateTime @default(now())
-  data               Json     @db.Json
+  update_date_time          DateTime @unique(sort: Desc) @default(now())
+  description               String @default("")
+  data                      Json     @db.Json
 
   @@id([track_id, update_date_time])
 }
