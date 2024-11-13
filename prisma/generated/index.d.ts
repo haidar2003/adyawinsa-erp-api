@@ -28,6 +28,21 @@ export type shipment_draft = $Result.DefaultSelection<Prisma.$shipment_draftPayl
  * 
  */
 export type production_single_product_draft = $Result.DefaultSelection<Prisma.$production_single_product_draftPayload>
+/**
+ * Model track_id_object
+ * 
+ */
+export type track_id_object = $Result.DefaultSelection<Prisma.$track_id_objectPayload>
+/**
+ * Model track_id_history
+ * 
+ */
+export type track_id_history = $Result.DefaultSelection<Prisma.$track_id_historyPayload>
+/**
+ * Model track_id_stock
+ * 
+ */
+export type track_id_stock = $Result.DefaultSelection<Prisma.$track_id_stockPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -180,6 +195,36 @@ export class PrismaClient<
     * ```
     */
   get production_single_product_draft(): Prisma.production_single_product_draftDelegate<ExtArgs>;
+
+  /**
+   * `prisma.track_id_object`: Exposes CRUD operations for the **track_id_object** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Track_id_objects
+    * const track_id_objects = await prisma.track_id_object.findMany()
+    * ```
+    */
+  get track_id_object(): Prisma.track_id_objectDelegate<ExtArgs>;
+
+  /**
+   * `prisma.track_id_history`: Exposes CRUD operations for the **track_id_history** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Track_id_histories
+    * const track_id_histories = await prisma.track_id_history.findMany()
+    * ```
+    */
+  get track_id_history(): Prisma.track_id_historyDelegate<ExtArgs>;
+
+  /**
+   * `prisma.track_id_stock`: Exposes CRUD operations for the **track_id_stock** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Track_id_stocks
+    * const track_id_stocks = await prisma.track_id_stock.findMany()
+    * ```
+    */
+  get track_id_stock(): Prisma.track_id_stockDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -652,7 +697,10 @@ export namespace Prisma {
   export const ModelName: {
     inventory_move_draft: 'inventory_move_draft',
     shipment_draft: 'shipment_draft',
-    production_single_product_draft: 'production_single_product_draft'
+    production_single_product_draft: 'production_single_product_draft',
+    track_id_object: 'track_id_object',
+    track_id_history: 'track_id_history',
+    track_id_stock: 'track_id_stock'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -669,7 +717,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'inventory_move_draft' | 'shipment_draft' | 'production_single_product_draft'
+      modelProps: 'inventory_move_draft' | 'shipment_draft' | 'production_single_product_draft' | 'track_id_object' | 'track_id_history' | 'track_id_stock'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -871,6 +919,204 @@ export namespace Prisma {
           }
         }
       }
+      track_id_object: {
+        payload: Prisma.$track_id_objectPayload<ExtArgs>
+        fields: Prisma.track_id_objectFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.track_id_objectFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_objectPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.track_id_objectFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_objectPayload>
+          }
+          findFirst: {
+            args: Prisma.track_id_objectFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_objectPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.track_id_objectFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_objectPayload>
+          }
+          findMany: {
+            args: Prisma.track_id_objectFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_objectPayload>[]
+          }
+          create: {
+            args: Prisma.track_id_objectCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_objectPayload>
+          }
+          createMany: {
+            args: Prisma.track_id_objectCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.track_id_objectDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_objectPayload>
+          }
+          update: {
+            args: Prisma.track_id_objectUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_objectPayload>
+          }
+          deleteMany: {
+            args: Prisma.track_id_objectDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.track_id_objectUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.track_id_objectUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_objectPayload>
+          }
+          aggregate: {
+            args: Prisma.Track_id_objectAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateTrack_id_object>
+          }
+          groupBy: {
+            args: Prisma.track_id_objectGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Track_id_objectGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.track_id_objectCountArgs<ExtArgs>,
+            result: $Utils.Optional<Track_id_objectCountAggregateOutputType> | number
+          }
+        }
+      }
+      track_id_history: {
+        payload: Prisma.$track_id_historyPayload<ExtArgs>
+        fields: Prisma.track_id_historyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.track_id_historyFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_historyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.track_id_historyFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_historyPayload>
+          }
+          findFirst: {
+            args: Prisma.track_id_historyFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_historyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.track_id_historyFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_historyPayload>
+          }
+          findMany: {
+            args: Prisma.track_id_historyFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_historyPayload>[]
+          }
+          create: {
+            args: Prisma.track_id_historyCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_historyPayload>
+          }
+          createMany: {
+            args: Prisma.track_id_historyCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.track_id_historyDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_historyPayload>
+          }
+          update: {
+            args: Prisma.track_id_historyUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_historyPayload>
+          }
+          deleteMany: {
+            args: Prisma.track_id_historyDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.track_id_historyUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.track_id_historyUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_historyPayload>
+          }
+          aggregate: {
+            args: Prisma.Track_id_historyAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateTrack_id_history>
+          }
+          groupBy: {
+            args: Prisma.track_id_historyGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Track_id_historyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.track_id_historyCountArgs<ExtArgs>,
+            result: $Utils.Optional<Track_id_historyCountAggregateOutputType> | number
+          }
+        }
+      }
+      track_id_stock: {
+        payload: Prisma.$track_id_stockPayload<ExtArgs>
+        fields: Prisma.track_id_stockFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.track_id_stockFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_stockPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.track_id_stockFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_stockPayload>
+          }
+          findFirst: {
+            args: Prisma.track_id_stockFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_stockPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.track_id_stockFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_stockPayload>
+          }
+          findMany: {
+            args: Prisma.track_id_stockFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_stockPayload>[]
+          }
+          create: {
+            args: Prisma.track_id_stockCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_stockPayload>
+          }
+          createMany: {
+            args: Prisma.track_id_stockCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.track_id_stockDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_stockPayload>
+          }
+          update: {
+            args: Prisma.track_id_stockUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_stockPayload>
+          }
+          deleteMany: {
+            args: Prisma.track_id_stockDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.track_id_stockUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.track_id_stockUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$track_id_stockPayload>
+          }
+          aggregate: {
+            args: Prisma.Track_id_stockAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateTrack_id_stock>
+          }
+          groupBy: {
+            args: Prisma.track_id_stockGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Track_id_stockGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.track_id_stockCountArgs<ExtArgs>,
+            result: $Utils.Optional<Track_id_stockCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1012,6 +1258,39 @@ export namespace Prisma {
   /**
    * Count Types
    */
+
+
+  /**
+   * Count Type Track_id_objectCountOutputType
+   */
+
+  export type Track_id_objectCountOutputType = {
+    track_id_history: number
+  }
+
+  export type Track_id_objectCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    track_id_history?: boolean | Track_id_objectCountOutputTypeCountTrack_id_historyArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * Track_id_objectCountOutputType without action
+   */
+  export type Track_id_objectCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track_id_objectCountOutputType
+     */
+    select?: Track_id_objectCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Track_id_objectCountOutputType without action
+   */
+  export type Track_id_objectCountOutputTypeCountTrack_id_historyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: track_id_historyWhereInput
+  }
 
 
 
@@ -3699,6 +3978,2753 @@ export namespace Prisma {
 
 
   /**
+   * Model track_id_object
+   */
+
+  export type AggregateTrack_id_object = {
+    _count: Track_id_objectCountAggregateOutputType | null
+    _min: Track_id_objectMinAggregateOutputType | null
+    _max: Track_id_objectMaxAggregateOutputType | null
+  }
+
+  export type Track_id_objectMinAggregateOutputType = {
+    track_id: string | null
+    track_type: string | null
+    creation_date_time: Date | null
+  }
+
+  export type Track_id_objectMaxAggregateOutputType = {
+    track_id: string | null
+    track_type: string | null
+    creation_date_time: Date | null
+  }
+
+  export type Track_id_objectCountAggregateOutputType = {
+    track_id: number
+    track_type: number
+    creation_date_time: number
+    source_data: number
+    object_data: number
+    _all: number
+  }
+
+
+  export type Track_id_objectMinAggregateInputType = {
+    track_id?: true
+    track_type?: true
+    creation_date_time?: true
+  }
+
+  export type Track_id_objectMaxAggregateInputType = {
+    track_id?: true
+    track_type?: true
+    creation_date_time?: true
+  }
+
+  export type Track_id_objectCountAggregateInputType = {
+    track_id?: true
+    track_type?: true
+    creation_date_time?: true
+    source_data?: true
+    object_data?: true
+    _all?: true
+  }
+
+  export type Track_id_objectAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which track_id_object to aggregate.
+     */
+    where?: track_id_objectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_objects to fetch.
+     */
+    orderBy?: track_id_objectOrderByWithRelationInput | track_id_objectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: track_id_objectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_objects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_objects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned track_id_objects
+    **/
+    _count?: true | Track_id_objectCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Track_id_objectMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Track_id_objectMaxAggregateInputType
+  }
+
+  export type GetTrack_id_objectAggregateType<T extends Track_id_objectAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrack_id_object]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrack_id_object[P]>
+      : GetScalarType<T[P], AggregateTrack_id_object[P]>
+  }
+
+
+
+
+  export type track_id_objectGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: track_id_objectWhereInput
+    orderBy?: track_id_objectOrderByWithAggregationInput | track_id_objectOrderByWithAggregationInput[]
+    by: Track_id_objectScalarFieldEnum[] | Track_id_objectScalarFieldEnum
+    having?: track_id_objectScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Track_id_objectCountAggregateInputType | true
+    _min?: Track_id_objectMinAggregateInputType
+    _max?: Track_id_objectMaxAggregateInputType
+  }
+
+  export type Track_id_objectGroupByOutputType = {
+    track_id: string
+    track_type: string
+    creation_date_time: Date
+    source_data: JsonValue
+    object_data: JsonValue
+    _count: Track_id_objectCountAggregateOutputType | null
+    _min: Track_id_objectMinAggregateOutputType | null
+    _max: Track_id_objectMaxAggregateOutputType | null
+  }
+
+  type GetTrack_id_objectGroupByPayload<T extends track_id_objectGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Track_id_objectGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Track_id_objectGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Track_id_objectGroupByOutputType[P]>
+            : GetScalarType<T[P], Track_id_objectGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type track_id_objectSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    track_id?: boolean
+    track_type?: boolean
+    creation_date_time?: boolean
+    source_data?: boolean
+    object_data?: boolean
+    track_id_history?: boolean | track_id_object$track_id_historyArgs<ExtArgs>
+    _count?: boolean | Track_id_objectCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["track_id_object"]>
+
+  export type track_id_objectSelectScalar = {
+    track_id?: boolean
+    track_type?: boolean
+    creation_date_time?: boolean
+    source_data?: boolean
+    object_data?: boolean
+  }
+
+  export type track_id_objectInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    track_id_history?: boolean | track_id_object$track_id_historyArgs<ExtArgs>
+    _count?: boolean | Track_id_objectCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $track_id_objectPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "track_id_object"
+    objects: {
+      track_id_history: Prisma.$track_id_historyPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetResult<{
+      track_id: string
+      track_type: string
+      creation_date_time: Date
+      source_data: Prisma.JsonValue
+      object_data: Prisma.JsonValue
+    }, ExtArgs["result"]["track_id_object"]>
+    composites: {}
+  }
+
+
+  type track_id_objectGetPayload<S extends boolean | null | undefined | track_id_objectDefaultArgs> = $Result.GetResult<Prisma.$track_id_objectPayload, S>
+
+  type track_id_objectCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<track_id_objectFindManyArgs, 'select' | 'include'> & {
+      select?: Track_id_objectCountAggregateInputType | true
+    }
+
+  export interface track_id_objectDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['track_id_object'], meta: { name: 'track_id_object' } }
+    /**
+     * Find zero or one Track_id_object that matches the filter.
+     * @param {track_id_objectFindUniqueArgs} args - Arguments to find a Track_id_object
+     * @example
+     * // Get one Track_id_object
+     * const track_id_object = await prisma.track_id_object.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends track_id_objectFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_objectFindUniqueArgs<ExtArgs>>
+    ): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Track_id_object that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {track_id_objectFindUniqueOrThrowArgs} args - Arguments to find a Track_id_object
+     * @example
+     * // Get one Track_id_object
+     * const track_id_object = await prisma.track_id_object.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends track_id_objectFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_objectFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Track_id_object that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_objectFindFirstArgs} args - Arguments to find a Track_id_object
+     * @example
+     * // Get one Track_id_object
+     * const track_id_object = await prisma.track_id_object.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends track_id_objectFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_objectFindFirstArgs<ExtArgs>>
+    ): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Track_id_object that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_objectFindFirstOrThrowArgs} args - Arguments to find a Track_id_object
+     * @example
+     * // Get one Track_id_object
+     * const track_id_object = await prisma.track_id_object.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends track_id_objectFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_objectFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Track_id_objects that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_objectFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Track_id_objects
+     * const track_id_objects = await prisma.track_id_object.findMany()
+     * 
+     * // Get first 10 Track_id_objects
+     * const track_id_objects = await prisma.track_id_object.findMany({ take: 10 })
+     * 
+     * // Only select the `track_id`
+     * const track_id_objectWithTrack_idOnly = await prisma.track_id_object.findMany({ select: { track_id: true } })
+     * 
+    **/
+    findMany<T extends track_id_objectFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_objectFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Track_id_object.
+     * @param {track_id_objectCreateArgs} args - Arguments to create a Track_id_object.
+     * @example
+     * // Create one Track_id_object
+     * const Track_id_object = await prisma.track_id_object.create({
+     *   data: {
+     *     // ... data to create a Track_id_object
+     *   }
+     * })
+     * 
+    **/
+    create<T extends track_id_objectCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_objectCreateArgs<ExtArgs>>
+    ): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Track_id_objects.
+     *     @param {track_id_objectCreateManyArgs} args - Arguments to create many Track_id_objects.
+     *     @example
+     *     // Create many Track_id_objects
+     *     const track_id_object = await prisma.track_id_object.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends track_id_objectCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_objectCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Track_id_object.
+     * @param {track_id_objectDeleteArgs} args - Arguments to delete one Track_id_object.
+     * @example
+     * // Delete one Track_id_object
+     * const Track_id_object = await prisma.track_id_object.delete({
+     *   where: {
+     *     // ... filter to delete one Track_id_object
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends track_id_objectDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_objectDeleteArgs<ExtArgs>>
+    ): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Track_id_object.
+     * @param {track_id_objectUpdateArgs} args - Arguments to update one Track_id_object.
+     * @example
+     * // Update one Track_id_object
+     * const track_id_object = await prisma.track_id_object.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends track_id_objectUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_objectUpdateArgs<ExtArgs>>
+    ): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Track_id_objects.
+     * @param {track_id_objectDeleteManyArgs} args - Arguments to filter Track_id_objects to delete.
+     * @example
+     * // Delete a few Track_id_objects
+     * const { count } = await prisma.track_id_object.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends track_id_objectDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_objectDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Track_id_objects.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_objectUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Track_id_objects
+     * const track_id_object = await prisma.track_id_object.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends track_id_objectUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_objectUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Track_id_object.
+     * @param {track_id_objectUpsertArgs} args - Arguments to update or create a Track_id_object.
+     * @example
+     * // Update or create a Track_id_object
+     * const track_id_object = await prisma.track_id_object.upsert({
+     *   create: {
+     *     // ... data to create a Track_id_object
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Track_id_object we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends track_id_objectUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_objectUpsertArgs<ExtArgs>>
+    ): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Track_id_objects.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_objectCountArgs} args - Arguments to filter Track_id_objects to count.
+     * @example
+     * // Count the number of Track_id_objects
+     * const count = await prisma.track_id_object.count({
+     *   where: {
+     *     // ... the filter for the Track_id_objects we want to count
+     *   }
+     * })
+    **/
+    count<T extends track_id_objectCountArgs>(
+      args?: Subset<T, track_id_objectCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Track_id_objectCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Track_id_object.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Track_id_objectAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Track_id_objectAggregateArgs>(args: Subset<T, Track_id_objectAggregateArgs>): Prisma.PrismaPromise<GetTrack_id_objectAggregateType<T>>
+
+    /**
+     * Group by Track_id_object.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_objectGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends track_id_objectGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: track_id_objectGroupByArgs['orderBy'] }
+        : { orderBy?: track_id_objectGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, track_id_objectGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrack_id_objectGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the track_id_object model
+   */
+  readonly fields: track_id_objectFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for track_id_object.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__track_id_objectClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    track_id_history<T extends track_id_object$track_id_historyArgs<ExtArgs> = {}>(args?: Subset<T, track_id_object$track_id_historyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the track_id_object model
+   */ 
+  interface track_id_objectFieldRefs {
+    readonly track_id: FieldRef<"track_id_object", 'String'>
+    readonly track_type: FieldRef<"track_id_object", 'String'>
+    readonly creation_date_time: FieldRef<"track_id_object", 'DateTime'>
+    readonly source_data: FieldRef<"track_id_object", 'Json'>
+    readonly object_data: FieldRef<"track_id_object", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * track_id_object findUnique
+   */
+  export type track_id_objectFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+    /**
+     * Filter, which track_id_object to fetch.
+     */
+    where: track_id_objectWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_object findUniqueOrThrow
+   */
+  export type track_id_objectFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+    /**
+     * Filter, which track_id_object to fetch.
+     */
+    where: track_id_objectWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_object findFirst
+   */
+  export type track_id_objectFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+    /**
+     * Filter, which track_id_object to fetch.
+     */
+    where?: track_id_objectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_objects to fetch.
+     */
+    orderBy?: track_id_objectOrderByWithRelationInput | track_id_objectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for track_id_objects.
+     */
+    cursor?: track_id_objectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_objects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_objects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of track_id_objects.
+     */
+    distinct?: Track_id_objectScalarFieldEnum | Track_id_objectScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_object findFirstOrThrow
+   */
+  export type track_id_objectFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+    /**
+     * Filter, which track_id_object to fetch.
+     */
+    where?: track_id_objectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_objects to fetch.
+     */
+    orderBy?: track_id_objectOrderByWithRelationInput | track_id_objectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for track_id_objects.
+     */
+    cursor?: track_id_objectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_objects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_objects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of track_id_objects.
+     */
+    distinct?: Track_id_objectScalarFieldEnum | Track_id_objectScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_object findMany
+   */
+  export type track_id_objectFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+    /**
+     * Filter, which track_id_objects to fetch.
+     */
+    where?: track_id_objectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_objects to fetch.
+     */
+    orderBy?: track_id_objectOrderByWithRelationInput | track_id_objectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing track_id_objects.
+     */
+    cursor?: track_id_objectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_objects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_objects.
+     */
+    skip?: number
+    distinct?: Track_id_objectScalarFieldEnum | Track_id_objectScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_object create
+   */
+  export type track_id_objectCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+    /**
+     * The data needed to create a track_id_object.
+     */
+    data: XOR<track_id_objectCreateInput, track_id_objectUncheckedCreateInput>
+  }
+
+
+  /**
+   * track_id_object createMany
+   */
+  export type track_id_objectCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many track_id_objects.
+     */
+    data: track_id_objectCreateManyInput | track_id_objectCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * track_id_object update
+   */
+  export type track_id_objectUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+    /**
+     * The data needed to update a track_id_object.
+     */
+    data: XOR<track_id_objectUpdateInput, track_id_objectUncheckedUpdateInput>
+    /**
+     * Choose, which track_id_object to update.
+     */
+    where: track_id_objectWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_object updateMany
+   */
+  export type track_id_objectUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update track_id_objects.
+     */
+    data: XOR<track_id_objectUpdateManyMutationInput, track_id_objectUncheckedUpdateManyInput>
+    /**
+     * Filter which track_id_objects to update
+     */
+    where?: track_id_objectWhereInput
+  }
+
+
+  /**
+   * track_id_object upsert
+   */
+  export type track_id_objectUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+    /**
+     * The filter to search for the track_id_object to update in case it exists.
+     */
+    where: track_id_objectWhereUniqueInput
+    /**
+     * In case the track_id_object found by the `where` argument doesn't exist, create a new track_id_object with this data.
+     */
+    create: XOR<track_id_objectCreateInput, track_id_objectUncheckedCreateInput>
+    /**
+     * In case the track_id_object was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<track_id_objectUpdateInput, track_id_objectUncheckedUpdateInput>
+  }
+
+
+  /**
+   * track_id_object delete
+   */
+  export type track_id_objectDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+    /**
+     * Filter which track_id_object to delete.
+     */
+    where: track_id_objectWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_object deleteMany
+   */
+  export type track_id_objectDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which track_id_objects to delete
+     */
+    where?: track_id_objectWhereInput
+  }
+
+
+  /**
+   * track_id_object.track_id_history
+   */
+  export type track_id_object$track_id_historyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+    where?: track_id_historyWhereInput
+    orderBy?: track_id_historyOrderByWithRelationInput | track_id_historyOrderByWithRelationInput[]
+    cursor?: track_id_historyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Track_id_historyScalarFieldEnum | Track_id_historyScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_object without action
+   */
+  export type track_id_objectDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model track_id_history
+   */
+
+  export type AggregateTrack_id_history = {
+    _count: Track_id_historyCountAggregateOutputType | null
+    _min: Track_id_historyMinAggregateOutputType | null
+    _max: Track_id_historyMaxAggregateOutputType | null
+  }
+
+  export type Track_id_historyMinAggregateOutputType = {
+    track_id: string | null
+    update_date_time: Date | null
+    description: string | null
+  }
+
+  export type Track_id_historyMaxAggregateOutputType = {
+    track_id: string | null
+    update_date_time: Date | null
+    description: string | null
+  }
+
+  export type Track_id_historyCountAggregateOutputType = {
+    track_id: number
+    update_date_time: number
+    description: number
+    data: number
+    _all: number
+  }
+
+
+  export type Track_id_historyMinAggregateInputType = {
+    track_id?: true
+    update_date_time?: true
+    description?: true
+  }
+
+  export type Track_id_historyMaxAggregateInputType = {
+    track_id?: true
+    update_date_time?: true
+    description?: true
+  }
+
+  export type Track_id_historyCountAggregateInputType = {
+    track_id?: true
+    update_date_time?: true
+    description?: true
+    data?: true
+    _all?: true
+  }
+
+  export type Track_id_historyAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which track_id_history to aggregate.
+     */
+    where?: track_id_historyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_histories to fetch.
+     */
+    orderBy?: track_id_historyOrderByWithRelationInput | track_id_historyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: track_id_historyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_histories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_histories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned track_id_histories
+    **/
+    _count?: true | Track_id_historyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Track_id_historyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Track_id_historyMaxAggregateInputType
+  }
+
+  export type GetTrack_id_historyAggregateType<T extends Track_id_historyAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrack_id_history]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrack_id_history[P]>
+      : GetScalarType<T[P], AggregateTrack_id_history[P]>
+  }
+
+
+
+
+  export type track_id_historyGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: track_id_historyWhereInput
+    orderBy?: track_id_historyOrderByWithAggregationInput | track_id_historyOrderByWithAggregationInput[]
+    by: Track_id_historyScalarFieldEnum[] | Track_id_historyScalarFieldEnum
+    having?: track_id_historyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Track_id_historyCountAggregateInputType | true
+    _min?: Track_id_historyMinAggregateInputType
+    _max?: Track_id_historyMaxAggregateInputType
+  }
+
+  export type Track_id_historyGroupByOutputType = {
+    track_id: string
+    update_date_time: Date
+    description: string
+    data: JsonValue
+    _count: Track_id_historyCountAggregateOutputType | null
+    _min: Track_id_historyMinAggregateOutputType | null
+    _max: Track_id_historyMaxAggregateOutputType | null
+  }
+
+  type GetTrack_id_historyGroupByPayload<T extends track_id_historyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Track_id_historyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Track_id_historyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Track_id_historyGroupByOutputType[P]>
+            : GetScalarType<T[P], Track_id_historyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type track_id_historySelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    track_id?: boolean
+    update_date_time?: boolean
+    description?: boolean
+    data?: boolean
+    track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["track_id_history"]>
+
+  export type track_id_historySelectScalar = {
+    track_id?: boolean
+    update_date_time?: boolean
+    description?: boolean
+    data?: boolean
+  }
+
+  export type track_id_historyInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+  }
+
+
+  export type $track_id_historyPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "track_id_history"
+    objects: {
+      track_id_object: Prisma.$track_id_objectPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetResult<{
+      track_id: string
+      update_date_time: Date
+      description: string
+      data: Prisma.JsonValue
+    }, ExtArgs["result"]["track_id_history"]>
+    composites: {}
+  }
+
+
+  type track_id_historyGetPayload<S extends boolean | null | undefined | track_id_historyDefaultArgs> = $Result.GetResult<Prisma.$track_id_historyPayload, S>
+
+  type track_id_historyCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<track_id_historyFindManyArgs, 'select' | 'include'> & {
+      select?: Track_id_historyCountAggregateInputType | true
+    }
+
+  export interface track_id_historyDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['track_id_history'], meta: { name: 'track_id_history' } }
+    /**
+     * Find zero or one Track_id_history that matches the filter.
+     * @param {track_id_historyFindUniqueArgs} args - Arguments to find a Track_id_history
+     * @example
+     * // Get one Track_id_history
+     * const track_id_history = await prisma.track_id_history.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends track_id_historyFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_historyFindUniqueArgs<ExtArgs>>
+    ): Prisma__track_id_historyClient<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Track_id_history that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {track_id_historyFindUniqueOrThrowArgs} args - Arguments to find a Track_id_history
+     * @example
+     * // Get one Track_id_history
+     * const track_id_history = await prisma.track_id_history.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends track_id_historyFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_historyFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__track_id_historyClient<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Track_id_history that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_historyFindFirstArgs} args - Arguments to find a Track_id_history
+     * @example
+     * // Get one Track_id_history
+     * const track_id_history = await prisma.track_id_history.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends track_id_historyFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_historyFindFirstArgs<ExtArgs>>
+    ): Prisma__track_id_historyClient<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Track_id_history that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_historyFindFirstOrThrowArgs} args - Arguments to find a Track_id_history
+     * @example
+     * // Get one Track_id_history
+     * const track_id_history = await prisma.track_id_history.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends track_id_historyFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_historyFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__track_id_historyClient<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Track_id_histories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_historyFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Track_id_histories
+     * const track_id_histories = await prisma.track_id_history.findMany()
+     * 
+     * // Get first 10 Track_id_histories
+     * const track_id_histories = await prisma.track_id_history.findMany({ take: 10 })
+     * 
+     * // Only select the `track_id`
+     * const track_id_historyWithTrack_idOnly = await prisma.track_id_history.findMany({ select: { track_id: true } })
+     * 
+    **/
+    findMany<T extends track_id_historyFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_historyFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Track_id_history.
+     * @param {track_id_historyCreateArgs} args - Arguments to create a Track_id_history.
+     * @example
+     * // Create one Track_id_history
+     * const Track_id_history = await prisma.track_id_history.create({
+     *   data: {
+     *     // ... data to create a Track_id_history
+     *   }
+     * })
+     * 
+    **/
+    create<T extends track_id_historyCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_historyCreateArgs<ExtArgs>>
+    ): Prisma__track_id_historyClient<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Track_id_histories.
+     *     @param {track_id_historyCreateManyArgs} args - Arguments to create many Track_id_histories.
+     *     @example
+     *     // Create many Track_id_histories
+     *     const track_id_history = await prisma.track_id_history.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends track_id_historyCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_historyCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Track_id_history.
+     * @param {track_id_historyDeleteArgs} args - Arguments to delete one Track_id_history.
+     * @example
+     * // Delete one Track_id_history
+     * const Track_id_history = await prisma.track_id_history.delete({
+     *   where: {
+     *     // ... filter to delete one Track_id_history
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends track_id_historyDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_historyDeleteArgs<ExtArgs>>
+    ): Prisma__track_id_historyClient<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Track_id_history.
+     * @param {track_id_historyUpdateArgs} args - Arguments to update one Track_id_history.
+     * @example
+     * // Update one Track_id_history
+     * const track_id_history = await prisma.track_id_history.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends track_id_historyUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_historyUpdateArgs<ExtArgs>>
+    ): Prisma__track_id_historyClient<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Track_id_histories.
+     * @param {track_id_historyDeleteManyArgs} args - Arguments to filter Track_id_histories to delete.
+     * @example
+     * // Delete a few Track_id_histories
+     * const { count } = await prisma.track_id_history.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends track_id_historyDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_historyDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Track_id_histories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_historyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Track_id_histories
+     * const track_id_history = await prisma.track_id_history.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends track_id_historyUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_historyUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Track_id_history.
+     * @param {track_id_historyUpsertArgs} args - Arguments to update or create a Track_id_history.
+     * @example
+     * // Update or create a Track_id_history
+     * const track_id_history = await prisma.track_id_history.upsert({
+     *   create: {
+     *     // ... data to create a Track_id_history
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Track_id_history we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends track_id_historyUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_historyUpsertArgs<ExtArgs>>
+    ): Prisma__track_id_historyClient<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Track_id_histories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_historyCountArgs} args - Arguments to filter Track_id_histories to count.
+     * @example
+     * // Count the number of Track_id_histories
+     * const count = await prisma.track_id_history.count({
+     *   where: {
+     *     // ... the filter for the Track_id_histories we want to count
+     *   }
+     * })
+    **/
+    count<T extends track_id_historyCountArgs>(
+      args?: Subset<T, track_id_historyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Track_id_historyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Track_id_history.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Track_id_historyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Track_id_historyAggregateArgs>(args: Subset<T, Track_id_historyAggregateArgs>): Prisma.PrismaPromise<GetTrack_id_historyAggregateType<T>>
+
+    /**
+     * Group by Track_id_history.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_historyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends track_id_historyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: track_id_historyGroupByArgs['orderBy'] }
+        : { orderBy?: track_id_historyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, track_id_historyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrack_id_historyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the track_id_history model
+   */
+  readonly fields: track_id_historyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for track_id_history.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__track_id_historyClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    track_id_object<T extends track_id_objectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, track_id_objectDefaultArgs<ExtArgs>>): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the track_id_history model
+   */ 
+  interface track_id_historyFieldRefs {
+    readonly track_id: FieldRef<"track_id_history", 'String'>
+    readonly update_date_time: FieldRef<"track_id_history", 'DateTime'>
+    readonly description: FieldRef<"track_id_history", 'String'>
+    readonly data: FieldRef<"track_id_history", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * track_id_history findUnique
+   */
+  export type track_id_historyFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+    /**
+     * Filter, which track_id_history to fetch.
+     */
+    where: track_id_historyWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_history findUniqueOrThrow
+   */
+  export type track_id_historyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+    /**
+     * Filter, which track_id_history to fetch.
+     */
+    where: track_id_historyWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_history findFirst
+   */
+  export type track_id_historyFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+    /**
+     * Filter, which track_id_history to fetch.
+     */
+    where?: track_id_historyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_histories to fetch.
+     */
+    orderBy?: track_id_historyOrderByWithRelationInput | track_id_historyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for track_id_histories.
+     */
+    cursor?: track_id_historyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_histories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_histories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of track_id_histories.
+     */
+    distinct?: Track_id_historyScalarFieldEnum | Track_id_historyScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_history findFirstOrThrow
+   */
+  export type track_id_historyFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+    /**
+     * Filter, which track_id_history to fetch.
+     */
+    where?: track_id_historyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_histories to fetch.
+     */
+    orderBy?: track_id_historyOrderByWithRelationInput | track_id_historyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for track_id_histories.
+     */
+    cursor?: track_id_historyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_histories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_histories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of track_id_histories.
+     */
+    distinct?: Track_id_historyScalarFieldEnum | Track_id_historyScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_history findMany
+   */
+  export type track_id_historyFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+    /**
+     * Filter, which track_id_histories to fetch.
+     */
+    where?: track_id_historyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_histories to fetch.
+     */
+    orderBy?: track_id_historyOrderByWithRelationInput | track_id_historyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing track_id_histories.
+     */
+    cursor?: track_id_historyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_histories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_histories.
+     */
+    skip?: number
+    distinct?: Track_id_historyScalarFieldEnum | Track_id_historyScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_history create
+   */
+  export type track_id_historyCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+    /**
+     * The data needed to create a track_id_history.
+     */
+    data: XOR<track_id_historyCreateInput, track_id_historyUncheckedCreateInput>
+  }
+
+
+  /**
+   * track_id_history createMany
+   */
+  export type track_id_historyCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many track_id_histories.
+     */
+    data: track_id_historyCreateManyInput | track_id_historyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * track_id_history update
+   */
+  export type track_id_historyUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+    /**
+     * The data needed to update a track_id_history.
+     */
+    data: XOR<track_id_historyUpdateInput, track_id_historyUncheckedUpdateInput>
+    /**
+     * Choose, which track_id_history to update.
+     */
+    where: track_id_historyWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_history updateMany
+   */
+  export type track_id_historyUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update track_id_histories.
+     */
+    data: XOR<track_id_historyUpdateManyMutationInput, track_id_historyUncheckedUpdateManyInput>
+    /**
+     * Filter which track_id_histories to update
+     */
+    where?: track_id_historyWhereInput
+  }
+
+
+  /**
+   * track_id_history upsert
+   */
+  export type track_id_historyUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+    /**
+     * The filter to search for the track_id_history to update in case it exists.
+     */
+    where: track_id_historyWhereUniqueInput
+    /**
+     * In case the track_id_history found by the `where` argument doesn't exist, create a new track_id_history with this data.
+     */
+    create: XOR<track_id_historyCreateInput, track_id_historyUncheckedCreateInput>
+    /**
+     * In case the track_id_history was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<track_id_historyUpdateInput, track_id_historyUncheckedUpdateInput>
+  }
+
+
+  /**
+   * track_id_history delete
+   */
+  export type track_id_historyDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+    /**
+     * Filter which track_id_history to delete.
+     */
+    where: track_id_historyWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_history deleteMany
+   */
+  export type track_id_historyDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which track_id_histories to delete
+     */
+    where?: track_id_historyWhereInput
+  }
+
+
+  /**
+   * track_id_history without action
+   */
+  export type track_id_historyDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_history
+     */
+    select?: track_id_historySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_historyInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model track_id_stock
+   */
+
+  export type AggregateTrack_id_stock = {
+    _count: Track_id_stockCountAggregateOutputType | null
+    _avg: Track_id_stockAvgAggregateOutputType | null
+    _sum: Track_id_stockSumAggregateOutputType | null
+    _min: Track_id_stockMinAggregateOutputType | null
+    _max: Track_id_stockMaxAggregateOutputType | null
+  }
+
+  export type Track_id_stockAvgAggregateOutputType = {
+    quantity: number | null
+  }
+
+  export type Track_id_stockSumAggregateOutputType = {
+    quantity: number | null
+  }
+
+  export type Track_id_stockMinAggregateOutputType = {
+    locator_id: string | null
+    key23: string | null
+    product_id: string | null
+    track_id: string | null
+    quantity: number | null
+  }
+
+  export type Track_id_stockMaxAggregateOutputType = {
+    locator_id: string | null
+    key23: string | null
+    product_id: string | null
+    track_id: string | null
+    quantity: number | null
+  }
+
+  export type Track_id_stockCountAggregateOutputType = {
+    locator_id: number
+    key23: number
+    product_id: number
+    track_id: number
+    quantity: number
+    data: number
+    _all: number
+  }
+
+
+  export type Track_id_stockAvgAggregateInputType = {
+    quantity?: true
+  }
+
+  export type Track_id_stockSumAggregateInputType = {
+    quantity?: true
+  }
+
+  export type Track_id_stockMinAggregateInputType = {
+    locator_id?: true
+    key23?: true
+    product_id?: true
+    track_id?: true
+    quantity?: true
+  }
+
+  export type Track_id_stockMaxAggregateInputType = {
+    locator_id?: true
+    key23?: true
+    product_id?: true
+    track_id?: true
+    quantity?: true
+  }
+
+  export type Track_id_stockCountAggregateInputType = {
+    locator_id?: true
+    key23?: true
+    product_id?: true
+    track_id?: true
+    quantity?: true
+    data?: true
+    _all?: true
+  }
+
+  export type Track_id_stockAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which track_id_stock to aggregate.
+     */
+    where?: track_id_stockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_stocks to fetch.
+     */
+    orderBy?: track_id_stockOrderByWithRelationInput | track_id_stockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: track_id_stockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_stocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_stocks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned track_id_stocks
+    **/
+    _count?: true | Track_id_stockCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Track_id_stockAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Track_id_stockSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Track_id_stockMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Track_id_stockMaxAggregateInputType
+  }
+
+  export type GetTrack_id_stockAggregateType<T extends Track_id_stockAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrack_id_stock]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrack_id_stock[P]>
+      : GetScalarType<T[P], AggregateTrack_id_stock[P]>
+  }
+
+
+
+
+  export type track_id_stockGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: track_id_stockWhereInput
+    orderBy?: track_id_stockOrderByWithAggregationInput | track_id_stockOrderByWithAggregationInput[]
+    by: Track_id_stockScalarFieldEnum[] | Track_id_stockScalarFieldEnum
+    having?: track_id_stockScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Track_id_stockCountAggregateInputType | true
+    _avg?: Track_id_stockAvgAggregateInputType
+    _sum?: Track_id_stockSumAggregateInputType
+    _min?: Track_id_stockMinAggregateInputType
+    _max?: Track_id_stockMaxAggregateInputType
+  }
+
+  export type Track_id_stockGroupByOutputType = {
+    locator_id: string
+    key23: string
+    product_id: string
+    track_id: string
+    quantity: number
+    data: JsonValue
+    _count: Track_id_stockCountAggregateOutputType | null
+    _avg: Track_id_stockAvgAggregateOutputType | null
+    _sum: Track_id_stockSumAggregateOutputType | null
+    _min: Track_id_stockMinAggregateOutputType | null
+    _max: Track_id_stockMaxAggregateOutputType | null
+  }
+
+  type GetTrack_id_stockGroupByPayload<T extends track_id_stockGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Track_id_stockGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Track_id_stockGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Track_id_stockGroupByOutputType[P]>
+            : GetScalarType<T[P], Track_id_stockGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type track_id_stockSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    locator_id?: boolean
+    key23?: boolean
+    product_id?: boolean
+    track_id?: boolean
+    quantity?: boolean
+    data?: boolean
+  }, ExtArgs["result"]["track_id_stock"]>
+
+  export type track_id_stockSelectScalar = {
+    locator_id?: boolean
+    key23?: boolean
+    product_id?: boolean
+    track_id?: boolean
+    quantity?: boolean
+    data?: boolean
+  }
+
+
+  export type $track_id_stockPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "track_id_stock"
+    objects: {}
+    scalars: $Extensions.GetResult<{
+      locator_id: string
+      key23: string
+      product_id: string
+      track_id: string
+      quantity: number
+      data: Prisma.JsonValue
+    }, ExtArgs["result"]["track_id_stock"]>
+    composites: {}
+  }
+
+
+  type track_id_stockGetPayload<S extends boolean | null | undefined | track_id_stockDefaultArgs> = $Result.GetResult<Prisma.$track_id_stockPayload, S>
+
+  type track_id_stockCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<track_id_stockFindManyArgs, 'select' | 'include'> & {
+      select?: Track_id_stockCountAggregateInputType | true
+    }
+
+  export interface track_id_stockDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['track_id_stock'], meta: { name: 'track_id_stock' } }
+    /**
+     * Find zero or one Track_id_stock that matches the filter.
+     * @param {track_id_stockFindUniqueArgs} args - Arguments to find a Track_id_stock
+     * @example
+     * // Get one Track_id_stock
+     * const track_id_stock = await prisma.track_id_stock.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends track_id_stockFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_stockFindUniqueArgs<ExtArgs>>
+    ): Prisma__track_id_stockClient<$Result.GetResult<Prisma.$track_id_stockPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Track_id_stock that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {track_id_stockFindUniqueOrThrowArgs} args - Arguments to find a Track_id_stock
+     * @example
+     * // Get one Track_id_stock
+     * const track_id_stock = await prisma.track_id_stock.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends track_id_stockFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_stockFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__track_id_stockClient<$Result.GetResult<Prisma.$track_id_stockPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Track_id_stock that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_stockFindFirstArgs} args - Arguments to find a Track_id_stock
+     * @example
+     * // Get one Track_id_stock
+     * const track_id_stock = await prisma.track_id_stock.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends track_id_stockFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_stockFindFirstArgs<ExtArgs>>
+    ): Prisma__track_id_stockClient<$Result.GetResult<Prisma.$track_id_stockPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Track_id_stock that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_stockFindFirstOrThrowArgs} args - Arguments to find a Track_id_stock
+     * @example
+     * // Get one Track_id_stock
+     * const track_id_stock = await prisma.track_id_stock.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends track_id_stockFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_stockFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__track_id_stockClient<$Result.GetResult<Prisma.$track_id_stockPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Track_id_stocks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_stockFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Track_id_stocks
+     * const track_id_stocks = await prisma.track_id_stock.findMany()
+     * 
+     * // Get first 10 Track_id_stocks
+     * const track_id_stocks = await prisma.track_id_stock.findMany({ take: 10 })
+     * 
+     * // Only select the `locator_id`
+     * const track_id_stockWithLocator_idOnly = await prisma.track_id_stock.findMany({ select: { locator_id: true } })
+     * 
+    **/
+    findMany<T extends track_id_stockFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_stockFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$track_id_stockPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Track_id_stock.
+     * @param {track_id_stockCreateArgs} args - Arguments to create a Track_id_stock.
+     * @example
+     * // Create one Track_id_stock
+     * const Track_id_stock = await prisma.track_id_stock.create({
+     *   data: {
+     *     // ... data to create a Track_id_stock
+     *   }
+     * })
+     * 
+    **/
+    create<T extends track_id_stockCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_stockCreateArgs<ExtArgs>>
+    ): Prisma__track_id_stockClient<$Result.GetResult<Prisma.$track_id_stockPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Track_id_stocks.
+     *     @param {track_id_stockCreateManyArgs} args - Arguments to create many Track_id_stocks.
+     *     @example
+     *     // Create many Track_id_stocks
+     *     const track_id_stock = await prisma.track_id_stock.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends track_id_stockCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_stockCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Track_id_stock.
+     * @param {track_id_stockDeleteArgs} args - Arguments to delete one Track_id_stock.
+     * @example
+     * // Delete one Track_id_stock
+     * const Track_id_stock = await prisma.track_id_stock.delete({
+     *   where: {
+     *     // ... filter to delete one Track_id_stock
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends track_id_stockDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_stockDeleteArgs<ExtArgs>>
+    ): Prisma__track_id_stockClient<$Result.GetResult<Prisma.$track_id_stockPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Track_id_stock.
+     * @param {track_id_stockUpdateArgs} args - Arguments to update one Track_id_stock.
+     * @example
+     * // Update one Track_id_stock
+     * const track_id_stock = await prisma.track_id_stock.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends track_id_stockUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_stockUpdateArgs<ExtArgs>>
+    ): Prisma__track_id_stockClient<$Result.GetResult<Prisma.$track_id_stockPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Track_id_stocks.
+     * @param {track_id_stockDeleteManyArgs} args - Arguments to filter Track_id_stocks to delete.
+     * @example
+     * // Delete a few Track_id_stocks
+     * const { count } = await prisma.track_id_stock.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends track_id_stockDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, track_id_stockDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Track_id_stocks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_stockUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Track_id_stocks
+     * const track_id_stock = await prisma.track_id_stock.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends track_id_stockUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_stockUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Track_id_stock.
+     * @param {track_id_stockUpsertArgs} args - Arguments to update or create a Track_id_stock.
+     * @example
+     * // Update or create a Track_id_stock
+     * const track_id_stock = await prisma.track_id_stock.upsert({
+     *   create: {
+     *     // ... data to create a Track_id_stock
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Track_id_stock we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends track_id_stockUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, track_id_stockUpsertArgs<ExtArgs>>
+    ): Prisma__track_id_stockClient<$Result.GetResult<Prisma.$track_id_stockPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Track_id_stocks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_stockCountArgs} args - Arguments to filter Track_id_stocks to count.
+     * @example
+     * // Count the number of Track_id_stocks
+     * const count = await prisma.track_id_stock.count({
+     *   where: {
+     *     // ... the filter for the Track_id_stocks we want to count
+     *   }
+     * })
+    **/
+    count<T extends track_id_stockCountArgs>(
+      args?: Subset<T, track_id_stockCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Track_id_stockCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Track_id_stock.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Track_id_stockAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Track_id_stockAggregateArgs>(args: Subset<T, Track_id_stockAggregateArgs>): Prisma.PrismaPromise<GetTrack_id_stockAggregateType<T>>
+
+    /**
+     * Group by Track_id_stock.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {track_id_stockGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends track_id_stockGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: track_id_stockGroupByArgs['orderBy'] }
+        : { orderBy?: track_id_stockGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, track_id_stockGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrack_id_stockGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the track_id_stock model
+   */
+  readonly fields: track_id_stockFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for track_id_stock.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__track_id_stockClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the track_id_stock model
+   */ 
+  interface track_id_stockFieldRefs {
+    readonly locator_id: FieldRef<"track_id_stock", 'String'>
+    readonly key23: FieldRef<"track_id_stock", 'String'>
+    readonly product_id: FieldRef<"track_id_stock", 'String'>
+    readonly track_id: FieldRef<"track_id_stock", 'String'>
+    readonly quantity: FieldRef<"track_id_stock", 'Float'>
+    readonly data: FieldRef<"track_id_stock", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * track_id_stock findUnique
+   */
+  export type track_id_stockFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_stock
+     */
+    select?: track_id_stockSelect<ExtArgs> | null
+    /**
+     * Filter, which track_id_stock to fetch.
+     */
+    where: track_id_stockWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_stock findUniqueOrThrow
+   */
+  export type track_id_stockFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_stock
+     */
+    select?: track_id_stockSelect<ExtArgs> | null
+    /**
+     * Filter, which track_id_stock to fetch.
+     */
+    where: track_id_stockWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_stock findFirst
+   */
+  export type track_id_stockFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_stock
+     */
+    select?: track_id_stockSelect<ExtArgs> | null
+    /**
+     * Filter, which track_id_stock to fetch.
+     */
+    where?: track_id_stockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_stocks to fetch.
+     */
+    orderBy?: track_id_stockOrderByWithRelationInput | track_id_stockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for track_id_stocks.
+     */
+    cursor?: track_id_stockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_stocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_stocks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of track_id_stocks.
+     */
+    distinct?: Track_id_stockScalarFieldEnum | Track_id_stockScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_stock findFirstOrThrow
+   */
+  export type track_id_stockFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_stock
+     */
+    select?: track_id_stockSelect<ExtArgs> | null
+    /**
+     * Filter, which track_id_stock to fetch.
+     */
+    where?: track_id_stockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_stocks to fetch.
+     */
+    orderBy?: track_id_stockOrderByWithRelationInput | track_id_stockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for track_id_stocks.
+     */
+    cursor?: track_id_stockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_stocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_stocks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of track_id_stocks.
+     */
+    distinct?: Track_id_stockScalarFieldEnum | Track_id_stockScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_stock findMany
+   */
+  export type track_id_stockFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_stock
+     */
+    select?: track_id_stockSelect<ExtArgs> | null
+    /**
+     * Filter, which track_id_stocks to fetch.
+     */
+    where?: track_id_stockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of track_id_stocks to fetch.
+     */
+    orderBy?: track_id_stockOrderByWithRelationInput | track_id_stockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing track_id_stocks.
+     */
+    cursor?: track_id_stockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` track_id_stocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` track_id_stocks.
+     */
+    skip?: number
+    distinct?: Track_id_stockScalarFieldEnum | Track_id_stockScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_stock create
+   */
+  export type track_id_stockCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_stock
+     */
+    select?: track_id_stockSelect<ExtArgs> | null
+    /**
+     * The data needed to create a track_id_stock.
+     */
+    data: XOR<track_id_stockCreateInput, track_id_stockUncheckedCreateInput>
+  }
+
+
+  /**
+   * track_id_stock createMany
+   */
+  export type track_id_stockCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many track_id_stocks.
+     */
+    data: track_id_stockCreateManyInput | track_id_stockCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * track_id_stock update
+   */
+  export type track_id_stockUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_stock
+     */
+    select?: track_id_stockSelect<ExtArgs> | null
+    /**
+     * The data needed to update a track_id_stock.
+     */
+    data: XOR<track_id_stockUpdateInput, track_id_stockUncheckedUpdateInput>
+    /**
+     * Choose, which track_id_stock to update.
+     */
+    where: track_id_stockWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_stock updateMany
+   */
+  export type track_id_stockUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update track_id_stocks.
+     */
+    data: XOR<track_id_stockUpdateManyMutationInput, track_id_stockUncheckedUpdateManyInput>
+    /**
+     * Filter which track_id_stocks to update
+     */
+    where?: track_id_stockWhereInput
+  }
+
+
+  /**
+   * track_id_stock upsert
+   */
+  export type track_id_stockUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_stock
+     */
+    select?: track_id_stockSelect<ExtArgs> | null
+    /**
+     * The filter to search for the track_id_stock to update in case it exists.
+     */
+    where: track_id_stockWhereUniqueInput
+    /**
+     * In case the track_id_stock found by the `where` argument doesn't exist, create a new track_id_stock with this data.
+     */
+    create: XOR<track_id_stockCreateInput, track_id_stockUncheckedCreateInput>
+    /**
+     * In case the track_id_stock was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<track_id_stockUpdateInput, track_id_stockUncheckedUpdateInput>
+  }
+
+
+  /**
+   * track_id_stock delete
+   */
+  export type track_id_stockDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_stock
+     */
+    select?: track_id_stockSelect<ExtArgs> | null
+    /**
+     * Filter which track_id_stock to delete.
+     */
+    where: track_id_stockWhereUniqueInput
+  }
+
+
+  /**
+   * track_id_stock deleteMany
+   */
+  export type track_id_stockDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which track_id_stocks to delete
+     */
+    where?: track_id_stockWhereInput
+  }
+
+
+  /**
+   * track_id_stock without action
+   */
+  export type track_id_stockDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_stock
+     */
+    select?: track_id_stockSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -3742,6 +6768,39 @@ export namespace Prisma {
   export type Production_single_product_draftScalarFieldEnum = (typeof Production_single_product_draftScalarFieldEnum)[keyof typeof Production_single_product_draftScalarFieldEnum]
 
 
+  export const Track_id_objectScalarFieldEnum: {
+    track_id: 'track_id',
+    track_type: 'track_type',
+    creation_date_time: 'creation_date_time',
+    source_data: 'source_data',
+    object_data: 'object_data'
+  };
+
+  export type Track_id_objectScalarFieldEnum = (typeof Track_id_objectScalarFieldEnum)[keyof typeof Track_id_objectScalarFieldEnum]
+
+
+  export const Track_id_historyScalarFieldEnum: {
+    track_id: 'track_id',
+    update_date_time: 'update_date_time',
+    description: 'description',
+    data: 'data'
+  };
+
+  export type Track_id_historyScalarFieldEnum = (typeof Track_id_historyScalarFieldEnum)[keyof typeof Track_id_historyScalarFieldEnum]
+
+
+  export const Track_id_stockScalarFieldEnum: {
+    locator_id: 'locator_id',
+    key23: 'key23',
+    product_id: 'product_id',
+    track_id: 'track_id',
+    quantity: 'quantity',
+    data: 'data'
+  };
+
+  export type Track_id_stockScalarFieldEnum = (typeof Track_id_stockScalarFieldEnum)[keyof typeof Track_id_stockScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -3764,6 +6823,14 @@ export namespace Prisma {
   };
 
   export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
   /**
@@ -3810,6 +6877,13 @@ export namespace Prisma {
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+  /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
     
 
 
@@ -3980,6 +7054,172 @@ export namespace Prisma {
     data?: JsonWithAggregatesFilter<"production_single_product_draft">
   }
 
+  export type track_id_objectWhereInput = {
+    AND?: track_id_objectWhereInput | track_id_objectWhereInput[]
+    OR?: track_id_objectWhereInput[]
+    NOT?: track_id_objectWhereInput | track_id_objectWhereInput[]
+    track_id?: StringFilter<"track_id_object"> | string
+    track_type?: StringFilter<"track_id_object"> | string
+    creation_date_time?: DateTimeFilter<"track_id_object"> | Date | string
+    source_data?: JsonFilter<"track_id_object">
+    object_data?: JsonFilter<"track_id_object">
+    track_id_history?: Track_id_historyListRelationFilter
+  }
+
+  export type track_id_objectOrderByWithRelationInput = {
+    track_id?: SortOrder
+    track_type?: SortOrder
+    creation_date_time?: SortOrder
+    source_data?: SortOrder
+    object_data?: SortOrder
+    track_id_history?: track_id_historyOrderByRelationAggregateInput
+  }
+
+  export type track_id_objectWhereUniqueInput = Prisma.AtLeast<{
+    track_id?: string
+    creation_date_time?: Date | string
+    AND?: track_id_objectWhereInput | track_id_objectWhereInput[]
+    OR?: track_id_objectWhereInput[]
+    NOT?: track_id_objectWhereInput | track_id_objectWhereInput[]
+    track_type?: StringFilter<"track_id_object"> | string
+    source_data?: JsonFilter<"track_id_object">
+    object_data?: JsonFilter<"track_id_object">
+    track_id_history?: Track_id_historyListRelationFilter
+  }, "track_id" | "creation_date_time">
+
+  export type track_id_objectOrderByWithAggregationInput = {
+    track_id?: SortOrder
+    track_type?: SortOrder
+    creation_date_time?: SortOrder
+    source_data?: SortOrder
+    object_data?: SortOrder
+    _count?: track_id_objectCountOrderByAggregateInput
+    _max?: track_id_objectMaxOrderByAggregateInput
+    _min?: track_id_objectMinOrderByAggregateInput
+  }
+
+  export type track_id_objectScalarWhereWithAggregatesInput = {
+    AND?: track_id_objectScalarWhereWithAggregatesInput | track_id_objectScalarWhereWithAggregatesInput[]
+    OR?: track_id_objectScalarWhereWithAggregatesInput[]
+    NOT?: track_id_objectScalarWhereWithAggregatesInput | track_id_objectScalarWhereWithAggregatesInput[]
+    track_id?: StringWithAggregatesFilter<"track_id_object"> | string
+    track_type?: StringWithAggregatesFilter<"track_id_object"> | string
+    creation_date_time?: DateTimeWithAggregatesFilter<"track_id_object"> | Date | string
+    source_data?: JsonWithAggregatesFilter<"track_id_object">
+    object_data?: JsonWithAggregatesFilter<"track_id_object">
+  }
+
+  export type track_id_historyWhereInput = {
+    AND?: track_id_historyWhereInput | track_id_historyWhereInput[]
+    OR?: track_id_historyWhereInput[]
+    NOT?: track_id_historyWhereInput | track_id_historyWhereInput[]
+    track_id?: StringFilter<"track_id_history"> | string
+    update_date_time?: DateTimeFilter<"track_id_history"> | Date | string
+    description?: StringFilter<"track_id_history"> | string
+    data?: JsonFilter<"track_id_history">
+    track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+  }
+
+  export type track_id_historyOrderByWithRelationInput = {
+    track_id?: SortOrder
+    update_date_time?: SortOrder
+    description?: SortOrder
+    data?: SortOrder
+    track_id_object?: track_id_objectOrderByWithRelationInput
+  }
+
+  export type track_id_historyWhereUniqueInput = Prisma.AtLeast<{
+    update_date_time?: Date | string
+    track_id_update_date_time?: track_id_historyTrack_idUpdate_date_timeCompoundUniqueInput
+    AND?: track_id_historyWhereInput | track_id_historyWhereInput[]
+    OR?: track_id_historyWhereInput[]
+    NOT?: track_id_historyWhereInput | track_id_historyWhereInput[]
+    track_id?: StringFilter<"track_id_history"> | string
+    description?: StringFilter<"track_id_history"> | string
+    data?: JsonFilter<"track_id_history">
+    track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+  }, "track_id_update_date_time" | "update_date_time">
+
+  export type track_id_historyOrderByWithAggregationInput = {
+    track_id?: SortOrder
+    update_date_time?: SortOrder
+    description?: SortOrder
+    data?: SortOrder
+    _count?: track_id_historyCountOrderByAggregateInput
+    _max?: track_id_historyMaxOrderByAggregateInput
+    _min?: track_id_historyMinOrderByAggregateInput
+  }
+
+  export type track_id_historyScalarWhereWithAggregatesInput = {
+    AND?: track_id_historyScalarWhereWithAggregatesInput | track_id_historyScalarWhereWithAggregatesInput[]
+    OR?: track_id_historyScalarWhereWithAggregatesInput[]
+    NOT?: track_id_historyScalarWhereWithAggregatesInput | track_id_historyScalarWhereWithAggregatesInput[]
+    track_id?: StringWithAggregatesFilter<"track_id_history"> | string
+    update_date_time?: DateTimeWithAggregatesFilter<"track_id_history"> | Date | string
+    description?: StringWithAggregatesFilter<"track_id_history"> | string
+    data?: JsonWithAggregatesFilter<"track_id_history">
+  }
+
+  export type track_id_stockWhereInput = {
+    AND?: track_id_stockWhereInput | track_id_stockWhereInput[]
+    OR?: track_id_stockWhereInput[]
+    NOT?: track_id_stockWhereInput | track_id_stockWhereInput[]
+    locator_id?: StringFilter<"track_id_stock"> | string
+    key23?: StringFilter<"track_id_stock"> | string
+    product_id?: StringFilter<"track_id_stock"> | string
+    track_id?: StringFilter<"track_id_stock"> | string
+    quantity?: FloatFilter<"track_id_stock"> | number
+    data?: JsonFilter<"track_id_stock">
+  }
+
+  export type track_id_stockOrderByWithRelationInput = {
+    locator_id?: SortOrder
+    key23?: SortOrder
+    product_id?: SortOrder
+    track_id?: SortOrder
+    quantity?: SortOrder
+    data?: SortOrder
+  }
+
+  export type track_id_stockWhereUniqueInput = Prisma.AtLeast<{
+    locator_id_key23?: track_id_stockLocator_idKey23CompoundUniqueInput
+    AND?: track_id_stockWhereInput | track_id_stockWhereInput[]
+    OR?: track_id_stockWhereInput[]
+    NOT?: track_id_stockWhereInput | track_id_stockWhereInput[]
+    locator_id?: StringFilter<"track_id_stock"> | string
+    key23?: StringFilter<"track_id_stock"> | string
+    product_id?: StringFilter<"track_id_stock"> | string
+    track_id?: StringFilter<"track_id_stock"> | string
+    quantity?: FloatFilter<"track_id_stock"> | number
+    data?: JsonFilter<"track_id_stock">
+  }, "locator_id_key23">
+
+  export type track_id_stockOrderByWithAggregationInput = {
+    locator_id?: SortOrder
+    key23?: SortOrder
+    product_id?: SortOrder
+    track_id?: SortOrder
+    quantity?: SortOrder
+    data?: SortOrder
+    _count?: track_id_stockCountOrderByAggregateInput
+    _avg?: track_id_stockAvgOrderByAggregateInput
+    _max?: track_id_stockMaxOrderByAggregateInput
+    _min?: track_id_stockMinOrderByAggregateInput
+    _sum?: track_id_stockSumOrderByAggregateInput
+  }
+
+  export type track_id_stockScalarWhereWithAggregatesInput = {
+    AND?: track_id_stockScalarWhereWithAggregatesInput | track_id_stockScalarWhereWithAggregatesInput[]
+    OR?: track_id_stockScalarWhereWithAggregatesInput[]
+    NOT?: track_id_stockScalarWhereWithAggregatesInput | track_id_stockScalarWhereWithAggregatesInput[]
+    locator_id?: StringWithAggregatesFilter<"track_id_stock"> | string
+    key23?: StringWithAggregatesFilter<"track_id_stock"> | string
+    product_id?: StringWithAggregatesFilter<"track_id_stock"> | string
+    track_id?: StringWithAggregatesFilter<"track_id_stock"> | string
+    quantity?: FloatWithAggregatesFilter<"track_id_stock"> | number
+    data?: JsonWithAggregatesFilter<"track_id_stock">
+  }
+
   export type inventory_move_draftCreateInput = {
     org_id: number
     creation_date_time: Date | string
@@ -4124,6 +7364,177 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_objectCreateInput = {
+    track_id: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyCreateNestedManyWithoutTrack_id_objectInput
+  }
+
+  export type track_id_objectUncheckedCreateInput = {
+    track_id: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUncheckedCreateNestedManyWithoutTrack_id_objectInput
+  }
+
+  export type track_id_objectUpdateInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUpdateManyWithoutTrack_id_objectNestedInput
+  }
+
+  export type track_id_objectUncheckedUpdateInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUncheckedUpdateManyWithoutTrack_id_objectNestedInput
+  }
+
+  export type track_id_objectCreateManyInput = {
+    track_id: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_objectUpdateManyMutationInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_objectUncheckedUpdateManyInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyCreateInput = {
+    update_date_time?: Date | string
+    description?: string
+    data: JsonNullValueInput | InputJsonValue
+    track_id_object: track_id_objectCreateNestedOneWithoutTrack_id_historyInput
+  }
+
+  export type track_id_historyUncheckedCreateInput = {
+    track_id: string
+    update_date_time?: Date | string
+    description?: string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyUpdateInput = {
+    update_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutTrack_id_historyNestedInput
+  }
+
+  export type track_id_historyUncheckedUpdateInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    update_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyCreateManyInput = {
+    track_id: string
+    update_date_time?: Date | string
+    description?: string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyUpdateManyMutationInput = {
+    update_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyUncheckedUpdateManyInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    update_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_stockCreateInput = {
+    locator_id: string
+    key23: string
+    product_id: string
+    track_id: string
+    quantity: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_stockUncheckedCreateInput = {
+    locator_id: string
+    key23: string
+    product_id: string
+    track_id: string
+    quantity: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_stockUpdateInput = {
+    locator_id?: StringFieldUpdateOperationsInput | string
+    key23?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
+    track_id?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_stockUncheckedUpdateInput = {
+    locator_id?: StringFieldUpdateOperationsInput | string
+    key23?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
+    track_id?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_stockCreateManyInput = {
+    locator_id: string
+    key23: string
+    product_id: string
+    track_id: string
+    quantity: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_stockUpdateManyMutationInput = {
+    locator_id?: StringFieldUpdateOperationsInput | string
+    key23?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
+    track_id?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_stockUncheckedUpdateManyInput = {
+    locator_id?: StringFieldUpdateOperationsInput | string
+    key23?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
+    track_id?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
   }
 
@@ -4328,6 +7739,163 @@ export namespace Prisma {
     erp_id?: SortOrder
   }
 
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type Track_id_historyListRelationFilter = {
+    every?: track_id_historyWhereInput
+    some?: track_id_historyWhereInput
+    none?: track_id_historyWhereInput
+  }
+
+  export type track_id_historyOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type track_id_objectCountOrderByAggregateInput = {
+    track_id?: SortOrder
+    track_type?: SortOrder
+    creation_date_time?: SortOrder
+    source_data?: SortOrder
+    object_data?: SortOrder
+  }
+
+  export type track_id_objectMaxOrderByAggregateInput = {
+    track_id?: SortOrder
+    track_type?: SortOrder
+    creation_date_time?: SortOrder
+  }
+
+  export type track_id_objectMinOrderByAggregateInput = {
+    track_id?: SortOrder
+    track_type?: SortOrder
+    creation_date_time?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type Track_id_objectRelationFilter = {
+    is?: track_id_objectWhereInput
+    isNot?: track_id_objectWhereInput
+  }
+
+  export type track_id_historyTrack_idUpdate_date_timeCompoundUniqueInput = {
+    track_id: string
+    update_date_time: Date | string
+  }
+
+  export type track_id_historyCountOrderByAggregateInput = {
+    track_id?: SortOrder
+    update_date_time?: SortOrder
+    description?: SortOrder
+    data?: SortOrder
+  }
+
+  export type track_id_historyMaxOrderByAggregateInput = {
+    track_id?: SortOrder
+    update_date_time?: SortOrder
+    description?: SortOrder
+  }
+
+  export type track_id_historyMinOrderByAggregateInput = {
+    track_id?: SortOrder
+    update_date_time?: SortOrder
+    description?: SortOrder
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type track_id_stockLocator_idKey23CompoundUniqueInput = {
+    locator_id: string
+    key23: string
+  }
+
+  export type track_id_stockCountOrderByAggregateInput = {
+    locator_id?: SortOrder
+    key23?: SortOrder
+    product_id?: SortOrder
+    track_id?: SortOrder
+    quantity?: SortOrder
+    data?: SortOrder
+  }
+
+  export type track_id_stockAvgOrderByAggregateInput = {
+    quantity?: SortOrder
+  }
+
+  export type track_id_stockMaxOrderByAggregateInput = {
+    locator_id?: SortOrder
+    key23?: SortOrder
+    product_id?: SortOrder
+    track_id?: SortOrder
+    quantity?: SortOrder
+  }
+
+  export type track_id_stockMinOrderByAggregateInput = {
+    locator_id?: SortOrder
+    key23?: SortOrder
+    product_id?: SortOrder
+    track_id?: SortOrder
+    quantity?: SortOrder
+  }
+
+  export type track_id_stockSumOrderByAggregateInput = {
+    quantity?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -4338,6 +7906,74 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type track_id_historyCreateNestedManyWithoutTrack_id_objectInput = {
+    create?: XOR<track_id_historyCreateWithoutTrack_id_objectInput, track_id_historyUncheckedCreateWithoutTrack_id_objectInput> | track_id_historyCreateWithoutTrack_id_objectInput[] | track_id_historyUncheckedCreateWithoutTrack_id_objectInput[]
+    connectOrCreate?: track_id_historyCreateOrConnectWithoutTrack_id_objectInput | track_id_historyCreateOrConnectWithoutTrack_id_objectInput[]
+    createMany?: track_id_historyCreateManyTrack_id_objectInputEnvelope
+    connect?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+  }
+
+  export type track_id_historyUncheckedCreateNestedManyWithoutTrack_id_objectInput = {
+    create?: XOR<track_id_historyCreateWithoutTrack_id_objectInput, track_id_historyUncheckedCreateWithoutTrack_id_objectInput> | track_id_historyCreateWithoutTrack_id_objectInput[] | track_id_historyUncheckedCreateWithoutTrack_id_objectInput[]
+    connectOrCreate?: track_id_historyCreateOrConnectWithoutTrack_id_objectInput | track_id_historyCreateOrConnectWithoutTrack_id_objectInput[]
+    createMany?: track_id_historyCreateManyTrack_id_objectInputEnvelope
+    connect?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type track_id_historyUpdateManyWithoutTrack_id_objectNestedInput = {
+    create?: XOR<track_id_historyCreateWithoutTrack_id_objectInput, track_id_historyUncheckedCreateWithoutTrack_id_objectInput> | track_id_historyCreateWithoutTrack_id_objectInput[] | track_id_historyUncheckedCreateWithoutTrack_id_objectInput[]
+    connectOrCreate?: track_id_historyCreateOrConnectWithoutTrack_id_objectInput | track_id_historyCreateOrConnectWithoutTrack_id_objectInput[]
+    upsert?: track_id_historyUpsertWithWhereUniqueWithoutTrack_id_objectInput | track_id_historyUpsertWithWhereUniqueWithoutTrack_id_objectInput[]
+    createMany?: track_id_historyCreateManyTrack_id_objectInputEnvelope
+    set?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+    disconnect?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+    delete?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+    connect?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+    update?: track_id_historyUpdateWithWhereUniqueWithoutTrack_id_objectInput | track_id_historyUpdateWithWhereUniqueWithoutTrack_id_objectInput[]
+    updateMany?: track_id_historyUpdateManyWithWhereWithoutTrack_id_objectInput | track_id_historyUpdateManyWithWhereWithoutTrack_id_objectInput[]
+    deleteMany?: track_id_historyScalarWhereInput | track_id_historyScalarWhereInput[]
+  }
+
+  export type track_id_historyUncheckedUpdateManyWithoutTrack_id_objectNestedInput = {
+    create?: XOR<track_id_historyCreateWithoutTrack_id_objectInput, track_id_historyUncheckedCreateWithoutTrack_id_objectInput> | track_id_historyCreateWithoutTrack_id_objectInput[] | track_id_historyUncheckedCreateWithoutTrack_id_objectInput[]
+    connectOrCreate?: track_id_historyCreateOrConnectWithoutTrack_id_objectInput | track_id_historyCreateOrConnectWithoutTrack_id_objectInput[]
+    upsert?: track_id_historyUpsertWithWhereUniqueWithoutTrack_id_objectInput | track_id_historyUpsertWithWhereUniqueWithoutTrack_id_objectInput[]
+    createMany?: track_id_historyCreateManyTrack_id_objectInputEnvelope
+    set?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+    disconnect?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+    delete?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+    connect?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+    update?: track_id_historyUpdateWithWhereUniqueWithoutTrack_id_objectInput | track_id_historyUpdateWithWhereUniqueWithoutTrack_id_objectInput[]
+    updateMany?: track_id_historyUpdateManyWithWhereWithoutTrack_id_objectInput | track_id_historyUpdateManyWithWhereWithoutTrack_id_objectInput[]
+    deleteMany?: track_id_historyScalarWhereInput | track_id_historyScalarWhereInput[]
+  }
+
+  export type track_id_objectCreateNestedOneWithoutTrack_id_historyInput = {
+    create?: XOR<track_id_objectCreateWithoutTrack_id_historyInput, track_id_objectUncheckedCreateWithoutTrack_id_historyInput>
+    connectOrCreate?: track_id_objectCreateOrConnectWithoutTrack_id_historyInput
+    connect?: track_id_objectWhereUniqueInput
+  }
+
+  export type track_id_objectUpdateOneRequiredWithoutTrack_id_historyNestedInput = {
+    create?: XOR<track_id_objectCreateWithoutTrack_id_historyInput, track_id_objectUncheckedCreateWithoutTrack_id_historyInput>
+    connectOrCreate?: track_id_objectCreateOrConnectWithoutTrack_id_historyInput
+    upsert?: track_id_objectUpsertWithoutTrack_id_historyInput
+    connect?: track_id_objectWhereUniqueInput
+    update?: XOR<XOR<track_id_objectUpdateToOneWithWhereWithoutTrack_id_historyInput, track_id_objectUpdateWithoutTrack_id_historyInput>, track_id_objectUncheckedUpdateWithoutTrack_id_historyInput>
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -4425,6 +8061,173 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type track_id_historyCreateWithoutTrack_id_objectInput = {
+    update_date_time?: Date | string
+    description?: string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyUncheckedCreateWithoutTrack_id_objectInput = {
+    update_date_time?: Date | string
+    description?: string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyCreateOrConnectWithoutTrack_id_objectInput = {
+    where: track_id_historyWhereUniqueInput
+    create: XOR<track_id_historyCreateWithoutTrack_id_objectInput, track_id_historyUncheckedCreateWithoutTrack_id_objectInput>
+  }
+
+  export type track_id_historyCreateManyTrack_id_objectInputEnvelope = {
+    data: track_id_historyCreateManyTrack_id_objectInput | track_id_historyCreateManyTrack_id_objectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type track_id_historyUpsertWithWhereUniqueWithoutTrack_id_objectInput = {
+    where: track_id_historyWhereUniqueInput
+    update: XOR<track_id_historyUpdateWithoutTrack_id_objectInput, track_id_historyUncheckedUpdateWithoutTrack_id_objectInput>
+    create: XOR<track_id_historyCreateWithoutTrack_id_objectInput, track_id_historyUncheckedCreateWithoutTrack_id_objectInput>
+  }
+
+  export type track_id_historyUpdateWithWhereUniqueWithoutTrack_id_objectInput = {
+    where: track_id_historyWhereUniqueInput
+    data: XOR<track_id_historyUpdateWithoutTrack_id_objectInput, track_id_historyUncheckedUpdateWithoutTrack_id_objectInput>
+  }
+
+  export type track_id_historyUpdateManyWithWhereWithoutTrack_id_objectInput = {
+    where: track_id_historyScalarWhereInput
+    data: XOR<track_id_historyUpdateManyMutationInput, track_id_historyUncheckedUpdateManyWithoutTrack_id_objectInput>
+  }
+
+  export type track_id_historyScalarWhereInput = {
+    AND?: track_id_historyScalarWhereInput | track_id_historyScalarWhereInput[]
+    OR?: track_id_historyScalarWhereInput[]
+    NOT?: track_id_historyScalarWhereInput | track_id_historyScalarWhereInput[]
+    track_id?: StringFilter<"track_id_history"> | string
+    update_date_time?: DateTimeFilter<"track_id_history"> | Date | string
+    description?: StringFilter<"track_id_history"> | string
+    data?: JsonFilter<"track_id_history">
+  }
+
+  export type track_id_objectCreateWithoutTrack_id_historyInput = {
+    track_id: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_objectUncheckedCreateWithoutTrack_id_historyInput = {
+    track_id: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_objectCreateOrConnectWithoutTrack_id_historyInput = {
+    where: track_id_objectWhereUniqueInput
+    create: XOR<track_id_objectCreateWithoutTrack_id_historyInput, track_id_objectUncheckedCreateWithoutTrack_id_historyInput>
+  }
+
+  export type track_id_objectUpsertWithoutTrack_id_historyInput = {
+    update: XOR<track_id_objectUpdateWithoutTrack_id_historyInput, track_id_objectUncheckedUpdateWithoutTrack_id_historyInput>
+    create: XOR<track_id_objectCreateWithoutTrack_id_historyInput, track_id_objectUncheckedCreateWithoutTrack_id_historyInput>
+    where?: track_id_objectWhereInput
+  }
+
+  export type track_id_objectUpdateToOneWithWhereWithoutTrack_id_historyInput = {
+    where?: track_id_objectWhereInput
+    data: XOR<track_id_objectUpdateWithoutTrack_id_historyInput, track_id_objectUncheckedUpdateWithoutTrack_id_historyInput>
+  }
+
+  export type track_id_objectUpdateWithoutTrack_id_historyInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_objectUncheckedUpdateWithoutTrack_id_historyInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyCreateManyTrack_id_objectInput = {
+    update_date_time?: Date | string
+    description?: string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyUpdateWithoutTrack_id_objectInput = {
+    update_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyUncheckedUpdateWithoutTrack_id_objectInput = {
+    update_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type track_id_historyUncheckedUpdateManyWithoutTrack_id_objectInput = {
+    update_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
 
 
   /**
@@ -4442,6 +8245,18 @@ export namespace Prisma {
      * @deprecated Use production_single_product_draftDefaultArgs instead
      */
     export type production_single_product_draftArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = production_single_product_draftDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use track_id_objectDefaultArgs instead
+     */
+    export type track_id_objectArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = track_id_objectDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use track_id_historyDefaultArgs instead
+     */
+    export type track_id_historyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = track_id_historyDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use track_id_stockDefaultArgs instead
+     */
+    export type track_id_stockArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = track_id_stockDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

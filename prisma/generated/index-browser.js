@@ -141,6 +141,30 @@ exports.Prisma.Production_single_product_draftScalarFieldEnum = {
   data: 'data'
 };
 
+exports.Prisma.Track_id_objectScalarFieldEnum = {
+  track_id: 'track_id',
+  track_type: 'track_type',
+  creation_date_time: 'creation_date_time',
+  source_data: 'source_data',
+  object_data: 'object_data'
+};
+
+exports.Prisma.Track_id_historyScalarFieldEnum = {
+  track_id: 'track_id',
+  update_date_time: 'update_date_time',
+  description: 'description',
+  data: 'data'
+};
+
+exports.Prisma.Track_id_stockScalarFieldEnum = {
+  locator_id: 'locator_id',
+  key23: 'key23',
+  product_id: 'product_id',
+  track_id: 'track_id',
+  quantity: 'quantity',
+  data: 'data'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -156,11 +180,19 @@ exports.Prisma.JsonNullValueFilter = {
   AnyNull: Prisma.AnyNull
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 
 exports.Prisma.ModelName = {
   inventory_move_draft: 'inventory_move_draft',
   shipment_draft: 'shipment_draft',
-  production_single_product_draft: 'production_single_product_draft'
+  production_single_product_draft: 'production_single_product_draft',
+  track_id_object: 'track_id_object',
+  track_id_history: 'track_id_history',
+  track_id_stock: 'track_id_stock'
 };
 
 /**
