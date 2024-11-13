@@ -23,46 +23,11 @@ export const inventoryMoveDraftUpdateValidationRules = [
 export const createInventoryMoveDraft = async (req: Request, res: Response, next: NextFunction) => {
     
 	const imDraft = req.body.imDraft;
-	const materialMovementProductDict = req.body.imDraft.materialMovementProductDict;
 
 	try {
-		const M_MovementLine = [];
-		let lineCounter = 1;
-	
-		for (const productId of Object.keys(materialMovementProductDict)) {
-			let productIdQty = 0;
 
-			for (const trackId of Object.keys(materialMovementProductDict[productId].trackIdAndQuantityDict)) {
-				productIdQty = productIdQty +
-					materialMovementProductDict[productId].trackIdAndQuantityDict[trackId].trackIdList
-						.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
-			}
-
-			M_MovementLine.push({
-				'AD_Client_ID':  1000000,
-				'AD_Org_ID': imDraft.AD_Org_ID,
-				'IsActive': true,
-				'M_Locator_ID': imDraft.M_Locator_ID,
-				'M_LocatorTo_ID': imDraft.M_LocatorTo_ID,
-				'M_Product_ID': Number(productId), 
-				'MovementQty': productIdQty, 
-				'Line': lineCounter, 
-				'BoxQty': 0,
-				'PalletQty': 0,
-			});
-			lineCounter += 1;
-		}
-
-		const imDraftErp = {
-			...imDraft,
-
-			'M_MovementLine': M_MovementLine,
-
-			'employeeNumber': undefined,
-			'materialMovementProductDict': undefined,
-			'M_Locator_ID': undefined,
-			'M_LocatorTo_ID': undefined,
-		};
+		const hydratedIMDraft = hydrateInventoryMove(imDraft);
+		const hydratedIMDraftErp = getInventoryMoveErpObjectFromHydratedCombinedData(hydratedIMDraft);
 
 		const reqBody = {
 			method: 'post',
@@ -75,7 +40,7 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 				'axiosConfig': {
 					'method': 'post',
 					'url': endpointApiUrl + '/api/v1/models/M_Movement',
-					'data': imDraftErp,
+					'data': hydratedIMDraftErp,
 				}
 			})
 		};
@@ -86,10 +51,10 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 
 		const shadowData = {
 			...response.data.returnBody,
-			employeeNumber: imDraft.employeeNumber,
-			materialMovementProductDict: materialMovementProductDict,
-			M_Locator_ID: imDraft.M_Locator_ID,
-			M_LocatorTo_ID: imDraft.M_LocatorTo_ID
+			employeeNumber: hydratedIMDraft.employeeNumber,
+			materialMovementProductDict: hydratedIMDraft.materialMovementProductDict,
+			M_Locator_ID: hydratedIMDraft.M_Locator_ID,
+			M_LocatorTo_ID: hydratedIMDraft.M_LocatorTo_ID
 		};
 
 		const draftData = {
@@ -706,15 +671,13 @@ const checkConsistencyStatus = (shadowData: any, realData: any):
 	return 'CONTINUE-UPDATE';
 };
 
-// NOT USED IN CREATE.
 const hydrateInventoryMove = (combinedData: any) => {
 	// Needs to hydrate: M_MovementLine
 	const M_MovementLine = JSON.parse(JSON.stringify(combinedData?.M_MovementLine ?? []));
 
+	// STEP 1. Get total amount for each product.
 	const productIdToAmountDict: {[key:string]: number} = {};
 	const productIdExistsDict: {[key:string]: boolean} = {};
-
-	// STEP 1. Get total amount for each product.
 	for (const productId of Object.keys(combinedData.materialMovementProductDict)) {
 		let productIdQty = 0;
 
