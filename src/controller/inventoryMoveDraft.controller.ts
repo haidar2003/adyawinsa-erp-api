@@ -230,7 +230,9 @@ export const getInventoryMoveDraftAll = async (req: Request, res: Response, next
 
 
 export const updateInventoryMoveDraftRegular = async (req: Request, res: Response, next: NextFunction) => {
-	const updateTimestamp = new Date().toISOString();
+	const currentDate = new Date();
+	currentDate.setHours(currentDate.getHours() + 7);
+	const updateTimestamp = currentDate.toISOString();
 	
 	try {
 		const { id } = req.params;
@@ -290,10 +292,11 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 				return res.status(500).json({ error: 'Failed to update real server', details: apiError.message });
 			}
 		} else {
-			const invalidKeys = Object.keys(data).filter(key => !(key in currentData));
-			if (invalidKeys.length > 0) {
-				return res.status(400).json({ error: 'Invalid keys in data', invalidKeys });
-			}
+			// Wouldn't work if we add new keys
+			// const invalidKeys = Object.keys(data).filter(key => !(key in currentData));
+			// if (invalidKeys.length > 0) {
+			// 	return res.status(400).json({ error: 'Invalid keys in data', invalidKeys });
+			// }
 
 			// Ubah data dari Supabase menggunakan data yang dikirim pengguna
 			let updatedData = { ...currentData, ...data };
@@ -363,7 +366,9 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 };
 
 export const updateInventoryMoveDraftComplete = async (req: Request, res: Response, next: NextFunction) => {
-	const updateTimestamp = new Date().toISOString();
+	const currentDate = new Date();
+	currentDate.setHours(currentDate.getHours() + 7);
+	const updateTimestamp = currentDate.toISOString();
 	
 	try {
 		const { id } = req.params;
@@ -496,7 +501,9 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 };
 
 export const updateInventoryMoveDraftReverse = async (req: Request, res: Response, next: NextFunction) => {
-	const updateTimestamp = new Date().toISOString();
+	const currentDate = new Date();
+	currentDate.setHours(currentDate.getHours() + 7);
+	const updateTimestamp = currentDate.toISOString();
 	
 	try {
 		const { id } = req.params;
@@ -741,6 +748,19 @@ const hydrateInventoryMove = (combinedData: any) => {
 const getInventoryMoveErpObjectFromHydratedCombinedData = (combinedData: any) => {
 	return {
 		...combinedData,
+
+		// ---
+		// Somehow the update wouldn't work because all of the process related stuff
+		// Feel free to move this to the actual update function if this turns out to be IM-specific thing
+		// Or just delete it if it's wrong
+		'M_MovementLine': combinedData.M_MovementLine.map((line: any) => {
+			return {
+				...line,
+				ProcessCheck: undefined
+			}
+		}),
+		'ProcessList': undefined,
+		// ---
 
 		'employeeNumber': undefined,
 		'materialMovementProductDict': undefined,
