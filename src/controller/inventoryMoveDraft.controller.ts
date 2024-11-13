@@ -51,6 +51,8 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 
 		const shadowData = {
 			...response.data.returnBody,
+
+			// SHADOW VARIABLES
 			employeeNumber: hydratedIMDraft.employeeNumber,
 			materialMovementProductDict: hydratedIMDraft.materialMovementProductDict,
 			M_Locator_ID: hydratedIMDraft.M_Locator_ID,
@@ -735,6 +737,7 @@ const getInventoryMoveErpObjectFromHydratedCombinedData = (combinedData: any) =>
 	return {
 		...combinedData,
 
+		// SHADOW VARIABLES
 		'employeeNumber': undefined,
 		'materialMovementProductDict': undefined,
 		'M_Locator_ID': undefined,

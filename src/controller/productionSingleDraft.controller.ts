@@ -51,10 +51,9 @@ export const createProductionSingleDraft = async (req: Request, res: Response, n
 
 		const shadowData = {
 			...response.data.returnBody,
-			employeeNumber: hydratedProductionSingleDraft.employeeNumber,
+
+			// SHADOW VARIABLES
 			productTrackQuantityDict: hydratedProductionSingleDraft.productTrackQuantityDict,
-			M_Locator_ID: hydratedProductionSingleDraft.M_Locator_ID,
-			M_LocatorTo_ID: hydratedProductionSingleDraft.M_LocatorTo_ID
 		};
 
 		const draftData = {
@@ -735,9 +734,7 @@ const getProductionSingleErpObjectFromHydratedCombinedData = (combinedData: any)
 	return {
 		...combinedData,
 
-		'employeeNumber': undefined,
+		// SHADOW VARIABLES
 		'productTrackQuantityDict': undefined,
-		'M_Locator_ID': undefined,
-		'M_LocatorTo_ID': undefined,
 	};
 };

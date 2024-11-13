@@ -51,6 +51,8 @@ export const createShipmentDraft = async (req: Request, res: Response, next: Nex
 
 		const shadowData = {
 			...response.data.returnBody,
+			
+			// SHADOW VARIABLES
 			customerRequestDocNo: hydratedShipmentDraft.customerRequestDocNo,
 			productTrackQuantityDict: hydratedShipmentDraft.productTrackQuantityDict,
 		};
@@ -733,6 +735,7 @@ const getShipmentErpObjectFromHydratedCombinedData = (combinedData: any) => {
 	return {
 		...combinedData,
 
+		// SHADOW VARIABLES
 		'customerRequestDocNo': undefined,
 		'productTrackQuantityDict': undefined,
 	};
