@@ -40,10 +40,10 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 
 			M_MovementLine.push({
 				'AD_Client_ID':  1000000,
-				'AD_Org_ID': req.body.imDraft.AD_Org_ID,
+				'AD_Org_ID': imDraft.AD_Org_ID,
 				'IsActive': true,
-				'M_Locator_ID': req.body.imDraft.M_Locator_ID,
-				'M_LocatorTo_ID': req.body.imDraft.M_LocatorTo_ID,
+				'M_Locator_ID': imDraft.M_Locator_ID,
+				'M_LocatorTo_ID': imDraft.M_LocatorTo_ID,
 				'M_Product_ID': Number(productId), 
 				'MovementQty': productIdQty, 
 				'Line': lineCounter, 
@@ -84,18 +84,12 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 
 		console.log(response);
 
-		const shadowMovementLines = response.data.returnBody.M_MovementLine.map((line: any) => {
-			const productId = line.M_Product_ID.id.toString();
-			return {
-				...line,
-				trackIdAndQuantityDict: materialMovementProductDict[productId].trackIdAndQuantityDict || {},
-			};
-		});
-
 		const shadowData = {
 			...response.data.returnBody,
 			employeeNumber: imDraft.employeeNumber,
-			M_MovementLine: shadowMovementLines
+			materialMovementProductDict: materialMovementProductDict,
+			M_Locator_ID: imDraft.M_Locator_ID,
+			M_LocatorTo_ID: imDraft.M_LocatorTo_ID
 		};
 
 		const draftData = {
@@ -273,6 +267,8 @@ export const getInventoryMoveDraftAll = async (req: Request, res: Response, next
 
 
 export const updateInventoryMoveDraftRegular = async (req: Request, res: Response, next: NextFunction) => {
+	const updateTimestamp = new Date().toISOString()
+	
 	try {
 		const { id } = req.params;
 		const { continue: continueQuery } = req.query;
@@ -303,89 +299,33 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 			return res.status(500).json({ error: 'Shadow draft data is null or invalid' });
 		}
 
-		if (shouldContinue) {
-			// Ambil dari server asli
-			let realData: any = null;
-			try {
-				const reqBody = {
-					method: 'post',
-					maxBodyLength: Infinity,
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
-					data: JSON.stringify({
-						'axiosConfig': {
-							'method': 'get',
-							'url': `${endpointApiUrl}/api/v1/models/M_Movement/${currentData.id}`,
-							'params': {
-								'$orderby': 'Created desc',
-								'$expand': 'M_MovementLine',
-							}
-						}
-					})
-				};
+	if (shouldContinue) {
+			const hydratedErpData = getInventoryMoveErpObjectFromHydratedCombinedData(currentData)
 
-				const response = await axios(reqBody);
-				realData = response.data.returnBody;
-			} catch (error: any) {
-				console.error('Failed to fetch from real server:', error);
-				return res.status(500).json({ error: 'Failed to fetch data from real server'});
-			}
-
-			// Bandingkan untuk mendapat daftar ketidakkonsistenan
-			const inconsistencies: any = compareDrafts(shadowDraft.data, realData);
-
-			// Yang akan dikirim ke server asli
-			const realServerData: any = {};
-            
-			if (inconsistencies.headerInconsistencies?.length > 0) {
-				inconsistencies.headerInconsistencies.forEach((key: string) => {
-					if (key !== 'DocStatus') {
-						realServerData[key] = currentData[key];
+			// Update server asli
+			const reqBodyContinue = {
+				method: 'post',
+				maxBodyLength: Infinity,
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
+				data: JSON.stringify({
+					axiosConfig: {
+						method: 'put',
+						url: `${endpointApiUrl}/api/v1/models/M_Movement/${movementId}`,
+						data: hydratedErpData,
 					}
-				});
+				})
+			};
+
+			try {
+				const response = await axios(reqBodyContinue);
+				return res.json(response.data);
+			} catch (apiError: any) {
+				console.error('Failed to update real server:', apiError);
+				return res.status(500).json({ error: 'Failed to update real server', details: apiError.message });
 			}
-
-			if (inconsistencies.movementLineInconsistencies && inconsistencies.movementLineInconsistencies.length > 0) {
-				realServerData['M_MovementLine'] = currentData.M_MovementLine.map((line: any) => {
-					const newLine = { ...line };
-					delete newLine.trackIdAndQuantityDict;
-					delete newLine.ProcessCheck;
-					return newLine;
-				});
-			}
-
-			if (Object.keys(realServerData).length !== 0) {
-				// Update server asli
-				const reqBodyContinue = {
-					method: 'post',
-					maxBodyLength: Infinity,
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
-					data: JSON.stringify({
-						axiosConfig: {
-							method: 'put',
-							url: `${endpointApiUrl}/api/v1/models/M_Movement/${movementId}`,
-							data: realServerData,
-						}
-					})
-				};
-
-				try {
-					const response = await axios(reqBodyContinue);
-					return res.json(response.data);
-				} catch (apiError: any) {
-					console.error('Failed to update real server:', apiError);
-					return res.status(500).json({ error: 'Failed to update real server', details: apiError.message });
-				}
-
-			} else {
-				return res.status(500).json({ error: 'No synchronization data to be sent to the real server' });
-			}
-
 		} else {
 			const invalidKeys = Object.keys(data).filter(key => !(key in currentData));
 			if (invalidKeys.length > 0) {
@@ -393,28 +333,29 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 			}
 
 			// Ubah data dari Supabase menggunakan data yang dikirim pengguna
-			const updatedData = { ...currentData, ...data };
+			let updatedData = { ...currentData, ...data };
+
+			// Ubah data Updated
+			updatedData = {
+				...updatedData, 
+				Updated: updateTimestamp,
+				M_MovementLine: updatedData.M_MovementLine.map((line: any) => {
+					return {
+						...line,
+						Updated: updateTimestamp
+					}
+				})
+			}
+
+			const hydratedData = hydrateInventoryMove(updatedData)
+			const hydratedErpData = getInventoryMoveErpObjectFromHydratedCombinedData(hydratedData)
 
 			// Update Supabase
 			try {
-				await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, updatedData);
+				await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, hydratedData);
 
 				// Data ke server asli dari requestBody
-				const realServerData = { ...data };
-
-				// Hilangkan key employeeNumber (karena tidak ada di data server asli)
-				if ('employeeNumber' in realServerData) {
-					delete realServerData.employeeNumber;
-				}
-				// Hilangkan trackIdAndQuantityDict dan ProcessCheck (karena tidak ada di data server asli)
-				if (realServerData.M_MovementLine && Array.isArray(realServerData.M_MovementLine)) {
-					realServerData.M_MovementLine = realServerData.M_MovementLine.map((line: any) => {
-						const newLine = { ...line };
-						delete newLine.trackIdAndQuantityDict;
-						delete newLine.ProcessCheck;
-						return newLine;
-					});
-				}
+				const realServerData = hydratedErpData;
 
 				// Update server asli
 				const reqBody = {
@@ -890,16 +831,63 @@ const compareDrafts = (shadowData: any, realData: any): any => {
 };
 
 // STARTER FUNCTIONS
-
 const checkConsistencyStatus = (shadowData: any, realData: any): 
 	'OK' | 'CONTINUE-UPDATE' | 'CONTINUE-COMPLETE' | 'CONTINUE-REVERSE' => {
-	return 'OK';
-};
+		if (shadowData?.Updated && realData?.Updated) {
+			const shadowTimestamp = new Date(shadowData?.Updated)
+			const realTimestamp = new Date(realData?.Updated)
+			if (shadowTimestamp > realTimestamp) {
+				const shadowDocStatus = shadowData.DocStatus?.id;
+				const realDocStatus = realData.DocStatus?.id;
+	
+				if (shadowDocStatus === 'CO' && realDocStatus === 'DR') {
+					return 'CONTINUE-COMPLETE';
+				}
+	
+				if (shadowDocStatus === 'RE' && realDocStatus === 'CO') {
+					return 'CONTINUE-REVERSE';
+				}
+	
+				if (shadowDocStatus === realDocStatus) {
+					return 'CONTINUE-UPDATE';
+				}
+			} else {
+				return 'OK';
+			}
+		} 
+		
+		return 'CONTINUE-UPDATE'
+	};
 
 // NOT USED IN CREATE.
 const hydrateInventoryMove = (combinedData: any) => {
 	const M_MovementLine = combinedData?.M_MovementLine ?? [];
 	let lineCounter = 1;
+
+	// combinedData.M_MovementLine.forEach((line: any) => {
+	// 	const productId  = line?.M_Product_ID?.id.toString()
+	// 	let productIdQty = 0;
+
+	// 	for (const trackId of Object.keys(combinedData.materialMovementProductDict[productId].trackIdAndQuantityDict)) {
+	// 		productIdQty = productIdQty +
+	// 		combinedData.materialMovementProductDict[productId].trackIdAndQuantityDict[trackId].trackIdList
+	// 				.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
+	// 	}
+
+	// 	M_MovementLine.push({
+	// 		'AD_Client_ID':  1000000,
+	// 		'AD_Org_ID': combinedData.AD_Org_ID,
+	// 		'IsActive': true,
+	// 		'M_Locator_ID': combinedData.M_Locator_ID,
+	// 		'M_LocatorTo_ID': combinedData.M_LocatorTo_ID,
+	// 		'M_Product_ID': Number(productId), 
+	// 		'MovementQty': productIdQty, 
+	// 		'Line': lineCounter, 
+	// 		'BoxQty': 0,
+	// 		'PalletQty': 0,
+	// 	});
+	// 	lineCounter += 1;
+	// })
 
 	for (const productId of Object.keys(combinedData.materialMovementProductDict)) {
 		let productIdQty = 0;
@@ -925,15 +913,13 @@ const hydrateInventoryMove = (combinedData: any) => {
 		lineCounter += 1;
 	}
 
-	const hydratedCombinedData = {
+	return {
 		...combinedData,
 		'M_MovementLine': M_MovementLine,
 	};
-
-	const updatedErpObject = getInventoryMoveErpObjectFromCombinedData(hydratedCombinedData);
 };
 
-const getInventoryMoveErpObjectFromCombinedData = (combinedData: any) => {
+const getInventoryMoveErpObjectFromHydratedCombinedData = (combinedData: any) => {
 	return {
 		...combinedData,
 
