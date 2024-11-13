@@ -51,6 +51,8 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 
 		const shadowData = {
 			...response.data.returnBody,
+
+			// SHADOW VARIABLES
 			employeeNumber: hydratedIMDraft.employeeNumber,
 			materialMovementProductDict: hydratedIMDraft.materialMovementProductDict,
 			M_Locator_ID: hydratedIMDraft.M_Locator_ID,
@@ -750,7 +752,6 @@ const hydrateInventoryMove = (combinedData: any) => {
 const getInventoryMoveErpObjectFromHydratedCombinedData = (combinedData: any) => {
 	return {
 		...combinedData,
-
 		// ---
 		// Somehow the update wouldn't work because all of the process related stuff
 		// Feel free to move this to the actual update function if this turns out to be IM-specific thing
@@ -759,11 +760,12 @@ const getInventoryMoveErpObjectFromHydratedCombinedData = (combinedData: any) =>
 			return {
 				...line,
 				ProcessCheck: undefined
-			}
+			};
 		}),
 		'ProcessList': undefined,
 		// ---
 
+		// SHADOW VARIABLES
 		'employeeNumber': undefined,
 		'materialMovementProductDict': undefined,
 		'M_Locator_ID': undefined,

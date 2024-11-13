@@ -36,3 +36,29 @@ model production_single_product_draft {
 
   @@id([org_id, creation_date_time])
 }
+
+model track_id_object {
+  track_id                String @id
+  data                    Json     @db.Json
+  track_id_history        track_id_history[]
+}
+
+model track_id_history {
+  track_id_object           track_id_object @relation(fields: [track_id], references: [track_id])
+  track_id                  String
+  update_date_time          DateTime @default(now())
+  data               Json     @db.Json
+
+  @@id([track_id, update_date_time])
+}
+
+model track_id_stock {
+  locator_id                  String
+  key23                       String
+  product_id                  String
+  track_id                    String // This is a simple string, we don't make relations for this to speed up the db operations.
+  quantity                    Float
+  data                        Json     @db.Json
+
+  @@id([locator_id, key23])
+}

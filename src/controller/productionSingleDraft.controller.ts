@@ -51,10 +51,9 @@ export const createProductionSingleDraft = async (req: Request, res: Response, n
 
 		const shadowData = {
 			...response.data.returnBody,
-			employeeNumber: hydratedProductionSingleDraft.employeeNumber,
-			materialMovementProductDict: hydratedProductionSingleDraft.materialMovementProductDict,
-			M_Locator_ID: hydratedProductionSingleDraft.M_Locator_ID,
-			M_LocatorTo_ID: hydratedProductionSingleDraft.M_LocatorTo_ID
+
+			// SHADOW VARIABLES
+			productTrackQuantityDict: hydratedProductionSingleDraft.productTrackQuantityDict,
 		};
 
 		const draftData = {
@@ -678,12 +677,12 @@ const hydrateProductionSingle = (combinedData: any) => {
 	// STEP 1. Get total amount for each product.
 	const productIdToAmountDict: {[key:string]: number} = {};
 	const productIdExistsDict: {[key:string]: boolean} = {};
-	for (const productId of Object.keys(combinedData.materialMovementProductDict)) {
+	for (const productId of Object.keys(combinedData.productTrackQuantityDict)) {
 		let productIdQty = 0;
 
-		for (const trackId of Object.keys(combinedData.materialMovementProductDict[productId].trackIdAndQuantityDict)) {
+		for (const trackId of Object.keys(combinedData.productTrackQuantityDict[productId].trackIdAndQuantityDict)) {
 			productIdQty = productIdQty +
-			combinedData.materialMovementProductDict[productId].trackIdAndQuantityDict[trackId].trackIdList
+			combinedData.productTrackQuantityDict[productId].trackIdAndQuantityDict[trackId].trackIdList
 				.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
 		}
 
@@ -735,9 +734,7 @@ const getProductionSingleErpObjectFromHydratedCombinedData = (combinedData: any)
 	return {
 		...combinedData,
 
-		'employeeNumber': undefined,
-		'materialMovementProductDict': undefined,
-		'M_Locator_ID': undefined,
-		'M_LocatorTo_ID': undefined,
+		// SHADOW VARIABLES
+		'productTrackQuantityDict': undefined,
 	};
 };
