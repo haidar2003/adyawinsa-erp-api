@@ -120,7 +120,7 @@ export const getProductionSingleDraft = async (req: Request, res: Response, next
 		// Bandingkan untuk mendapat daftar ketidakkonsistenan
 		const enrichedDraft = {
 			...(shadowDraft.data as any),
-			status: checkConsistencyStatus(shadowDraft, realDraft)
+			status: checkConsistencyStatus(shadowDraft.data, realDraft)
 		};
 
 		// Kirim response
@@ -229,7 +229,10 @@ export const getProductionSingleDraftAll = async (req: Request, res: Response, n
 
 
 export const updateProductionSingleDraftRegular = async (req: Request, res: Response, next: NextFunction) => {
-	const updateTimestamp = new Date().toISOString();
+	const currentDate = new Date();
+	currentDate.setHours(currentDate.getHours() + 7);
+	currentDate.setMinutes(currentDate.getMinutes() - 1);
+	const updateTimestamp = currentDate.toISOString();
 	
 	try {
 		const { id } = req.params;
@@ -289,10 +292,11 @@ export const updateProductionSingleDraftRegular = async (req: Request, res: Resp
 				return res.status(500).json({ error: 'Failed to update real server', details: apiError.message });
 			}
 		} else {
-			const invalidKeys = Object.keys(data).filter(key => !(key in currentData));
-			if (invalidKeys.length > 0) {
-				return res.status(400).json({ error: 'Invalid keys in data', invalidKeys });
-			}
+			// Wouldn't work if we add new keys
+			// const invalidKeys = Object.keys(data).filter(key => !(key in currentData));
+			// if (invalidKeys.length > 0) {
+			// 	return res.status(400).json({ error: 'Invalid keys in data', invalidKeys });
+			// }
 
 			// Ubah data dari Supabase menggunakan data yang dikirim pengguna
 			let updatedData = { ...currentData, ...data };
@@ -362,7 +366,10 @@ export const updateProductionSingleDraftRegular = async (req: Request, res: Resp
 };
 
 export const updateProductionSingleDraftComplete = async (req: Request, res: Response, next: NextFunction) => {
-	const updateTimestamp = new Date().toISOString();
+	const currentDate = new Date();
+	currentDate.setHours(currentDate.getHours() + 7);
+	currentDate.setMinutes(currentDate.getMinutes() - 1);
+	const updateTimestamp = currentDate.toISOString();
 	
 	try {
 		const { id } = req.params;
@@ -495,7 +502,10 @@ export const updateProductionSingleDraftComplete = async (req: Request, res: Res
 };
 
 export const updateProductionSingleDraftReverse = async (req: Request, res: Response, next: NextFunction) => {
-	const updateTimestamp = new Date().toISOString();
+	const currentDate = new Date();
+	currentDate.setHours(currentDate.getHours() + 7);
+	currentDate.setMinutes(currentDate.getMinutes() - 1);
+	const updateTimestamp = currentDate.toISOString();
 	
 	try {
 		const { id } = req.params;
@@ -733,6 +743,18 @@ const hydrateProductionSingle = (combinedData: any) => {
 const getProductionSingleErpObjectFromHydratedCombinedData = (combinedData: any) => {
 	return {
 		...combinedData,
+		// ---
+		// Somehow the update wouldn't work because all of the process related stuff
+		// Feel free to move this to the actual update function if this turns out to be IM-specific thing
+		// Or just delete it if it's wrong
+		'M_ProductionLine': combinedData.M_ProductionLine.map((line: any) => {
+			return {
+				...line,
+				ProcessCheck: undefined
+			};
+		}),
+		'ProcessList': undefined,
+		// ---
 
 		// SHADOW VARIABLES
 		'productTrackQuantityDict': undefined,

@@ -658,12 +658,12 @@ export const deleteInventoryMoveDraft = async (req: Request, res: Response, next
 const checkConsistencyStatus = (shadowData: any, realData: any): 
 	'OK' | 'CONTINUE-UPDATE' | 'CONTINUE-COMPLETE' | 'CONTINUE-REVERSE' => {
 	if (shadowData?.Updated && realData?.Updated) {
-		console.log('Shadow Data: ' + shadowData.Updated)
-		console.log('Real Data: ' + realData.Updated)
+		console.log('Shadow Data: ' + shadowData.Updated);
+		console.log('Real Data: ' + realData.Updated);
 		const shadowTimestamp = new Date(shadowData?.Updated);
 		const realTimestamp = new Date(realData?.Updated);
-		console.log('Shadow Data Time: ' + shadowTimestamp)
-		console.log('Real Data Time: ' + realTimestamp)
+		console.log('Shadow Data Time: ' + shadowTimestamp);
+		console.log('Real Data Time: ' + realTimestamp);
 		if (shadowTimestamp > realTimestamp) {
 			const shadowDocStatus = shadowData.DocStatus?.id;
 			const realDocStatus = realData.DocStatus?.id;
@@ -684,7 +684,7 @@ const checkConsistencyStatus = (shadowData: any, realData: any):
 		}
 	} 
 
-	console.log('Updated not found')
+	console.log('Updated not found');
 
 	return 'CONTINUE-UPDATE';
 };
