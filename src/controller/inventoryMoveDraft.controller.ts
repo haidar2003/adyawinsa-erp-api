@@ -265,7 +265,7 @@ export const getInventoryMoveDraftAll = async (req: Request, res: Response, next
 
 
 export const updateInventoryMoveDraftRegular = async (req: Request, res: Response, next: NextFunction) => {
-	const updateTimestamp = new Date().toISOString()
+	const updateTimestamp = new Date().toISOString();
 	
 	try {
 		const { id } = req.params;
@@ -297,8 +297,8 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 			return res.status(500).json({ error: 'Shadow draft data is null or invalid' });
 		}
 
-	if (shouldContinue) {
-			const hydratedErpData = getInventoryMoveErpObjectFromHydratedCombinedData(currentData)
+		if (shouldContinue) {
+			const hydratedErpData = getInventoryMoveErpObjectFromHydratedCombinedData(currentData);
 
 			// Update server asli
 			const reqBodyContinue = {
@@ -341,12 +341,12 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 					return {
 						...line,
 						Updated: updateTimestamp
-					}
+					};
 				})
-			}
+			};
 
-			const hydratedData = hydrateInventoryMove(updatedData)
-			const hydratedErpData = getInventoryMoveErpObjectFromHydratedCombinedData(hydratedData)
+			const hydratedData = hydrateInventoryMove(updatedData);
+			const hydratedErpData = getInventoryMoveErpObjectFromHydratedCombinedData(hydratedData);
 
 			// Update Supabase
 			try {
@@ -398,7 +398,7 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 };
 
 export const updateInventoryMoveDraftComplete = async (req: Request, res: Response, next: NextFunction) => {
-	const updateTimestamp = new Date().toISOString()
+	const updateTimestamp = new Date().toISOString();
 	
 	try {
 		const { id } = req.params;
@@ -483,7 +483,7 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 				})
 			};
 
-			const hydratedData = hydrateInventoryMove(updatedData)
+			const hydratedData = hydrateInventoryMove(updatedData);
 
 			// Update Supabase
 			try {
@@ -531,7 +531,7 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 };
 
 export const updateInventoryMoveDraftReverse = async (req: Request, res: Response, next: NextFunction) => {
-	const updateTimestamp = new Date().toISOString()
+	const updateTimestamp = new Date().toISOString();
 	
 	try {
 		const { id } = req.params;
@@ -615,7 +615,7 @@ export const updateInventoryMoveDraftReverse = async (req: Request, res: Respons
 				})
 			};
 
-			const hydratedData = hydrateInventoryMove(updatedData)
+			const hydratedData = hydrateInventoryMove(updatedData);
 
 			// Update Supabase
 			try {
@@ -677,122 +677,34 @@ export const deleteInventoryMoveDraft = async (req: Request, res: Response, next
 
 
 // Helper Functions
-// compareDrafts -> mengembalikan ketidakkonsistenan
-const compareDrafts = (shadowData: any, realData: any): any => {
-	const inconsistencies: any = {};
-
-	// Membandingkan Header kecuali employeeNumber dan Updated
-	const headerInconsistencies: string[] = [];
-	for (const key of Object.keys(shadowData)) {
-		if (key !== 'M_MovementLine' && key !== 'employeeNumber' && key !== 'Updated' && key !== 'Description') {
-			const shadowValue = JSON.stringify(shadowData[key]);
-			const realValue = JSON.stringify(realData[key]);
-
-			if (shadowValue !== realValue) {
-				headerInconsistencies.push(key);
-			}
-		}
-	}
-	if (headerInconsistencies.length > 0) {
-		inconsistencies.headerInconsistencies = headerInconsistencies;
-	}
-
-	// M_MovementLine
-	const movementLineInconsistencies: any[] = [];
-	const shadowLines = shadowData.M_MovementLine || [];
-	const realLines = realData.M_MovementLine || [];
-
-	// Buat mapping produk-produk di M_MovementLine data asli dan Supabase
-	const shadowLinesMap = new Map<number, any>();
-	for (const shadowLine of shadowLines) {
-		const productId = shadowLine.M_Product_ID.id || shadowLine.M_Product_ID;
-		shadowLinesMap.set(productId, shadowLine);
-	}
-	const realLinesMap = new Map<number, any>();
-	for (const line of realLines) {
-		const productId = line.M_Product_ID.id || line.M_Product_ID;
-		realLinesMap.set(productId, line);
-	}
-
-	const shadowProductIds = Array.from(shadowLinesMap.keys());
-	const realProductIds = Array.from(realLinesMap.keys());
-
-	// Produk ada di data Supabase tapi tidak ada di data asli
-	const productsInShadowNotInReal = shadowProductIds.filter(productId => !realLinesMap.has(productId));
-	if (productsInShadowNotInReal.length > 0) {
-		inconsistencies.productsInShadowNotInReal = productsInShadowNotInReal;
-	}
-
-	// Produk ada di data asli tapi tidak ada di data Supabase
-	const productsInRealNotInShadow = realProductIds.filter(productId => !shadowLinesMap.has(productId));
-	if (productsInRealNotInShadow.length > 0) {
-		inconsistencies.productsInRealNotInShadow = productsInRealNotInShadow;
-	}
-    
-	// Membandingkan setiap productId di M_MovementLine
-	for (const productId of shadowProductIds) {
-		if (realLinesMap.has(productId)) {
-			const shadowLine = shadowLinesMap.get(productId);
-			const realLine = realLinesMap.get(productId);
-
-			const lineInconsistencies: string[] = [];
-
-			// Bandingkan setiap key kecuali trackIdAndQuantityDict, M_Movement_ID, model-name
-			for (const key of Object.keys(shadowLine)) {
-				if (key !== 'trackIdAndQuantityDict' && key !== 'M_Movement_ID' && key !== 'model-name' && key !== 'Updated') {
-					const shadowValue = JSON.stringify(shadowLine[key]);
-					const realValue = JSON.stringify(realLine[key]);
-
-					if (shadowValue !== realValue) {
-						lineInconsistencies.push(key);
-					}
-				}
-			}
-
-			if (lineInconsistencies.length > 0) {
-				movementLineInconsistencies.push({
-					productId: productId,
-					inconsistentFields: lineInconsistencies
-				});
-			}
-		}
-	}
-
-	if (movementLineInconsistencies.length > 0) {
-		inconsistencies.movementLineInconsistencies = movementLineInconsistencies;
-	}
-
-	return inconsistencies;
-};
-
 // STARTER FUNCTIONS
 const checkConsistencyStatus = (shadowData: any, realData: any): 
 	'OK' | 'CONTINUE-UPDATE' | 'CONTINUE-COMPLETE' | 'CONTINUE-REVERSE' => {
-		if (shadowData?.Updated && realData?.Updated) {
-			const shadowTimestamp = new Date(shadowData?.Updated)
-			const realTimestamp = new Date(realData?.Updated)
-			if (shadowTimestamp > realTimestamp) {
-				const shadowDocStatus = shadowData.DocStatus?.id;
-				const realDocStatus = realData.DocStatus?.id;
+	if (shadowData?.Updated && realData?.Updated) {
+		const shadowTimestamp = new Date(shadowData?.Updated);
+		const realTimestamp = new Date(realData?.Updated);
+		if (shadowTimestamp > realTimestamp) {
+			const shadowDocStatus = shadowData.DocStatus?.id;
+			const realDocStatus = realData.DocStatus?.id;
 	
-				if (shadowDocStatus === 'CO' && realDocStatus === 'DR') {
-					return 'CONTINUE-COMPLETE';
-				}
-	
-				if (shadowDocStatus === 'RE' && realDocStatus === 'CO') {
-					return 'CONTINUE-REVERSE';
-				}
-	
-				if (shadowDocStatus === realDocStatus) {
-					return 'CONTINUE-UPDATE';
-				}
-			} else {
-				return 'OK';
+			if (shadowDocStatus === 'CO' && realDocStatus === 'DR') {
+				return 'CONTINUE-COMPLETE';
 			}
-		} 
+	
+			if (shadowDocStatus === 'RE' && realDocStatus === 'CO') {
+				return 'CONTINUE-REVERSE';
+			}
+	
+			if (shadowDocStatus === realDocStatus) {
+				return 'CONTINUE-UPDATE';
+			}
+		} else {
+			return 'OK';
+		}
+	} 
 		
-		return 'CONTINUE-UPDATE'
-	};
+	return 'CONTINUE-UPDATE';
+};
 
 // NOT USED IN CREATE.
 const hydrateInventoryMove = (combinedData: any) => {
@@ -830,7 +742,7 @@ const hydrateInventoryMove = (combinedData: any) => {
 		for (const trackId of Object.keys(combinedData.materialMovementProductDict[productId].trackIdAndQuantityDict)) {
 			productIdQty = productIdQty +
 			combinedData.materialMovementProductDict[productId].trackIdAndQuantityDict[trackId].trackIdList
-					.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
+				.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
 		}
 
 		M_MovementLine.push({
