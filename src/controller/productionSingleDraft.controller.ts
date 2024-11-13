@@ -6,6 +6,8 @@ import { body, validationResult } from 'express-validator';
 import * as productionSingleDraftService from '../service/productionSingleDraft.service';
 import axios from 'axios';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+import { getTransferItems } from '../service/tracking.service';
+import * as trackingService from '../service/tracking.service';
 
 const endpointApiUrl = process.env.ENDPOINT_ERP_API_URL ?? 'https://server.tricentrumfortuna.com:12';
 
@@ -318,7 +320,7 @@ export const updateProductionSingleDraftRegular = async (req: Request, res: Resp
 
 			// Update Supabase
 			try {
-				await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, hydratedData);
+				await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, hydratedData, undefined);
 
 				// Data ke server asli dari requestBody
 				const realServerData = hydratedErpData;
@@ -458,7 +460,21 @@ export const updateProductionSingleDraftComplete = async (req: Request, res: Res
 
 			// Update Supabase
 			try {
-				await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, hydratedData);
+				// Create stock if it doesn't exist (This is a safe operation)
+				await trackingService.createManyTrackIdStock(
+					currentData.M_Locator_ID, 
+					currentData.M_LocatorTo_ID, 
+					currentData.materialMovementProductDict
+				);
+
+				const additionalData = getTransferItems(
+					currentData.M_Locator_ID, 
+					currentData.M_LocatorTo_ID, 
+					currentData.materialMovementProductDict,
+					false
+				);
+
+				await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, hydratedData, additionalData);
 			} catch (updateError: any) {
 				if (updateError instanceof PrismaClientKnownRequestError) {
 					console.error('Prisma update failed:', updateError);
@@ -593,7 +609,21 @@ export const updateProductionSingleDraftReverse = async (req: Request, res: Resp
 
 			// Update Supabase
 			try {
-				await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, hydratedData);
+				// Create stock if it doesn't exist (This is a safe operation)
+				await trackingService.createManyTrackIdStock(
+					currentData.M_Locator_ID, 
+					currentData.M_LocatorTo_ID, 
+					currentData.materialMovementProductDict
+				);
+
+				const additionalData = getTransferItems(
+					currentData.M_Locator_ID, 
+					currentData.M_LocatorTo_ID, 
+					currentData.materialMovementProductDict,
+					true
+				);
+
+				await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, hydratedData, additionalData);
 			} catch (updateError: any) {
 				if (updateError instanceof PrismaClientKnownRequestError) {
 					console.error('Prisma update failed:', updateError);

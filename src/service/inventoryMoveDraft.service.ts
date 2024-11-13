@@ -75,8 +75,9 @@ export const getInventoryMoveDraftByMovementId = async (movement_id: number) => 
 
 export const updateInventoryMoveDraftByMovementId = async (
 	movementId: number,
-	data: Partial<InventoryMoveDraftDTO['data']>
-): Promise<InventoryMoveDraftDTO> => {
+	data: Partial<InventoryMoveDraftDTO['data']>,
+	additionalTransactData: any[] | undefined,
+): Promise<any> => {
 	try {
 		const existingDraft = await prisma.inventory_move_draft.findUnique({
 			where: { movement_id: movementId },
@@ -86,10 +87,19 @@ export const updateInventoryMoveDraftByMovementId = async (
 			throw new Error(`InventoryMoveDraft with movement_id ${movementId} not found.`);
 		}
 
-		return prisma.inventory_move_draft.update({
-			where: { movement_id: movementId },
-			data: { data: data },
-		});
+		if (additionalTransactData?.length) {
+			return prisma.$transaction(additionalTransactData.concat([
+				prisma.inventory_move_draft.update({
+					where: { movement_id: movementId },
+					data: { data: data },
+				})
+			]));
+		} else {
+			return prisma.inventory_move_draft.update({
+				where: { movement_id: movementId },
+				data: { data: data },
+			});
+		}
 	} catch (error) {
 		console.error(`Error updating InventoryMoveDraft with movement_id ${movementId}:`, error);
 		throw error;

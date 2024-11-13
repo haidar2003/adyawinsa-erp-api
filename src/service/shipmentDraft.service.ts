@@ -74,7 +74,8 @@ export const getShipmentDraftByMovementId = async (erp_id: number) => {
 
 export const updateShipmentDraftByMovementId = async (
 	erpId: number,
-	data: any
+	data: any,
+	additionalTransactData: any[] | undefined,
 ): Promise<any> => {
 	try {
 		const existingDraft = await prisma.shipment_draft.findUnique({
@@ -85,10 +86,19 @@ export const updateShipmentDraftByMovementId = async (
 			throw new Error(`ShipmentDraft with erp_id ${erpId} not found.`);
 		}
 
-		return prisma.shipment_draft.update({
-			where: { erp_id: erpId },
-			data: { data: data },
-		});
+		if (additionalTransactData?.length) {
+			return prisma.$transaction(additionalTransactData.concat([
+				prisma.shipment_draft.update({
+					where: { erp_id: erpId },
+					data: { data: data },
+				})
+			]));
+		} else {
+			return prisma.shipment_draft.update({
+				where: { erp_id: erpId },
+				data: { data: data },
+			});
+		}
 	} catch (error) {
 		console.error(`Error updating ShipmentDraft with erp_id ${erpId}:`, error);
 		throw error;

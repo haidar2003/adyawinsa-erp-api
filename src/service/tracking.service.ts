@@ -64,7 +64,7 @@ export const createTrackIdHistoryObject = async (trackIdHistoryObjectDTO: any) =
 	}
 };
 
-export const createManyTrackIdHistory = async (
+export const createManyTrackIdStock = async (
 	locatorFromId: string,
 	locatorToId: string,
 	productTrackQuantityDict: ProductTrackQuantityDict
@@ -120,7 +120,8 @@ export interface ProductTrackQuantityDict {
 export const getTransferItems = (
 	locatorFromId: string,
 	locatorToId: string,
-	productTrackQuantityDict: ProductTrackQuantityDict
+	productTrackQuantityDict: ProductTrackQuantityDict,
+	isReverse: boolean,
 ) => {
 	const transactionArray: any[] = [];
 
@@ -138,7 +139,7 @@ export const getTransferItems = (
 				},
 				data: {
 					quantity: {
-						increment: currentQuantity
+						increment: currentQuantity * (isReverse ? -1 : 1)
 					}
 				}
 			}));
@@ -151,7 +152,7 @@ export const getTransferItems = (
 				},
 				data: {
 					quantity: {
-						increment: -1 * currentQuantity
+						increment: currentQuantity * (isReverse ? 1 : -1)
 					}
 				}
 			}));
