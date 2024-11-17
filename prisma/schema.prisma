@@ -23,6 +23,7 @@ model shipment_draft {
   org_id             Int
   creation_date_time DateTime @db.Timestamptz(6)
   erp_id        Int      @unique
+  vendor_id          Int @default(-1)
   data               Json     @db.Json
 
   @@id([org_id, creation_date_time])
@@ -32,6 +33,7 @@ model material_receive_draft {
   org_id             Int
   creation_date_time DateTime @db.Timestamptz(6)
   erp_id        Int      @unique
+  vendor_id          Int @default(-1)
   data               Json     @db.Json
 
   @@id([org_id, creation_date_time])

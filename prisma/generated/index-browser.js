@@ -131,6 +131,7 @@ exports.Prisma.Shipment_draftScalarFieldEnum = {
   org_id: 'org_id',
   creation_date_time: 'creation_date_time',
   erp_id: 'erp_id',
+  vendor_id: 'vendor_id',
   data: 'data'
 };
 
@@ -138,6 +139,7 @@ exports.Prisma.Material_receive_draftScalarFieldEnum = {
   org_id: 'org_id',
   creation_date_time: 'creation_date_time',
   erp_id: 'erp_id',
+  vendor_id: 'vendor_id',
   data: 'data'
 };
 

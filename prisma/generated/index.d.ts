@@ -2288,29 +2288,34 @@ export namespace Prisma {
   export type Shipment_draftAvgAggregateOutputType = {
     org_id: number | null
     erp_id: number | null
+    vendor_id: number | null
   }
 
   export type Shipment_draftSumAggregateOutputType = {
     org_id: number | null
     erp_id: number | null
+    vendor_id: number | null
   }
 
   export type Shipment_draftMinAggregateOutputType = {
     org_id: number | null
     creation_date_time: Date | null
     erp_id: number | null
+    vendor_id: number | null
   }
 
   export type Shipment_draftMaxAggregateOutputType = {
     org_id: number | null
     creation_date_time: Date | null
     erp_id: number | null
+    vendor_id: number | null
   }
 
   export type Shipment_draftCountAggregateOutputType = {
     org_id: number
     creation_date_time: number
     erp_id: number
+    vendor_id: number
     data: number
     _all: number
   }
@@ -2319,29 +2324,34 @@ export namespace Prisma {
   export type Shipment_draftAvgAggregateInputType = {
     org_id?: true
     erp_id?: true
+    vendor_id?: true
   }
 
   export type Shipment_draftSumAggregateInputType = {
     org_id?: true
     erp_id?: true
+    vendor_id?: true
   }
 
   export type Shipment_draftMinAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     erp_id?: true
+    vendor_id?: true
   }
 
   export type Shipment_draftMaxAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     erp_id?: true
+    vendor_id?: true
   }
 
   export type Shipment_draftCountAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     erp_id?: true
+    vendor_id?: true
     data?: true
     _all?: true
   }
@@ -2436,6 +2446,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date
     erp_id: number
+    vendor_id: number
     data: JsonValue
     _count: Shipment_draftCountAggregateOutputType | null
     _avg: Shipment_draftAvgAggregateOutputType | null
@@ -2462,6 +2473,7 @@ export namespace Prisma {
     org_id?: boolean
     creation_date_time?: boolean
     erp_id?: boolean
+    vendor_id?: boolean
     data?: boolean
   }, ExtArgs["result"]["shipment_draft"]>
 
@@ -2469,6 +2481,7 @@ export namespace Prisma {
     org_id?: boolean
     creation_date_time?: boolean
     erp_id?: boolean
+    vendor_id?: boolean
     data?: boolean
   }
 
@@ -2480,6 +2493,7 @@ export namespace Prisma {
       org_id: number
       creation_date_time: Date
       erp_id: number
+      vendor_id: number
       data: Prisma.JsonValue
     }, ExtArgs["result"]["shipment_draft"]>
     composites: {}
@@ -2878,6 +2892,7 @@ export namespace Prisma {
     readonly org_id: FieldRef<"shipment_draft", 'Int'>
     readonly creation_date_time: FieldRef<"shipment_draft", 'DateTime'>
     readonly erp_id: FieldRef<"shipment_draft", 'Int'>
+    readonly vendor_id: FieldRef<"shipment_draft", 'Int'>
     readonly data: FieldRef<"shipment_draft", 'Json'>
   }
     
@@ -3181,29 +3196,34 @@ export namespace Prisma {
   export type Material_receive_draftAvgAggregateOutputType = {
     org_id: number | null
     erp_id: number | null
+    vendor_id: number | null
   }
 
   export type Material_receive_draftSumAggregateOutputType = {
     org_id: number | null
     erp_id: number | null
+    vendor_id: number | null
   }
 
   export type Material_receive_draftMinAggregateOutputType = {
     org_id: number | null
     creation_date_time: Date | null
     erp_id: number | null
+    vendor_id: number | null
   }
 
   export type Material_receive_draftMaxAggregateOutputType = {
     org_id: number | null
     creation_date_time: Date | null
     erp_id: number | null
+    vendor_id: number | null
   }
 
   export type Material_receive_draftCountAggregateOutputType = {
     org_id: number
     creation_date_time: number
     erp_id: number
+    vendor_id: number
     data: number
     _all: number
   }
@@ -3212,29 +3232,34 @@ export namespace Prisma {
   export type Material_receive_draftAvgAggregateInputType = {
     org_id?: true
     erp_id?: true
+    vendor_id?: true
   }
 
   export type Material_receive_draftSumAggregateInputType = {
     org_id?: true
     erp_id?: true
+    vendor_id?: true
   }
 
   export type Material_receive_draftMinAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     erp_id?: true
+    vendor_id?: true
   }
 
   export type Material_receive_draftMaxAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     erp_id?: true
+    vendor_id?: true
   }
 
   export type Material_receive_draftCountAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     erp_id?: true
+    vendor_id?: true
     data?: true
     _all?: true
   }
@@ -3329,6 +3354,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date
     erp_id: number
+    vendor_id: number
     data: JsonValue
     _count: Material_receive_draftCountAggregateOutputType | null
     _avg: Material_receive_draftAvgAggregateOutputType | null
@@ -3355,6 +3381,7 @@ export namespace Prisma {
     org_id?: boolean
     creation_date_time?: boolean
     erp_id?: boolean
+    vendor_id?: boolean
     data?: boolean
   }, ExtArgs["result"]["material_receive_draft"]>
 
@@ -3362,6 +3389,7 @@ export namespace Prisma {
     org_id?: boolean
     creation_date_time?: boolean
     erp_id?: boolean
+    vendor_id?: boolean
     data?: boolean
   }
 
@@ -3373,6 +3401,7 @@ export namespace Prisma {
       org_id: number
       creation_date_time: Date
       erp_id: number
+      vendor_id: number
       data: Prisma.JsonValue
     }, ExtArgs["result"]["material_receive_draft"]>
     composites: {}
@@ -3771,6 +3800,7 @@ export namespace Prisma {
     readonly org_id: FieldRef<"material_receive_draft", 'Int'>
     readonly creation_date_time: FieldRef<"material_receive_draft", 'DateTime'>
     readonly erp_id: FieldRef<"material_receive_draft", 'Int'>
+    readonly vendor_id: FieldRef<"material_receive_draft", 'Int'>
     readonly data: FieldRef<"material_receive_draft", 'Json'>
   }
     
@@ -7783,6 +7813,7 @@ export namespace Prisma {
     org_id: 'org_id',
     creation_date_time: 'creation_date_time',
     erp_id: 'erp_id',
+    vendor_id: 'vendor_id',
     data: 'data'
   };
 
@@ -7793,6 +7824,7 @@ export namespace Prisma {
     org_id: 'org_id',
     creation_date_time: 'creation_date_time',
     erp_id: 'erp_id',
+    vendor_id: 'vendor_id',
     data: 'data'
   };
 
@@ -8004,6 +8036,7 @@ export namespace Prisma {
     org_id?: IntFilter<"shipment_draft"> | number
     creation_date_time?: DateTimeFilter<"shipment_draft"> | Date | string
     erp_id?: IntFilter<"shipment_draft"> | number
+    vendor_id?: IntFilter<"shipment_draft"> | number
     data?: JsonFilter<"shipment_draft">
   }
 
@@ -8011,6 +8044,7 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
     data?: SortOrder
   }
 
@@ -8022,6 +8056,7 @@ export namespace Prisma {
     NOT?: shipment_draftWhereInput | shipment_draftWhereInput[]
     org_id?: IntFilter<"shipment_draft"> | number
     creation_date_time?: DateTimeFilter<"shipment_draft"> | Date | string
+    vendor_id?: IntFilter<"shipment_draft"> | number
     data?: JsonFilter<"shipment_draft">
   }, "org_id_creation_date_time" | "erp_id">
 
@@ -8029,6 +8064,7 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
     data?: SortOrder
     _count?: shipment_draftCountOrderByAggregateInput
     _avg?: shipment_draftAvgOrderByAggregateInput
@@ -8044,6 +8080,7 @@ export namespace Prisma {
     org_id?: IntWithAggregatesFilter<"shipment_draft"> | number
     creation_date_time?: DateTimeWithAggregatesFilter<"shipment_draft"> | Date | string
     erp_id?: IntWithAggregatesFilter<"shipment_draft"> | number
+    vendor_id?: IntWithAggregatesFilter<"shipment_draft"> | number
     data?: JsonWithAggregatesFilter<"shipment_draft">
   }
 
@@ -8054,6 +8091,7 @@ export namespace Prisma {
     org_id?: IntFilter<"material_receive_draft"> | number
     creation_date_time?: DateTimeFilter<"material_receive_draft"> | Date | string
     erp_id?: IntFilter<"material_receive_draft"> | number
+    vendor_id?: IntFilter<"material_receive_draft"> | number
     data?: JsonFilter<"material_receive_draft">
   }
 
@@ -8061,6 +8099,7 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
     data?: SortOrder
   }
 
@@ -8072,6 +8111,7 @@ export namespace Prisma {
     NOT?: material_receive_draftWhereInput | material_receive_draftWhereInput[]
     org_id?: IntFilter<"material_receive_draft"> | number
     creation_date_time?: DateTimeFilter<"material_receive_draft"> | Date | string
+    vendor_id?: IntFilter<"material_receive_draft"> | number
     data?: JsonFilter<"material_receive_draft">
   }, "org_id_creation_date_time" | "erp_id">
 
@@ -8079,6 +8119,7 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
     data?: SortOrder
     _count?: material_receive_draftCountOrderByAggregateInput
     _avg?: material_receive_draftAvgOrderByAggregateInput
@@ -8094,6 +8135,7 @@ export namespace Prisma {
     org_id?: IntWithAggregatesFilter<"material_receive_draft"> | number
     creation_date_time?: DateTimeWithAggregatesFilter<"material_receive_draft"> | Date | string
     erp_id?: IntWithAggregatesFilter<"material_receive_draft"> | number
+    vendor_id?: IntWithAggregatesFilter<"material_receive_draft"> | number
     data?: JsonWithAggregatesFilter<"material_receive_draft">
   }
 
@@ -8378,6 +8420,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     erp_id: number
+    vendor_id?: number
     data: JsonNullValueInput | InputJsonValue
   }
 
@@ -8385,6 +8428,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     erp_id: number
+    vendor_id?: number
     data: JsonNullValueInput | InputJsonValue
   }
 
@@ -8392,6 +8436,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
+    vendor_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
   }
 
@@ -8399,6 +8444,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
+    vendor_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
   }
 
@@ -8406,6 +8452,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     erp_id: number
+    vendor_id?: number
     data: JsonNullValueInput | InputJsonValue
   }
 
@@ -8413,6 +8460,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
+    vendor_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
   }
 
@@ -8420,6 +8468,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
+    vendor_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
   }
 
@@ -8427,6 +8476,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     erp_id: number
+    vendor_id?: number
     data: JsonNullValueInput | InputJsonValue
   }
 
@@ -8434,6 +8484,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     erp_id: number
+    vendor_id?: number
     data: JsonNullValueInput | InputJsonValue
   }
 
@@ -8441,6 +8492,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
+    vendor_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
   }
 
@@ -8448,6 +8500,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
+    vendor_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
   }
 
@@ -8455,6 +8508,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     erp_id: number
+    vendor_id?: number
     data: JsonNullValueInput | InputJsonValue
   }
 
@@ -8462,6 +8516,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
+    vendor_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
   }
 
@@ -8469,6 +8524,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
+    vendor_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
   }
 
@@ -8848,29 +8904,34 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
     data?: SortOrder
   }
 
   export type shipment_draftAvgOrderByAggregateInput = {
     org_id?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
   }
 
   export type shipment_draftMaxOrderByAggregateInput = {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
   }
 
   export type shipment_draftMinOrderByAggregateInput = {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
   }
 
   export type shipment_draftSumOrderByAggregateInput = {
     org_id?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
   }
 
   export type material_receive_draftOrg_idCreation_date_timeCompoundUniqueInput = {
@@ -8882,29 +8943,34 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
     data?: SortOrder
   }
 
   export type material_receive_draftAvgOrderByAggregateInput = {
     org_id?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
   }
 
   export type material_receive_draftMaxOrderByAggregateInput = {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
   }
 
   export type material_receive_draftMinOrderByAggregateInput = {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
   }
 
   export type material_receive_draftSumOrderByAggregateInput = {
     org_id?: SortOrder
     erp_id?: SortOrder
+    vendor_id?: SortOrder
   }
 
   export type production_single_product_draftOrg_idCreation_date_timeCompoundUniqueInput = {
