@@ -24,6 +24,11 @@ export type inventory_move_draft = $Result.DefaultSelection<Prisma.$inventory_mo
  */
 export type shipment_draft = $Result.DefaultSelection<Prisma.$shipment_draftPayload>
 /**
+ * Model material_receive_draft
+ * 
+ */
+export type material_receive_draft = $Result.DefaultSelection<Prisma.$material_receive_draftPayload>
+/**
  * Model production_single_product_draft
  * 
  */
@@ -185,6 +190,16 @@ export class PrismaClient<
     * ```
     */
   get shipment_draft(): Prisma.shipment_draftDelegate<ExtArgs>;
+
+  /**
+   * `prisma.material_receive_draft`: Exposes CRUD operations for the **material_receive_draft** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Material_receive_drafts
+    * const material_receive_drafts = await prisma.material_receive_draft.findMany()
+    * ```
+    */
+  get material_receive_draft(): Prisma.material_receive_draftDelegate<ExtArgs>;
 
   /**
    * `prisma.production_single_product_draft`: Exposes CRUD operations for the **production_single_product_draft** model.
@@ -697,6 +712,7 @@ export namespace Prisma {
   export const ModelName: {
     inventory_move_draft: 'inventory_move_draft',
     shipment_draft: 'shipment_draft',
+    material_receive_draft: 'material_receive_draft',
     production_single_product_draft: 'production_single_product_draft',
     track_id_object: 'track_id_object',
     track_id_history: 'track_id_history',
@@ -717,7 +733,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'inventory_move_draft' | 'shipment_draft' | 'production_single_product_draft' | 'track_id_object' | 'track_id_history' | 'track_id_stock'
+      modelProps: 'inventory_move_draft' | 'shipment_draft' | 'material_receive_draft' | 'production_single_product_draft' | 'track_id_object' | 'track_id_history' | 'track_id_stock'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -850,6 +866,72 @@ export namespace Prisma {
           count: {
             args: Prisma.shipment_draftCountArgs<ExtArgs>,
             result: $Utils.Optional<Shipment_draftCountAggregateOutputType> | number
+          }
+        }
+      }
+      material_receive_draft: {
+        payload: Prisma.$material_receive_draftPayload<ExtArgs>
+        fields: Prisma.material_receive_draftFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.material_receive_draftFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$material_receive_draftPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.material_receive_draftFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$material_receive_draftPayload>
+          }
+          findFirst: {
+            args: Prisma.material_receive_draftFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$material_receive_draftPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.material_receive_draftFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$material_receive_draftPayload>
+          }
+          findMany: {
+            args: Prisma.material_receive_draftFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$material_receive_draftPayload>[]
+          }
+          create: {
+            args: Prisma.material_receive_draftCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$material_receive_draftPayload>
+          }
+          createMany: {
+            args: Prisma.material_receive_draftCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.material_receive_draftDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$material_receive_draftPayload>
+          }
+          update: {
+            args: Prisma.material_receive_draftUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$material_receive_draftPayload>
+          }
+          deleteMany: {
+            args: Prisma.material_receive_draftDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.material_receive_draftUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.material_receive_draftUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$material_receive_draftPayload>
+          }
+          aggregate: {
+            args: Prisma.Material_receive_draftAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateMaterial_receive_draft>
+          }
+          groupBy: {
+            args: Prisma.material_receive_draftGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Material_receive_draftGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.material_receive_draftCountArgs<ExtArgs>,
+            result: $Utils.Optional<Material_receive_draftCountAggregateOutputType> | number
           }
         }
       }
@@ -3080,6 +3162,899 @@ export namespace Prisma {
      * Select specific fields to fetch from the shipment_draft
      */
     select?: shipment_draftSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model material_receive_draft
+   */
+
+  export type AggregateMaterial_receive_draft = {
+    _count: Material_receive_draftCountAggregateOutputType | null
+    _avg: Material_receive_draftAvgAggregateOutputType | null
+    _sum: Material_receive_draftSumAggregateOutputType | null
+    _min: Material_receive_draftMinAggregateOutputType | null
+    _max: Material_receive_draftMaxAggregateOutputType | null
+  }
+
+  export type Material_receive_draftAvgAggregateOutputType = {
+    org_id: number | null
+    erp_id: number | null
+  }
+
+  export type Material_receive_draftSumAggregateOutputType = {
+    org_id: number | null
+    erp_id: number | null
+  }
+
+  export type Material_receive_draftMinAggregateOutputType = {
+    org_id: number | null
+    creation_date_time: Date | null
+    erp_id: number | null
+  }
+
+  export type Material_receive_draftMaxAggregateOutputType = {
+    org_id: number | null
+    creation_date_time: Date | null
+    erp_id: number | null
+  }
+
+  export type Material_receive_draftCountAggregateOutputType = {
+    org_id: number
+    creation_date_time: number
+    erp_id: number
+    data: number
+    _all: number
+  }
+
+
+  export type Material_receive_draftAvgAggregateInputType = {
+    org_id?: true
+    erp_id?: true
+  }
+
+  export type Material_receive_draftSumAggregateInputType = {
+    org_id?: true
+    erp_id?: true
+  }
+
+  export type Material_receive_draftMinAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    erp_id?: true
+  }
+
+  export type Material_receive_draftMaxAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    erp_id?: true
+  }
+
+  export type Material_receive_draftCountAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    erp_id?: true
+    data?: true
+    _all?: true
+  }
+
+  export type Material_receive_draftAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which material_receive_draft to aggregate.
+     */
+    where?: material_receive_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of material_receive_drafts to fetch.
+     */
+    orderBy?: material_receive_draftOrderByWithRelationInput | material_receive_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: material_receive_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` material_receive_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` material_receive_drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned material_receive_drafts
+    **/
+    _count?: true | Material_receive_draftCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Material_receive_draftAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Material_receive_draftSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Material_receive_draftMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Material_receive_draftMaxAggregateInputType
+  }
+
+  export type GetMaterial_receive_draftAggregateType<T extends Material_receive_draftAggregateArgs> = {
+        [P in keyof T & keyof AggregateMaterial_receive_draft]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMaterial_receive_draft[P]>
+      : GetScalarType<T[P], AggregateMaterial_receive_draft[P]>
+  }
+
+
+
+
+  export type material_receive_draftGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: material_receive_draftWhereInput
+    orderBy?: material_receive_draftOrderByWithAggregationInput | material_receive_draftOrderByWithAggregationInput[]
+    by: Material_receive_draftScalarFieldEnum[] | Material_receive_draftScalarFieldEnum
+    having?: material_receive_draftScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Material_receive_draftCountAggregateInputType | true
+    _avg?: Material_receive_draftAvgAggregateInputType
+    _sum?: Material_receive_draftSumAggregateInputType
+    _min?: Material_receive_draftMinAggregateInputType
+    _max?: Material_receive_draftMaxAggregateInputType
+  }
+
+  export type Material_receive_draftGroupByOutputType = {
+    org_id: number
+    creation_date_time: Date
+    erp_id: number
+    data: JsonValue
+    _count: Material_receive_draftCountAggregateOutputType | null
+    _avg: Material_receive_draftAvgAggregateOutputType | null
+    _sum: Material_receive_draftSumAggregateOutputType | null
+    _min: Material_receive_draftMinAggregateOutputType | null
+    _max: Material_receive_draftMaxAggregateOutputType | null
+  }
+
+  type GetMaterial_receive_draftGroupByPayload<T extends material_receive_draftGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Material_receive_draftGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Material_receive_draftGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Material_receive_draftGroupByOutputType[P]>
+            : GetScalarType<T[P], Material_receive_draftGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type material_receive_draftSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    org_id?: boolean
+    creation_date_time?: boolean
+    erp_id?: boolean
+    data?: boolean
+  }, ExtArgs["result"]["material_receive_draft"]>
+
+  export type material_receive_draftSelectScalar = {
+    org_id?: boolean
+    creation_date_time?: boolean
+    erp_id?: boolean
+    data?: boolean
+  }
+
+
+  export type $material_receive_draftPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "material_receive_draft"
+    objects: {}
+    scalars: $Extensions.GetResult<{
+      org_id: number
+      creation_date_time: Date
+      erp_id: number
+      data: Prisma.JsonValue
+    }, ExtArgs["result"]["material_receive_draft"]>
+    composites: {}
+  }
+
+
+  type material_receive_draftGetPayload<S extends boolean | null | undefined | material_receive_draftDefaultArgs> = $Result.GetResult<Prisma.$material_receive_draftPayload, S>
+
+  type material_receive_draftCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<material_receive_draftFindManyArgs, 'select' | 'include'> & {
+      select?: Material_receive_draftCountAggregateInputType | true
+    }
+
+  export interface material_receive_draftDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['material_receive_draft'], meta: { name: 'material_receive_draft' } }
+    /**
+     * Find zero or one Material_receive_draft that matches the filter.
+     * @param {material_receive_draftFindUniqueArgs} args - Arguments to find a Material_receive_draft
+     * @example
+     * // Get one Material_receive_draft
+     * const material_receive_draft = await prisma.material_receive_draft.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends material_receive_draftFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, material_receive_draftFindUniqueArgs<ExtArgs>>
+    ): Prisma__material_receive_draftClient<$Result.GetResult<Prisma.$material_receive_draftPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Material_receive_draft that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {material_receive_draftFindUniqueOrThrowArgs} args - Arguments to find a Material_receive_draft
+     * @example
+     * // Get one Material_receive_draft
+     * const material_receive_draft = await prisma.material_receive_draft.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends material_receive_draftFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, material_receive_draftFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__material_receive_draftClient<$Result.GetResult<Prisma.$material_receive_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Material_receive_draft that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {material_receive_draftFindFirstArgs} args - Arguments to find a Material_receive_draft
+     * @example
+     * // Get one Material_receive_draft
+     * const material_receive_draft = await prisma.material_receive_draft.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends material_receive_draftFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, material_receive_draftFindFirstArgs<ExtArgs>>
+    ): Prisma__material_receive_draftClient<$Result.GetResult<Prisma.$material_receive_draftPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Material_receive_draft that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {material_receive_draftFindFirstOrThrowArgs} args - Arguments to find a Material_receive_draft
+     * @example
+     * // Get one Material_receive_draft
+     * const material_receive_draft = await prisma.material_receive_draft.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends material_receive_draftFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, material_receive_draftFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__material_receive_draftClient<$Result.GetResult<Prisma.$material_receive_draftPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Material_receive_drafts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {material_receive_draftFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Material_receive_drafts
+     * const material_receive_drafts = await prisma.material_receive_draft.findMany()
+     * 
+     * // Get first 10 Material_receive_drafts
+     * const material_receive_drafts = await prisma.material_receive_draft.findMany({ take: 10 })
+     * 
+     * // Only select the `org_id`
+     * const material_receive_draftWithOrg_idOnly = await prisma.material_receive_draft.findMany({ select: { org_id: true } })
+     * 
+    **/
+    findMany<T extends material_receive_draftFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, material_receive_draftFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$material_receive_draftPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Material_receive_draft.
+     * @param {material_receive_draftCreateArgs} args - Arguments to create a Material_receive_draft.
+     * @example
+     * // Create one Material_receive_draft
+     * const Material_receive_draft = await prisma.material_receive_draft.create({
+     *   data: {
+     *     // ... data to create a Material_receive_draft
+     *   }
+     * })
+     * 
+    **/
+    create<T extends material_receive_draftCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, material_receive_draftCreateArgs<ExtArgs>>
+    ): Prisma__material_receive_draftClient<$Result.GetResult<Prisma.$material_receive_draftPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Material_receive_drafts.
+     *     @param {material_receive_draftCreateManyArgs} args - Arguments to create many Material_receive_drafts.
+     *     @example
+     *     // Create many Material_receive_drafts
+     *     const material_receive_draft = await prisma.material_receive_draft.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends material_receive_draftCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, material_receive_draftCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Material_receive_draft.
+     * @param {material_receive_draftDeleteArgs} args - Arguments to delete one Material_receive_draft.
+     * @example
+     * // Delete one Material_receive_draft
+     * const Material_receive_draft = await prisma.material_receive_draft.delete({
+     *   where: {
+     *     // ... filter to delete one Material_receive_draft
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends material_receive_draftDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, material_receive_draftDeleteArgs<ExtArgs>>
+    ): Prisma__material_receive_draftClient<$Result.GetResult<Prisma.$material_receive_draftPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Material_receive_draft.
+     * @param {material_receive_draftUpdateArgs} args - Arguments to update one Material_receive_draft.
+     * @example
+     * // Update one Material_receive_draft
+     * const material_receive_draft = await prisma.material_receive_draft.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends material_receive_draftUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, material_receive_draftUpdateArgs<ExtArgs>>
+    ): Prisma__material_receive_draftClient<$Result.GetResult<Prisma.$material_receive_draftPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Material_receive_drafts.
+     * @param {material_receive_draftDeleteManyArgs} args - Arguments to filter Material_receive_drafts to delete.
+     * @example
+     * // Delete a few Material_receive_drafts
+     * const { count } = await prisma.material_receive_draft.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends material_receive_draftDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, material_receive_draftDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Material_receive_drafts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {material_receive_draftUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Material_receive_drafts
+     * const material_receive_draft = await prisma.material_receive_draft.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends material_receive_draftUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, material_receive_draftUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Material_receive_draft.
+     * @param {material_receive_draftUpsertArgs} args - Arguments to update or create a Material_receive_draft.
+     * @example
+     * // Update or create a Material_receive_draft
+     * const material_receive_draft = await prisma.material_receive_draft.upsert({
+     *   create: {
+     *     // ... data to create a Material_receive_draft
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Material_receive_draft we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends material_receive_draftUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, material_receive_draftUpsertArgs<ExtArgs>>
+    ): Prisma__material_receive_draftClient<$Result.GetResult<Prisma.$material_receive_draftPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Material_receive_drafts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {material_receive_draftCountArgs} args - Arguments to filter Material_receive_drafts to count.
+     * @example
+     * // Count the number of Material_receive_drafts
+     * const count = await prisma.material_receive_draft.count({
+     *   where: {
+     *     // ... the filter for the Material_receive_drafts we want to count
+     *   }
+     * })
+    **/
+    count<T extends material_receive_draftCountArgs>(
+      args?: Subset<T, material_receive_draftCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Material_receive_draftCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Material_receive_draft.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Material_receive_draftAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Material_receive_draftAggregateArgs>(args: Subset<T, Material_receive_draftAggregateArgs>): Prisma.PrismaPromise<GetMaterial_receive_draftAggregateType<T>>
+
+    /**
+     * Group by Material_receive_draft.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {material_receive_draftGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends material_receive_draftGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: material_receive_draftGroupByArgs['orderBy'] }
+        : { orderBy?: material_receive_draftGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, material_receive_draftGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMaterial_receive_draftGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the material_receive_draft model
+   */
+  readonly fields: material_receive_draftFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for material_receive_draft.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__material_receive_draftClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the material_receive_draft model
+   */ 
+  interface material_receive_draftFieldRefs {
+    readonly org_id: FieldRef<"material_receive_draft", 'Int'>
+    readonly creation_date_time: FieldRef<"material_receive_draft", 'DateTime'>
+    readonly erp_id: FieldRef<"material_receive_draft", 'Int'>
+    readonly data: FieldRef<"material_receive_draft", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * material_receive_draft findUnique
+   */
+  export type material_receive_draftFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the material_receive_draft
+     */
+    select?: material_receive_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which material_receive_draft to fetch.
+     */
+    where: material_receive_draftWhereUniqueInput
+  }
+
+
+  /**
+   * material_receive_draft findUniqueOrThrow
+   */
+  export type material_receive_draftFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the material_receive_draft
+     */
+    select?: material_receive_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which material_receive_draft to fetch.
+     */
+    where: material_receive_draftWhereUniqueInput
+  }
+
+
+  /**
+   * material_receive_draft findFirst
+   */
+  export type material_receive_draftFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the material_receive_draft
+     */
+    select?: material_receive_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which material_receive_draft to fetch.
+     */
+    where?: material_receive_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of material_receive_drafts to fetch.
+     */
+    orderBy?: material_receive_draftOrderByWithRelationInput | material_receive_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for material_receive_drafts.
+     */
+    cursor?: material_receive_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` material_receive_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` material_receive_drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of material_receive_drafts.
+     */
+    distinct?: Material_receive_draftScalarFieldEnum | Material_receive_draftScalarFieldEnum[]
+  }
+
+
+  /**
+   * material_receive_draft findFirstOrThrow
+   */
+  export type material_receive_draftFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the material_receive_draft
+     */
+    select?: material_receive_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which material_receive_draft to fetch.
+     */
+    where?: material_receive_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of material_receive_drafts to fetch.
+     */
+    orderBy?: material_receive_draftOrderByWithRelationInput | material_receive_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for material_receive_drafts.
+     */
+    cursor?: material_receive_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` material_receive_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` material_receive_drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of material_receive_drafts.
+     */
+    distinct?: Material_receive_draftScalarFieldEnum | Material_receive_draftScalarFieldEnum[]
+  }
+
+
+  /**
+   * material_receive_draft findMany
+   */
+  export type material_receive_draftFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the material_receive_draft
+     */
+    select?: material_receive_draftSelect<ExtArgs> | null
+    /**
+     * Filter, which material_receive_drafts to fetch.
+     */
+    where?: material_receive_draftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of material_receive_drafts to fetch.
+     */
+    orderBy?: material_receive_draftOrderByWithRelationInput | material_receive_draftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing material_receive_drafts.
+     */
+    cursor?: material_receive_draftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` material_receive_drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` material_receive_drafts.
+     */
+    skip?: number
+    distinct?: Material_receive_draftScalarFieldEnum | Material_receive_draftScalarFieldEnum[]
+  }
+
+
+  /**
+   * material_receive_draft create
+   */
+  export type material_receive_draftCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the material_receive_draft
+     */
+    select?: material_receive_draftSelect<ExtArgs> | null
+    /**
+     * The data needed to create a material_receive_draft.
+     */
+    data: XOR<material_receive_draftCreateInput, material_receive_draftUncheckedCreateInput>
+  }
+
+
+  /**
+   * material_receive_draft createMany
+   */
+  export type material_receive_draftCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many material_receive_drafts.
+     */
+    data: material_receive_draftCreateManyInput | material_receive_draftCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * material_receive_draft update
+   */
+  export type material_receive_draftUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the material_receive_draft
+     */
+    select?: material_receive_draftSelect<ExtArgs> | null
+    /**
+     * The data needed to update a material_receive_draft.
+     */
+    data: XOR<material_receive_draftUpdateInput, material_receive_draftUncheckedUpdateInput>
+    /**
+     * Choose, which material_receive_draft to update.
+     */
+    where: material_receive_draftWhereUniqueInput
+  }
+
+
+  /**
+   * material_receive_draft updateMany
+   */
+  export type material_receive_draftUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update material_receive_drafts.
+     */
+    data: XOR<material_receive_draftUpdateManyMutationInput, material_receive_draftUncheckedUpdateManyInput>
+    /**
+     * Filter which material_receive_drafts to update
+     */
+    where?: material_receive_draftWhereInput
+  }
+
+
+  /**
+   * material_receive_draft upsert
+   */
+  export type material_receive_draftUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the material_receive_draft
+     */
+    select?: material_receive_draftSelect<ExtArgs> | null
+    /**
+     * The filter to search for the material_receive_draft to update in case it exists.
+     */
+    where: material_receive_draftWhereUniqueInput
+    /**
+     * In case the material_receive_draft found by the `where` argument doesn't exist, create a new material_receive_draft with this data.
+     */
+    create: XOR<material_receive_draftCreateInput, material_receive_draftUncheckedCreateInput>
+    /**
+     * In case the material_receive_draft was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<material_receive_draftUpdateInput, material_receive_draftUncheckedUpdateInput>
+  }
+
+
+  /**
+   * material_receive_draft delete
+   */
+  export type material_receive_draftDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the material_receive_draft
+     */
+    select?: material_receive_draftSelect<ExtArgs> | null
+    /**
+     * Filter which material_receive_draft to delete.
+     */
+    where: material_receive_draftWhereUniqueInput
+  }
+
+
+  /**
+   * material_receive_draft deleteMany
+   */
+  export type material_receive_draftDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which material_receive_drafts to delete
+     */
+    where?: material_receive_draftWhereInput
+  }
+
+
+  /**
+   * material_receive_draft without action
+   */
+  export type material_receive_draftDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the material_receive_draft
+     */
+    select?: material_receive_draftSelect<ExtArgs> | null
   }
 
 
@@ -6814,6 +7789,16 @@ export namespace Prisma {
   export type Shipment_draftScalarFieldEnum = (typeof Shipment_draftScalarFieldEnum)[keyof typeof Shipment_draftScalarFieldEnum]
 
 
+  export const Material_receive_draftScalarFieldEnum: {
+    org_id: 'org_id',
+    creation_date_time: 'creation_date_time',
+    erp_id: 'erp_id',
+    data: 'data'
+  };
+
+  export type Material_receive_draftScalarFieldEnum = (typeof Material_receive_draftScalarFieldEnum)[keyof typeof Material_receive_draftScalarFieldEnum]
+
+
   export const Production_single_product_draftScalarFieldEnum: {
     org_id: 'org_id',
     creation_date_time: 'creation_date_time',
@@ -7060,6 +8045,56 @@ export namespace Prisma {
     creation_date_time?: DateTimeWithAggregatesFilter<"shipment_draft"> | Date | string
     erp_id?: IntWithAggregatesFilter<"shipment_draft"> | number
     data?: JsonWithAggregatesFilter<"shipment_draft">
+  }
+
+  export type material_receive_draftWhereInput = {
+    AND?: material_receive_draftWhereInput | material_receive_draftWhereInput[]
+    OR?: material_receive_draftWhereInput[]
+    NOT?: material_receive_draftWhereInput | material_receive_draftWhereInput[]
+    org_id?: IntFilter<"material_receive_draft"> | number
+    creation_date_time?: DateTimeFilter<"material_receive_draft"> | Date | string
+    erp_id?: IntFilter<"material_receive_draft"> | number
+    data?: JsonFilter<"material_receive_draft">
+  }
+
+  export type material_receive_draftOrderByWithRelationInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    data?: SortOrder
+  }
+
+  export type material_receive_draftWhereUniqueInput = Prisma.AtLeast<{
+    erp_id?: number
+    org_id_creation_date_time?: material_receive_draftOrg_idCreation_date_timeCompoundUniqueInput
+    AND?: material_receive_draftWhereInput | material_receive_draftWhereInput[]
+    OR?: material_receive_draftWhereInput[]
+    NOT?: material_receive_draftWhereInput | material_receive_draftWhereInput[]
+    org_id?: IntFilter<"material_receive_draft"> | number
+    creation_date_time?: DateTimeFilter<"material_receive_draft"> | Date | string
+    data?: JsonFilter<"material_receive_draft">
+  }, "org_id_creation_date_time" | "erp_id">
+
+  export type material_receive_draftOrderByWithAggregationInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    data?: SortOrder
+    _count?: material_receive_draftCountOrderByAggregateInput
+    _avg?: material_receive_draftAvgOrderByAggregateInput
+    _max?: material_receive_draftMaxOrderByAggregateInput
+    _min?: material_receive_draftMinOrderByAggregateInput
+    _sum?: material_receive_draftSumOrderByAggregateInput
+  }
+
+  export type material_receive_draftScalarWhereWithAggregatesInput = {
+    AND?: material_receive_draftScalarWhereWithAggregatesInput | material_receive_draftScalarWhereWithAggregatesInput[]
+    OR?: material_receive_draftScalarWhereWithAggregatesInput[]
+    NOT?: material_receive_draftScalarWhereWithAggregatesInput | material_receive_draftScalarWhereWithAggregatesInput[]
+    org_id?: IntWithAggregatesFilter<"material_receive_draft"> | number
+    creation_date_time?: DateTimeWithAggregatesFilter<"material_receive_draft"> | Date | string
+    erp_id?: IntWithAggregatesFilter<"material_receive_draft"> | number
+    data?: JsonWithAggregatesFilter<"material_receive_draft">
   }
 
   export type production_single_product_draftWhereInput = {
@@ -7382,6 +8417,55 @@ export namespace Prisma {
   }
 
   export type shipment_draftUncheckedUpdateManyInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type material_receive_draftCreateInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type material_receive_draftUncheckedCreateInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type material_receive_draftUpdateInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type material_receive_draftUncheckedUpdateInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type material_receive_draftCreateManyInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type material_receive_draftUpdateManyMutationInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type material_receive_draftUncheckedUpdateManyInput = {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
@@ -7785,6 +8869,40 @@ export namespace Prisma {
   }
 
   export type shipment_draftSumOrderByAggregateInput = {
+    org_id?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type material_receive_draftOrg_idCreation_date_timeCompoundUniqueInput = {
+    org_id: number
+    creation_date_time: Date | string
+  }
+
+  export type material_receive_draftCountOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    data?: SortOrder
+  }
+
+  export type material_receive_draftAvgOrderByAggregateInput = {
+    org_id?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type material_receive_draftMaxOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type material_receive_draftMinOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+  }
+
+  export type material_receive_draftSumOrderByAggregateInput = {
     org_id?: SortOrder
     erp_id?: SortOrder
   }
@@ -8347,6 +9465,10 @@ export namespace Prisma {
      * @deprecated Use shipment_draftDefaultArgs instead
      */
     export type shipment_draftArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = shipment_draftDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use material_receive_draftDefaultArgs instead
+     */
+    export type material_receive_draftArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = material_receive_draftDefaultArgs<ExtArgs>
     /**
      * @deprecated Use production_single_product_draftDefaultArgs instead
      */

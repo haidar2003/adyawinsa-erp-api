@@ -134,6 +134,13 @@ exports.Prisma.Shipment_draftScalarFieldEnum = {
   data: 'data'
 };
 
+exports.Prisma.Material_receive_draftScalarFieldEnum = {
+  org_id: 'org_id',
+  creation_date_time: 'creation_date_time',
+  erp_id: 'erp_id',
+  data: 'data'
+};
+
 exports.Prisma.Production_single_product_draftScalarFieldEnum = {
   org_id: 'org_id',
   creation_date_time: 'creation_date_time',
@@ -191,6 +198,7 @@ exports.Prisma.QueryMode = {
 exports.Prisma.ModelName = {
   inventory_move_draft: 'inventory_move_draft',
   shipment_draft: 'shipment_draft',
+  material_receive_draft: 'material_receive_draft',
   production_single_product_draft: 'production_single_product_draft',
   track_id_object: 'track_id_object',
   track_id_history: 'track_id_history',
