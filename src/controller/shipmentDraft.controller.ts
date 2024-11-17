@@ -142,7 +142,7 @@ export const getShipmentDraftAll = async (req: Request, res: Response, next: Nex
 
 		const { orgId, vendorId } = req.query;
 		const orgIdNum = parseInt(orgId as string, 10);
-    	const vendorIdNum = parseInt(vendorId as string, 10);
+		const vendorIdNum = parseInt(vendorId as string, 10);
 
 		// Ambil dari server asli
 		try {
@@ -158,7 +158,7 @@ export const getShipmentDraftAll = async (req: Request, res: Response, next: Nex
 						'method': 'get',
 						'url': `${endpointApiUrl}/api/v1/models/M_InOut`,
 						'params': {
-							"$filter": "AD_Org_ID eq " + orgId + " AND C_BPartner_ID eq " + vendorId + " AND IsSOTrx eq true",
+							'$filter': 'AD_Org_ID eq ' + orgId + ' AND C_BPartner_ID eq ' + vendorId + ' AND IsSOTrx eq true',
 							'$orderby': 'Created desc',
 							'$expand': 'M_InOutLine',
 						}
@@ -760,7 +760,7 @@ const hydrateShipment = (combinedData: any) => {
 				'M_Product_ID': Number(productIdCur),
 				'MovementQty': productIdToAmountDict[productIdCur],
 				'Line': lineCounter + M_InOutLine.length,
-				"C_OrderLine_ID": combinedData.productTrackQuantityDict[productIdCur.toString()].orderLine
+				'C_OrderLine_ID': combinedData.productTrackQuantityDict[productIdCur.toString()].orderLine
 			});
 			lineCounter += 1;
 		}
@@ -793,6 +793,6 @@ const getShipmentErpObjectFromHydratedCombinedData = (combinedData: any) => {
 		// SHADOW VARIABLES
 		'customerRequestDocNo': undefined,
 		'productTrackQuantityDict': undefined,
-		"M_Locator_ID": undefined
+		'M_Locator_ID': undefined
 	};
 };
