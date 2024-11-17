@@ -425,6 +425,42 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 
 			try {
 				const response = await axios(reqBodyContinue);
+
+				// If success === false / FAILED document complete,
+				// we roll back the stock changes.
+				if (response?.data?.success === false) {
+
+					const additionalData = getTransferItems(
+						currentData.M_Locator_ID, 
+						currentData.M_LocatorTo_ID, 
+						currentData.materialMovementProductDict,
+						true
+					);
+
+					const rollbackTimestamp = new Date('1999-01-01').toISOString();
+					const updatedData = { 
+						...currentData, 
+						DocStatus: {
+							propertyLabel: 'Document Status',
+							id: 'DR',
+							identifier: 'Drafted',
+							'model-name': 'ad_ref_list'
+						},
+						IsApproved: false,
+						Processed: false,
+						Updated: rollbackTimestamp,
+						M_MovementLine: currentData.M_MovementLine.map((line: any) => {
+							return {
+								...line,
+								Processed: false,
+								Updated: rollbackTimestamp
+							};
+						})
+					};
+
+					await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, updatedData, additionalData);
+				}
+
 				return res.json(response.data);
 			} catch (apiError: any) {
 				console.error('Failed to update real server:', apiError);
@@ -507,6 +543,21 @@ export const updateInventoryMoveDraftComplete = async (req: Request, res: Respon
 
 			try {
 				const response = await axios(reqBody);
+
+				// If success === false / FAILED document complete,
+				// we roll back the stock changes.
+				if (response?.data?.success === false) {
+
+					const additionalData = getTransferItems(
+						currentData.M_Locator_ID, 
+						currentData.M_LocatorTo_ID, 
+						currentData.materialMovementProductDict,
+						true
+					);
+
+					await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, currentData, additionalData);
+				}
+
 				return res.json(response.data);
 			} catch (apiError: any) {
 				console.error('Failed to update real server:', apiError);
@@ -628,7 +679,7 @@ export const updateInventoryMoveDraftReverse = async (req: Request, res: Respons
 				);
 
 				await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, hydratedData, additionalData);
-				
+
 			} catch (updateError: any) {
 				if (updateError instanceof PrismaClientKnownRequestError) {
 					console.error('Prisma update failed:', updateError);
