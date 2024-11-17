@@ -81,9 +81,9 @@ export const createManyTrackIdStock = async (
 
 	for (const productId of Object.keys(productTrackQuantityDict)) {
 		for (const trackId of Object.keys(productTrackQuantityDict[productId].trackIdAndQuantityDict)) {
-			if (locatorFromId) {
+			if (String(locatorFromId)) {
 				createBulkTransactionArray.push({
-					locator_id: locatorFromId,
+					locator_id: String(locatorFromId),
 					key23: productId + '-' + trackId,
 					product_id: productId,
 					track_id: trackId,
@@ -91,9 +91,9 @@ export const createManyTrackIdStock = async (
 					data: {}
 				});
 			}
-			if (locatorToId) {
+			if (String(locatorToId)) {
 				createBulkTransactionArray.push({
-					locator_id: locatorToId,
+					locator_id: String(locatorToId),
 					key23: productId + '-' + trackId,
 					product_id: productId,
 					track_id: trackId,
@@ -138,11 +138,11 @@ export const getTransferItems = (
 			const currentQuantity = productTrackQuantityDict[productId].trackIdAndQuantityDict[trackId].trackIdList
 				.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
 
-			if (locatorToId) {
+			if (String(locatorToId)) {
 				transactionArray.push(prisma.track_id_stock.update({
 					where: {
 						locator_id_key23: {
-							locator_id: locatorToId,
+							locator_id: String(locatorToId),
 							key23: productId + '-' + trackId
 						}
 					},
@@ -154,11 +154,11 @@ export const getTransferItems = (
 				}));
 			}
 
-			if (locatorFromId) {
+			if (String(locatorFromId)) {
 				transactionArray.push(prisma.track_id_stock.update({
 					where: {
 						locator_id_key23: {
-							locator_id: locatorFromId,
+							locator_id: String(locatorFromId),
 							key23: productId + '-' + trackId
 						}
 					},
