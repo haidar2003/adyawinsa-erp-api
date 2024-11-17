@@ -6,7 +6,7 @@ import { body, validationResult } from 'express-validator';
 import * as materialReceiveDraftService from '../service/materialReceiveDraft.service';
 import axios from 'axios';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
-import { getTransferItems } from '../service/tracking.service';
+import { getTransferItems, ProductTrackQuantityDict } from '../service/tracking.service';
 import * as trackingService from '../service/tracking.service';
 
 const endpointApiUrl = process.env.ENDPOINT_ERP_API_URL ?? 'https://server.tricentrumfortuna.com:12';
@@ -461,17 +461,45 @@ export const updateMaterialReceiveDraftComplete = async (req: Request, res: Resp
 
 			// Update Supabase
 			try {
+				const materialMovementProductDict: ProductTrackQuantityDict = {};
+				let locatorTo: string = '';
+
+				for (let i = 0; i < currentData.M_InOutLine.length; i++) {
+					const productId = currentData.M_InOutLine[i]?.['M_Product_ID']?.['identifier'];
+					const mrTrackId = 'material-receive-' + currentData.M_InOutLine[i]?.id;
+					const quantityMoved = currentData.M_InOutLine[i]?.['QtyEntered'];
+					locatorTo = currentData.M_InOutLine[i]?.['M_Locator_ID']?.id;
+
+					if (!productId) {
+						continue;
+					}
+
+					if (materialMovementProductDict?.[productId] === undefined) {
+						materialMovementProductDict[productId] = {
+							trackIdAndQuantityDict: {}
+						};
+					}
+					if (materialMovementProductDict[productId].trackIdAndQuantityDict?.[mrTrackId] === undefined) {
+						materialMovementProductDict[productId].trackIdAndQuantityDict[mrTrackId] = {
+							trackIdList: []
+						};
+					}
+					materialMovementProductDict[productId].trackIdAndQuantityDict[mrTrackId].trackIdList.push({
+						quantity: quantityMoved
+					});
+				}
+
 				// Create stock if it doesn't exist (This is a safe operation)
 				await trackingService.createManyTrackIdStock(
-					currentData.M_Locator_ID, 
-					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict
+					'', 
+					locatorTo, 
+					materialMovementProductDict,
 				);
 
 				const additionalData = getTransferItems(
-					currentData.M_Locator_ID, 
-					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict,
+					'', 
+					locatorTo, 
+					materialMovementProductDict,
 					false
 				);
 
@@ -610,17 +638,45 @@ export const updateMaterialReceiveDraftReverse = async (req: Request, res: Respo
 
 			// Update Supabase
 			try {
+				const materialMovementProductDict: ProductTrackQuantityDict = {};
+				let locatorTo: string = '';
+
+				for (let i = 0; i < currentData.M_InOutLine.length; i++) {
+					const productId = currentData.M_InOutLine[i]?.['M_Product_ID']?.['identifier'];
+					const mrTrackId = 'material-receive-' + currentData.M_InOutLine[i]?.id;
+					const quantityMoved = currentData.M_InOutLine[i]?.['QtyEntered'];
+					locatorTo = currentData.M_InOutLine[i]?.['M_Locator_ID']?.id;
+
+					if (!productId) {
+						continue;
+					}
+
+					if (materialMovementProductDict?.[productId] === undefined) {
+						materialMovementProductDict[productId] = {
+							trackIdAndQuantityDict: {}
+						};
+					}
+					if (materialMovementProductDict[productId].trackIdAndQuantityDict?.[mrTrackId] === undefined) {
+						materialMovementProductDict[productId].trackIdAndQuantityDict[mrTrackId] = {
+							trackIdList: []
+						};
+					}
+					materialMovementProductDict[productId].trackIdAndQuantityDict[mrTrackId].trackIdList.push({
+						quantity: quantityMoved
+					});
+				}
+
 				// Create stock if it doesn't exist (This is a safe operation)
 				await trackingService.createManyTrackIdStock(
-					currentData.M_Locator_ID, 
-					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict
+					'', 
+					locatorTo, 
+					materialMovementProductDict,
 				);
 
 				const additionalData = getTransferItems(
-					currentData.M_Locator_ID, 
-					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict,
+					'', 
+					locatorTo, 
+					materialMovementProductDict,
 					true
 				);
 
