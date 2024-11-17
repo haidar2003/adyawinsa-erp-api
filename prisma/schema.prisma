@@ -39,6 +39,8 @@ model production_single_product_draft {
 
 model track_id_object {
   track_id                String @id
+  productId               Int @default(-1)
+  productName             String @default("")
   track_type              String
   creation_date_time      DateTime @unique(sort: Desc) @default(now())
   source_data             Json     @db.Json

@@ -3983,24 +3983,40 @@ export namespace Prisma {
 
   export type AggregateTrack_id_object = {
     _count: Track_id_objectCountAggregateOutputType | null
+    _avg: Track_id_objectAvgAggregateOutputType | null
+    _sum: Track_id_objectSumAggregateOutputType | null
     _min: Track_id_objectMinAggregateOutputType | null
     _max: Track_id_objectMaxAggregateOutputType | null
   }
 
+  export type Track_id_objectAvgAggregateOutputType = {
+    productId: number | null
+  }
+
+  export type Track_id_objectSumAggregateOutputType = {
+    productId: number | null
+  }
+
   export type Track_id_objectMinAggregateOutputType = {
     track_id: string | null
+    productId: number | null
+    productName: string | null
     track_type: string | null
     creation_date_time: Date | null
   }
 
   export type Track_id_objectMaxAggregateOutputType = {
     track_id: string | null
+    productId: number | null
+    productName: string | null
     track_type: string | null
     creation_date_time: Date | null
   }
 
   export type Track_id_objectCountAggregateOutputType = {
     track_id: number
+    productId: number
+    productName: number
     track_type: number
     creation_date_time: number
     source_data: number
@@ -4009,20 +4025,34 @@ export namespace Prisma {
   }
 
 
+  export type Track_id_objectAvgAggregateInputType = {
+    productId?: true
+  }
+
+  export type Track_id_objectSumAggregateInputType = {
+    productId?: true
+  }
+
   export type Track_id_objectMinAggregateInputType = {
     track_id?: true
+    productId?: true
+    productName?: true
     track_type?: true
     creation_date_time?: true
   }
 
   export type Track_id_objectMaxAggregateInputType = {
     track_id?: true
+    productId?: true
+    productName?: true
     track_type?: true
     creation_date_time?: true
   }
 
   export type Track_id_objectCountAggregateInputType = {
     track_id?: true
+    productId?: true
+    productName?: true
     track_type?: true
     creation_date_time?: true
     source_data?: true
@@ -4068,6 +4098,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: Track_id_objectAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Track_id_objectSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: Track_id_objectMinAggregateInputType
@@ -4098,17 +4140,23 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: Track_id_objectCountAggregateInputType | true
+    _avg?: Track_id_objectAvgAggregateInputType
+    _sum?: Track_id_objectSumAggregateInputType
     _min?: Track_id_objectMinAggregateInputType
     _max?: Track_id_objectMaxAggregateInputType
   }
 
   export type Track_id_objectGroupByOutputType = {
     track_id: string
+    productId: number
+    productName: string
     track_type: string
     creation_date_time: Date
     source_data: JsonValue
     object_data: JsonValue
     _count: Track_id_objectCountAggregateOutputType | null
+    _avg: Track_id_objectAvgAggregateOutputType | null
+    _sum: Track_id_objectSumAggregateOutputType | null
     _min: Track_id_objectMinAggregateOutputType | null
     _max: Track_id_objectMaxAggregateOutputType | null
   }
@@ -4129,6 +4177,8 @@ export namespace Prisma {
 
   export type track_id_objectSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     track_id?: boolean
+    productId?: boolean
+    productName?: boolean
     track_type?: boolean
     creation_date_time?: boolean
     source_data?: boolean
@@ -4139,6 +4189,8 @@ export namespace Prisma {
 
   export type track_id_objectSelectScalar = {
     track_id?: boolean
+    productId?: boolean
+    productName?: boolean
     track_type?: boolean
     creation_date_time?: boolean
     source_data?: boolean
@@ -4158,6 +4210,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetResult<{
       track_id: string
+      productId: number
+      productName: string
       track_type: string
       creation_date_time: Date
       source_data: Prisma.JsonValue
@@ -4558,6 +4612,8 @@ export namespace Prisma {
    */ 
   interface track_id_objectFieldRefs {
     readonly track_id: FieldRef<"track_id_object", 'String'>
+    readonly productId: FieldRef<"track_id_object", 'Int'>
+    readonly productName: FieldRef<"track_id_object", 'String'>
     readonly track_type: FieldRef<"track_id_object", 'String'>
     readonly creation_date_time: FieldRef<"track_id_object", 'DateTime'>
     readonly source_data: FieldRef<"track_id_object", 'Json'>
@@ -6770,6 +6826,8 @@ export namespace Prisma {
 
   export const Track_id_objectScalarFieldEnum: {
     track_id: 'track_id',
+    productId: 'productId',
+    productName: 'productName',
     track_type: 'track_type',
     creation_date_time: 'creation_date_time',
     source_data: 'source_data',
@@ -7059,6 +7117,8 @@ export namespace Prisma {
     OR?: track_id_objectWhereInput[]
     NOT?: track_id_objectWhereInput | track_id_objectWhereInput[]
     track_id?: StringFilter<"track_id_object"> | string
+    productId?: IntFilter<"track_id_object"> | number
+    productName?: StringFilter<"track_id_object"> | string
     track_type?: StringFilter<"track_id_object"> | string
     creation_date_time?: DateTimeFilter<"track_id_object"> | Date | string
     source_data?: JsonFilter<"track_id_object">
@@ -7068,6 +7128,8 @@ export namespace Prisma {
 
   export type track_id_objectOrderByWithRelationInput = {
     track_id?: SortOrder
+    productId?: SortOrder
+    productName?: SortOrder
     track_type?: SortOrder
     creation_date_time?: SortOrder
     source_data?: SortOrder
@@ -7081,6 +7143,8 @@ export namespace Prisma {
     AND?: track_id_objectWhereInput | track_id_objectWhereInput[]
     OR?: track_id_objectWhereInput[]
     NOT?: track_id_objectWhereInput | track_id_objectWhereInput[]
+    productId?: IntFilter<"track_id_object"> | number
+    productName?: StringFilter<"track_id_object"> | string
     track_type?: StringFilter<"track_id_object"> | string
     source_data?: JsonFilter<"track_id_object">
     object_data?: JsonFilter<"track_id_object">
@@ -7089,13 +7153,17 @@ export namespace Prisma {
 
   export type track_id_objectOrderByWithAggregationInput = {
     track_id?: SortOrder
+    productId?: SortOrder
+    productName?: SortOrder
     track_type?: SortOrder
     creation_date_time?: SortOrder
     source_data?: SortOrder
     object_data?: SortOrder
     _count?: track_id_objectCountOrderByAggregateInput
+    _avg?: track_id_objectAvgOrderByAggregateInput
     _max?: track_id_objectMaxOrderByAggregateInput
     _min?: track_id_objectMinOrderByAggregateInput
+    _sum?: track_id_objectSumOrderByAggregateInput
   }
 
   export type track_id_objectScalarWhereWithAggregatesInput = {
@@ -7103,6 +7171,8 @@ export namespace Prisma {
     OR?: track_id_objectScalarWhereWithAggregatesInput[]
     NOT?: track_id_objectScalarWhereWithAggregatesInput | track_id_objectScalarWhereWithAggregatesInput[]
     track_id?: StringWithAggregatesFilter<"track_id_object"> | string
+    productId?: IntWithAggregatesFilter<"track_id_object"> | number
+    productName?: StringWithAggregatesFilter<"track_id_object"> | string
     track_type?: StringWithAggregatesFilter<"track_id_object"> | string
     creation_date_time?: DateTimeWithAggregatesFilter<"track_id_object"> | Date | string
     source_data?: JsonWithAggregatesFilter<"track_id_object">
@@ -7369,6 +7439,8 @@ export namespace Prisma {
 
   export type track_id_objectCreateInput = {
     track_id: string
+    productId?: number
+    productName?: string
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -7378,6 +7450,8 @@ export namespace Prisma {
 
   export type track_id_objectUncheckedCreateInput = {
     track_id: string
+    productId?: number
+    productName?: string
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -7387,6 +7461,8 @@ export namespace Prisma {
 
   export type track_id_objectUpdateInput = {
     track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -7396,6 +7472,8 @@ export namespace Prisma {
 
   export type track_id_objectUncheckedUpdateInput = {
     track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -7405,6 +7483,8 @@ export namespace Prisma {
 
   export type track_id_objectCreateManyInput = {
     track_id: string
+    productId?: number
+    productName?: string
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -7413,6 +7493,8 @@ export namespace Prisma {
 
   export type track_id_objectUpdateManyMutationInput = {
     track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -7421,6 +7503,8 @@ export namespace Prisma {
 
   export type track_id_objectUncheckedUpdateManyInput = {
     track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -7766,22 +7850,36 @@ export namespace Prisma {
 
   export type track_id_objectCountOrderByAggregateInput = {
     track_id?: SortOrder
+    productId?: SortOrder
+    productName?: SortOrder
     track_type?: SortOrder
     creation_date_time?: SortOrder
     source_data?: SortOrder
     object_data?: SortOrder
   }
 
+  export type track_id_objectAvgOrderByAggregateInput = {
+    productId?: SortOrder
+  }
+
   export type track_id_objectMaxOrderByAggregateInput = {
     track_id?: SortOrder
+    productId?: SortOrder
+    productName?: SortOrder
     track_type?: SortOrder
     creation_date_time?: SortOrder
   }
 
   export type track_id_objectMinOrderByAggregateInput = {
     track_id?: SortOrder
+    productId?: SortOrder
+    productName?: SortOrder
     track_type?: SortOrder
     creation_date_time?: SortOrder
+  }
+
+  export type track_id_objectSumOrderByAggregateInput = {
+    productId?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -8158,6 +8256,8 @@ export namespace Prisma {
 
   export type track_id_objectCreateWithoutTrack_id_historyInput = {
     track_id: string
+    productId?: number
+    productName?: string
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -8166,6 +8266,8 @@ export namespace Prisma {
 
   export type track_id_objectUncheckedCreateWithoutTrack_id_historyInput = {
     track_id: string
+    productId?: number
+    productName?: string
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -8190,6 +8292,8 @@ export namespace Prisma {
 
   export type track_id_objectUpdateWithoutTrack_id_historyInput = {
     track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -8198,6 +8302,8 @@ export namespace Prisma {
 
   export type track_id_objectUncheckedUpdateWithoutTrack_id_historyInput = {
     track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
