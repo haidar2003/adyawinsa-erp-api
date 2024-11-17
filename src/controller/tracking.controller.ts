@@ -2,21 +2,13 @@
 
 import { NextFunction } from 'express';
 import { Request, Response } from 'express-serve-static-core';
-import { body, validationResult } from 'express-validator';
+import { body } from 'express-validator';
 import * as trackingService from '../service/tracking.service';
-import axios from 'axios';
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
-import { getTransferItems } from '../service/tracking.service';
 
 // Validation rules
-// export const inventoryMoveDraftCreateValidationRules = [
-// 	body('creation_date_time').isISO8601().toDate().withMessage('Creation date time in ISO 8601 format is required.'),
-// 	body('data').isObject().withMessage('Data must be a valid JSON object'),
-// ];
-
-// export const inventoryMoveDraftUpdateValidationRules = [
-// 	body('data').isObject().withMessage('Data must be a valid JSON object'),
-// ];
+export const trackingDraftCreateValidationRules = [
+	body('track_id').isString().withMessage('Track ID must be included'),
+];
 
 // Controllers
 export const postTrackId = async (req: Request, res: Response, next: NextFunction) => {
@@ -27,7 +19,9 @@ export const postTrackId = async (req: Request, res: Response, next: NextFunctio
 			track_id: trackIdDraft.track_id || 'track-' + new Date().toISOString(),
 			track_type: trackIdDraft.track_type || '',
 			source_data: trackIdDraft.source_data || {},
-			object_data: trackIdDraft.object_data || {},
+			object_data: {
+				...trackIdDraft
+			},
 		};
 
 		const result = await trackingService.createTrackIdObject(draftData);

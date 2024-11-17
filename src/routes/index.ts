@@ -4,6 +4,7 @@ import express, { Request, Response, Router } from 'express';
 import authenticateToken from '../middleware/authenticateToken';
 import authorizeToken from '../middleware/authorizeToken';
 import inventoryMoveDraftRouter from './inventoryMoveDraft.routes';
+import trackingRouter from './tracking.routes';
 
 const router: Router = express.Router();
 
@@ -14,6 +15,7 @@ router.get('/', (req: Request, res: Response) => {
 });
 
 router.use('/inventory-move-draft', inventoryMoveDraftRouter);
+router.use('/tracking', trackingRouter);
 
 // Routes below needs authentication
 router.use(authenticateToken);
