@@ -138,32 +138,37 @@ export const getTransferItems = (
 			const currentQuantity = productTrackQuantityDict[productId].trackIdAndQuantityDict[trackId].trackIdList
 				.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
 
-			transactionArray.push(prisma.track_id_stock.update({
-				where: {
-					locator_id_key23: {
-						locator_id: locatorToId,
-						key23: productId + '-' + trackId
+			if (locatorToId) {
+				transactionArray.push(prisma.track_id_stock.update({
+					where: {
+						locator_id_key23: {
+							locator_id: locatorToId,
+							key23: productId + '-' + trackId
+						}
+					},
+					data: {
+						quantity: {
+							increment: currentQuantity * (isReverse ? -1 : 1)
+						}
 					}
-				},
-				data: {
-					quantity: {
-						increment: currentQuantity * (isReverse ? -1 : 1)
+				}));
+			}
+
+			if (locatorFromId) {
+				transactionArray.push(prisma.track_id_stock.update({
+					where: {
+						locator_id_key23: {
+							locator_id: locatorFromId,
+							key23: productId + '-' + trackId
+						}
+					},
+					data: {
+						quantity: {
+							increment: currentQuantity * (isReverse ? 1 : -1)
+						}
 					}
-				}
-			}));
-			transactionArray.push(prisma.track_id_stock.update({
-				where: {
-					locator_id_key23: {
-						locator_id: locatorFromId,
-						key23: productId + '-' + trackId
-					}
-				},
-				data: {
-					quantity: {
-						increment: currentQuantity * (isReverse ? 1 : -1)
-					}
-				}
-			}));
+				}));
+			}
 		}
 	}
 
