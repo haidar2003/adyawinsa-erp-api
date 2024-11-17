@@ -24,11 +24,11 @@ export const shipmentDraftUpdateValidationRules = [
 // Controllers
 export const createShipmentDraft = async (req: Request, res: Response, next: NextFunction) => {
     
-	const imDraft = req.body.imDraft;
+	const sDraft = req.body.sDraft;
 
 	try {
 
-		const hydratedShipmentDraft = hydrateShipment(imDraft);
+		const hydratedShipmentDraft = hydrateShipment(sDraft);
 		const hydratedShipmentDraftErp = getShipmentErpObjectFromHydratedCombinedData(hydratedShipmentDraft);
 
 		const reqBody = {
@@ -49,20 +49,20 @@ export const createShipmentDraft = async (req: Request, res: Response, next: Nex
 	
 		const response = await axios(reqBody);
 
-		console.log(response);
-
 		const shadowData = {
 			...response.data.returnBody,
 
 			// SHADOW VARIABLES
 			customerRequestDocNo: hydratedShipmentDraft.customerRequestDocNo,
 			productTrackQuantityDict: hydratedShipmentDraft.productTrackQuantityDict,
+			M_Locator_ID: hydratedShipmentDraft.M_Locator_ID
 		};
 
 		const draftData = {
 			org_id: shadowData.AD_Org_ID.id,
 			creation_date_time: new Date(shadowData.Created),
-			movement_id: shadowData.id,
+			erp_id: shadowData.id,
+			vendor_id: shadowData.C_BPartner_ID.id,
 			data: shadowData
 		};
 
@@ -140,6 +140,10 @@ export const getShipmentDraftAll = async (req: Request, res: Response, next: Nex
 		let realDraftsList: any[] = [];
 		let shadowDraftsList: any[] = [];
 
+		const { orgId, vendorId } = req.query;
+		const orgIdNum = parseInt(orgId as string, 10);
+    	const vendorIdNum = parseInt(vendorId as string, 10);
+
 		// Ambil dari server asli
 		try {
 			const reqBody = {
@@ -154,6 +158,7 @@ export const getShipmentDraftAll = async (req: Request, res: Response, next: Nex
 						'method': 'get',
 						'url': `${endpointApiUrl}/api/v1/models/M_InOut`,
 						'params': {
+							"$filter": "AD_Org_ID eq " + orgId + " AND C_BPartner_ID eq " + vendorId + " AND IsSOTrx eq true",
 							'$orderby': 'Created desc',
 							'$expand': 'M_InOutLine',
 						}
@@ -170,7 +175,7 @@ export const getShipmentDraftAll = async (req: Request, res: Response, next: Nex
 
 		// Ambil dari Supabase
 		try {
-			shadowDraftsList = await shipmentDraftService.getAllShipmentDrafts();
+			shadowDraftsList = await shipmentDraftService.getFilteredShipmentDrafts(orgIdNum, vendorIdNum);
 		} catch (error: any) {
 			console.error('Failed to fetch from shadow database:', error);
 			return res.status(500).json({ error: 'Failed to fetch data from shadow database' });
@@ -752,12 +757,10 @@ const hydrateShipment = (combinedData: any) => {
 				'AD_Org_ID': combinedData.AD_Org_ID,
 				'IsActive': true,
 				'M_Locator_ID': combinedData.M_Locator_ID,
-				'M_LocatorTo_ID': combinedData.M_LocatorTo_ID,
 				'M_Product_ID': Number(productIdCur),
 				'MovementQty': productIdToAmountDict[productIdCur],
 				'Line': lineCounter + M_InOutLine.length,
-				'BoxQty': 0,
-				'PalletQty': 0,
+				"C_OrderLine_ID": combinedData.productTrackQuantityDict[productIdCur.toString()].orderLine
 			});
 			lineCounter += 1;
 		}
@@ -790,5 +793,6 @@ const getShipmentErpObjectFromHydratedCombinedData = (combinedData: any) => {
 		// SHADOW VARIABLES
 		'customerRequestDocNo': undefined,
 		'productTrackQuantityDict': undefined,
+		"M_Locator_ID": undefined
 	};
 };

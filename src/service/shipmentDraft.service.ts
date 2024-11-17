@@ -21,6 +21,7 @@ export const createShipmentDraft = async (shipmentDTO: any) => {
 				creation_date_time: shipmentDTO.creation_date_time,
 				erp_id: shipmentDTO.erp_id,
 				data: shipmentDTO.data,
+				vendor_id: shipmentDTO.vendor_id
 			},
 		});
 	} catch (error) {
@@ -34,6 +35,17 @@ export const getAllShipmentDrafts = async () => {
 	return await prisma.shipment_draft.findMany();
 };
 
+export const getFilteredShipmentDrafts = async (orgId: number, vendorId: number) => {
+	return await prisma.shipment_draft.findMany({
+	  where: {
+		org_id: orgId,
+		vendor_id: vendorId,
+	  },
+	  orderBy: {
+		creation_date_time: 'desc',
+	  },
+	});
+};
 
 // export const getShipmentDraftByOrgIdAndCreationDateTime = async (org_id: number, creation_date_time: Date) => {
 //    return prisma.shipment_draft.findUnique({
