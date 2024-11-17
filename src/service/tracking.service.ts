@@ -25,6 +25,14 @@ export const getAllTrackIdObjects = async () => {
 	return await prisma.track_id_object.findMany();
 };
 
+export const getTrackIdObject = async (trackId: string) => {
+	return await prisma.track_id_object.findUnique({
+		where: {
+			track_id: trackId
+		}
+	});
+};
+
 export const updateTrackIdObject = async (trackIdObjectDTO: any) => {
 	return prisma.track_id_object.update({
 		where: {
