@@ -8,8 +8,6 @@ import axios from 'axios';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { getTransferItems } from '../service/tracking.service';
 
-const endpointApiUrl = process.env.ENDPOINT_ERP_API_URL ?? 'https://server.tricentrumfortuna.com:12';
-
 // Validation rules
 // export const inventoryMoveDraftCreateValidationRules = [
 // 	body('creation_date_time').isISO8601().toDate().withMessage('Creation date time in ISO 8601 format is required.'),
@@ -22,56 +20,22 @@ const endpointApiUrl = process.env.ENDPOINT_ERP_API_URL ?? 'https://server.trice
 
 // Controllers
 export const postTrackId = async (req: Request, res: Response, next: NextFunction) => {
-    
-	const imDraft = req.body.imDraft;
-
 	try {
-
-		const hydratedIMDraft = hydrateInventoryMove(imDraft);
-		const hydratedIMDraftErp = getInventoryMoveErpObjectFromHydratedCombinedData(hydratedIMDraft);
-
-		const reqBody = {
-			method: 'post',
-			maxBodyLength: Infinity,
-			headers: { 
-				'Content-Type': 'application/json'
-			},
-			url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
-			data: JSON.stringify({
-				'axiosConfig': {
-					'method': 'post',
-					'url': endpointApiUrl + '/api/v1/models/M_Movement',
-					'data': hydratedIMDraftErp,
-				}
-			})
-		};
-	
-		const response = await axios(reqBody);
-
-		console.log(response);
-
-		const shadowData = {
-			...response.data.returnBody,
-
-			// SHADOW VARIABLES
-			employeeNumber: hydratedIMDraft.employeeNumber,
-			materialMovementProductDict: hydratedIMDraft.materialMovementProductDict,
-			M_Locator_ID: hydratedIMDraft.M_Locator_ID,
-			M_LocatorTo_ID: hydratedIMDraft.M_LocatorTo_ID
-		};
+		const trackIdDraft = req.body;
 
 		const draftData = {
-			org_id: shadowData.AD_Org_ID.id,
-			creation_date_time: new Date(shadowData.Created),
-			movement_id: shadowData.id,
-			data: shadowData
+			track_id: trackIdDraft.track_id || 'track-' + new Date().toISOString(),
+			track_type: trackIdDraft.track_type || '',
+			source_data: trackIdDraft.source_data || {},
+			object_data: trackIdDraft.object_data || {},
 		};
 
-		const result = await inventoryMoveDraftService.createInventoryMoveDraft(draftData);
-		
-		res.status(response.status).json(result); 
-	} catch (error) {
-		console.log('Error in createInventoryMoveDraft controller: ', error);
+		const result = await trackingService.createTrackIdObject(draftData);
+
+		// Kirim response
+		return res.json(result);
+	} catch (error: any) {
+		console.error('Unexpected server error:', error);
 		next(error);
 	}
 };
