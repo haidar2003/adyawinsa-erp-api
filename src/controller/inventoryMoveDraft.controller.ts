@@ -347,6 +347,14 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 
 				try {
 					const response = await axios(reqBody);
+
+					// FAILURE ROLLBACK
+					// If success === false / FAILED document complete,
+					// we roll back the stock changes.
+					if (response?.data?.success === false) {
+						await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, currentData, undefined);
+					}
+
 					return res.json(response.data);
 				} catch (apiError: any) {
 					console.error('Failed to update real server:', apiError);
