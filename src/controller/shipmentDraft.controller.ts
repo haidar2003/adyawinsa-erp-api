@@ -470,13 +470,13 @@ export const updateShipmentDraftComplete = async (req: Request, res: Response, n
 				await trackingService.createManyTrackIdStock(
 					currentData.M_Locator_ID, 
 					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict
+					currentData.productTrackQuantityDict
 				);
 
 				const additionalData = getTransferItems(
 					currentData.M_Locator_ID, 
 					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict,
+					currentData.productTrackQuantityDict,
 					false
 				);
 
@@ -619,13 +619,13 @@ export const updateShipmentDraftReverse = async (req: Request, res: Response, ne
 				await trackingService.createManyTrackIdStock(
 					currentData.M_Locator_ID, 
 					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict
+					currentData.productTrackQuantityDict
 				);
 
 				const additionalData = getTransferItems(
 					currentData.M_Locator_ID, 
 					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict,
+					currentData.productTrackQuantityDict,
 					true
 				);
 
