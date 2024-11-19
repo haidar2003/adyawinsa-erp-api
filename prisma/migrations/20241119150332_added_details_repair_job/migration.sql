@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "repair_job" ADD COLUMN     "description" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "quantity" DOUBLE PRECISION NOT NULL DEFAULT 0,
+ALTER COLUMN "repair_status" SET DEFAULT 'CREATED';

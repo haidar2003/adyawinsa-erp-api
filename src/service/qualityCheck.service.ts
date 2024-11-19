@@ -29,9 +29,9 @@ export const createQualityCheckObject = async (qualityCheckObjectDTO: any) => {
 
 				total_ok: qualityCheckObjectDTO.total_ok ?? 0,
 				scrap_reason: qualityCheckObjectDTO.scrap_reason ?? '',
-				total_ng_scrap: qualityCheckObjectDTO.total_ok ?? 0,
+				total_ng_scrap: qualityCheckObjectDTO.total_ng_scrap ?? 0,
 				repair_reason: qualityCheckObjectDTO.repair_reason ?? '',
-				total_ng_repair: qualityCheckObjectDTO.total_ok ?? 0,
+				total_ng_repair: qualityCheckObjectDTO.total_ng_repair ?? 0,
 			},
 		});
 	} catch (error) {

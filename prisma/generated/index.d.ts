@@ -5514,82 +5514,98 @@ export namespace Prisma {
 
   export type Repair_jobAvgAggregateOutputType = {
     org_id: number | null
-    starting_locator_id: number | null
     imove_repair_id: number | null
+    starting_locator_id: number | null
+    quantity: number | null
   }
 
   export type Repair_jobSumAggregateOutputType = {
     org_id: number | null
-    starting_locator_id: number | null
     imove_repair_id: number | null
+    starting_locator_id: number | null
+    quantity: number | null
   }
 
   export type Repair_jobMinAggregateOutputType = {
     org_id: number | null
     creation_date_time: Date | null
     track_id: string | null
-    starting_locator_id: number | null
     imove_repair_id: number | null
+    starting_locator_id: number | null
     repair_status: string | null
+    description: string | null
+    quantity: number | null
   }
 
   export type Repair_jobMaxAggregateOutputType = {
     org_id: number | null
     creation_date_time: Date | null
     track_id: string | null
-    starting_locator_id: number | null
     imove_repair_id: number | null
+    starting_locator_id: number | null
     repair_status: string | null
+    description: string | null
+    quantity: number | null
   }
 
   export type Repair_jobCountAggregateOutputType = {
     org_id: number
     creation_date_time: number
     track_id: number
-    starting_locator_id: number
     imove_repair_id: number
+    starting_locator_id: number
     repair_status: number
+    description: number
+    quantity: number
     _all: number
   }
 
 
   export type Repair_jobAvgAggregateInputType = {
     org_id?: true
-    starting_locator_id?: true
     imove_repair_id?: true
+    starting_locator_id?: true
+    quantity?: true
   }
 
   export type Repair_jobSumAggregateInputType = {
     org_id?: true
-    starting_locator_id?: true
     imove_repair_id?: true
+    starting_locator_id?: true
+    quantity?: true
   }
 
   export type Repair_jobMinAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     track_id?: true
-    starting_locator_id?: true
     imove_repair_id?: true
+    starting_locator_id?: true
     repair_status?: true
+    description?: true
+    quantity?: true
   }
 
   export type Repair_jobMaxAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     track_id?: true
-    starting_locator_id?: true
     imove_repair_id?: true
+    starting_locator_id?: true
     repair_status?: true
+    description?: true
+    quantity?: true
   }
 
   export type Repair_jobCountAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     track_id?: true
-    starting_locator_id?: true
     imove_repair_id?: true
+    starting_locator_id?: true
     repair_status?: true
+    description?: true
+    quantity?: true
     _all?: true
   }
 
@@ -5683,9 +5699,11 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date
     track_id: string
-    starting_locator_id: number
     imove_repair_id: number | null
+    starting_locator_id: number
     repair_status: string
+    description: string
+    quantity: number
     _count: Repair_jobCountAggregateOutputType | null
     _avg: Repair_jobAvgAggregateOutputType | null
     _sum: Repair_jobSumAggregateOutputType | null
@@ -5711,9 +5729,11 @@ export namespace Prisma {
     org_id?: boolean
     creation_date_time?: boolean
     track_id?: boolean
-    starting_locator_id?: boolean
     imove_repair_id?: boolean
+    starting_locator_id?: boolean
     repair_status?: boolean
+    description?: boolean
+    quantity?: boolean
     track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
     imove_repair_obj?: boolean | repair_job$imove_repair_objArgs<ExtArgs>
     quality_check_src?: boolean | repair_job$quality_check_srcArgs<ExtArgs>
@@ -5725,9 +5745,11 @@ export namespace Prisma {
     org_id?: boolean
     creation_date_time?: boolean
     track_id?: boolean
-    starting_locator_id?: boolean
     imove_repair_id?: boolean
+    starting_locator_id?: boolean
     repair_status?: boolean
+    description?: boolean
+    quantity?: boolean
   }
 
   export type repair_jobInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -5751,9 +5773,11 @@ export namespace Prisma {
       org_id: number
       creation_date_time: Date
       track_id: string
-      starting_locator_id: number
       imove_repair_id: number | null
+      starting_locator_id: number
       repair_status: string
+      description: string
+      quantity: number
     }, ExtArgs["result"]["repair_job"]>
     composites: {}
   }
@@ -6158,9 +6182,11 @@ export namespace Prisma {
     readonly org_id: FieldRef<"repair_job", 'Int'>
     readonly creation_date_time: FieldRef<"repair_job", 'DateTime'>
     readonly track_id: FieldRef<"repair_job", 'String'>
-    readonly starting_locator_id: FieldRef<"repair_job", 'Int'>
     readonly imove_repair_id: FieldRef<"repair_job", 'Int'>
+    readonly starting_locator_id: FieldRef<"repair_job", 'Int'>
     readonly repair_status: FieldRef<"repair_job", 'String'>
+    readonly description: FieldRef<"repair_job", 'String'>
+    readonly quantity: FieldRef<"repair_job", 'Float'>
   }
     
 
@@ -10587,9 +10613,11 @@ export namespace Prisma {
     org_id: 'org_id',
     creation_date_time: 'creation_date_time',
     track_id: 'track_id',
-    starting_locator_id: 'starting_locator_id',
     imove_repair_id: 'imove_repair_id',
-    repair_status: 'repair_status'
+    starting_locator_id: 'starting_locator_id',
+    repair_status: 'repair_status',
+    description: 'description',
+    quantity: 'quantity'
   };
 
   export type Repair_jobScalarFieldEnum = (typeof Repair_jobScalarFieldEnum)[keyof typeof Repair_jobScalarFieldEnum]
@@ -11035,9 +11063,11 @@ export namespace Prisma {
     org_id?: IntFilter<"repair_job"> | number
     creation_date_time?: DateTimeFilter<"repair_job"> | Date | string
     track_id?: StringFilter<"repair_job"> | string
-    starting_locator_id?: IntFilter<"repair_job"> | number
     imove_repair_id?: IntNullableFilter<"repair_job"> | number | null
+    starting_locator_id?: IntFilter<"repair_job"> | number
     repair_status?: StringFilter<"repair_job"> | string
+    description?: StringFilter<"repair_job"> | string
+    quantity?: FloatFilter<"repair_job"> | number
     track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
     imove_repair_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
     quality_check_src?: Quality_checkListRelationFilter
@@ -11048,9 +11078,11 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     track_id?: SortOrder
-    starting_locator_id?: SortOrder
     imove_repair_id?: SortOrderInput | SortOrder
+    starting_locator_id?: SortOrder
     repair_status?: SortOrder
+    description?: SortOrder
+    quantity?: SortOrder
     track_id_object?: track_id_objectOrderByWithRelationInput
     imove_repair_obj?: inventory_move_draftOrderByWithRelationInput
     quality_check_src?: quality_checkOrderByRelationAggregateInput
@@ -11068,6 +11100,8 @@ export namespace Prisma {
     creation_date_time?: DateTimeFilter<"repair_job"> | Date | string
     starting_locator_id?: IntFilter<"repair_job"> | number
     repair_status?: StringFilter<"repair_job"> | string
+    description?: StringFilter<"repair_job"> | string
+    quantity?: FloatFilter<"repair_job"> | number
     track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
     imove_repair_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
     quality_check_src?: Quality_checkListRelationFilter
@@ -11078,9 +11112,11 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     track_id?: SortOrder
-    starting_locator_id?: SortOrder
     imove_repair_id?: SortOrderInput | SortOrder
+    starting_locator_id?: SortOrder
     repair_status?: SortOrder
+    description?: SortOrder
+    quantity?: SortOrder
     _count?: repair_jobCountOrderByAggregateInput
     _avg?: repair_jobAvgOrderByAggregateInput
     _max?: repair_jobMaxOrderByAggregateInput
@@ -11095,9 +11131,11 @@ export namespace Prisma {
     org_id?: IntWithAggregatesFilter<"repair_job"> | number
     creation_date_time?: DateTimeWithAggregatesFilter<"repair_job"> | Date | string
     track_id?: StringWithAggregatesFilter<"repair_job"> | string
-    starting_locator_id?: IntWithAggregatesFilter<"repair_job"> | number
     imove_repair_id?: IntNullableWithAggregatesFilter<"repair_job"> | number | null
+    starting_locator_id?: IntWithAggregatesFilter<"repair_job"> | number
     repair_status?: StringWithAggregatesFilter<"repair_job"> | string
+    description?: StringWithAggregatesFilter<"repair_job"> | string
+    quantity?: FloatWithAggregatesFilter<"repair_job"> | number
   }
 
   export type quality_checkWhereInput = {
@@ -11670,7 +11708,9 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     starting_locator_id?: number
-    repair_status: string
+    repair_status?: string
+    description?: string
+    quantity?: number
     track_id_object: track_id_objectCreateNestedOneWithoutRepair_jobInput
     imove_repair_obj?: inventory_move_draftCreateNestedOneWithoutRepair_job_imoveInput
     quality_check_src?: quality_checkCreateNestedManyWithoutRepair_jobInput
@@ -11681,9 +11721,11 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     track_id: string
-    starting_locator_id?: number
     imove_repair_id?: number | null
-    repair_status: string
+    starting_locator_id?: number
+    repair_status?: string
+    description?: string
+    quantity?: number
     quality_check_src?: quality_checkUncheckedCreateNestedManyWithoutRepair_jobInput
     production_single_src?: production_single_product_draftUncheckedCreateNestedManyWithoutRepair_jobInput
   }
@@ -11693,6 +11735,8 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     track_id_object?: track_id_objectUpdateOneRequiredWithoutRepair_jobNestedInput
     imove_repair_obj?: inventory_move_draftUpdateOneWithoutRepair_job_imoveNestedInput
     quality_check_src?: quality_checkUpdateManyWithoutRepair_jobNestedInput
@@ -11703,9 +11747,11 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     track_id?: StringFieldUpdateOperationsInput | string
-    starting_locator_id?: IntFieldUpdateOperationsInput | number
     imove_repair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     quality_check_src?: quality_checkUncheckedUpdateManyWithoutRepair_jobNestedInput
     production_single_src?: production_single_product_draftUncheckedUpdateManyWithoutRepair_jobNestedInput
   }
@@ -11714,9 +11760,11 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     track_id: string
-    starting_locator_id?: number
     imove_repair_id?: number | null
-    repair_status: string
+    starting_locator_id?: number
+    repair_status?: string
+    description?: string
+    quantity?: number
   }
 
   export type repair_jobUpdateManyMutationInput = {
@@ -11724,15 +11772,19 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
   }
 
   export type repair_jobUncheckedUpdateManyInput = {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     track_id?: StringFieldUpdateOperationsInput | string
-    starting_locator_id?: IntFieldUpdateOperationsInput | number
     imove_repair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
   }
 
   export type quality_checkCreateInput = {
@@ -12497,39 +12549,47 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     track_id?: SortOrder
-    starting_locator_id?: SortOrder
     imove_repair_id?: SortOrder
+    starting_locator_id?: SortOrder
     repair_status?: SortOrder
+    description?: SortOrder
+    quantity?: SortOrder
   }
 
   export type repair_jobAvgOrderByAggregateInput = {
     org_id?: SortOrder
-    starting_locator_id?: SortOrder
     imove_repair_id?: SortOrder
+    starting_locator_id?: SortOrder
+    quantity?: SortOrder
   }
 
   export type repair_jobMaxOrderByAggregateInput = {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     track_id?: SortOrder
-    starting_locator_id?: SortOrder
     imove_repair_id?: SortOrder
+    starting_locator_id?: SortOrder
     repair_status?: SortOrder
+    description?: SortOrder
+    quantity?: SortOrder
   }
 
   export type repair_jobMinOrderByAggregateInput = {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     track_id?: SortOrder
-    starting_locator_id?: SortOrder
     imove_repair_id?: SortOrder
+    starting_locator_id?: SortOrder
     repair_status?: SortOrder
+    description?: SortOrder
+    quantity?: SortOrder
   }
 
   export type repair_jobSumOrderByAggregateInput = {
     org_id?: SortOrder
-    starting_locator_id?: SortOrder
     imove_repair_id?: SortOrder
+    starting_locator_id?: SortOrder
+    quantity?: SortOrder
   }
 
   export type quality_checkOrg_idCreation_date_timeCompoundUniqueInput = {
@@ -13482,7 +13542,9 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     starting_locator_id?: number
-    repair_status: string
+    repair_status?: string
+    description?: string
+    quantity?: number
     track_id_object: track_id_objectCreateNestedOneWithoutRepair_jobInput
     quality_check_src?: quality_checkCreateNestedManyWithoutRepair_jobInput
     production_single_src?: production_single_product_draftCreateNestedManyWithoutRepair_jobInput
@@ -13493,7 +13555,9 @@ export namespace Prisma {
     creation_date_time: Date | string
     track_id: string
     starting_locator_id?: number
-    repair_status: string
+    repair_status?: string
+    description?: string
+    quantity?: number
     quality_check_src?: quality_checkUncheckedCreateNestedManyWithoutRepair_jobInput
     production_single_src?: production_single_product_draftUncheckedCreateNestedManyWithoutRepair_jobInput
   }
@@ -13599,6 +13663,8 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     track_id_object?: track_id_objectUpdateOneRequiredWithoutRepair_jobNestedInput
     quality_check_src?: quality_checkUpdateManyWithoutRepair_jobNestedInput
     production_single_src?: production_single_product_draftUpdateManyWithoutRepair_jobNestedInput
@@ -13610,6 +13676,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     quality_check_src?: quality_checkUncheckedUpdateManyWithoutRepair_jobNestedInput
     production_single_src?: production_single_product_draftUncheckedUpdateManyWithoutRepair_jobNestedInput
   }
@@ -13672,7 +13740,9 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     starting_locator_id?: number
-    repair_status: string
+    repair_status?: string
+    description?: string
+    quantity?: number
     track_id_object: track_id_objectCreateNestedOneWithoutRepair_jobInput
     imove_repair_obj?: inventory_move_draftCreateNestedOneWithoutRepair_job_imoveInput
     quality_check_src?: quality_checkCreateNestedManyWithoutRepair_jobInput
@@ -13682,9 +13752,11 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     track_id: string
-    starting_locator_id?: number
     imove_repair_id?: number | null
-    repair_status: string
+    starting_locator_id?: number
+    repair_status?: string
+    description?: string
+    quantity?: number
     quality_check_src?: quality_checkUncheckedCreateNestedManyWithoutRepair_jobInput
   }
 
@@ -13775,6 +13847,8 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     track_id_object?: track_id_objectUpdateOneRequiredWithoutRepair_jobNestedInput
     imove_repair_obj?: inventory_move_draftUpdateOneWithoutRepair_job_imoveNestedInput
     quality_check_src?: quality_checkUpdateManyWithoutRepair_jobNestedInput
@@ -13784,9 +13858,11 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     track_id?: StringFieldUpdateOperationsInput | string
-    starting_locator_id?: IntFieldUpdateOperationsInput | number
     imove_repair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     quality_check_src?: quality_checkUncheckedUpdateManyWithoutRepair_jobNestedInput
   }
 
@@ -14115,7 +14191,9 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     starting_locator_id?: number
-    repair_status: string
+    repair_status?: string
+    description?: string
+    quantity?: number
     track_id_object: track_id_objectCreateNestedOneWithoutRepair_jobInput
     imove_repair_obj?: inventory_move_draftCreateNestedOneWithoutRepair_job_imoveInput
     production_single_src?: production_single_product_draftCreateNestedManyWithoutRepair_jobInput
@@ -14125,9 +14203,11 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     track_id: string
-    starting_locator_id?: number
     imove_repair_id?: number | null
-    repair_status: string
+    starting_locator_id?: number
+    repair_status?: string
+    description?: string
+    quantity?: number
     production_single_src?: production_single_product_draftUncheckedCreateNestedManyWithoutRepair_jobInput
   }
 
@@ -14218,6 +14298,8 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     track_id_object?: track_id_objectUpdateOneRequiredWithoutRepair_jobNestedInput
     imove_repair_obj?: inventory_move_draftUpdateOneWithoutRepair_job_imoveNestedInput
     production_single_src?: production_single_product_draftUpdateManyWithoutRepair_jobNestedInput
@@ -14227,9 +14309,11 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     track_id?: StringFieldUpdateOperationsInput | string
-    starting_locator_id?: IntFieldUpdateOperationsInput | number
     imove_repair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     production_single_src?: production_single_product_draftUncheckedUpdateManyWithoutRepair_jobNestedInput
   }
 
@@ -14259,7 +14343,9 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     starting_locator_id?: number
-    repair_status: string
+    repair_status?: string
+    description?: string
+    quantity?: number
     imove_repair_obj?: inventory_move_draftCreateNestedOneWithoutRepair_job_imoveInput
     quality_check_src?: quality_checkCreateNestedManyWithoutRepair_jobInput
     production_single_src?: production_single_product_draftCreateNestedManyWithoutRepair_jobInput
@@ -14268,9 +14354,11 @@ export namespace Prisma {
   export type repair_jobUncheckedCreateWithoutTrack_id_objectInput = {
     org_id: number
     creation_date_time: Date | string
-    starting_locator_id?: number
     imove_repair_id?: number | null
-    repair_status: string
+    starting_locator_id?: number
+    repair_status?: string
+    description?: string
+    quantity?: number
     quality_check_src?: quality_checkUncheckedCreateNestedManyWithoutRepair_jobInput
     production_single_src?: production_single_product_draftUncheckedCreateNestedManyWithoutRepair_jobInput
   }
@@ -14395,6 +14483,8 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     imove_repair_obj?: inventory_move_draftUpdateOneWithoutRepair_job_imoveNestedInput
     quality_check_src?: quality_checkUpdateManyWithoutRepair_jobNestedInput
     production_single_src?: production_single_product_draftUpdateManyWithoutRepair_jobNestedInput
@@ -14403,9 +14493,11 @@ export namespace Prisma {
   export type repair_jobUncheckedUpdateWithoutTrack_id_objectInput = {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
-    starting_locator_id?: IntFieldUpdateOperationsInput | number
     imove_repair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
     repair_status?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: FloatFieldUpdateOperationsInput | number
     quality_check_src?: quality_checkUncheckedUpdateManyWithoutRepair_jobNestedInput
     production_single_src?: production_single_product_draftUncheckedUpdateManyWithoutRepair_jobNestedInput
   }

@@ -75,14 +75,16 @@ model repair_job {
   track_id_object   track_id_object @relation("REPAIR-TRACK-ID",fields: [track_id], references: [track_id])
   track_id          String @unique
 
-  starting_locator_id Int @default(-1)
   imove_repair_obj  inventory_move_draft? @relation("REPAIR-JOB-IMOVE", fields: [imove_repair_id], references: [movement_id])
   imove_repair_id   Int? @unique
 
   quality_check_src           quality_check[] @relation("QUALITY-REPAIR-JOB")
   production_single_src       production_single_product_draft[] @relation("PRODUCT-SINGLE-REPAIR-JOB")
 
-  repair_status     String
+  starting_locator_id Int @default(-1)
+  repair_status     String @default("CREATED")
+  description       String @default("")
+  quantity          Float @default(0)
 
   @@id([org_id, creation_date_time])
 }

@@ -15,16 +15,11 @@ export const postRepair = async (req: Request, res: Response, next: NextFunction
 	try {
 		const repairDraft = req.body;
 
-		const draftData = {
-			track_id: repairDraft.track_id || 'track-' + new Date().toISOString(),
-			track_type: repairDraft.track_type || '',
-			source_data: repairDraft.source_data || {},
-			object_data: {
-				...repairDraft
-			},
-		};
+		const result = await repairService.createRepairJobObject({
+			...repairDraft,
+			creation_date_time: repairDraft.creation_date_time ?? new Date().toISOString(),
+		});
 
-		const result = await repairService.createRepairJobObject(draftData);
 
 		// Kirim response
 		return res.json(result);

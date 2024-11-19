@@ -162,9 +162,11 @@ exports.Prisma.Repair_jobScalarFieldEnum = {
   org_id: 'org_id',
   creation_date_time: 'creation_date_time',
   track_id: 'track_id',
-  starting_locator_id: 'starting_locator_id',
   imove_repair_id: 'imove_repair_id',
-  repair_status: 'repair_status'
+  starting_locator_id: 'starting_locator_id',
+  repair_status: 'repair_status',
+  description: 'description',
+  quantity: 'quantity'
 };
 
 exports.Prisma.Quality_checkScalarFieldEnum = {
