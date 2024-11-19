@@ -34,6 +34,16 @@ export type material_receive_draft = $Result.DefaultSelection<Prisma.$material_r
  */
 export type production_single_product_draft = $Result.DefaultSelection<Prisma.$production_single_product_draftPayload>
 /**
+ * Model repair_job
+ * 
+ */
+export type repair_job = $Result.DefaultSelection<Prisma.$repair_jobPayload>
+/**
+ * Model quality_check
+ * 
+ */
+export type quality_check = $Result.DefaultSelection<Prisma.$quality_checkPayload>
+/**
  * Model track_id_object
  * 
  */
@@ -210,6 +220,26 @@ export class PrismaClient<
     * ```
     */
   get production_single_product_draft(): Prisma.production_single_product_draftDelegate<ExtArgs>;
+
+  /**
+   * `prisma.repair_job`: Exposes CRUD operations for the **repair_job** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Repair_jobs
+    * const repair_jobs = await prisma.repair_job.findMany()
+    * ```
+    */
+  get repair_job(): Prisma.repair_jobDelegate<ExtArgs>;
+
+  /**
+   * `prisma.quality_check`: Exposes CRUD operations for the **quality_check** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Quality_checks
+    * const quality_checks = await prisma.quality_check.findMany()
+    * ```
+    */
+  get quality_check(): Prisma.quality_checkDelegate<ExtArgs>;
 
   /**
    * `prisma.track_id_object`: Exposes CRUD operations for the **track_id_object** model.
@@ -714,6 +744,8 @@ export namespace Prisma {
     shipment_draft: 'shipment_draft',
     material_receive_draft: 'material_receive_draft',
     production_single_product_draft: 'production_single_product_draft',
+    repair_job: 'repair_job',
+    quality_check: 'quality_check',
     track_id_object: 'track_id_object',
     track_id_history: 'track_id_history',
     track_id_stock: 'track_id_stock'
@@ -733,7 +765,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'inventory_move_draft' | 'shipment_draft' | 'material_receive_draft' | 'production_single_product_draft' | 'track_id_object' | 'track_id_history' | 'track_id_stock'
+      modelProps: 'inventory_move_draft' | 'shipment_draft' | 'material_receive_draft' | 'production_single_product_draft' | 'repair_job' | 'quality_check' | 'track_id_object' | 'track_id_history' | 'track_id_stock'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -998,6 +1030,138 @@ export namespace Prisma {
           count: {
             args: Prisma.production_single_product_draftCountArgs<ExtArgs>,
             result: $Utils.Optional<Production_single_product_draftCountAggregateOutputType> | number
+          }
+        }
+      }
+      repair_job: {
+        payload: Prisma.$repair_jobPayload<ExtArgs>
+        fields: Prisma.repair_jobFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.repair_jobFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$repair_jobPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.repair_jobFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$repair_jobPayload>
+          }
+          findFirst: {
+            args: Prisma.repair_jobFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$repair_jobPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.repair_jobFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$repair_jobPayload>
+          }
+          findMany: {
+            args: Prisma.repair_jobFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$repair_jobPayload>[]
+          }
+          create: {
+            args: Prisma.repair_jobCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$repair_jobPayload>
+          }
+          createMany: {
+            args: Prisma.repair_jobCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.repair_jobDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$repair_jobPayload>
+          }
+          update: {
+            args: Prisma.repair_jobUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$repair_jobPayload>
+          }
+          deleteMany: {
+            args: Prisma.repair_jobDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.repair_jobUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.repair_jobUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$repair_jobPayload>
+          }
+          aggregate: {
+            args: Prisma.Repair_jobAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateRepair_job>
+          }
+          groupBy: {
+            args: Prisma.repair_jobGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Repair_jobGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.repair_jobCountArgs<ExtArgs>,
+            result: $Utils.Optional<Repair_jobCountAggregateOutputType> | number
+          }
+        }
+      }
+      quality_check: {
+        payload: Prisma.$quality_checkPayload<ExtArgs>
+        fields: Prisma.quality_checkFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.quality_checkFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$quality_checkPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.quality_checkFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$quality_checkPayload>
+          }
+          findFirst: {
+            args: Prisma.quality_checkFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$quality_checkPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.quality_checkFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$quality_checkPayload>
+          }
+          findMany: {
+            args: Prisma.quality_checkFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$quality_checkPayload>[]
+          }
+          create: {
+            args: Prisma.quality_checkCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$quality_checkPayload>
+          }
+          createMany: {
+            args: Prisma.quality_checkCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.quality_checkDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$quality_checkPayload>
+          }
+          update: {
+            args: Prisma.quality_checkUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$quality_checkPayload>
+          }
+          deleteMany: {
+            args: Prisma.quality_checkDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.quality_checkUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.quality_checkUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$quality_checkPayload>
+          }
+          aggregate: {
+            args: Prisma.Quality_checkAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateQuality_check>
+          }
+          groupBy: {
+            args: Prisma.quality_checkGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Quality_checkGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.quality_checkCountArgs<ExtArgs>,
+            result: $Utils.Optional<Quality_checkCountAggregateOutputType> | number
           }
         }
       }
@@ -1343,15 +1507,61 @@ export namespace Prisma {
 
 
   /**
+   * Count Type Repair_jobCountOutputType
+   */
+
+  export type Repair_jobCountOutputType = {
+    quality_check_src: number
+    production_single_src: number
+  }
+
+  export type Repair_jobCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    quality_check_src?: boolean | Repair_jobCountOutputTypeCountQuality_check_srcArgs
+    production_single_src?: boolean | Repair_jobCountOutputTypeCountProduction_single_srcArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * Repair_jobCountOutputType without action
+   */
+  export type Repair_jobCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair_jobCountOutputType
+     */
+    select?: Repair_jobCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Repair_jobCountOutputType without action
+   */
+  export type Repair_jobCountOutputTypeCountQuality_check_srcArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: quality_checkWhereInput
+  }
+
+
+  /**
+   * Repair_jobCountOutputType without action
+   */
+  export type Repair_jobCountOutputTypeCountProduction_single_srcArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: production_single_product_draftWhereInput
+  }
+
+
+
+  /**
    * Count Type Track_id_objectCountOutputType
    */
 
   export type Track_id_objectCountOutputType = {
     track_id_history: number
+    quality_check_used_in: number
   }
 
   export type Track_id_objectCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     track_id_history?: boolean | Track_id_objectCountOutputTypeCountTrack_id_historyArgs
+    quality_check_used_in?: boolean | Track_id_objectCountOutputTypeCountQuality_check_used_inArgs
   }
 
   // Custom InputTypes
@@ -1372,6 +1582,14 @@ export namespace Prisma {
    */
   export type Track_id_objectCountOutputTypeCountTrack_id_historyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: track_id_historyWhereInput
+  }
+
+
+  /**
+   * Track_id_objectCountOutputType without action
+   */
+  export type Track_id_objectCountOutputTypeCountQuality_check_used_inArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: quality_checkWhereInput
   }
 
 
@@ -1570,6 +1788,9 @@ export namespace Prisma {
     creation_date_time?: boolean
     movement_id?: boolean
     data?: boolean
+    production_single_scrap_imove?: boolean | inventory_move_draft$production_single_scrap_imoveArgs<ExtArgs>
+    quality_check_scrap_imove?: boolean | inventory_move_draft$quality_check_scrap_imoveArgs<ExtArgs>
+    repair_job_imove?: boolean | inventory_move_draft$repair_job_imoveArgs<ExtArgs>
   }, ExtArgs["result"]["inventory_move_draft"]>
 
   export type inventory_move_draftSelectScalar = {
@@ -1579,10 +1800,20 @@ export namespace Prisma {
     data?: boolean
   }
 
+  export type inventory_move_draftInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    production_single_scrap_imove?: boolean | inventory_move_draft$production_single_scrap_imoveArgs<ExtArgs>
+    quality_check_scrap_imove?: boolean | inventory_move_draft$quality_check_scrap_imoveArgs<ExtArgs>
+    repair_job_imove?: boolean | inventory_move_draft$repair_job_imoveArgs<ExtArgs>
+  }
+
 
   export type $inventory_move_draftPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "inventory_move_draft"
-    objects: {}
+    objects: {
+      production_single_scrap_imove: Prisma.$production_single_product_draftPayload<ExtArgs> | null
+      quality_check_scrap_imove: Prisma.$quality_checkPayload<ExtArgs> | null
+      repair_job_imove: Prisma.$repair_jobPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetResult<{
       org_id: number
       creation_date_time: Date
@@ -1953,6 +2184,11 @@ export namespace Prisma {
   export interface Prisma__inventory_move_draftClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    production_single_scrap_imove<T extends inventory_move_draft$production_single_scrap_imoveArgs<ExtArgs> = {}>(args?: Subset<T, inventory_move_draft$production_single_scrap_imoveArgs<ExtArgs>>): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    quality_check_scrap_imove<T extends inventory_move_draft$quality_check_scrap_imoveArgs<ExtArgs> = {}>(args?: Subset<T, inventory_move_draft$quality_check_scrap_imoveArgs<ExtArgs>>): Prisma__quality_checkClient<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    repair_job_imove<T extends inventory_move_draft$repair_job_imoveArgs<ExtArgs> = {}>(args?: Subset<T, inventory_move_draft$repair_job_imoveArgs<ExtArgs>>): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2000,6 +2236,10 @@ export namespace Prisma {
      */
     select?: inventory_move_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    /**
      * Filter, which inventory_move_draft to fetch.
      */
     where: inventory_move_draftWhereUniqueInput
@@ -2015,6 +2255,10 @@ export namespace Prisma {
      */
     select?: inventory_move_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    /**
      * Filter, which inventory_move_draft to fetch.
      */
     where: inventory_move_draftWhereUniqueInput
@@ -2029,6 +2273,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the inventory_move_draft
      */
     select?: inventory_move_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
     /**
      * Filter, which inventory_move_draft to fetch.
      */
@@ -2075,6 +2323,10 @@ export namespace Prisma {
      */
     select?: inventory_move_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    /**
      * Filter, which inventory_move_draft to fetch.
      */
     where?: inventory_move_draftWhereInput
@@ -2120,6 +2372,10 @@ export namespace Prisma {
      */
     select?: inventory_move_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    /**
      * Filter, which inventory_move_drafts to fetch.
      */
     where?: inventory_move_draftWhereInput
@@ -2160,6 +2416,10 @@ export namespace Prisma {
      */
     select?: inventory_move_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    /**
      * The data needed to create a inventory_move_draft.
      */
     data: XOR<inventory_move_draftCreateInput, inventory_move_draftUncheckedCreateInput>
@@ -2186,6 +2446,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the inventory_move_draft
      */
     select?: inventory_move_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
     /**
      * The data needed to update a inventory_move_draft.
      */
@@ -2221,6 +2485,10 @@ export namespace Prisma {
      */
     select?: inventory_move_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    /**
      * The filter to search for the inventory_move_draft to update in case it exists.
      */
     where: inventory_move_draftWhereUniqueInput
@@ -2244,6 +2512,10 @@ export namespace Prisma {
      */
     select?: inventory_move_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    /**
      * Filter which inventory_move_draft to delete.
      */
     where: inventory_move_draftWhereUniqueInput
@@ -2262,6 +2534,54 @@ export namespace Prisma {
 
 
   /**
+   * inventory_move_draft.production_single_scrap_imove
+   */
+  export type inventory_move_draft$production_single_scrap_imoveArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+    where?: production_single_product_draftWhereInput
+  }
+
+
+  /**
+   * inventory_move_draft.quality_check_scrap_imove
+   */
+  export type inventory_move_draft$quality_check_scrap_imoveArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    where?: quality_checkWhereInput
+  }
+
+
+  /**
+   * inventory_move_draft.repair_job_imove
+   */
+  export type inventory_move_draft$repair_job_imoveArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    where?: repair_jobWhereInput
+  }
+
+
+  /**
    * inventory_move_draft without action
    */
   export type inventory_move_draftDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -2269,6 +2589,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the inventory_move_draft
      */
     select?: inventory_move_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
   }
 
 
@@ -4104,23 +4428,47 @@ export namespace Prisma {
   export type Production_single_product_draftAvgAggregateOutputType = {
     org_id: number | null
     erp_id: number | null
+    total_ok: number | null
+    total_ng_scrap: number | null
+    imove_scrap_id: number | null
+    total_ng_repair: number | null
   }
 
   export type Production_single_product_draftSumAggregateOutputType = {
     org_id: number | null
     erp_id: number | null
+    total_ok: number | null
+    total_ng_scrap: number | null
+    imove_scrap_id: number | null
+    total_ng_repair: number | null
   }
 
   export type Production_single_product_draftMinAggregateOutputType = {
     org_id: number | null
     creation_date_time: Date | null
     erp_id: number | null
+    track_id: string | null
+    total_ok: number | null
+    scrap_reason: string | null
+    total_ng_scrap: number | null
+    imove_scrap_id: number | null
+    repair_reason: string | null
+    total_ng_repair: number | null
+    repair_job_id: string | null
   }
 
   export type Production_single_product_draftMaxAggregateOutputType = {
     org_id: number | null
     creation_date_time: Date | null
     erp_id: number | null
+    track_id: string | null
+    total_ok: number | null
+    scrap_reason: string | null
+    total_ng_scrap: number | null
+    imove_scrap_id: number | null
+    repair_reason: string | null
+    total_ng_repair: number | null
+    repair_job_id: string | null
   }
 
   export type Production_single_product_draftCountAggregateOutputType = {
@@ -4128,6 +4476,14 @@ export namespace Prisma {
     creation_date_time: number
     erp_id: number
     data: number
+    track_id: number
+    total_ok: number
+    scrap_reason: number
+    total_ng_scrap: number
+    imove_scrap_id: number
+    repair_reason: number
+    total_ng_repair: number
+    repair_job_id: number
     _all: number
   }
 
@@ -4135,23 +4491,47 @@ export namespace Prisma {
   export type Production_single_product_draftAvgAggregateInputType = {
     org_id?: true
     erp_id?: true
+    total_ok?: true
+    total_ng_scrap?: true
+    imove_scrap_id?: true
+    total_ng_repair?: true
   }
 
   export type Production_single_product_draftSumAggregateInputType = {
     org_id?: true
     erp_id?: true
+    total_ok?: true
+    total_ng_scrap?: true
+    imove_scrap_id?: true
+    total_ng_repair?: true
   }
 
   export type Production_single_product_draftMinAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     erp_id?: true
+    track_id?: true
+    total_ok?: true
+    scrap_reason?: true
+    total_ng_scrap?: true
+    imove_scrap_id?: true
+    repair_reason?: true
+    total_ng_repair?: true
+    repair_job_id?: true
   }
 
   export type Production_single_product_draftMaxAggregateInputType = {
     org_id?: true
     creation_date_time?: true
     erp_id?: true
+    track_id?: true
+    total_ok?: true
+    scrap_reason?: true
+    total_ng_scrap?: true
+    imove_scrap_id?: true
+    repair_reason?: true
+    total_ng_repair?: true
+    repair_job_id?: true
   }
 
   export type Production_single_product_draftCountAggregateInputType = {
@@ -4159,6 +4539,14 @@ export namespace Prisma {
     creation_date_time?: true
     erp_id?: true
     data?: true
+    track_id?: true
+    total_ok?: true
+    scrap_reason?: true
+    total_ng_scrap?: true
+    imove_scrap_id?: true
+    repair_reason?: true
+    total_ng_repair?: true
+    repair_job_id?: true
     _all?: true
   }
 
@@ -4253,6 +4641,14 @@ export namespace Prisma {
     creation_date_time: Date
     erp_id: number
     data: JsonValue
+    track_id: string
+    total_ok: number
+    scrap_reason: string
+    total_ng_scrap: number
+    imove_scrap_id: number | null
+    repair_reason: string
+    total_ng_repair: number
+    repair_job_id: string | null
     _count: Production_single_product_draftCountAggregateOutputType | null
     _avg: Production_single_product_draftAvgAggregateOutputType | null
     _sum: Production_single_product_draftSumAggregateOutputType | null
@@ -4279,6 +4675,17 @@ export namespace Prisma {
     creation_date_time?: boolean
     erp_id?: boolean
     data?: boolean
+    track_id?: boolean
+    total_ok?: boolean
+    scrap_reason?: boolean
+    total_ng_scrap?: boolean
+    imove_scrap_id?: boolean
+    repair_reason?: boolean
+    total_ng_repair?: boolean
+    repair_job_id?: boolean
+    track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+    imove_scrap_obj?: boolean | production_single_product_draft$imove_scrap_objArgs<ExtArgs>
+    repair_job?: boolean | production_single_product_draft$repair_jobArgs<ExtArgs>
   }, ExtArgs["result"]["production_single_product_draft"]>
 
   export type production_single_product_draftSelectScalar = {
@@ -4286,17 +4693,43 @@ export namespace Prisma {
     creation_date_time?: boolean
     erp_id?: boolean
     data?: boolean
+    track_id?: boolean
+    total_ok?: boolean
+    scrap_reason?: boolean
+    total_ng_scrap?: boolean
+    imove_scrap_id?: boolean
+    repair_reason?: boolean
+    total_ng_repair?: boolean
+    repair_job_id?: boolean
+  }
+
+  export type production_single_product_draftInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+    imove_scrap_obj?: boolean | production_single_product_draft$imove_scrap_objArgs<ExtArgs>
+    repair_job?: boolean | production_single_product_draft$repair_jobArgs<ExtArgs>
   }
 
 
   export type $production_single_product_draftPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "production_single_product_draft"
-    objects: {}
+    objects: {
+      track_id_object: Prisma.$track_id_objectPayload<ExtArgs>
+      imove_scrap_obj: Prisma.$inventory_move_draftPayload<ExtArgs> | null
+      repair_job: Prisma.$repair_jobPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetResult<{
       org_id: number
       creation_date_time: Date
       erp_id: number
       data: Prisma.JsonValue
+      track_id: string
+      total_ok: number
+      scrap_reason: string
+      total_ng_scrap: number
+      imove_scrap_id: number | null
+      repair_reason: string
+      total_ng_repair: number
+      repair_job_id: string | null
     }, ExtArgs["result"]["production_single_product_draft"]>
     composites: {}
   }
@@ -4662,6 +5095,11 @@ export namespace Prisma {
   export interface Prisma__production_single_product_draftClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    track_id_object<T extends track_id_objectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, track_id_objectDefaultArgs<ExtArgs>>): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    imove_scrap_obj<T extends production_single_product_draft$imove_scrap_objArgs<ExtArgs> = {}>(args?: Subset<T, production_single_product_draft$imove_scrap_objArgs<ExtArgs>>): Prisma__inventory_move_draftClient<$Result.GetResult<Prisma.$inventory_move_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    repair_job<T extends production_single_product_draft$repair_jobArgs<ExtArgs> = {}>(args?: Subset<T, production_single_product_draft$repair_jobArgs<ExtArgs>>): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4695,6 +5133,14 @@ export namespace Prisma {
     readonly creation_date_time: FieldRef<"production_single_product_draft", 'DateTime'>
     readonly erp_id: FieldRef<"production_single_product_draft", 'Int'>
     readonly data: FieldRef<"production_single_product_draft", 'Json'>
+    readonly track_id: FieldRef<"production_single_product_draft", 'String'>
+    readonly total_ok: FieldRef<"production_single_product_draft", 'Float'>
+    readonly scrap_reason: FieldRef<"production_single_product_draft", 'String'>
+    readonly total_ng_scrap: FieldRef<"production_single_product_draft", 'Float'>
+    readonly imove_scrap_id: FieldRef<"production_single_product_draft", 'Int'>
+    readonly repair_reason: FieldRef<"production_single_product_draft", 'String'>
+    readonly total_ng_repair: FieldRef<"production_single_product_draft", 'Float'>
+    readonly repair_job_id: FieldRef<"production_single_product_draft", 'String'>
   }
     
 
@@ -4708,6 +5154,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the production_single_product_draft
      */
     select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
     /**
      * Filter, which production_single_product_draft to fetch.
      */
@@ -4724,6 +5174,10 @@ export namespace Prisma {
      */
     select?: production_single_product_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+    /**
      * Filter, which production_single_product_draft to fetch.
      */
     where: production_single_product_draftWhereUniqueInput
@@ -4738,6 +5192,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the production_single_product_draft
      */
     select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
     /**
      * Filter, which production_single_product_draft to fetch.
      */
@@ -4784,6 +5242,10 @@ export namespace Prisma {
      */
     select?: production_single_product_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+    /**
      * Filter, which production_single_product_draft to fetch.
      */
     where?: production_single_product_draftWhereInput
@@ -4829,6 +5291,10 @@ export namespace Prisma {
      */
     select?: production_single_product_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+    /**
      * Filter, which production_single_product_drafts to fetch.
      */
     where?: production_single_product_draftWhereInput
@@ -4869,6 +5335,10 @@ export namespace Prisma {
      */
     select?: production_single_product_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+    /**
      * The data needed to create a production_single_product_draft.
      */
     data: XOR<production_single_product_draftCreateInput, production_single_product_draftUncheckedCreateInput>
@@ -4895,6 +5365,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the production_single_product_draft
      */
     select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
     /**
      * The data needed to update a production_single_product_draft.
      */
@@ -4930,6 +5404,10 @@ export namespace Prisma {
      */
     select?: production_single_product_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+    /**
      * The filter to search for the production_single_product_draft to update in case it exists.
      */
     where: production_single_product_draftWhereUniqueInput
@@ -4953,6 +5431,10 @@ export namespace Prisma {
      */
     select?: production_single_product_draftSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+    /**
      * Filter which production_single_product_draft to delete.
      */
     where: production_single_product_draftWhereUniqueInput
@@ -4971,6 +5453,38 @@ export namespace Prisma {
 
 
   /**
+   * production_single_product_draft.imove_scrap_obj
+   */
+  export type production_single_product_draft$imove_scrap_objArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the inventory_move_draft
+     */
+    select?: inventory_move_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    where?: inventory_move_draftWhereInput
+  }
+
+
+  /**
+   * production_single_product_draft.repair_job
+   */
+  export type production_single_product_draft$repair_jobArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    where?: repair_jobWhereInput
+  }
+
+
+  /**
    * production_single_product_draft without action
    */
   export type production_single_product_draftDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -4978,6 +5492,2158 @@ export namespace Prisma {
      * Select specific fields to fetch from the production_single_product_draft
      */
     select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model repair_job
+   */
+
+  export type AggregateRepair_job = {
+    _count: Repair_jobCountAggregateOutputType | null
+    _avg: Repair_jobAvgAggregateOutputType | null
+    _sum: Repair_jobSumAggregateOutputType | null
+    _min: Repair_jobMinAggregateOutputType | null
+    _max: Repair_jobMaxAggregateOutputType | null
+  }
+
+  export type Repair_jobAvgAggregateOutputType = {
+    org_id: number | null
+    starting_locator_id: number | null
+    imove_repair_id: number | null
+  }
+
+  export type Repair_jobSumAggregateOutputType = {
+    org_id: number | null
+    starting_locator_id: number | null
+    imove_repair_id: number | null
+  }
+
+  export type Repair_jobMinAggregateOutputType = {
+    org_id: number | null
+    creation_date_time: Date | null
+    track_id: string | null
+    starting_locator_id: number | null
+    imove_repair_id: number | null
+    repair_status: string | null
+  }
+
+  export type Repair_jobMaxAggregateOutputType = {
+    org_id: number | null
+    creation_date_time: Date | null
+    track_id: string | null
+    starting_locator_id: number | null
+    imove_repair_id: number | null
+    repair_status: string | null
+  }
+
+  export type Repair_jobCountAggregateOutputType = {
+    org_id: number
+    creation_date_time: number
+    track_id: number
+    starting_locator_id: number
+    imove_repair_id: number
+    repair_status: number
+    _all: number
+  }
+
+
+  export type Repair_jobAvgAggregateInputType = {
+    org_id?: true
+    starting_locator_id?: true
+    imove_repair_id?: true
+  }
+
+  export type Repair_jobSumAggregateInputType = {
+    org_id?: true
+    starting_locator_id?: true
+    imove_repair_id?: true
+  }
+
+  export type Repair_jobMinAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    track_id?: true
+    starting_locator_id?: true
+    imove_repair_id?: true
+    repair_status?: true
+  }
+
+  export type Repair_jobMaxAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    track_id?: true
+    starting_locator_id?: true
+    imove_repair_id?: true
+    repair_status?: true
+  }
+
+  export type Repair_jobCountAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    track_id?: true
+    starting_locator_id?: true
+    imove_repair_id?: true
+    repair_status?: true
+    _all?: true
+  }
+
+  export type Repair_jobAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which repair_job to aggregate.
+     */
+    where?: repair_jobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of repair_jobs to fetch.
+     */
+    orderBy?: repair_jobOrderByWithRelationInput | repair_jobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: repair_jobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` repair_jobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` repair_jobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned repair_jobs
+    **/
+    _count?: true | Repair_jobCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Repair_jobAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Repair_jobSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Repair_jobMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Repair_jobMaxAggregateInputType
+  }
+
+  export type GetRepair_jobAggregateType<T extends Repair_jobAggregateArgs> = {
+        [P in keyof T & keyof AggregateRepair_job]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRepair_job[P]>
+      : GetScalarType<T[P], AggregateRepair_job[P]>
+  }
+
+
+
+
+  export type repair_jobGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: repair_jobWhereInput
+    orderBy?: repair_jobOrderByWithAggregationInput | repair_jobOrderByWithAggregationInput[]
+    by: Repair_jobScalarFieldEnum[] | Repair_jobScalarFieldEnum
+    having?: repair_jobScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Repair_jobCountAggregateInputType | true
+    _avg?: Repair_jobAvgAggregateInputType
+    _sum?: Repair_jobSumAggregateInputType
+    _min?: Repair_jobMinAggregateInputType
+    _max?: Repair_jobMaxAggregateInputType
+  }
+
+  export type Repair_jobGroupByOutputType = {
+    org_id: number
+    creation_date_time: Date
+    track_id: string
+    starting_locator_id: number
+    imove_repair_id: number | null
+    repair_status: string
+    _count: Repair_jobCountAggregateOutputType | null
+    _avg: Repair_jobAvgAggregateOutputType | null
+    _sum: Repair_jobSumAggregateOutputType | null
+    _min: Repair_jobMinAggregateOutputType | null
+    _max: Repair_jobMaxAggregateOutputType | null
+  }
+
+  type GetRepair_jobGroupByPayload<T extends repair_jobGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Repair_jobGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Repair_jobGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Repair_jobGroupByOutputType[P]>
+            : GetScalarType<T[P], Repair_jobGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type repair_jobSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    org_id?: boolean
+    creation_date_time?: boolean
+    track_id?: boolean
+    starting_locator_id?: boolean
+    imove_repair_id?: boolean
+    repair_status?: boolean
+    track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+    imove_repair_obj?: boolean | repair_job$imove_repair_objArgs<ExtArgs>
+    quality_check_src?: boolean | repair_job$quality_check_srcArgs<ExtArgs>
+    production_single_src?: boolean | repair_job$production_single_srcArgs<ExtArgs>
+    _count?: boolean | Repair_jobCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["repair_job"]>
+
+  export type repair_jobSelectScalar = {
+    org_id?: boolean
+    creation_date_time?: boolean
+    track_id?: boolean
+    starting_locator_id?: boolean
+    imove_repair_id?: boolean
+    repair_status?: boolean
+  }
+
+  export type repair_jobInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+    imove_repair_obj?: boolean | repair_job$imove_repair_objArgs<ExtArgs>
+    quality_check_src?: boolean | repair_job$quality_check_srcArgs<ExtArgs>
+    production_single_src?: boolean | repair_job$production_single_srcArgs<ExtArgs>
+    _count?: boolean | Repair_jobCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $repair_jobPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "repair_job"
+    objects: {
+      track_id_object: Prisma.$track_id_objectPayload<ExtArgs>
+      imove_repair_obj: Prisma.$inventory_move_draftPayload<ExtArgs> | null
+      quality_check_src: Prisma.$quality_checkPayload<ExtArgs>[]
+      production_single_src: Prisma.$production_single_product_draftPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetResult<{
+      org_id: number
+      creation_date_time: Date
+      track_id: string
+      starting_locator_id: number
+      imove_repair_id: number | null
+      repair_status: string
+    }, ExtArgs["result"]["repair_job"]>
+    composites: {}
+  }
+
+
+  type repair_jobGetPayload<S extends boolean | null | undefined | repair_jobDefaultArgs> = $Result.GetResult<Prisma.$repair_jobPayload, S>
+
+  type repair_jobCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<repair_jobFindManyArgs, 'select' | 'include'> & {
+      select?: Repair_jobCountAggregateInputType | true
+    }
+
+  export interface repair_jobDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['repair_job'], meta: { name: 'repair_job' } }
+    /**
+     * Find zero or one Repair_job that matches the filter.
+     * @param {repair_jobFindUniqueArgs} args - Arguments to find a Repair_job
+     * @example
+     * // Get one Repair_job
+     * const repair_job = await prisma.repair_job.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends repair_jobFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, repair_jobFindUniqueArgs<ExtArgs>>
+    ): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Repair_job that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {repair_jobFindUniqueOrThrowArgs} args - Arguments to find a Repair_job
+     * @example
+     * // Get one Repair_job
+     * const repair_job = await prisma.repair_job.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends repair_jobFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, repair_jobFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Repair_job that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {repair_jobFindFirstArgs} args - Arguments to find a Repair_job
+     * @example
+     * // Get one Repair_job
+     * const repair_job = await prisma.repair_job.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends repair_jobFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, repair_jobFindFirstArgs<ExtArgs>>
+    ): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Repair_job that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {repair_jobFindFirstOrThrowArgs} args - Arguments to find a Repair_job
+     * @example
+     * // Get one Repair_job
+     * const repair_job = await prisma.repair_job.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends repair_jobFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, repair_jobFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Repair_jobs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {repair_jobFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Repair_jobs
+     * const repair_jobs = await prisma.repair_job.findMany()
+     * 
+     * // Get first 10 Repair_jobs
+     * const repair_jobs = await prisma.repair_job.findMany({ take: 10 })
+     * 
+     * // Only select the `org_id`
+     * const repair_jobWithOrg_idOnly = await prisma.repair_job.findMany({ select: { org_id: true } })
+     * 
+    **/
+    findMany<T extends repair_jobFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, repair_jobFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Repair_job.
+     * @param {repair_jobCreateArgs} args - Arguments to create a Repair_job.
+     * @example
+     * // Create one Repair_job
+     * const Repair_job = await prisma.repair_job.create({
+     *   data: {
+     *     // ... data to create a Repair_job
+     *   }
+     * })
+     * 
+    **/
+    create<T extends repair_jobCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, repair_jobCreateArgs<ExtArgs>>
+    ): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Repair_jobs.
+     *     @param {repair_jobCreateManyArgs} args - Arguments to create many Repair_jobs.
+     *     @example
+     *     // Create many Repair_jobs
+     *     const repair_job = await prisma.repair_job.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends repair_jobCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, repair_jobCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Repair_job.
+     * @param {repair_jobDeleteArgs} args - Arguments to delete one Repair_job.
+     * @example
+     * // Delete one Repair_job
+     * const Repair_job = await prisma.repair_job.delete({
+     *   where: {
+     *     // ... filter to delete one Repair_job
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends repair_jobDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, repair_jobDeleteArgs<ExtArgs>>
+    ): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Repair_job.
+     * @param {repair_jobUpdateArgs} args - Arguments to update one Repair_job.
+     * @example
+     * // Update one Repair_job
+     * const repair_job = await prisma.repair_job.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends repair_jobUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, repair_jobUpdateArgs<ExtArgs>>
+    ): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Repair_jobs.
+     * @param {repair_jobDeleteManyArgs} args - Arguments to filter Repair_jobs to delete.
+     * @example
+     * // Delete a few Repair_jobs
+     * const { count } = await prisma.repair_job.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends repair_jobDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, repair_jobDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Repair_jobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {repair_jobUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Repair_jobs
+     * const repair_job = await prisma.repair_job.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends repair_jobUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, repair_jobUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Repair_job.
+     * @param {repair_jobUpsertArgs} args - Arguments to update or create a Repair_job.
+     * @example
+     * // Update or create a Repair_job
+     * const repair_job = await prisma.repair_job.upsert({
+     *   create: {
+     *     // ... data to create a Repair_job
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Repair_job we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends repair_jobUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, repair_jobUpsertArgs<ExtArgs>>
+    ): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Repair_jobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {repair_jobCountArgs} args - Arguments to filter Repair_jobs to count.
+     * @example
+     * // Count the number of Repair_jobs
+     * const count = await prisma.repair_job.count({
+     *   where: {
+     *     // ... the filter for the Repair_jobs we want to count
+     *   }
+     * })
+    **/
+    count<T extends repair_jobCountArgs>(
+      args?: Subset<T, repair_jobCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Repair_jobCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Repair_job.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Repair_jobAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Repair_jobAggregateArgs>(args: Subset<T, Repair_jobAggregateArgs>): Prisma.PrismaPromise<GetRepair_jobAggregateType<T>>
+
+    /**
+     * Group by Repair_job.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {repair_jobGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends repair_jobGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: repair_jobGroupByArgs['orderBy'] }
+        : { orderBy?: repair_jobGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, repair_jobGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRepair_jobGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the repair_job model
+   */
+  readonly fields: repair_jobFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for repair_job.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__repair_jobClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    track_id_object<T extends track_id_objectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, track_id_objectDefaultArgs<ExtArgs>>): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    imove_repair_obj<T extends repair_job$imove_repair_objArgs<ExtArgs> = {}>(args?: Subset<T, repair_job$imove_repair_objArgs<ExtArgs>>): Prisma__inventory_move_draftClient<$Result.GetResult<Prisma.$inventory_move_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    quality_check_src<T extends repair_job$quality_check_srcArgs<ExtArgs> = {}>(args?: Subset<T, repair_job$quality_check_srcArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    production_single_src<T extends repair_job$production_single_srcArgs<ExtArgs> = {}>(args?: Subset<T, repair_job$production_single_srcArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the repair_job model
+   */ 
+  interface repair_jobFieldRefs {
+    readonly org_id: FieldRef<"repair_job", 'Int'>
+    readonly creation_date_time: FieldRef<"repair_job", 'DateTime'>
+    readonly track_id: FieldRef<"repair_job", 'String'>
+    readonly starting_locator_id: FieldRef<"repair_job", 'Int'>
+    readonly imove_repair_id: FieldRef<"repair_job", 'Int'>
+    readonly repair_status: FieldRef<"repair_job", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * repair_job findUnique
+   */
+  export type repair_jobFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    /**
+     * Filter, which repair_job to fetch.
+     */
+    where: repair_jobWhereUniqueInput
+  }
+
+
+  /**
+   * repair_job findUniqueOrThrow
+   */
+  export type repair_jobFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    /**
+     * Filter, which repair_job to fetch.
+     */
+    where: repair_jobWhereUniqueInput
+  }
+
+
+  /**
+   * repair_job findFirst
+   */
+  export type repair_jobFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    /**
+     * Filter, which repair_job to fetch.
+     */
+    where?: repair_jobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of repair_jobs to fetch.
+     */
+    orderBy?: repair_jobOrderByWithRelationInput | repair_jobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for repair_jobs.
+     */
+    cursor?: repair_jobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` repair_jobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` repair_jobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of repair_jobs.
+     */
+    distinct?: Repair_jobScalarFieldEnum | Repair_jobScalarFieldEnum[]
+  }
+
+
+  /**
+   * repair_job findFirstOrThrow
+   */
+  export type repair_jobFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    /**
+     * Filter, which repair_job to fetch.
+     */
+    where?: repair_jobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of repair_jobs to fetch.
+     */
+    orderBy?: repair_jobOrderByWithRelationInput | repair_jobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for repair_jobs.
+     */
+    cursor?: repair_jobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` repair_jobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` repair_jobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of repair_jobs.
+     */
+    distinct?: Repair_jobScalarFieldEnum | Repair_jobScalarFieldEnum[]
+  }
+
+
+  /**
+   * repair_job findMany
+   */
+  export type repair_jobFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    /**
+     * Filter, which repair_jobs to fetch.
+     */
+    where?: repair_jobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of repair_jobs to fetch.
+     */
+    orderBy?: repair_jobOrderByWithRelationInput | repair_jobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing repair_jobs.
+     */
+    cursor?: repair_jobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` repair_jobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` repair_jobs.
+     */
+    skip?: number
+    distinct?: Repair_jobScalarFieldEnum | Repair_jobScalarFieldEnum[]
+  }
+
+
+  /**
+   * repair_job create
+   */
+  export type repair_jobCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    /**
+     * The data needed to create a repair_job.
+     */
+    data: XOR<repair_jobCreateInput, repair_jobUncheckedCreateInput>
+  }
+
+
+  /**
+   * repair_job createMany
+   */
+  export type repair_jobCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many repair_jobs.
+     */
+    data: repair_jobCreateManyInput | repair_jobCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * repair_job update
+   */
+  export type repair_jobUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    /**
+     * The data needed to update a repair_job.
+     */
+    data: XOR<repair_jobUpdateInput, repair_jobUncheckedUpdateInput>
+    /**
+     * Choose, which repair_job to update.
+     */
+    where: repair_jobWhereUniqueInput
+  }
+
+
+  /**
+   * repair_job updateMany
+   */
+  export type repair_jobUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update repair_jobs.
+     */
+    data: XOR<repair_jobUpdateManyMutationInput, repair_jobUncheckedUpdateManyInput>
+    /**
+     * Filter which repair_jobs to update
+     */
+    where?: repair_jobWhereInput
+  }
+
+
+  /**
+   * repair_job upsert
+   */
+  export type repair_jobUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    /**
+     * The filter to search for the repair_job to update in case it exists.
+     */
+    where: repair_jobWhereUniqueInput
+    /**
+     * In case the repair_job found by the `where` argument doesn't exist, create a new repair_job with this data.
+     */
+    create: XOR<repair_jobCreateInput, repair_jobUncheckedCreateInput>
+    /**
+     * In case the repair_job was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<repair_jobUpdateInput, repair_jobUncheckedUpdateInput>
+  }
+
+
+  /**
+   * repair_job delete
+   */
+  export type repair_jobDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    /**
+     * Filter which repair_job to delete.
+     */
+    where: repair_jobWhereUniqueInput
+  }
+
+
+  /**
+   * repair_job deleteMany
+   */
+  export type repair_jobDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which repair_jobs to delete
+     */
+    where?: repair_jobWhereInput
+  }
+
+
+  /**
+   * repair_job.imove_repair_obj
+   */
+  export type repair_job$imove_repair_objArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the inventory_move_draft
+     */
+    select?: inventory_move_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    where?: inventory_move_draftWhereInput
+  }
+
+
+  /**
+   * repair_job.quality_check_src
+   */
+  export type repair_job$quality_check_srcArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    where?: quality_checkWhereInput
+    orderBy?: quality_checkOrderByWithRelationInput | quality_checkOrderByWithRelationInput[]
+    cursor?: quality_checkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Quality_checkScalarFieldEnum | Quality_checkScalarFieldEnum[]
+  }
+
+
+  /**
+   * repair_job.production_single_src
+   */
+  export type repair_job$production_single_srcArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+    where?: production_single_product_draftWhereInput
+    orderBy?: production_single_product_draftOrderByWithRelationInput | production_single_product_draftOrderByWithRelationInput[]
+    cursor?: production_single_product_draftWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Production_single_product_draftScalarFieldEnum | Production_single_product_draftScalarFieldEnum[]
+  }
+
+
+  /**
+   * repair_job without action
+   */
+  export type repair_jobDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model quality_check
+   */
+
+  export type AggregateQuality_check = {
+    _count: Quality_checkCountAggregateOutputType | null
+    _avg: Quality_checkAvgAggregateOutputType | null
+    _sum: Quality_checkSumAggregateOutputType | null
+    _min: Quality_checkMinAggregateOutputType | null
+    _max: Quality_checkMaxAggregateOutputType | null
+  }
+
+  export type Quality_checkAvgAggregateOutputType = {
+    org_id: number | null
+    locator_id: number | null
+    total_ok: number | null
+    total_ng_scrap: number | null
+    imove_scrap_id: number | null
+    total_ng_repair: number | null
+  }
+
+  export type Quality_checkSumAggregateOutputType = {
+    org_id: number | null
+    locator_id: number | null
+    total_ok: number | null
+    total_ng_scrap: number | null
+    imove_scrap_id: number | null
+    total_ng_repair: number | null
+  }
+
+  export type Quality_checkMinAggregateOutputType = {
+    org_id: number | null
+    creation_date_time: Date | null
+    locator_id: number | null
+    track_id: string | null
+    checker_name: string | null
+    customer: string | null
+    total_ok: number | null
+    scrap_reason: string | null
+    total_ng_scrap: number | null
+    imove_scrap_id: number | null
+    repair_reason: string | null
+    total_ng_repair: number | null
+    repair_job_id: string | null
+  }
+
+  export type Quality_checkMaxAggregateOutputType = {
+    org_id: number | null
+    creation_date_time: Date | null
+    locator_id: number | null
+    track_id: string | null
+    checker_name: string | null
+    customer: string | null
+    total_ok: number | null
+    scrap_reason: string | null
+    total_ng_scrap: number | null
+    imove_scrap_id: number | null
+    repair_reason: string | null
+    total_ng_repair: number | null
+    repair_job_id: string | null
+  }
+
+  export type Quality_checkCountAggregateOutputType = {
+    org_id: number
+    creation_date_time: number
+    locator_id: number
+    track_id: number
+    checker_name: number
+    customer: number
+    total_ok: number
+    scrap_reason: number
+    total_ng_scrap: number
+    imove_scrap_id: number
+    repair_reason: number
+    total_ng_repair: number
+    repair_job_id: number
+    _all: number
+  }
+
+
+  export type Quality_checkAvgAggregateInputType = {
+    org_id?: true
+    locator_id?: true
+    total_ok?: true
+    total_ng_scrap?: true
+    imove_scrap_id?: true
+    total_ng_repair?: true
+  }
+
+  export type Quality_checkSumAggregateInputType = {
+    org_id?: true
+    locator_id?: true
+    total_ok?: true
+    total_ng_scrap?: true
+    imove_scrap_id?: true
+    total_ng_repair?: true
+  }
+
+  export type Quality_checkMinAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    locator_id?: true
+    track_id?: true
+    checker_name?: true
+    customer?: true
+    total_ok?: true
+    scrap_reason?: true
+    total_ng_scrap?: true
+    imove_scrap_id?: true
+    repair_reason?: true
+    total_ng_repair?: true
+    repair_job_id?: true
+  }
+
+  export type Quality_checkMaxAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    locator_id?: true
+    track_id?: true
+    checker_name?: true
+    customer?: true
+    total_ok?: true
+    scrap_reason?: true
+    total_ng_scrap?: true
+    imove_scrap_id?: true
+    repair_reason?: true
+    total_ng_repair?: true
+    repair_job_id?: true
+  }
+
+  export type Quality_checkCountAggregateInputType = {
+    org_id?: true
+    creation_date_time?: true
+    locator_id?: true
+    track_id?: true
+    checker_name?: true
+    customer?: true
+    total_ok?: true
+    scrap_reason?: true
+    total_ng_scrap?: true
+    imove_scrap_id?: true
+    repair_reason?: true
+    total_ng_repair?: true
+    repair_job_id?: true
+    _all?: true
+  }
+
+  export type Quality_checkAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which quality_check to aggregate.
+     */
+    where?: quality_checkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of quality_checks to fetch.
+     */
+    orderBy?: quality_checkOrderByWithRelationInput | quality_checkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: quality_checkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` quality_checks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` quality_checks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned quality_checks
+    **/
+    _count?: true | Quality_checkCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Quality_checkAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Quality_checkSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Quality_checkMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Quality_checkMaxAggregateInputType
+  }
+
+  export type GetQuality_checkAggregateType<T extends Quality_checkAggregateArgs> = {
+        [P in keyof T & keyof AggregateQuality_check]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateQuality_check[P]>
+      : GetScalarType<T[P], AggregateQuality_check[P]>
+  }
+
+
+
+
+  export type quality_checkGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: quality_checkWhereInput
+    orderBy?: quality_checkOrderByWithAggregationInput | quality_checkOrderByWithAggregationInput[]
+    by: Quality_checkScalarFieldEnum[] | Quality_checkScalarFieldEnum
+    having?: quality_checkScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Quality_checkCountAggregateInputType | true
+    _avg?: Quality_checkAvgAggregateInputType
+    _sum?: Quality_checkSumAggregateInputType
+    _min?: Quality_checkMinAggregateInputType
+    _max?: Quality_checkMaxAggregateInputType
+  }
+
+  export type Quality_checkGroupByOutputType = {
+    org_id: number
+    creation_date_time: Date
+    locator_id: number
+    track_id: string
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason: string
+    total_ng_scrap: number
+    imove_scrap_id: number | null
+    repair_reason: string
+    total_ng_repair: number
+    repair_job_id: string | null
+    _count: Quality_checkCountAggregateOutputType | null
+    _avg: Quality_checkAvgAggregateOutputType | null
+    _sum: Quality_checkSumAggregateOutputType | null
+    _min: Quality_checkMinAggregateOutputType | null
+    _max: Quality_checkMaxAggregateOutputType | null
+  }
+
+  type GetQuality_checkGroupByPayload<T extends quality_checkGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Quality_checkGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Quality_checkGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Quality_checkGroupByOutputType[P]>
+            : GetScalarType<T[P], Quality_checkGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type quality_checkSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    org_id?: boolean
+    creation_date_time?: boolean
+    locator_id?: boolean
+    track_id?: boolean
+    checker_name?: boolean
+    customer?: boolean
+    total_ok?: boolean
+    scrap_reason?: boolean
+    total_ng_scrap?: boolean
+    imove_scrap_id?: boolean
+    repair_reason?: boolean
+    total_ng_repair?: boolean
+    repair_job_id?: boolean
+    track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+    imove_scrap_obj?: boolean | quality_check$imove_scrap_objArgs<ExtArgs>
+    repair_job?: boolean | quality_check$repair_jobArgs<ExtArgs>
+  }, ExtArgs["result"]["quality_check"]>
+
+  export type quality_checkSelectScalar = {
+    org_id?: boolean
+    creation_date_time?: boolean
+    locator_id?: boolean
+    track_id?: boolean
+    checker_name?: boolean
+    customer?: boolean
+    total_ok?: boolean
+    scrap_reason?: boolean
+    total_ng_scrap?: boolean
+    imove_scrap_id?: boolean
+    repair_reason?: boolean
+    total_ng_repair?: boolean
+    repair_job_id?: boolean
+  }
+
+  export type quality_checkInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+    imove_scrap_obj?: boolean | quality_check$imove_scrap_objArgs<ExtArgs>
+    repair_job?: boolean | quality_check$repair_jobArgs<ExtArgs>
+  }
+
+
+  export type $quality_checkPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "quality_check"
+    objects: {
+      track_id_object: Prisma.$track_id_objectPayload<ExtArgs>
+      imove_scrap_obj: Prisma.$inventory_move_draftPayload<ExtArgs> | null
+      repair_job: Prisma.$repair_jobPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetResult<{
+      org_id: number
+      creation_date_time: Date
+      locator_id: number
+      track_id: string
+      checker_name: string
+      customer: string
+      total_ok: number
+      scrap_reason: string
+      total_ng_scrap: number
+      imove_scrap_id: number | null
+      repair_reason: string
+      total_ng_repair: number
+      repair_job_id: string | null
+    }, ExtArgs["result"]["quality_check"]>
+    composites: {}
+  }
+
+
+  type quality_checkGetPayload<S extends boolean | null | undefined | quality_checkDefaultArgs> = $Result.GetResult<Prisma.$quality_checkPayload, S>
+
+  type quality_checkCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<quality_checkFindManyArgs, 'select' | 'include'> & {
+      select?: Quality_checkCountAggregateInputType | true
+    }
+
+  export interface quality_checkDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['quality_check'], meta: { name: 'quality_check' } }
+    /**
+     * Find zero or one Quality_check that matches the filter.
+     * @param {quality_checkFindUniqueArgs} args - Arguments to find a Quality_check
+     * @example
+     * // Get one Quality_check
+     * const quality_check = await prisma.quality_check.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends quality_checkFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, quality_checkFindUniqueArgs<ExtArgs>>
+    ): Prisma__quality_checkClient<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Quality_check that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {quality_checkFindUniqueOrThrowArgs} args - Arguments to find a Quality_check
+     * @example
+     * // Get one Quality_check
+     * const quality_check = await prisma.quality_check.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends quality_checkFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, quality_checkFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__quality_checkClient<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Quality_check that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {quality_checkFindFirstArgs} args - Arguments to find a Quality_check
+     * @example
+     * // Get one Quality_check
+     * const quality_check = await prisma.quality_check.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends quality_checkFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, quality_checkFindFirstArgs<ExtArgs>>
+    ): Prisma__quality_checkClient<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Quality_check that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {quality_checkFindFirstOrThrowArgs} args - Arguments to find a Quality_check
+     * @example
+     * // Get one Quality_check
+     * const quality_check = await prisma.quality_check.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends quality_checkFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, quality_checkFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__quality_checkClient<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Quality_checks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {quality_checkFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Quality_checks
+     * const quality_checks = await prisma.quality_check.findMany()
+     * 
+     * // Get first 10 Quality_checks
+     * const quality_checks = await prisma.quality_check.findMany({ take: 10 })
+     * 
+     * // Only select the `org_id`
+     * const quality_checkWithOrg_idOnly = await prisma.quality_check.findMany({ select: { org_id: true } })
+     * 
+    **/
+    findMany<T extends quality_checkFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, quality_checkFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Quality_check.
+     * @param {quality_checkCreateArgs} args - Arguments to create a Quality_check.
+     * @example
+     * // Create one Quality_check
+     * const Quality_check = await prisma.quality_check.create({
+     *   data: {
+     *     // ... data to create a Quality_check
+     *   }
+     * })
+     * 
+    **/
+    create<T extends quality_checkCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, quality_checkCreateArgs<ExtArgs>>
+    ): Prisma__quality_checkClient<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Quality_checks.
+     *     @param {quality_checkCreateManyArgs} args - Arguments to create many Quality_checks.
+     *     @example
+     *     // Create many Quality_checks
+     *     const quality_check = await prisma.quality_check.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends quality_checkCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, quality_checkCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Quality_check.
+     * @param {quality_checkDeleteArgs} args - Arguments to delete one Quality_check.
+     * @example
+     * // Delete one Quality_check
+     * const Quality_check = await prisma.quality_check.delete({
+     *   where: {
+     *     // ... filter to delete one Quality_check
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends quality_checkDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, quality_checkDeleteArgs<ExtArgs>>
+    ): Prisma__quality_checkClient<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Quality_check.
+     * @param {quality_checkUpdateArgs} args - Arguments to update one Quality_check.
+     * @example
+     * // Update one Quality_check
+     * const quality_check = await prisma.quality_check.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends quality_checkUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, quality_checkUpdateArgs<ExtArgs>>
+    ): Prisma__quality_checkClient<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Quality_checks.
+     * @param {quality_checkDeleteManyArgs} args - Arguments to filter Quality_checks to delete.
+     * @example
+     * // Delete a few Quality_checks
+     * const { count } = await prisma.quality_check.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends quality_checkDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, quality_checkDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Quality_checks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {quality_checkUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Quality_checks
+     * const quality_check = await prisma.quality_check.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends quality_checkUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, quality_checkUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Quality_check.
+     * @param {quality_checkUpsertArgs} args - Arguments to update or create a Quality_check.
+     * @example
+     * // Update or create a Quality_check
+     * const quality_check = await prisma.quality_check.upsert({
+     *   create: {
+     *     // ... data to create a Quality_check
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Quality_check we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends quality_checkUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, quality_checkUpsertArgs<ExtArgs>>
+    ): Prisma__quality_checkClient<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Quality_checks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {quality_checkCountArgs} args - Arguments to filter Quality_checks to count.
+     * @example
+     * // Count the number of Quality_checks
+     * const count = await prisma.quality_check.count({
+     *   where: {
+     *     // ... the filter for the Quality_checks we want to count
+     *   }
+     * })
+    **/
+    count<T extends quality_checkCountArgs>(
+      args?: Subset<T, quality_checkCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Quality_checkCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Quality_check.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Quality_checkAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Quality_checkAggregateArgs>(args: Subset<T, Quality_checkAggregateArgs>): Prisma.PrismaPromise<GetQuality_checkAggregateType<T>>
+
+    /**
+     * Group by Quality_check.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {quality_checkGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends quality_checkGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: quality_checkGroupByArgs['orderBy'] }
+        : { orderBy?: quality_checkGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, quality_checkGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetQuality_checkGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the quality_check model
+   */
+  readonly fields: quality_checkFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for quality_check.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__quality_checkClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    track_id_object<T extends track_id_objectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, track_id_objectDefaultArgs<ExtArgs>>): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    imove_scrap_obj<T extends quality_check$imove_scrap_objArgs<ExtArgs> = {}>(args?: Subset<T, quality_check$imove_scrap_objArgs<ExtArgs>>): Prisma__inventory_move_draftClient<$Result.GetResult<Prisma.$inventory_move_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    repair_job<T extends quality_check$repair_jobArgs<ExtArgs> = {}>(args?: Subset<T, quality_check$repair_jobArgs<ExtArgs>>): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the quality_check model
+   */ 
+  interface quality_checkFieldRefs {
+    readonly org_id: FieldRef<"quality_check", 'Int'>
+    readonly creation_date_time: FieldRef<"quality_check", 'DateTime'>
+    readonly locator_id: FieldRef<"quality_check", 'Int'>
+    readonly track_id: FieldRef<"quality_check", 'String'>
+    readonly checker_name: FieldRef<"quality_check", 'String'>
+    readonly customer: FieldRef<"quality_check", 'String'>
+    readonly total_ok: FieldRef<"quality_check", 'Float'>
+    readonly scrap_reason: FieldRef<"quality_check", 'String'>
+    readonly total_ng_scrap: FieldRef<"quality_check", 'Float'>
+    readonly imove_scrap_id: FieldRef<"quality_check", 'Int'>
+    readonly repair_reason: FieldRef<"quality_check", 'String'>
+    readonly total_ng_repair: FieldRef<"quality_check", 'Float'>
+    readonly repair_job_id: FieldRef<"quality_check", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * quality_check findUnique
+   */
+  export type quality_checkFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    /**
+     * Filter, which quality_check to fetch.
+     */
+    where: quality_checkWhereUniqueInput
+  }
+
+
+  /**
+   * quality_check findUniqueOrThrow
+   */
+  export type quality_checkFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    /**
+     * Filter, which quality_check to fetch.
+     */
+    where: quality_checkWhereUniqueInput
+  }
+
+
+  /**
+   * quality_check findFirst
+   */
+  export type quality_checkFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    /**
+     * Filter, which quality_check to fetch.
+     */
+    where?: quality_checkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of quality_checks to fetch.
+     */
+    orderBy?: quality_checkOrderByWithRelationInput | quality_checkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for quality_checks.
+     */
+    cursor?: quality_checkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` quality_checks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` quality_checks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of quality_checks.
+     */
+    distinct?: Quality_checkScalarFieldEnum | Quality_checkScalarFieldEnum[]
+  }
+
+
+  /**
+   * quality_check findFirstOrThrow
+   */
+  export type quality_checkFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    /**
+     * Filter, which quality_check to fetch.
+     */
+    where?: quality_checkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of quality_checks to fetch.
+     */
+    orderBy?: quality_checkOrderByWithRelationInput | quality_checkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for quality_checks.
+     */
+    cursor?: quality_checkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` quality_checks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` quality_checks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of quality_checks.
+     */
+    distinct?: Quality_checkScalarFieldEnum | Quality_checkScalarFieldEnum[]
+  }
+
+
+  /**
+   * quality_check findMany
+   */
+  export type quality_checkFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    /**
+     * Filter, which quality_checks to fetch.
+     */
+    where?: quality_checkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of quality_checks to fetch.
+     */
+    orderBy?: quality_checkOrderByWithRelationInput | quality_checkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing quality_checks.
+     */
+    cursor?: quality_checkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` quality_checks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` quality_checks.
+     */
+    skip?: number
+    distinct?: Quality_checkScalarFieldEnum | Quality_checkScalarFieldEnum[]
+  }
+
+
+  /**
+   * quality_check create
+   */
+  export type quality_checkCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    /**
+     * The data needed to create a quality_check.
+     */
+    data: XOR<quality_checkCreateInput, quality_checkUncheckedCreateInput>
+  }
+
+
+  /**
+   * quality_check createMany
+   */
+  export type quality_checkCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many quality_checks.
+     */
+    data: quality_checkCreateManyInput | quality_checkCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * quality_check update
+   */
+  export type quality_checkUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    /**
+     * The data needed to update a quality_check.
+     */
+    data: XOR<quality_checkUpdateInput, quality_checkUncheckedUpdateInput>
+    /**
+     * Choose, which quality_check to update.
+     */
+    where: quality_checkWhereUniqueInput
+  }
+
+
+  /**
+   * quality_check updateMany
+   */
+  export type quality_checkUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update quality_checks.
+     */
+    data: XOR<quality_checkUpdateManyMutationInput, quality_checkUncheckedUpdateManyInput>
+    /**
+     * Filter which quality_checks to update
+     */
+    where?: quality_checkWhereInput
+  }
+
+
+  /**
+   * quality_check upsert
+   */
+  export type quality_checkUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    /**
+     * The filter to search for the quality_check to update in case it exists.
+     */
+    where: quality_checkWhereUniqueInput
+    /**
+     * In case the quality_check found by the `where` argument doesn't exist, create a new quality_check with this data.
+     */
+    create: XOR<quality_checkCreateInput, quality_checkUncheckedCreateInput>
+    /**
+     * In case the quality_check was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<quality_checkUpdateInput, quality_checkUncheckedUpdateInput>
+  }
+
+
+  /**
+   * quality_check delete
+   */
+  export type quality_checkDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    /**
+     * Filter which quality_check to delete.
+     */
+    where: quality_checkWhereUniqueInput
+  }
+
+
+  /**
+   * quality_check deleteMany
+   */
+  export type quality_checkDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which quality_checks to delete
+     */
+    where?: quality_checkWhereInput
+  }
+
+
+  /**
+   * quality_check.imove_scrap_obj
+   */
+  export type quality_check$imove_scrap_objArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the inventory_move_draft
+     */
+    select?: inventory_move_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    where?: inventory_move_draftWhereInput
+  }
+
+
+  /**
+   * quality_check.repair_job
+   */
+  export type quality_check$repair_jobArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    where?: repair_jobWhereInput
+  }
+
+
+  /**
+   * quality_check without action
+   */
+  export type quality_checkDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
   }
 
 
@@ -5189,6 +7855,9 @@ export namespace Prisma {
     source_data?: boolean
     object_data?: boolean
     track_id_history?: boolean | track_id_object$track_id_historyArgs<ExtArgs>
+    repair_job?: boolean | track_id_object$repair_jobArgs<ExtArgs>
+    quality_check_used_in?: boolean | track_id_object$quality_check_used_inArgs<ExtArgs>
+    product_single_result?: boolean | track_id_object$product_single_resultArgs<ExtArgs>
     _count?: boolean | Track_id_objectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["track_id_object"]>
 
@@ -5204,6 +7873,9 @@ export namespace Prisma {
 
   export type track_id_objectInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     track_id_history?: boolean | track_id_object$track_id_historyArgs<ExtArgs>
+    repair_job?: boolean | track_id_object$repair_jobArgs<ExtArgs>
+    quality_check_used_in?: boolean | track_id_object$quality_check_used_inArgs<ExtArgs>
+    product_single_result?: boolean | track_id_object$product_single_resultArgs<ExtArgs>
     _count?: boolean | Track_id_objectCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5212,6 +7884,9 @@ export namespace Prisma {
     name: "track_id_object"
     objects: {
       track_id_history: Prisma.$track_id_historyPayload<ExtArgs>[]
+      repair_job: Prisma.$repair_jobPayload<ExtArgs> | null
+      quality_check_used_in: Prisma.$quality_checkPayload<ExtArgs>[]
+      product_single_result: Prisma.$production_single_product_draftPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetResult<{
       track_id: string
@@ -5588,6 +8263,12 @@ export namespace Prisma {
 
     track_id_history<T extends track_id_object$track_id_historyArgs<ExtArgs> = {}>(args?: Subset<T, track_id_object$track_id_historyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$track_id_historyPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    repair_job<T extends track_id_object$repair_jobArgs<ExtArgs> = {}>(args?: Subset<T, track_id_object$repair_jobArgs<ExtArgs>>): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    quality_check_used_in<T extends track_id_object$quality_check_used_inArgs<ExtArgs> = {}>(args?: Subset<T, track_id_object$quality_check_used_inArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    product_single_result<T extends track_id_object$product_single_resultArgs<ExtArgs> = {}>(args?: Subset<T, track_id_object$product_single_resultArgs<ExtArgs>>): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5952,6 +8633,59 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Track_id_historyScalarFieldEnum | Track_id_historyScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_object.repair_job
+   */
+  export type track_id_object$repair_jobArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the repair_job
+     */
+    select?: repair_jobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: repair_jobInclude<ExtArgs> | null
+    where?: repair_jobWhereInput
+  }
+
+
+  /**
+   * track_id_object.quality_check_used_in
+   */
+  export type track_id_object$quality_check_used_inArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the quality_check
+     */
+    select?: quality_checkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: quality_checkInclude<ExtArgs> | null
+    where?: quality_checkWhereInput
+    orderBy?: quality_checkOrderByWithRelationInput | quality_checkOrderByWithRelationInput[]
+    cursor?: quality_checkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Quality_checkScalarFieldEnum | Quality_checkScalarFieldEnum[]
+  }
+
+
+  /**
+   * track_id_object.product_single_result
+   */
+  export type track_id_object$product_single_resultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+    where?: production_single_product_draftWhereInput
   }
 
 
@@ -7835,10 +10569,49 @@ export namespace Prisma {
     org_id: 'org_id',
     creation_date_time: 'creation_date_time',
     erp_id: 'erp_id',
-    data: 'data'
+    data: 'data',
+    track_id: 'track_id',
+    total_ok: 'total_ok',
+    scrap_reason: 'scrap_reason',
+    total_ng_scrap: 'total_ng_scrap',
+    imove_scrap_id: 'imove_scrap_id',
+    repair_reason: 'repair_reason',
+    total_ng_repair: 'total_ng_repair',
+    repair_job_id: 'repair_job_id'
   };
 
   export type Production_single_product_draftScalarFieldEnum = (typeof Production_single_product_draftScalarFieldEnum)[keyof typeof Production_single_product_draftScalarFieldEnum]
+
+
+  export const Repair_jobScalarFieldEnum: {
+    org_id: 'org_id',
+    creation_date_time: 'creation_date_time',
+    track_id: 'track_id',
+    starting_locator_id: 'starting_locator_id',
+    imove_repair_id: 'imove_repair_id',
+    repair_status: 'repair_status'
+  };
+
+  export type Repair_jobScalarFieldEnum = (typeof Repair_jobScalarFieldEnum)[keyof typeof Repair_jobScalarFieldEnum]
+
+
+  export const Quality_checkScalarFieldEnum: {
+    org_id: 'org_id',
+    creation_date_time: 'creation_date_time',
+    locator_id: 'locator_id',
+    track_id: 'track_id',
+    checker_name: 'checker_name',
+    customer: 'customer',
+    total_ok: 'total_ok',
+    scrap_reason: 'scrap_reason',
+    total_ng_scrap: 'total_ng_scrap',
+    imove_scrap_id: 'imove_scrap_id',
+    repair_reason: 'repair_reason',
+    total_ng_repair: 'total_ng_repair',
+    repair_job_id: 'repair_job_id'
+  };
+
+  export type Quality_checkScalarFieldEnum = (typeof Quality_checkScalarFieldEnum)[keyof typeof Quality_checkScalarFieldEnum]
 
 
   export const Track_id_objectScalarFieldEnum: {
@@ -7906,6 +10679,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -7987,6 +10768,9 @@ export namespace Prisma {
     creation_date_time?: DateTimeFilter<"inventory_move_draft"> | Date | string
     movement_id?: IntFilter<"inventory_move_draft"> | number
     data?: JsonFilter<"inventory_move_draft">
+    production_single_scrap_imove?: XOR<Production_single_product_draftNullableRelationFilter, production_single_product_draftWhereInput> | null
+    quality_check_scrap_imove?: XOR<Quality_checkNullableRelationFilter, quality_checkWhereInput> | null
+    repair_job_imove?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
   }
 
   export type inventory_move_draftOrderByWithRelationInput = {
@@ -7994,6 +10778,9 @@ export namespace Prisma {
     creation_date_time?: SortOrder
     movement_id?: SortOrder
     data?: SortOrder
+    production_single_scrap_imove?: production_single_product_draftOrderByWithRelationInput
+    quality_check_scrap_imove?: quality_checkOrderByWithRelationInput
+    repair_job_imove?: repair_jobOrderByWithRelationInput
   }
 
   export type inventory_move_draftWhereUniqueInput = Prisma.AtLeast<{
@@ -8005,6 +10792,9 @@ export namespace Prisma {
     org_id?: IntFilter<"inventory_move_draft"> | number
     creation_date_time?: DateTimeFilter<"inventory_move_draft"> | Date | string
     data?: JsonFilter<"inventory_move_draft">
+    production_single_scrap_imove?: XOR<Production_single_product_draftNullableRelationFilter, production_single_product_draftWhereInput> | null
+    quality_check_scrap_imove?: XOR<Quality_checkNullableRelationFilter, quality_checkWhereInput> | null
+    repair_job_imove?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
   }, "org_id_creation_date_time" | "movement_id">
 
   export type inventory_move_draftOrderByWithAggregationInput = {
@@ -8147,6 +10937,17 @@ export namespace Prisma {
     creation_date_time?: DateTimeFilter<"production_single_product_draft"> | Date | string
     erp_id?: IntFilter<"production_single_product_draft"> | number
     data?: JsonFilter<"production_single_product_draft">
+    track_id?: StringFilter<"production_single_product_draft"> | string
+    total_ok?: FloatFilter<"production_single_product_draft"> | number
+    scrap_reason?: StringFilter<"production_single_product_draft"> | string
+    total_ng_scrap?: FloatFilter<"production_single_product_draft"> | number
+    imove_scrap_id?: IntNullableFilter<"production_single_product_draft"> | number | null
+    repair_reason?: StringFilter<"production_single_product_draft"> | string
+    total_ng_repair?: FloatFilter<"production_single_product_draft"> | number
+    repair_job_id?: StringNullableFilter<"production_single_product_draft"> | string | null
+    track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+    imove_scrap_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
+    repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
   }
 
   export type production_single_product_draftOrderByWithRelationInput = {
@@ -8154,10 +10955,24 @@ export namespace Prisma {
     creation_date_time?: SortOrder
     erp_id?: SortOrder
     data?: SortOrder
+    track_id?: SortOrder
+    total_ok?: SortOrder
+    scrap_reason?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrderInput | SortOrder
+    repair_reason?: SortOrder
+    total_ng_repair?: SortOrder
+    repair_job_id?: SortOrderInput | SortOrder
+    track_id_object?: track_id_objectOrderByWithRelationInput
+    imove_scrap_obj?: inventory_move_draftOrderByWithRelationInput
+    repair_job?: repair_jobOrderByWithRelationInput
   }
 
   export type production_single_product_draftWhereUniqueInput = Prisma.AtLeast<{
     erp_id?: number
+    track_id?: string
+    imove_scrap_id?: number
+    repair_job_id?: string
     org_id_creation_date_time?: production_single_product_draftOrg_idCreation_date_timeCompoundUniqueInput
     AND?: production_single_product_draftWhereInput | production_single_product_draftWhereInput[]
     OR?: production_single_product_draftWhereInput[]
@@ -8165,13 +10980,29 @@ export namespace Prisma {
     org_id?: IntFilter<"production_single_product_draft"> | number
     creation_date_time?: DateTimeFilter<"production_single_product_draft"> | Date | string
     data?: JsonFilter<"production_single_product_draft">
-  }, "org_id_creation_date_time" | "erp_id">
+    total_ok?: FloatFilter<"production_single_product_draft"> | number
+    scrap_reason?: StringFilter<"production_single_product_draft"> | string
+    total_ng_scrap?: FloatFilter<"production_single_product_draft"> | number
+    repair_reason?: StringFilter<"production_single_product_draft"> | string
+    total_ng_repair?: FloatFilter<"production_single_product_draft"> | number
+    track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+    imove_scrap_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
+    repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
+  }, "org_id_creation_date_time" | "erp_id" | "track_id" | "imove_scrap_id" | "repair_job_id">
 
   export type production_single_product_draftOrderByWithAggregationInput = {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     erp_id?: SortOrder
     data?: SortOrder
+    track_id?: SortOrder
+    total_ok?: SortOrder
+    scrap_reason?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrderInput | SortOrder
+    repair_reason?: SortOrder
+    total_ng_repair?: SortOrder
+    repair_job_id?: SortOrderInput | SortOrder
     _count?: production_single_product_draftCountOrderByAggregateInput
     _avg?: production_single_product_draftAvgOrderByAggregateInput
     _max?: production_single_product_draftMaxOrderByAggregateInput
@@ -8187,6 +11018,190 @@ export namespace Prisma {
     creation_date_time?: DateTimeWithAggregatesFilter<"production_single_product_draft"> | Date | string
     erp_id?: IntWithAggregatesFilter<"production_single_product_draft"> | number
     data?: JsonWithAggregatesFilter<"production_single_product_draft">
+    track_id?: StringWithAggregatesFilter<"production_single_product_draft"> | string
+    total_ok?: FloatWithAggregatesFilter<"production_single_product_draft"> | number
+    scrap_reason?: StringWithAggregatesFilter<"production_single_product_draft"> | string
+    total_ng_scrap?: FloatWithAggregatesFilter<"production_single_product_draft"> | number
+    imove_scrap_id?: IntNullableWithAggregatesFilter<"production_single_product_draft"> | number | null
+    repair_reason?: StringWithAggregatesFilter<"production_single_product_draft"> | string
+    total_ng_repair?: FloatWithAggregatesFilter<"production_single_product_draft"> | number
+    repair_job_id?: StringNullableWithAggregatesFilter<"production_single_product_draft"> | string | null
+  }
+
+  export type repair_jobWhereInput = {
+    AND?: repair_jobWhereInput | repair_jobWhereInput[]
+    OR?: repair_jobWhereInput[]
+    NOT?: repair_jobWhereInput | repair_jobWhereInput[]
+    org_id?: IntFilter<"repair_job"> | number
+    creation_date_time?: DateTimeFilter<"repair_job"> | Date | string
+    track_id?: StringFilter<"repair_job"> | string
+    starting_locator_id?: IntFilter<"repair_job"> | number
+    imove_repair_id?: IntNullableFilter<"repair_job"> | number | null
+    repair_status?: StringFilter<"repair_job"> | string
+    track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+    imove_repair_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
+    quality_check_src?: Quality_checkListRelationFilter
+    production_single_src?: Production_single_product_draftListRelationFilter
+  }
+
+  export type repair_jobOrderByWithRelationInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    track_id?: SortOrder
+    starting_locator_id?: SortOrder
+    imove_repair_id?: SortOrderInput | SortOrder
+    repair_status?: SortOrder
+    track_id_object?: track_id_objectOrderByWithRelationInput
+    imove_repair_obj?: inventory_move_draftOrderByWithRelationInput
+    quality_check_src?: quality_checkOrderByRelationAggregateInput
+    production_single_src?: production_single_product_draftOrderByRelationAggregateInput
+  }
+
+  export type repair_jobWhereUniqueInput = Prisma.AtLeast<{
+    track_id?: string
+    imove_repair_id?: number
+    org_id_creation_date_time?: repair_jobOrg_idCreation_date_timeCompoundUniqueInput
+    AND?: repair_jobWhereInput | repair_jobWhereInput[]
+    OR?: repair_jobWhereInput[]
+    NOT?: repair_jobWhereInput | repair_jobWhereInput[]
+    org_id?: IntFilter<"repair_job"> | number
+    creation_date_time?: DateTimeFilter<"repair_job"> | Date | string
+    starting_locator_id?: IntFilter<"repair_job"> | number
+    repair_status?: StringFilter<"repair_job"> | string
+    track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+    imove_repair_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
+    quality_check_src?: Quality_checkListRelationFilter
+    production_single_src?: Production_single_product_draftListRelationFilter
+  }, "org_id_creation_date_time" | "track_id" | "imove_repair_id">
+
+  export type repair_jobOrderByWithAggregationInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    track_id?: SortOrder
+    starting_locator_id?: SortOrder
+    imove_repair_id?: SortOrderInput | SortOrder
+    repair_status?: SortOrder
+    _count?: repair_jobCountOrderByAggregateInput
+    _avg?: repair_jobAvgOrderByAggregateInput
+    _max?: repair_jobMaxOrderByAggregateInput
+    _min?: repair_jobMinOrderByAggregateInput
+    _sum?: repair_jobSumOrderByAggregateInput
+  }
+
+  export type repair_jobScalarWhereWithAggregatesInput = {
+    AND?: repair_jobScalarWhereWithAggregatesInput | repair_jobScalarWhereWithAggregatesInput[]
+    OR?: repair_jobScalarWhereWithAggregatesInput[]
+    NOT?: repair_jobScalarWhereWithAggregatesInput | repair_jobScalarWhereWithAggregatesInput[]
+    org_id?: IntWithAggregatesFilter<"repair_job"> | number
+    creation_date_time?: DateTimeWithAggregatesFilter<"repair_job"> | Date | string
+    track_id?: StringWithAggregatesFilter<"repair_job"> | string
+    starting_locator_id?: IntWithAggregatesFilter<"repair_job"> | number
+    imove_repair_id?: IntNullableWithAggregatesFilter<"repair_job"> | number | null
+    repair_status?: StringWithAggregatesFilter<"repair_job"> | string
+  }
+
+  export type quality_checkWhereInput = {
+    AND?: quality_checkWhereInput | quality_checkWhereInput[]
+    OR?: quality_checkWhereInput[]
+    NOT?: quality_checkWhereInput | quality_checkWhereInput[]
+    org_id?: IntFilter<"quality_check"> | number
+    creation_date_time?: DateTimeFilter<"quality_check"> | Date | string
+    locator_id?: IntFilter<"quality_check"> | number
+    track_id?: StringFilter<"quality_check"> | string
+    checker_name?: StringFilter<"quality_check"> | string
+    customer?: StringFilter<"quality_check"> | string
+    total_ok?: FloatFilter<"quality_check"> | number
+    scrap_reason?: StringFilter<"quality_check"> | string
+    total_ng_scrap?: FloatFilter<"quality_check"> | number
+    imove_scrap_id?: IntNullableFilter<"quality_check"> | number | null
+    repair_reason?: StringFilter<"quality_check"> | string
+    total_ng_repair?: FloatFilter<"quality_check"> | number
+    repair_job_id?: StringNullableFilter<"quality_check"> | string | null
+    track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+    imove_scrap_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
+    repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
+  }
+
+  export type quality_checkOrderByWithRelationInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    locator_id?: SortOrder
+    track_id?: SortOrder
+    checker_name?: SortOrder
+    customer?: SortOrder
+    total_ok?: SortOrder
+    scrap_reason?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrderInput | SortOrder
+    repair_reason?: SortOrder
+    total_ng_repair?: SortOrder
+    repair_job_id?: SortOrderInput | SortOrder
+    track_id_object?: track_id_objectOrderByWithRelationInput
+    imove_scrap_obj?: inventory_move_draftOrderByWithRelationInput
+    repair_job?: repair_jobOrderByWithRelationInput
+  }
+
+  export type quality_checkWhereUniqueInput = Prisma.AtLeast<{
+    imove_scrap_id?: number
+    org_id_creation_date_time?: quality_checkOrg_idCreation_date_timeCompoundUniqueInput
+    AND?: quality_checkWhereInput | quality_checkWhereInput[]
+    OR?: quality_checkWhereInput[]
+    NOT?: quality_checkWhereInput | quality_checkWhereInput[]
+    org_id?: IntFilter<"quality_check"> | number
+    creation_date_time?: DateTimeFilter<"quality_check"> | Date | string
+    locator_id?: IntFilter<"quality_check"> | number
+    track_id?: StringFilter<"quality_check"> | string
+    checker_name?: StringFilter<"quality_check"> | string
+    customer?: StringFilter<"quality_check"> | string
+    total_ok?: FloatFilter<"quality_check"> | number
+    scrap_reason?: StringFilter<"quality_check"> | string
+    total_ng_scrap?: FloatFilter<"quality_check"> | number
+    repair_reason?: StringFilter<"quality_check"> | string
+    total_ng_repair?: FloatFilter<"quality_check"> | number
+    repair_job_id?: StringNullableFilter<"quality_check"> | string | null
+    track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+    imove_scrap_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
+    repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
+  }, "org_id_creation_date_time" | "imove_scrap_id">
+
+  export type quality_checkOrderByWithAggregationInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    locator_id?: SortOrder
+    track_id?: SortOrder
+    checker_name?: SortOrder
+    customer?: SortOrder
+    total_ok?: SortOrder
+    scrap_reason?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrderInput | SortOrder
+    repair_reason?: SortOrder
+    total_ng_repair?: SortOrder
+    repair_job_id?: SortOrderInput | SortOrder
+    _count?: quality_checkCountOrderByAggregateInput
+    _avg?: quality_checkAvgOrderByAggregateInput
+    _max?: quality_checkMaxOrderByAggregateInput
+    _min?: quality_checkMinOrderByAggregateInput
+    _sum?: quality_checkSumOrderByAggregateInput
+  }
+
+  export type quality_checkScalarWhereWithAggregatesInput = {
+    AND?: quality_checkScalarWhereWithAggregatesInput | quality_checkScalarWhereWithAggregatesInput[]
+    OR?: quality_checkScalarWhereWithAggregatesInput[]
+    NOT?: quality_checkScalarWhereWithAggregatesInput | quality_checkScalarWhereWithAggregatesInput[]
+    org_id?: IntWithAggregatesFilter<"quality_check"> | number
+    creation_date_time?: DateTimeWithAggregatesFilter<"quality_check"> | Date | string
+    locator_id?: IntWithAggregatesFilter<"quality_check"> | number
+    track_id?: StringWithAggregatesFilter<"quality_check"> | string
+    checker_name?: StringWithAggregatesFilter<"quality_check"> | string
+    customer?: StringWithAggregatesFilter<"quality_check"> | string
+    total_ok?: FloatWithAggregatesFilter<"quality_check"> | number
+    scrap_reason?: StringWithAggregatesFilter<"quality_check"> | string
+    total_ng_scrap?: FloatWithAggregatesFilter<"quality_check"> | number
+    imove_scrap_id?: IntNullableWithAggregatesFilter<"quality_check"> | number | null
+    repair_reason?: StringWithAggregatesFilter<"quality_check"> | string
+    total_ng_repair?: FloatWithAggregatesFilter<"quality_check"> | number
+    repair_job_id?: StringNullableWithAggregatesFilter<"quality_check"> | string | null
   }
 
   export type track_id_objectWhereInput = {
@@ -8201,6 +11216,9 @@ export namespace Prisma {
     source_data?: JsonFilter<"track_id_object">
     object_data?: JsonFilter<"track_id_object">
     track_id_history?: Track_id_historyListRelationFilter
+    repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
+    quality_check_used_in?: Quality_checkListRelationFilter
+    product_single_result?: XOR<Production_single_product_draftNullableRelationFilter, production_single_product_draftWhereInput> | null
   }
 
   export type track_id_objectOrderByWithRelationInput = {
@@ -8212,6 +11230,9 @@ export namespace Prisma {
     source_data?: SortOrder
     object_data?: SortOrder
     track_id_history?: track_id_historyOrderByRelationAggregateInput
+    repair_job?: repair_jobOrderByWithRelationInput
+    quality_check_used_in?: quality_checkOrderByRelationAggregateInput
+    product_single_result?: production_single_product_draftOrderByWithRelationInput
   }
 
   export type track_id_objectWhereUniqueInput = Prisma.AtLeast<{
@@ -8226,6 +11247,9 @@ export namespace Prisma {
     source_data?: JsonFilter<"track_id_object">
     object_data?: JsonFilter<"track_id_object">
     track_id_history?: Track_id_historyListRelationFilter
+    repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
+    quality_check_used_in?: Quality_checkListRelationFilter
+    product_single_result?: XOR<Production_single_product_draftNullableRelationFilter, production_single_product_draftWhereInput> | null
   }, "track_id" | "creation_date_time">
 
   export type track_id_objectOrderByWithAggregationInput = {
@@ -8372,6 +11396,9 @@ export namespace Prisma {
     creation_date_time: Date | string
     movement_id: number
     data: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftCreateNestedOneWithoutImove_scrap_objInput
+    quality_check_scrap_imove?: quality_checkCreateNestedOneWithoutImove_scrap_objInput
+    repair_job_imove?: repair_jobCreateNestedOneWithoutImove_repair_objInput
   }
 
   export type inventory_move_draftUncheckedCreateInput = {
@@ -8379,6 +11406,9 @@ export namespace Prisma {
     creation_date_time: Date | string
     movement_id: number
     data: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_scrap_objInput
+    quality_check_scrap_imove?: quality_checkUncheckedCreateNestedOneWithoutImove_scrap_objInput
+    repair_job_imove?: repair_jobUncheckedCreateNestedOneWithoutImove_repair_objInput
   }
 
   export type inventory_move_draftUpdateInput = {
@@ -8386,6 +11416,9 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUpdateOneWithoutImove_scrap_objNestedInput
+    quality_check_scrap_imove?: quality_checkUpdateOneWithoutImove_scrap_objNestedInput
+    repair_job_imove?: repair_jobUpdateOneWithoutImove_repair_objNestedInput
   }
 
   export type inventory_move_draftUncheckedUpdateInput = {
@@ -8393,6 +11426,9 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_scrap_objNestedInput
+    quality_check_scrap_imove?: quality_checkUncheckedUpdateOneWithoutImove_scrap_objNestedInput
+    repair_job_imove?: repair_jobUncheckedUpdateOneWithoutImove_repair_objNestedInput
   }
 
   export type inventory_move_draftCreateManyInput = {
@@ -8533,6 +11569,14 @@ export namespace Prisma {
     creation_date_time: Date | string
     erp_id: number
     data: JsonNullValueInput | InputJsonValue
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    track_id_object: track_id_objectCreateNestedOneWithoutProduct_single_resultInput
+    imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_scrap_imoveInput
+    repair_job?: repair_jobCreateNestedOneWithoutProduction_single_srcInput
   }
 
   export type production_single_product_draftUncheckedCreateInput = {
@@ -8540,6 +11584,14 @@ export namespace Prisma {
     creation_date_time: Date | string
     erp_id: number
     data: JsonNullValueInput | InputJsonValue
+    track_id: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+    repair_job_id?: string | null
   }
 
   export type production_single_product_draftUpdateInput = {
@@ -8547,6 +11599,14 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutProduct_single_resultNestedInput
+    imove_scrap_obj?: inventory_move_draftUpdateOneWithoutProduction_single_scrap_imoveNestedInput
+    repair_job?: repair_jobUpdateOneWithoutProduction_single_srcNestedInput
   }
 
   export type production_single_product_draftUncheckedUpdateInput = {
@@ -8554,6 +11614,14 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    track_id?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type production_single_product_draftCreateManyInput = {
@@ -8561,6 +11629,14 @@ export namespace Prisma {
     creation_date_time: Date | string
     erp_id: number
     data: JsonNullValueInput | InputJsonValue
+    track_id: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+    repair_job_id?: string | null
   }
 
   export type production_single_product_draftUpdateManyMutationInput = {
@@ -8568,6 +11644,11 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
   }
 
   export type production_single_product_draftUncheckedUpdateManyInput = {
@@ -8575,6 +11656,192 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     erp_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    track_id?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type repair_jobCreateInput = {
+    org_id: number
+    creation_date_time: Date | string
+    starting_locator_id?: number
+    repair_status: string
+    track_id_object: track_id_objectCreateNestedOneWithoutRepair_jobInput
+    imove_repair_obj?: inventory_move_draftCreateNestedOneWithoutRepair_job_imoveInput
+    quality_check_src?: quality_checkCreateNestedManyWithoutRepair_jobInput
+    production_single_src?: production_single_product_draftCreateNestedManyWithoutRepair_jobInput
+  }
+
+  export type repair_jobUncheckedCreateInput = {
+    org_id: number
+    creation_date_time: Date | string
+    track_id: string
+    starting_locator_id?: number
+    imove_repair_id?: number | null
+    repair_status: string
+    quality_check_src?: quality_checkUncheckedCreateNestedManyWithoutRepair_jobInput
+    production_single_src?: production_single_product_draftUncheckedCreateNestedManyWithoutRepair_jobInput
+  }
+
+  export type repair_jobUpdateInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    repair_status?: StringFieldUpdateOperationsInput | string
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutRepair_jobNestedInput
+    imove_repair_obj?: inventory_move_draftUpdateOneWithoutRepair_job_imoveNestedInput
+    quality_check_src?: quality_checkUpdateManyWithoutRepair_jobNestedInput
+    production_single_src?: production_single_product_draftUpdateManyWithoutRepair_jobNestedInput
+  }
+
+  export type repair_jobUncheckedUpdateInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    track_id?: StringFieldUpdateOperationsInput | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    imove_repair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_status?: StringFieldUpdateOperationsInput | string
+    quality_check_src?: quality_checkUncheckedUpdateManyWithoutRepair_jobNestedInput
+    production_single_src?: production_single_product_draftUncheckedUpdateManyWithoutRepair_jobNestedInput
+  }
+
+  export type repair_jobCreateManyInput = {
+    org_id: number
+    creation_date_time: Date | string
+    track_id: string
+    starting_locator_id?: number
+    imove_repair_id?: number | null
+    repair_status: string
+  }
+
+  export type repair_jobUpdateManyMutationInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    repair_status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type repair_jobUncheckedUpdateManyInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    track_id?: StringFieldUpdateOperationsInput | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    imove_repair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type quality_checkCreateInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    track_id_object: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
+    imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutQuality_check_scrap_imoveInput
+    repair_job?: repair_jobCreateNestedOneWithoutQuality_check_srcInput
+  }
+
+  export type quality_checkUncheckedCreateInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    track_id: string
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+    repair_job_id?: string | null
+  }
+
+  export type quality_checkUpdateInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput
+    imove_scrap_obj?: inventory_move_draftUpdateOneWithoutQuality_check_scrap_imoveNestedInput
+    repair_job?: repair_jobUpdateOneWithoutQuality_check_srcNestedInput
+  }
+
+  export type quality_checkUncheckedUpdateInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    track_id?: StringFieldUpdateOperationsInput | string
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type quality_checkCreateManyInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    track_id: string
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+    repair_job_id?: string | null
+  }
+
+  export type quality_checkUpdateManyMutationInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type quality_checkUncheckedUpdateManyInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    track_id?: StringFieldUpdateOperationsInput | string
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type track_id_objectCreateInput = {
@@ -8586,6 +11853,9 @@ export namespace Prisma {
     source_data: JsonNullValueInput | InputJsonValue
     object_data: JsonNullValueInput | InputJsonValue
     track_id_history?: track_id_historyCreateNestedManyWithoutTrack_id_objectInput
+    repair_job?: repair_jobCreateNestedOneWithoutTrack_id_objectInput
+    quality_check_used_in?: quality_checkCreateNestedManyWithoutTrack_id_objectInput
+    product_single_result?: production_single_product_draftCreateNestedOneWithoutTrack_id_objectInput
   }
 
   export type track_id_objectUncheckedCreateInput = {
@@ -8597,6 +11867,9 @@ export namespace Prisma {
     source_data: JsonNullValueInput | InputJsonValue
     object_data: JsonNullValueInput | InputJsonValue
     track_id_history?: track_id_historyUncheckedCreateNestedManyWithoutTrack_id_objectInput
+    repair_job?: repair_jobUncheckedCreateNestedOneWithoutTrack_id_objectInput
+    quality_check_used_in?: quality_checkUncheckedCreateNestedManyWithoutTrack_id_objectInput
+    product_single_result?: production_single_product_draftUncheckedCreateNestedOneWithoutTrack_id_objectInput
   }
 
   export type track_id_objectUpdateInput = {
@@ -8608,6 +11881,9 @@ export namespace Prisma {
     source_data?: JsonNullValueInput | InputJsonValue
     object_data?: JsonNullValueInput | InputJsonValue
     track_id_history?: track_id_historyUpdateManyWithoutTrack_id_objectNestedInput
+    repair_job?: repair_jobUpdateOneWithoutTrack_id_objectNestedInput
+    quality_check_used_in?: quality_checkUpdateManyWithoutTrack_id_objectNestedInput
+    product_single_result?: production_single_product_draftUpdateOneWithoutTrack_id_objectNestedInput
   }
 
   export type track_id_objectUncheckedUpdateInput = {
@@ -8619,6 +11895,9 @@ export namespace Prisma {
     source_data?: JsonNullValueInput | InputJsonValue
     object_data?: JsonNullValueInput | InputJsonValue
     track_id_history?: track_id_historyUncheckedUpdateManyWithoutTrack_id_objectNestedInput
+    repair_job?: repair_jobUncheckedUpdateOneWithoutTrack_id_objectNestedInput
+    quality_check_used_in?: quality_checkUncheckedUpdateManyWithoutTrack_id_objectNestedInput
+    product_single_result?: production_single_product_draftUncheckedUpdateOneWithoutTrack_id_objectNestedInput
   }
 
   export type track_id_objectCreateManyInput = {
@@ -8806,6 +12085,21 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type Production_single_product_draftNullableRelationFilter = {
+    is?: production_single_product_draftWhereInput | null
+    isNot?: production_single_product_draftWhereInput | null
+  }
+
+  export type Quality_checkNullableRelationFilter = {
+    is?: quality_checkWhereInput | null
+    isNot?: quality_checkWhereInput | null
+  }
+
+  export type Repair_jobNullableRelationFilter = {
+    is?: repair_jobWhereInput | null
+    isNot?: repair_jobWhereInput | null
+  }
+
   export type inventory_move_draftOrg_idCreation_date_timeCompoundUniqueInput = {
     org_id: number
     creation_date_time: Date | string
@@ -8973,40 +12267,6 @@ export namespace Prisma {
     vendor_id?: SortOrder
   }
 
-  export type production_single_product_draftOrg_idCreation_date_timeCompoundUniqueInput = {
-    org_id: number
-    creation_date_time: Date | string
-  }
-
-  export type production_single_product_draftCountOrderByAggregateInput = {
-    org_id?: SortOrder
-    creation_date_time?: SortOrder
-    erp_id?: SortOrder
-    data?: SortOrder
-  }
-
-  export type production_single_product_draftAvgOrderByAggregateInput = {
-    org_id?: SortOrder
-    erp_id?: SortOrder
-  }
-
-  export type production_single_product_draftMaxOrderByAggregateInput = {
-    org_id?: SortOrder
-    creation_date_time?: SortOrder
-    erp_id?: SortOrder
-  }
-
-  export type production_single_product_draftMinOrderByAggregateInput = {
-    org_id?: SortOrder
-    creation_date_time?: SortOrder
-    erp_id?: SortOrder
-  }
-
-  export type production_single_product_draftSumOrderByAggregateInput = {
-    org_id?: SortOrder
-    erp_id?: SortOrder
-  }
-
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -9020,6 +12280,327 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type Track_id_objectRelationFilter = {
+    is?: track_id_objectWhereInput
+    isNot?: track_id_objectWhereInput
+  }
+
+  export type Inventory_move_draftNullableRelationFilter = {
+    is?: inventory_move_draftWhereInput | null
+    isNot?: inventory_move_draftWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type production_single_product_draftOrg_idCreation_date_timeCompoundUniqueInput = {
+    org_id: number
+    creation_date_time: Date | string
+  }
+
+  export type production_single_product_draftCountOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    data?: SortOrder
+    track_id?: SortOrder
+    total_ok?: SortOrder
+    scrap_reason?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrder
+    repair_reason?: SortOrder
+    total_ng_repair?: SortOrder
+    repair_job_id?: SortOrder
+  }
+
+  export type production_single_product_draftAvgOrderByAggregateInput = {
+    org_id?: SortOrder
+    erp_id?: SortOrder
+    total_ok?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrder
+    total_ng_repair?: SortOrder
+  }
+
+  export type production_single_product_draftMaxOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    track_id?: SortOrder
+    total_ok?: SortOrder
+    scrap_reason?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrder
+    repair_reason?: SortOrder
+    total_ng_repair?: SortOrder
+    repair_job_id?: SortOrder
+  }
+
+  export type production_single_product_draftMinOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    erp_id?: SortOrder
+    track_id?: SortOrder
+    total_ok?: SortOrder
+    scrap_reason?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrder
+    repair_reason?: SortOrder
+    total_ng_repair?: SortOrder
+    repair_job_id?: SortOrder
+  }
+
+  export type production_single_product_draftSumOrderByAggregateInput = {
+    org_id?: SortOrder
+    erp_id?: SortOrder
+    total_ok?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrder
+    total_ng_repair?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type Quality_checkListRelationFilter = {
+    every?: quality_checkWhereInput
+    some?: quality_checkWhereInput
+    none?: quality_checkWhereInput
+  }
+
+  export type Production_single_product_draftListRelationFilter = {
+    every?: production_single_product_draftWhereInput
+    some?: production_single_product_draftWhereInput
+    none?: production_single_product_draftWhereInput
+  }
+
+  export type quality_checkOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type production_single_product_draftOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type repair_jobOrg_idCreation_date_timeCompoundUniqueInput = {
+    org_id: number
+    creation_date_time: Date | string
+  }
+
+  export type repair_jobCountOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    track_id?: SortOrder
+    starting_locator_id?: SortOrder
+    imove_repair_id?: SortOrder
+    repair_status?: SortOrder
+  }
+
+  export type repair_jobAvgOrderByAggregateInput = {
+    org_id?: SortOrder
+    starting_locator_id?: SortOrder
+    imove_repair_id?: SortOrder
+  }
+
+  export type repair_jobMaxOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    track_id?: SortOrder
+    starting_locator_id?: SortOrder
+    imove_repair_id?: SortOrder
+    repair_status?: SortOrder
+  }
+
+  export type repair_jobMinOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    track_id?: SortOrder
+    starting_locator_id?: SortOrder
+    imove_repair_id?: SortOrder
+    repair_status?: SortOrder
+  }
+
+  export type repair_jobSumOrderByAggregateInput = {
+    org_id?: SortOrder
+    starting_locator_id?: SortOrder
+    imove_repair_id?: SortOrder
+  }
+
+  export type quality_checkOrg_idCreation_date_timeCompoundUniqueInput = {
+    org_id: number
+    creation_date_time: Date | string
+  }
+
+  export type quality_checkCountOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    locator_id?: SortOrder
+    track_id?: SortOrder
+    checker_name?: SortOrder
+    customer?: SortOrder
+    total_ok?: SortOrder
+    scrap_reason?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrder
+    repair_reason?: SortOrder
+    total_ng_repair?: SortOrder
+    repair_job_id?: SortOrder
+  }
+
+  export type quality_checkAvgOrderByAggregateInput = {
+    org_id?: SortOrder
+    locator_id?: SortOrder
+    total_ok?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrder
+    total_ng_repair?: SortOrder
+  }
+
+  export type quality_checkMaxOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    locator_id?: SortOrder
+    track_id?: SortOrder
+    checker_name?: SortOrder
+    customer?: SortOrder
+    total_ok?: SortOrder
+    scrap_reason?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrder
+    repair_reason?: SortOrder
+    total_ng_repair?: SortOrder
+    repair_job_id?: SortOrder
+  }
+
+  export type quality_checkMinOrderByAggregateInput = {
+    org_id?: SortOrder
+    creation_date_time?: SortOrder
+    locator_id?: SortOrder
+    track_id?: SortOrder
+    checker_name?: SortOrder
+    customer?: SortOrder
+    total_ok?: SortOrder
+    scrap_reason?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrder
+    repair_reason?: SortOrder
+    total_ng_repair?: SortOrder
+    repair_job_id?: SortOrder
+  }
+
+  export type quality_checkSumOrderByAggregateInput = {
+    org_id?: SortOrder
+    locator_id?: SortOrder
+    total_ok?: SortOrder
+    total_ng_scrap?: SortOrder
+    imove_scrap_id?: SortOrder
+    total_ng_repair?: SortOrder
   }
 
   export type Track_id_historyListRelationFilter = {
@@ -9066,29 +12647,6 @@ export namespace Prisma {
     productId?: SortOrder
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type Track_id_objectRelationFilter = {
-    is?: track_id_objectWhereInput
-    isNot?: track_id_objectWhereInput
-  }
-
   export type track_id_historyTrack_idUpdate_date_timeCompoundUniqueInput = {
     track_id: string
     update_date_time: Date | string
@@ -9111,17 +12669,6 @@ export namespace Prisma {
     track_id?: SortOrder
     update_date_time?: SortOrder
     description?: SortOrder
-  }
-
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type track_id_stockLocator_idKey23CompoundUniqueInput = {
@@ -9162,20 +12709,40 @@ export namespace Prisma {
     quantity?: SortOrder
   }
 
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
+  export type production_single_product_draftCreateNestedOneWithoutImove_scrap_objInput = {
+    create?: XOR<production_single_product_draftCreateWithoutImove_scrap_objInput, production_single_product_draftUncheckedCreateWithoutImove_scrap_objInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutImove_scrap_objInput
+    connect?: production_single_product_draftWhereUniqueInput
+  }
+
+  export type quality_checkCreateNestedOneWithoutImove_scrap_objInput = {
+    create?: XOR<quality_checkCreateWithoutImove_scrap_objInput, quality_checkUncheckedCreateWithoutImove_scrap_objInput>
+    connectOrCreate?: quality_checkCreateOrConnectWithoutImove_scrap_objInput
+    connect?: quality_checkWhereUniqueInput
+  }
+
+  export type repair_jobCreateNestedOneWithoutImove_repair_objInput = {
+    create?: XOR<repair_jobCreateWithoutImove_repair_objInput, repair_jobUncheckedCreateWithoutImove_repair_objInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutImove_repair_objInput
+    connect?: repair_jobWhereUniqueInput
+  }
+
+  export type production_single_product_draftUncheckedCreateNestedOneWithoutImove_scrap_objInput = {
+    create?: XOR<production_single_product_draftCreateWithoutImove_scrap_objInput, production_single_product_draftUncheckedCreateWithoutImove_scrap_objInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutImove_scrap_objInput
+    connect?: production_single_product_draftWhereUniqueInput
+  }
+
+  export type quality_checkUncheckedCreateNestedOneWithoutImove_scrap_objInput = {
+    create?: XOR<quality_checkCreateWithoutImove_scrap_objInput, quality_checkUncheckedCreateWithoutImove_scrap_objInput>
+    connectOrCreate?: quality_checkCreateOrConnectWithoutImove_scrap_objInput
+    connect?: quality_checkWhereUniqueInput
+  }
+
+  export type repair_jobUncheckedCreateNestedOneWithoutImove_repair_objInput = {
+    create?: XOR<repair_jobCreateWithoutImove_repair_objInput, repair_jobUncheckedCreateWithoutImove_repair_objInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutImove_repair_objInput
+    connect?: repair_jobWhereUniqueInput
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -9190,11 +12757,320 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type production_single_product_draftUpdateOneWithoutImove_scrap_objNestedInput = {
+    create?: XOR<production_single_product_draftCreateWithoutImove_scrap_objInput, production_single_product_draftUncheckedCreateWithoutImove_scrap_objInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutImove_scrap_objInput
+    upsert?: production_single_product_draftUpsertWithoutImove_scrap_objInput
+    disconnect?: production_single_product_draftWhereInput | boolean
+    delete?: production_single_product_draftWhereInput | boolean
+    connect?: production_single_product_draftWhereUniqueInput
+    update?: XOR<XOR<production_single_product_draftUpdateToOneWithWhereWithoutImove_scrap_objInput, production_single_product_draftUpdateWithoutImove_scrap_objInput>, production_single_product_draftUncheckedUpdateWithoutImove_scrap_objInput>
+  }
+
+  export type quality_checkUpdateOneWithoutImove_scrap_objNestedInput = {
+    create?: XOR<quality_checkCreateWithoutImove_scrap_objInput, quality_checkUncheckedCreateWithoutImove_scrap_objInput>
+    connectOrCreate?: quality_checkCreateOrConnectWithoutImove_scrap_objInput
+    upsert?: quality_checkUpsertWithoutImove_scrap_objInput
+    disconnect?: quality_checkWhereInput | boolean
+    delete?: quality_checkWhereInput | boolean
+    connect?: quality_checkWhereUniqueInput
+    update?: XOR<XOR<quality_checkUpdateToOneWithWhereWithoutImove_scrap_objInput, quality_checkUpdateWithoutImove_scrap_objInput>, quality_checkUncheckedUpdateWithoutImove_scrap_objInput>
+  }
+
+  export type repair_jobUpdateOneWithoutImove_repair_objNestedInput = {
+    create?: XOR<repair_jobCreateWithoutImove_repair_objInput, repair_jobUncheckedCreateWithoutImove_repair_objInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutImove_repair_objInput
+    upsert?: repair_jobUpsertWithoutImove_repair_objInput
+    disconnect?: repair_jobWhereInput | boolean
+    delete?: repair_jobWhereInput | boolean
+    connect?: repair_jobWhereUniqueInput
+    update?: XOR<XOR<repair_jobUpdateToOneWithWhereWithoutImove_repair_objInput, repair_jobUpdateWithoutImove_repair_objInput>, repair_jobUncheckedUpdateWithoutImove_repair_objInput>
+  }
+
+  export type production_single_product_draftUncheckedUpdateOneWithoutImove_scrap_objNestedInput = {
+    create?: XOR<production_single_product_draftCreateWithoutImove_scrap_objInput, production_single_product_draftUncheckedCreateWithoutImove_scrap_objInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutImove_scrap_objInput
+    upsert?: production_single_product_draftUpsertWithoutImove_scrap_objInput
+    disconnect?: production_single_product_draftWhereInput | boolean
+    delete?: production_single_product_draftWhereInput | boolean
+    connect?: production_single_product_draftWhereUniqueInput
+    update?: XOR<XOR<production_single_product_draftUpdateToOneWithWhereWithoutImove_scrap_objInput, production_single_product_draftUpdateWithoutImove_scrap_objInput>, production_single_product_draftUncheckedUpdateWithoutImove_scrap_objInput>
+  }
+
+  export type quality_checkUncheckedUpdateOneWithoutImove_scrap_objNestedInput = {
+    create?: XOR<quality_checkCreateWithoutImove_scrap_objInput, quality_checkUncheckedCreateWithoutImove_scrap_objInput>
+    connectOrCreate?: quality_checkCreateOrConnectWithoutImove_scrap_objInput
+    upsert?: quality_checkUpsertWithoutImove_scrap_objInput
+    disconnect?: quality_checkWhereInput | boolean
+    delete?: quality_checkWhereInput | boolean
+    connect?: quality_checkWhereUniqueInput
+    update?: XOR<XOR<quality_checkUpdateToOneWithWhereWithoutImove_scrap_objInput, quality_checkUpdateWithoutImove_scrap_objInput>, quality_checkUncheckedUpdateWithoutImove_scrap_objInput>
+  }
+
+  export type repair_jobUncheckedUpdateOneWithoutImove_repair_objNestedInput = {
+    create?: XOR<repair_jobCreateWithoutImove_repair_objInput, repair_jobUncheckedCreateWithoutImove_repair_objInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutImove_repair_objInput
+    upsert?: repair_jobUpsertWithoutImove_repair_objInput
+    disconnect?: repair_jobWhereInput | boolean
+    delete?: repair_jobWhereInput | boolean
+    connect?: repair_jobWhereUniqueInput
+    update?: XOR<XOR<repair_jobUpdateToOneWithWhereWithoutImove_repair_objInput, repair_jobUpdateWithoutImove_repair_objInput>, repair_jobUncheckedUpdateWithoutImove_repair_objInput>
+  }
+
+  export type track_id_objectCreateNestedOneWithoutProduct_single_resultInput = {
+    create?: XOR<track_id_objectCreateWithoutProduct_single_resultInput, track_id_objectUncheckedCreateWithoutProduct_single_resultInput>
+    connectOrCreate?: track_id_objectCreateOrConnectWithoutProduct_single_resultInput
+    connect?: track_id_objectWhereUniqueInput
+  }
+
+  export type inventory_move_draftCreateNestedOneWithoutProduction_single_scrap_imoveInput = {
+    create?: XOR<inventory_move_draftCreateWithoutProduction_single_scrap_imoveInput, inventory_move_draftUncheckedCreateWithoutProduction_single_scrap_imoveInput>
+    connectOrCreate?: inventory_move_draftCreateOrConnectWithoutProduction_single_scrap_imoveInput
+    connect?: inventory_move_draftWhereUniqueInput
+  }
+
+  export type repair_jobCreateNestedOneWithoutProduction_single_srcInput = {
+    create?: XOR<repair_jobCreateWithoutProduction_single_srcInput, repair_jobUncheckedCreateWithoutProduction_single_srcInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutProduction_single_srcInput
+    connect?: repair_jobWhereUniqueInput
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type track_id_objectUpdateOneRequiredWithoutProduct_single_resultNestedInput = {
+    create?: XOR<track_id_objectCreateWithoutProduct_single_resultInput, track_id_objectUncheckedCreateWithoutProduct_single_resultInput>
+    connectOrCreate?: track_id_objectCreateOrConnectWithoutProduct_single_resultInput
+    upsert?: track_id_objectUpsertWithoutProduct_single_resultInput
+    connect?: track_id_objectWhereUniqueInput
+    update?: XOR<XOR<track_id_objectUpdateToOneWithWhereWithoutProduct_single_resultInput, track_id_objectUpdateWithoutProduct_single_resultInput>, track_id_objectUncheckedUpdateWithoutProduct_single_resultInput>
+  }
+
+  export type inventory_move_draftUpdateOneWithoutProduction_single_scrap_imoveNestedInput = {
+    create?: XOR<inventory_move_draftCreateWithoutProduction_single_scrap_imoveInput, inventory_move_draftUncheckedCreateWithoutProduction_single_scrap_imoveInput>
+    connectOrCreate?: inventory_move_draftCreateOrConnectWithoutProduction_single_scrap_imoveInput
+    upsert?: inventory_move_draftUpsertWithoutProduction_single_scrap_imoveInput
+    disconnect?: inventory_move_draftWhereInput | boolean
+    delete?: inventory_move_draftWhereInput | boolean
+    connect?: inventory_move_draftWhereUniqueInput
+    update?: XOR<XOR<inventory_move_draftUpdateToOneWithWhereWithoutProduction_single_scrap_imoveInput, inventory_move_draftUpdateWithoutProduction_single_scrap_imoveInput>, inventory_move_draftUncheckedUpdateWithoutProduction_single_scrap_imoveInput>
+  }
+
+  export type repair_jobUpdateOneWithoutProduction_single_srcNestedInput = {
+    create?: XOR<repair_jobCreateWithoutProduction_single_srcInput, repair_jobUncheckedCreateWithoutProduction_single_srcInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutProduction_single_srcInput
+    upsert?: repair_jobUpsertWithoutProduction_single_srcInput
+    disconnect?: repair_jobWhereInput | boolean
+    delete?: repair_jobWhereInput | boolean
+    connect?: repair_jobWhereUniqueInput
+    update?: XOR<XOR<repair_jobUpdateToOneWithWhereWithoutProduction_single_srcInput, repair_jobUpdateWithoutProduction_single_srcInput>, repair_jobUncheckedUpdateWithoutProduction_single_srcInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type track_id_objectCreateNestedOneWithoutRepair_jobInput = {
+    create?: XOR<track_id_objectCreateWithoutRepair_jobInput, track_id_objectUncheckedCreateWithoutRepair_jobInput>
+    connectOrCreate?: track_id_objectCreateOrConnectWithoutRepair_jobInput
+    connect?: track_id_objectWhereUniqueInput
+  }
+
+  export type inventory_move_draftCreateNestedOneWithoutRepair_job_imoveInput = {
+    create?: XOR<inventory_move_draftCreateWithoutRepair_job_imoveInput, inventory_move_draftUncheckedCreateWithoutRepair_job_imoveInput>
+    connectOrCreate?: inventory_move_draftCreateOrConnectWithoutRepair_job_imoveInput
+    connect?: inventory_move_draftWhereUniqueInput
+  }
+
+  export type quality_checkCreateNestedManyWithoutRepair_jobInput = {
+    create?: XOR<quality_checkCreateWithoutRepair_jobInput, quality_checkUncheckedCreateWithoutRepair_jobInput> | quality_checkCreateWithoutRepair_jobInput[] | quality_checkUncheckedCreateWithoutRepair_jobInput[]
+    connectOrCreate?: quality_checkCreateOrConnectWithoutRepair_jobInput | quality_checkCreateOrConnectWithoutRepair_jobInput[]
+    createMany?: quality_checkCreateManyRepair_jobInputEnvelope
+    connect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+  }
+
+  export type production_single_product_draftCreateNestedManyWithoutRepair_jobInput = {
+    create?: XOR<production_single_product_draftCreateWithoutRepair_jobInput, production_single_product_draftUncheckedCreateWithoutRepair_jobInput> | production_single_product_draftCreateWithoutRepair_jobInput[] | production_single_product_draftUncheckedCreateWithoutRepair_jobInput[]
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutRepair_jobInput | production_single_product_draftCreateOrConnectWithoutRepair_jobInput[]
+    createMany?: production_single_product_draftCreateManyRepair_jobInputEnvelope
+    connect?: production_single_product_draftWhereUniqueInput | production_single_product_draftWhereUniqueInput[]
+  }
+
+  export type quality_checkUncheckedCreateNestedManyWithoutRepair_jobInput = {
+    create?: XOR<quality_checkCreateWithoutRepair_jobInput, quality_checkUncheckedCreateWithoutRepair_jobInput> | quality_checkCreateWithoutRepair_jobInput[] | quality_checkUncheckedCreateWithoutRepair_jobInput[]
+    connectOrCreate?: quality_checkCreateOrConnectWithoutRepair_jobInput | quality_checkCreateOrConnectWithoutRepair_jobInput[]
+    createMany?: quality_checkCreateManyRepair_jobInputEnvelope
+    connect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+  }
+
+  export type production_single_product_draftUncheckedCreateNestedManyWithoutRepair_jobInput = {
+    create?: XOR<production_single_product_draftCreateWithoutRepair_jobInput, production_single_product_draftUncheckedCreateWithoutRepair_jobInput> | production_single_product_draftCreateWithoutRepair_jobInput[] | production_single_product_draftUncheckedCreateWithoutRepair_jobInput[]
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutRepair_jobInput | production_single_product_draftCreateOrConnectWithoutRepair_jobInput[]
+    createMany?: production_single_product_draftCreateManyRepair_jobInputEnvelope
+    connect?: production_single_product_draftWhereUniqueInput | production_single_product_draftWhereUniqueInput[]
+  }
+
+  export type track_id_objectUpdateOneRequiredWithoutRepair_jobNestedInput = {
+    create?: XOR<track_id_objectCreateWithoutRepair_jobInput, track_id_objectUncheckedCreateWithoutRepair_jobInput>
+    connectOrCreate?: track_id_objectCreateOrConnectWithoutRepair_jobInput
+    upsert?: track_id_objectUpsertWithoutRepair_jobInput
+    connect?: track_id_objectWhereUniqueInput
+    update?: XOR<XOR<track_id_objectUpdateToOneWithWhereWithoutRepair_jobInput, track_id_objectUpdateWithoutRepair_jobInput>, track_id_objectUncheckedUpdateWithoutRepair_jobInput>
+  }
+
+  export type inventory_move_draftUpdateOneWithoutRepair_job_imoveNestedInput = {
+    create?: XOR<inventory_move_draftCreateWithoutRepair_job_imoveInput, inventory_move_draftUncheckedCreateWithoutRepair_job_imoveInput>
+    connectOrCreate?: inventory_move_draftCreateOrConnectWithoutRepair_job_imoveInput
+    upsert?: inventory_move_draftUpsertWithoutRepair_job_imoveInput
+    disconnect?: inventory_move_draftWhereInput | boolean
+    delete?: inventory_move_draftWhereInput | boolean
+    connect?: inventory_move_draftWhereUniqueInput
+    update?: XOR<XOR<inventory_move_draftUpdateToOneWithWhereWithoutRepair_job_imoveInput, inventory_move_draftUpdateWithoutRepair_job_imoveInput>, inventory_move_draftUncheckedUpdateWithoutRepair_job_imoveInput>
+  }
+
+  export type quality_checkUpdateManyWithoutRepair_jobNestedInput = {
+    create?: XOR<quality_checkCreateWithoutRepair_jobInput, quality_checkUncheckedCreateWithoutRepair_jobInput> | quality_checkCreateWithoutRepair_jobInput[] | quality_checkUncheckedCreateWithoutRepair_jobInput[]
+    connectOrCreate?: quality_checkCreateOrConnectWithoutRepair_jobInput | quality_checkCreateOrConnectWithoutRepair_jobInput[]
+    upsert?: quality_checkUpsertWithWhereUniqueWithoutRepair_jobInput | quality_checkUpsertWithWhereUniqueWithoutRepair_jobInput[]
+    createMany?: quality_checkCreateManyRepair_jobInputEnvelope
+    set?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    disconnect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    delete?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    connect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    update?: quality_checkUpdateWithWhereUniqueWithoutRepair_jobInput | quality_checkUpdateWithWhereUniqueWithoutRepair_jobInput[]
+    updateMany?: quality_checkUpdateManyWithWhereWithoutRepair_jobInput | quality_checkUpdateManyWithWhereWithoutRepair_jobInput[]
+    deleteMany?: quality_checkScalarWhereInput | quality_checkScalarWhereInput[]
+  }
+
+  export type production_single_product_draftUpdateManyWithoutRepair_jobNestedInput = {
+    create?: XOR<production_single_product_draftCreateWithoutRepair_jobInput, production_single_product_draftUncheckedCreateWithoutRepair_jobInput> | production_single_product_draftCreateWithoutRepair_jobInput[] | production_single_product_draftUncheckedCreateWithoutRepair_jobInput[]
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutRepair_jobInput | production_single_product_draftCreateOrConnectWithoutRepair_jobInput[]
+    upsert?: production_single_product_draftUpsertWithWhereUniqueWithoutRepair_jobInput | production_single_product_draftUpsertWithWhereUniqueWithoutRepair_jobInput[]
+    createMany?: production_single_product_draftCreateManyRepair_jobInputEnvelope
+    set?: production_single_product_draftWhereUniqueInput | production_single_product_draftWhereUniqueInput[]
+    disconnect?: production_single_product_draftWhereUniqueInput | production_single_product_draftWhereUniqueInput[]
+    delete?: production_single_product_draftWhereUniqueInput | production_single_product_draftWhereUniqueInput[]
+    connect?: production_single_product_draftWhereUniqueInput | production_single_product_draftWhereUniqueInput[]
+    update?: production_single_product_draftUpdateWithWhereUniqueWithoutRepair_jobInput | production_single_product_draftUpdateWithWhereUniqueWithoutRepair_jobInput[]
+    updateMany?: production_single_product_draftUpdateManyWithWhereWithoutRepair_jobInput | production_single_product_draftUpdateManyWithWhereWithoutRepair_jobInput[]
+    deleteMany?: production_single_product_draftScalarWhereInput | production_single_product_draftScalarWhereInput[]
+  }
+
+  export type quality_checkUncheckedUpdateManyWithoutRepair_jobNestedInput = {
+    create?: XOR<quality_checkCreateWithoutRepair_jobInput, quality_checkUncheckedCreateWithoutRepair_jobInput> | quality_checkCreateWithoutRepair_jobInput[] | quality_checkUncheckedCreateWithoutRepair_jobInput[]
+    connectOrCreate?: quality_checkCreateOrConnectWithoutRepair_jobInput | quality_checkCreateOrConnectWithoutRepair_jobInput[]
+    upsert?: quality_checkUpsertWithWhereUniqueWithoutRepair_jobInput | quality_checkUpsertWithWhereUniqueWithoutRepair_jobInput[]
+    createMany?: quality_checkCreateManyRepair_jobInputEnvelope
+    set?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    disconnect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    delete?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    connect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    update?: quality_checkUpdateWithWhereUniqueWithoutRepair_jobInput | quality_checkUpdateWithWhereUniqueWithoutRepair_jobInput[]
+    updateMany?: quality_checkUpdateManyWithWhereWithoutRepair_jobInput | quality_checkUpdateManyWithWhereWithoutRepair_jobInput[]
+    deleteMany?: quality_checkScalarWhereInput | quality_checkScalarWhereInput[]
+  }
+
+  export type production_single_product_draftUncheckedUpdateManyWithoutRepair_jobNestedInput = {
+    create?: XOR<production_single_product_draftCreateWithoutRepair_jobInput, production_single_product_draftUncheckedCreateWithoutRepair_jobInput> | production_single_product_draftCreateWithoutRepair_jobInput[] | production_single_product_draftUncheckedCreateWithoutRepair_jobInput[]
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutRepair_jobInput | production_single_product_draftCreateOrConnectWithoutRepair_jobInput[]
+    upsert?: production_single_product_draftUpsertWithWhereUniqueWithoutRepair_jobInput | production_single_product_draftUpsertWithWhereUniqueWithoutRepair_jobInput[]
+    createMany?: production_single_product_draftCreateManyRepair_jobInputEnvelope
+    set?: production_single_product_draftWhereUniqueInput | production_single_product_draftWhereUniqueInput[]
+    disconnect?: production_single_product_draftWhereUniqueInput | production_single_product_draftWhereUniqueInput[]
+    delete?: production_single_product_draftWhereUniqueInput | production_single_product_draftWhereUniqueInput[]
+    connect?: production_single_product_draftWhereUniqueInput | production_single_product_draftWhereUniqueInput[]
+    update?: production_single_product_draftUpdateWithWhereUniqueWithoutRepair_jobInput | production_single_product_draftUpdateWithWhereUniqueWithoutRepair_jobInput[]
+    updateMany?: production_single_product_draftUpdateManyWithWhereWithoutRepair_jobInput | production_single_product_draftUpdateManyWithWhereWithoutRepair_jobInput[]
+    deleteMany?: production_single_product_draftScalarWhereInput | production_single_product_draftScalarWhereInput[]
+  }
+
+  export type track_id_objectCreateNestedOneWithoutQuality_check_used_inInput = {
+    create?: XOR<track_id_objectCreateWithoutQuality_check_used_inInput, track_id_objectUncheckedCreateWithoutQuality_check_used_inInput>
+    connectOrCreate?: track_id_objectCreateOrConnectWithoutQuality_check_used_inInput
+    connect?: track_id_objectWhereUniqueInput
+  }
+
+  export type inventory_move_draftCreateNestedOneWithoutQuality_check_scrap_imoveInput = {
+    create?: XOR<inventory_move_draftCreateWithoutQuality_check_scrap_imoveInput, inventory_move_draftUncheckedCreateWithoutQuality_check_scrap_imoveInput>
+    connectOrCreate?: inventory_move_draftCreateOrConnectWithoutQuality_check_scrap_imoveInput
+    connect?: inventory_move_draftWhereUniqueInput
+  }
+
+  export type repair_jobCreateNestedOneWithoutQuality_check_srcInput = {
+    create?: XOR<repair_jobCreateWithoutQuality_check_srcInput, repair_jobUncheckedCreateWithoutQuality_check_srcInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutQuality_check_srcInput
+    connect?: repair_jobWhereUniqueInput
+  }
+
+  export type track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput = {
+    create?: XOR<track_id_objectCreateWithoutQuality_check_used_inInput, track_id_objectUncheckedCreateWithoutQuality_check_used_inInput>
+    connectOrCreate?: track_id_objectCreateOrConnectWithoutQuality_check_used_inInput
+    upsert?: track_id_objectUpsertWithoutQuality_check_used_inInput
+    connect?: track_id_objectWhereUniqueInput
+    update?: XOR<XOR<track_id_objectUpdateToOneWithWhereWithoutQuality_check_used_inInput, track_id_objectUpdateWithoutQuality_check_used_inInput>, track_id_objectUncheckedUpdateWithoutQuality_check_used_inInput>
+  }
+
+  export type inventory_move_draftUpdateOneWithoutQuality_check_scrap_imoveNestedInput = {
+    create?: XOR<inventory_move_draftCreateWithoutQuality_check_scrap_imoveInput, inventory_move_draftUncheckedCreateWithoutQuality_check_scrap_imoveInput>
+    connectOrCreate?: inventory_move_draftCreateOrConnectWithoutQuality_check_scrap_imoveInput
+    upsert?: inventory_move_draftUpsertWithoutQuality_check_scrap_imoveInput
+    disconnect?: inventory_move_draftWhereInput | boolean
+    delete?: inventory_move_draftWhereInput | boolean
+    connect?: inventory_move_draftWhereUniqueInput
+    update?: XOR<XOR<inventory_move_draftUpdateToOneWithWhereWithoutQuality_check_scrap_imoveInput, inventory_move_draftUpdateWithoutQuality_check_scrap_imoveInput>, inventory_move_draftUncheckedUpdateWithoutQuality_check_scrap_imoveInput>
+  }
+
+  export type repair_jobUpdateOneWithoutQuality_check_srcNestedInput = {
+    create?: XOR<repair_jobCreateWithoutQuality_check_srcInput, repair_jobUncheckedCreateWithoutQuality_check_srcInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutQuality_check_srcInput
+    upsert?: repair_jobUpsertWithoutQuality_check_srcInput
+    disconnect?: repair_jobWhereInput | boolean
+    delete?: repair_jobWhereInput | boolean
+    connect?: repair_jobWhereUniqueInput
+    update?: XOR<XOR<repair_jobUpdateToOneWithWhereWithoutQuality_check_srcInput, repair_jobUpdateWithoutQuality_check_srcInput>, repair_jobUncheckedUpdateWithoutQuality_check_srcInput>
+  }
+
   export type track_id_historyCreateNestedManyWithoutTrack_id_objectInput = {
     create?: XOR<track_id_historyCreateWithoutTrack_id_objectInput, track_id_historyUncheckedCreateWithoutTrack_id_objectInput> | track_id_historyCreateWithoutTrack_id_objectInput[] | track_id_historyUncheckedCreateWithoutTrack_id_objectInput[]
     connectOrCreate?: track_id_historyCreateOrConnectWithoutTrack_id_objectInput | track_id_historyCreateOrConnectWithoutTrack_id_objectInput[]
     createMany?: track_id_historyCreateManyTrack_id_objectInputEnvelope
     connect?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
+  }
+
+  export type repair_jobCreateNestedOneWithoutTrack_id_objectInput = {
+    create?: XOR<repair_jobCreateWithoutTrack_id_objectInput, repair_jobUncheckedCreateWithoutTrack_id_objectInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutTrack_id_objectInput
+    connect?: repair_jobWhereUniqueInput
+  }
+
+  export type quality_checkCreateNestedManyWithoutTrack_id_objectInput = {
+    create?: XOR<quality_checkCreateWithoutTrack_id_objectInput, quality_checkUncheckedCreateWithoutTrack_id_objectInput> | quality_checkCreateWithoutTrack_id_objectInput[] | quality_checkUncheckedCreateWithoutTrack_id_objectInput[]
+    connectOrCreate?: quality_checkCreateOrConnectWithoutTrack_id_objectInput | quality_checkCreateOrConnectWithoutTrack_id_objectInput[]
+    createMany?: quality_checkCreateManyTrack_id_objectInputEnvelope
+    connect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+  }
+
+  export type production_single_product_draftCreateNestedOneWithoutTrack_id_objectInput = {
+    create?: XOR<production_single_product_draftCreateWithoutTrack_id_objectInput, production_single_product_draftUncheckedCreateWithoutTrack_id_objectInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutTrack_id_objectInput
+    connect?: production_single_product_draftWhereUniqueInput
   }
 
   export type track_id_historyUncheckedCreateNestedManyWithoutTrack_id_objectInput = {
@@ -9204,8 +13080,23 @@ export namespace Prisma {
     connect?: track_id_historyWhereUniqueInput | track_id_historyWhereUniqueInput[]
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
+  export type repair_jobUncheckedCreateNestedOneWithoutTrack_id_objectInput = {
+    create?: XOR<repair_jobCreateWithoutTrack_id_objectInput, repair_jobUncheckedCreateWithoutTrack_id_objectInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutTrack_id_objectInput
+    connect?: repair_jobWhereUniqueInput
+  }
+
+  export type quality_checkUncheckedCreateNestedManyWithoutTrack_id_objectInput = {
+    create?: XOR<quality_checkCreateWithoutTrack_id_objectInput, quality_checkUncheckedCreateWithoutTrack_id_objectInput> | quality_checkCreateWithoutTrack_id_objectInput[] | quality_checkUncheckedCreateWithoutTrack_id_objectInput[]
+    connectOrCreate?: quality_checkCreateOrConnectWithoutTrack_id_objectInput | quality_checkCreateOrConnectWithoutTrack_id_objectInput[]
+    createMany?: quality_checkCreateManyTrack_id_objectInputEnvelope
+    connect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+  }
+
+  export type production_single_product_draftUncheckedCreateNestedOneWithoutTrack_id_objectInput = {
+    create?: XOR<production_single_product_draftCreateWithoutTrack_id_objectInput, production_single_product_draftUncheckedCreateWithoutTrack_id_objectInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutTrack_id_objectInput
+    connect?: production_single_product_draftWhereUniqueInput
   }
 
   export type track_id_historyUpdateManyWithoutTrack_id_objectNestedInput = {
@@ -9222,6 +13113,40 @@ export namespace Prisma {
     deleteMany?: track_id_historyScalarWhereInput | track_id_historyScalarWhereInput[]
   }
 
+  export type repair_jobUpdateOneWithoutTrack_id_objectNestedInput = {
+    create?: XOR<repair_jobCreateWithoutTrack_id_objectInput, repair_jobUncheckedCreateWithoutTrack_id_objectInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutTrack_id_objectInput
+    upsert?: repair_jobUpsertWithoutTrack_id_objectInput
+    disconnect?: repair_jobWhereInput | boolean
+    delete?: repair_jobWhereInput | boolean
+    connect?: repair_jobWhereUniqueInput
+    update?: XOR<XOR<repair_jobUpdateToOneWithWhereWithoutTrack_id_objectInput, repair_jobUpdateWithoutTrack_id_objectInput>, repair_jobUncheckedUpdateWithoutTrack_id_objectInput>
+  }
+
+  export type quality_checkUpdateManyWithoutTrack_id_objectNestedInput = {
+    create?: XOR<quality_checkCreateWithoutTrack_id_objectInput, quality_checkUncheckedCreateWithoutTrack_id_objectInput> | quality_checkCreateWithoutTrack_id_objectInput[] | quality_checkUncheckedCreateWithoutTrack_id_objectInput[]
+    connectOrCreate?: quality_checkCreateOrConnectWithoutTrack_id_objectInput | quality_checkCreateOrConnectWithoutTrack_id_objectInput[]
+    upsert?: quality_checkUpsertWithWhereUniqueWithoutTrack_id_objectInput | quality_checkUpsertWithWhereUniqueWithoutTrack_id_objectInput[]
+    createMany?: quality_checkCreateManyTrack_id_objectInputEnvelope
+    set?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    disconnect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    delete?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    connect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    update?: quality_checkUpdateWithWhereUniqueWithoutTrack_id_objectInput | quality_checkUpdateWithWhereUniqueWithoutTrack_id_objectInput[]
+    updateMany?: quality_checkUpdateManyWithWhereWithoutTrack_id_objectInput | quality_checkUpdateManyWithWhereWithoutTrack_id_objectInput[]
+    deleteMany?: quality_checkScalarWhereInput | quality_checkScalarWhereInput[]
+  }
+
+  export type production_single_product_draftUpdateOneWithoutTrack_id_objectNestedInput = {
+    create?: XOR<production_single_product_draftCreateWithoutTrack_id_objectInput, production_single_product_draftUncheckedCreateWithoutTrack_id_objectInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutTrack_id_objectInput
+    upsert?: production_single_product_draftUpsertWithoutTrack_id_objectInput
+    disconnect?: production_single_product_draftWhereInput | boolean
+    delete?: production_single_product_draftWhereInput | boolean
+    connect?: production_single_product_draftWhereUniqueInput
+    update?: XOR<XOR<production_single_product_draftUpdateToOneWithWhereWithoutTrack_id_objectInput, production_single_product_draftUpdateWithoutTrack_id_objectInput>, production_single_product_draftUncheckedUpdateWithoutTrack_id_objectInput>
+  }
+
   export type track_id_historyUncheckedUpdateManyWithoutTrack_id_objectNestedInput = {
     create?: XOR<track_id_historyCreateWithoutTrack_id_objectInput, track_id_historyUncheckedCreateWithoutTrack_id_objectInput> | track_id_historyCreateWithoutTrack_id_objectInput[] | track_id_historyUncheckedCreateWithoutTrack_id_objectInput[]
     connectOrCreate?: track_id_historyCreateOrConnectWithoutTrack_id_objectInput | track_id_historyCreateOrConnectWithoutTrack_id_objectInput[]
@@ -9236,6 +13161,40 @@ export namespace Prisma {
     deleteMany?: track_id_historyScalarWhereInput | track_id_historyScalarWhereInput[]
   }
 
+  export type repair_jobUncheckedUpdateOneWithoutTrack_id_objectNestedInput = {
+    create?: XOR<repair_jobCreateWithoutTrack_id_objectInput, repair_jobUncheckedCreateWithoutTrack_id_objectInput>
+    connectOrCreate?: repair_jobCreateOrConnectWithoutTrack_id_objectInput
+    upsert?: repair_jobUpsertWithoutTrack_id_objectInput
+    disconnect?: repair_jobWhereInput | boolean
+    delete?: repair_jobWhereInput | boolean
+    connect?: repair_jobWhereUniqueInput
+    update?: XOR<XOR<repair_jobUpdateToOneWithWhereWithoutTrack_id_objectInput, repair_jobUpdateWithoutTrack_id_objectInput>, repair_jobUncheckedUpdateWithoutTrack_id_objectInput>
+  }
+
+  export type quality_checkUncheckedUpdateManyWithoutTrack_id_objectNestedInput = {
+    create?: XOR<quality_checkCreateWithoutTrack_id_objectInput, quality_checkUncheckedCreateWithoutTrack_id_objectInput> | quality_checkCreateWithoutTrack_id_objectInput[] | quality_checkUncheckedCreateWithoutTrack_id_objectInput[]
+    connectOrCreate?: quality_checkCreateOrConnectWithoutTrack_id_objectInput | quality_checkCreateOrConnectWithoutTrack_id_objectInput[]
+    upsert?: quality_checkUpsertWithWhereUniqueWithoutTrack_id_objectInput | quality_checkUpsertWithWhereUniqueWithoutTrack_id_objectInput[]
+    createMany?: quality_checkCreateManyTrack_id_objectInputEnvelope
+    set?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    disconnect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    delete?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    connect?: quality_checkWhereUniqueInput | quality_checkWhereUniqueInput[]
+    update?: quality_checkUpdateWithWhereUniqueWithoutTrack_id_objectInput | quality_checkUpdateWithWhereUniqueWithoutTrack_id_objectInput[]
+    updateMany?: quality_checkUpdateManyWithWhereWithoutTrack_id_objectInput | quality_checkUpdateManyWithWhereWithoutTrack_id_objectInput[]
+    deleteMany?: quality_checkScalarWhereInput | quality_checkScalarWhereInput[]
+  }
+
+  export type production_single_product_draftUncheckedUpdateOneWithoutTrack_id_objectNestedInput = {
+    create?: XOR<production_single_product_draftCreateWithoutTrack_id_objectInput, production_single_product_draftUncheckedCreateWithoutTrack_id_objectInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutTrack_id_objectInput
+    upsert?: production_single_product_draftUpsertWithoutTrack_id_objectInput
+    disconnect?: production_single_product_draftWhereInput | boolean
+    delete?: production_single_product_draftWhereInput | boolean
+    connect?: production_single_product_draftWhereUniqueInput
+    update?: XOR<XOR<production_single_product_draftUpdateToOneWithWhereWithoutTrack_id_objectInput, production_single_product_draftUpdateWithoutTrack_id_objectInput>, production_single_product_draftUncheckedUpdateWithoutTrack_id_objectInput>
+  }
+
   export type track_id_objectCreateNestedOneWithoutTrack_id_historyInput = {
     create?: XOR<track_id_objectCreateWithoutTrack_id_historyInput, track_id_objectUncheckedCreateWithoutTrack_id_historyInput>
     connectOrCreate?: track_id_objectCreateOrConnectWithoutTrack_id_historyInput
@@ -9248,14 +13207,6 @@ export namespace Prisma {
     upsert?: track_id_objectUpsertWithoutTrack_id_historyInput
     connect?: track_id_objectWhereUniqueInput
     update?: XOR<XOR<track_id_objectUpdateToOneWithWhereWithoutTrack_id_historyInput, track_id_objectUpdateWithoutTrack_id_historyInput>, track_id_objectUncheckedUpdateWithoutTrack_id_historyInput>
-  }
-
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -9357,6 +13308,31 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -9390,6 +13366,873 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type production_single_product_draftCreateWithoutImove_scrap_objInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    track_id_object: track_id_objectCreateNestedOneWithoutProduct_single_resultInput
+    repair_job?: repair_jobCreateNestedOneWithoutProduction_single_srcInput
+  }
+
+  export type production_single_product_draftUncheckedCreateWithoutImove_scrap_objInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+    track_id: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    repair_job_id?: string | null
+  }
+
+  export type production_single_product_draftCreateOrConnectWithoutImove_scrap_objInput = {
+    where: production_single_product_draftWhereUniqueInput
+    create: XOR<production_single_product_draftCreateWithoutImove_scrap_objInput, production_single_product_draftUncheckedCreateWithoutImove_scrap_objInput>
+  }
+
+  export type quality_checkCreateWithoutImove_scrap_objInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    track_id_object: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
+    repair_job?: repair_jobCreateNestedOneWithoutQuality_check_srcInput
+  }
+
+  export type quality_checkUncheckedCreateWithoutImove_scrap_objInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    track_id: string
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    repair_job_id?: string | null
+  }
+
+  export type quality_checkCreateOrConnectWithoutImove_scrap_objInput = {
+    where: quality_checkWhereUniqueInput
+    create: XOR<quality_checkCreateWithoutImove_scrap_objInput, quality_checkUncheckedCreateWithoutImove_scrap_objInput>
+  }
+
+  export type repair_jobCreateWithoutImove_repair_objInput = {
+    org_id: number
+    creation_date_time: Date | string
+    starting_locator_id?: number
+    repair_status: string
+    track_id_object: track_id_objectCreateNestedOneWithoutRepair_jobInput
+    quality_check_src?: quality_checkCreateNestedManyWithoutRepair_jobInput
+    production_single_src?: production_single_product_draftCreateNestedManyWithoutRepair_jobInput
+  }
+
+  export type repair_jobUncheckedCreateWithoutImove_repair_objInput = {
+    org_id: number
+    creation_date_time: Date | string
+    track_id: string
+    starting_locator_id?: number
+    repair_status: string
+    quality_check_src?: quality_checkUncheckedCreateNestedManyWithoutRepair_jobInput
+    production_single_src?: production_single_product_draftUncheckedCreateNestedManyWithoutRepair_jobInput
+  }
+
+  export type repair_jobCreateOrConnectWithoutImove_repair_objInput = {
+    where: repair_jobWhereUniqueInput
+    create: XOR<repair_jobCreateWithoutImove_repair_objInput, repair_jobUncheckedCreateWithoutImove_repair_objInput>
+  }
+
+  export type production_single_product_draftUpsertWithoutImove_scrap_objInput = {
+    update: XOR<production_single_product_draftUpdateWithoutImove_scrap_objInput, production_single_product_draftUncheckedUpdateWithoutImove_scrap_objInput>
+    create: XOR<production_single_product_draftCreateWithoutImove_scrap_objInput, production_single_product_draftUncheckedCreateWithoutImove_scrap_objInput>
+    where?: production_single_product_draftWhereInput
+  }
+
+  export type production_single_product_draftUpdateToOneWithWhereWithoutImove_scrap_objInput = {
+    where?: production_single_product_draftWhereInput
+    data: XOR<production_single_product_draftUpdateWithoutImove_scrap_objInput, production_single_product_draftUncheckedUpdateWithoutImove_scrap_objInput>
+  }
+
+  export type production_single_product_draftUpdateWithoutImove_scrap_objInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutProduct_single_resultNestedInput
+    repair_job?: repair_jobUpdateOneWithoutProduction_single_srcNestedInput
+  }
+
+  export type production_single_product_draftUncheckedUpdateWithoutImove_scrap_objInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    track_id?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type quality_checkUpsertWithoutImove_scrap_objInput = {
+    update: XOR<quality_checkUpdateWithoutImove_scrap_objInput, quality_checkUncheckedUpdateWithoutImove_scrap_objInput>
+    create: XOR<quality_checkCreateWithoutImove_scrap_objInput, quality_checkUncheckedCreateWithoutImove_scrap_objInput>
+    where?: quality_checkWhereInput
+  }
+
+  export type quality_checkUpdateToOneWithWhereWithoutImove_scrap_objInput = {
+    where?: quality_checkWhereInput
+    data: XOR<quality_checkUpdateWithoutImove_scrap_objInput, quality_checkUncheckedUpdateWithoutImove_scrap_objInput>
+  }
+
+  export type quality_checkUpdateWithoutImove_scrap_objInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput
+    repair_job?: repair_jobUpdateOneWithoutQuality_check_srcNestedInput
+  }
+
+  export type quality_checkUncheckedUpdateWithoutImove_scrap_objInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    track_id?: StringFieldUpdateOperationsInput | string
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type repair_jobUpsertWithoutImove_repair_objInput = {
+    update: XOR<repair_jobUpdateWithoutImove_repair_objInput, repair_jobUncheckedUpdateWithoutImove_repair_objInput>
+    create: XOR<repair_jobCreateWithoutImove_repair_objInput, repair_jobUncheckedCreateWithoutImove_repair_objInput>
+    where?: repair_jobWhereInput
+  }
+
+  export type repair_jobUpdateToOneWithWhereWithoutImove_repair_objInput = {
+    where?: repair_jobWhereInput
+    data: XOR<repair_jobUpdateWithoutImove_repair_objInput, repair_jobUncheckedUpdateWithoutImove_repair_objInput>
+  }
+
+  export type repair_jobUpdateWithoutImove_repair_objInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    repair_status?: StringFieldUpdateOperationsInput | string
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutRepair_jobNestedInput
+    quality_check_src?: quality_checkUpdateManyWithoutRepair_jobNestedInput
+    production_single_src?: production_single_product_draftUpdateManyWithoutRepair_jobNestedInput
+  }
+
+  export type repair_jobUncheckedUpdateWithoutImove_repair_objInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    track_id?: StringFieldUpdateOperationsInput | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    repair_status?: StringFieldUpdateOperationsInput | string
+    quality_check_src?: quality_checkUncheckedUpdateManyWithoutRepair_jobNestedInput
+    production_single_src?: production_single_product_draftUncheckedUpdateManyWithoutRepair_jobNestedInput
+  }
+
+  export type track_id_objectCreateWithoutProduct_single_resultInput = {
+    track_id: string
+    productId?: number
+    productName?: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyCreateNestedManyWithoutTrack_id_objectInput
+    repair_job?: repair_jobCreateNestedOneWithoutTrack_id_objectInput
+    quality_check_used_in?: quality_checkCreateNestedManyWithoutTrack_id_objectInput
+  }
+
+  export type track_id_objectUncheckedCreateWithoutProduct_single_resultInput = {
+    track_id: string
+    productId?: number
+    productName?: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUncheckedCreateNestedManyWithoutTrack_id_objectInput
+    repair_job?: repair_jobUncheckedCreateNestedOneWithoutTrack_id_objectInput
+    quality_check_used_in?: quality_checkUncheckedCreateNestedManyWithoutTrack_id_objectInput
+  }
+
+  export type track_id_objectCreateOrConnectWithoutProduct_single_resultInput = {
+    where: track_id_objectWhereUniqueInput
+    create: XOR<track_id_objectCreateWithoutProduct_single_resultInput, track_id_objectUncheckedCreateWithoutProduct_single_resultInput>
+  }
+
+  export type inventory_move_draftCreateWithoutProduction_single_scrap_imoveInput = {
+    org_id: number
+    creation_date_time: Date | string
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
+    quality_check_scrap_imove?: quality_checkCreateNestedOneWithoutImove_scrap_objInput
+    repair_job_imove?: repair_jobCreateNestedOneWithoutImove_repair_objInput
+  }
+
+  export type inventory_move_draftUncheckedCreateWithoutProduction_single_scrap_imoveInput = {
+    org_id: number
+    creation_date_time: Date | string
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
+    quality_check_scrap_imove?: quality_checkUncheckedCreateNestedOneWithoutImove_scrap_objInput
+    repair_job_imove?: repair_jobUncheckedCreateNestedOneWithoutImove_repair_objInput
+  }
+
+  export type inventory_move_draftCreateOrConnectWithoutProduction_single_scrap_imoveInput = {
+    where: inventory_move_draftWhereUniqueInput
+    create: XOR<inventory_move_draftCreateWithoutProduction_single_scrap_imoveInput, inventory_move_draftUncheckedCreateWithoutProduction_single_scrap_imoveInput>
+  }
+
+  export type repair_jobCreateWithoutProduction_single_srcInput = {
+    org_id: number
+    creation_date_time: Date | string
+    starting_locator_id?: number
+    repair_status: string
+    track_id_object: track_id_objectCreateNestedOneWithoutRepair_jobInput
+    imove_repair_obj?: inventory_move_draftCreateNestedOneWithoutRepair_job_imoveInput
+    quality_check_src?: quality_checkCreateNestedManyWithoutRepair_jobInput
+  }
+
+  export type repair_jobUncheckedCreateWithoutProduction_single_srcInput = {
+    org_id: number
+    creation_date_time: Date | string
+    track_id: string
+    starting_locator_id?: number
+    imove_repair_id?: number | null
+    repair_status: string
+    quality_check_src?: quality_checkUncheckedCreateNestedManyWithoutRepair_jobInput
+  }
+
+  export type repair_jobCreateOrConnectWithoutProduction_single_srcInput = {
+    where: repair_jobWhereUniqueInput
+    create: XOR<repair_jobCreateWithoutProduction_single_srcInput, repair_jobUncheckedCreateWithoutProduction_single_srcInput>
+  }
+
+  export type track_id_objectUpsertWithoutProduct_single_resultInput = {
+    update: XOR<track_id_objectUpdateWithoutProduct_single_resultInput, track_id_objectUncheckedUpdateWithoutProduct_single_resultInput>
+    create: XOR<track_id_objectCreateWithoutProduct_single_resultInput, track_id_objectUncheckedCreateWithoutProduct_single_resultInput>
+    where?: track_id_objectWhereInput
+  }
+
+  export type track_id_objectUpdateToOneWithWhereWithoutProduct_single_resultInput = {
+    where?: track_id_objectWhereInput
+    data: XOR<track_id_objectUpdateWithoutProduct_single_resultInput, track_id_objectUncheckedUpdateWithoutProduct_single_resultInput>
+  }
+
+  export type track_id_objectUpdateWithoutProduct_single_resultInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUpdateManyWithoutTrack_id_objectNestedInput
+    repair_job?: repair_jobUpdateOneWithoutTrack_id_objectNestedInput
+    quality_check_used_in?: quality_checkUpdateManyWithoutTrack_id_objectNestedInput
+  }
+
+  export type track_id_objectUncheckedUpdateWithoutProduct_single_resultInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUncheckedUpdateManyWithoutTrack_id_objectNestedInput
+    repair_job?: repair_jobUncheckedUpdateOneWithoutTrack_id_objectNestedInput
+    quality_check_used_in?: quality_checkUncheckedUpdateManyWithoutTrack_id_objectNestedInput
+  }
+
+  export type inventory_move_draftUpsertWithoutProduction_single_scrap_imoveInput = {
+    update: XOR<inventory_move_draftUpdateWithoutProduction_single_scrap_imoveInput, inventory_move_draftUncheckedUpdateWithoutProduction_single_scrap_imoveInput>
+    create: XOR<inventory_move_draftCreateWithoutProduction_single_scrap_imoveInput, inventory_move_draftUncheckedCreateWithoutProduction_single_scrap_imoveInput>
+    where?: inventory_move_draftWhereInput
+  }
+
+  export type inventory_move_draftUpdateToOneWithWhereWithoutProduction_single_scrap_imoveInput = {
+    where?: inventory_move_draftWhereInput
+    data: XOR<inventory_move_draftUpdateWithoutProduction_single_scrap_imoveInput, inventory_move_draftUncheckedUpdateWithoutProduction_single_scrap_imoveInput>
+  }
+
+  export type inventory_move_draftUpdateWithoutProduction_single_scrap_imoveInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    quality_check_scrap_imove?: quality_checkUpdateOneWithoutImove_scrap_objNestedInput
+    repair_job_imove?: repair_jobUpdateOneWithoutImove_repair_objNestedInput
+  }
+
+  export type inventory_move_draftUncheckedUpdateWithoutProduction_single_scrap_imoveInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    quality_check_scrap_imove?: quality_checkUncheckedUpdateOneWithoutImove_scrap_objNestedInput
+    repair_job_imove?: repair_jobUncheckedUpdateOneWithoutImove_repair_objNestedInput
+  }
+
+  export type repair_jobUpsertWithoutProduction_single_srcInput = {
+    update: XOR<repair_jobUpdateWithoutProduction_single_srcInput, repair_jobUncheckedUpdateWithoutProduction_single_srcInput>
+    create: XOR<repair_jobCreateWithoutProduction_single_srcInput, repair_jobUncheckedCreateWithoutProduction_single_srcInput>
+    where?: repair_jobWhereInput
+  }
+
+  export type repair_jobUpdateToOneWithWhereWithoutProduction_single_srcInput = {
+    where?: repair_jobWhereInput
+    data: XOR<repair_jobUpdateWithoutProduction_single_srcInput, repair_jobUncheckedUpdateWithoutProduction_single_srcInput>
+  }
+
+  export type repair_jobUpdateWithoutProduction_single_srcInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    repair_status?: StringFieldUpdateOperationsInput | string
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutRepair_jobNestedInput
+    imove_repair_obj?: inventory_move_draftUpdateOneWithoutRepair_job_imoveNestedInput
+    quality_check_src?: quality_checkUpdateManyWithoutRepair_jobNestedInput
+  }
+
+  export type repair_jobUncheckedUpdateWithoutProduction_single_srcInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    track_id?: StringFieldUpdateOperationsInput | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    imove_repair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_status?: StringFieldUpdateOperationsInput | string
+    quality_check_src?: quality_checkUncheckedUpdateManyWithoutRepair_jobNestedInput
+  }
+
+  export type track_id_objectCreateWithoutRepair_jobInput = {
+    track_id: string
+    productId?: number
+    productName?: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyCreateNestedManyWithoutTrack_id_objectInput
+    quality_check_used_in?: quality_checkCreateNestedManyWithoutTrack_id_objectInput
+    product_single_result?: production_single_product_draftCreateNestedOneWithoutTrack_id_objectInput
+  }
+
+  export type track_id_objectUncheckedCreateWithoutRepair_jobInput = {
+    track_id: string
+    productId?: number
+    productName?: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUncheckedCreateNestedManyWithoutTrack_id_objectInput
+    quality_check_used_in?: quality_checkUncheckedCreateNestedManyWithoutTrack_id_objectInput
+    product_single_result?: production_single_product_draftUncheckedCreateNestedOneWithoutTrack_id_objectInput
+  }
+
+  export type track_id_objectCreateOrConnectWithoutRepair_jobInput = {
+    where: track_id_objectWhereUniqueInput
+    create: XOR<track_id_objectCreateWithoutRepair_jobInput, track_id_objectUncheckedCreateWithoutRepair_jobInput>
+  }
+
+  export type inventory_move_draftCreateWithoutRepair_job_imoveInput = {
+    org_id: number
+    creation_date_time: Date | string
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftCreateNestedOneWithoutImove_scrap_objInput
+    quality_check_scrap_imove?: quality_checkCreateNestedOneWithoutImove_scrap_objInput
+  }
+
+  export type inventory_move_draftUncheckedCreateWithoutRepair_job_imoveInput = {
+    org_id: number
+    creation_date_time: Date | string
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_scrap_objInput
+    quality_check_scrap_imove?: quality_checkUncheckedCreateNestedOneWithoutImove_scrap_objInput
+  }
+
+  export type inventory_move_draftCreateOrConnectWithoutRepair_job_imoveInput = {
+    where: inventory_move_draftWhereUniqueInput
+    create: XOR<inventory_move_draftCreateWithoutRepair_job_imoveInput, inventory_move_draftUncheckedCreateWithoutRepair_job_imoveInput>
+  }
+
+  export type quality_checkCreateWithoutRepair_jobInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    track_id_object: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
+    imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutQuality_check_scrap_imoveInput
+  }
+
+  export type quality_checkUncheckedCreateWithoutRepair_jobInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    track_id: string
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+  }
+
+  export type quality_checkCreateOrConnectWithoutRepair_jobInput = {
+    where: quality_checkWhereUniqueInput
+    create: XOR<quality_checkCreateWithoutRepair_jobInput, quality_checkUncheckedCreateWithoutRepair_jobInput>
+  }
+
+  export type quality_checkCreateManyRepair_jobInputEnvelope = {
+    data: quality_checkCreateManyRepair_jobInput | quality_checkCreateManyRepair_jobInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type production_single_product_draftCreateWithoutRepair_jobInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    track_id_object: track_id_objectCreateNestedOneWithoutProduct_single_resultInput
+    imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_scrap_imoveInput
+  }
+
+  export type production_single_product_draftUncheckedCreateWithoutRepair_jobInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+    track_id: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+  }
+
+  export type production_single_product_draftCreateOrConnectWithoutRepair_jobInput = {
+    where: production_single_product_draftWhereUniqueInput
+    create: XOR<production_single_product_draftCreateWithoutRepair_jobInput, production_single_product_draftUncheckedCreateWithoutRepair_jobInput>
+  }
+
+  export type production_single_product_draftCreateManyRepair_jobInputEnvelope = {
+    data: production_single_product_draftCreateManyRepair_jobInput | production_single_product_draftCreateManyRepair_jobInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type track_id_objectUpsertWithoutRepair_jobInput = {
+    update: XOR<track_id_objectUpdateWithoutRepair_jobInput, track_id_objectUncheckedUpdateWithoutRepair_jobInput>
+    create: XOR<track_id_objectCreateWithoutRepair_jobInput, track_id_objectUncheckedCreateWithoutRepair_jobInput>
+    where?: track_id_objectWhereInput
+  }
+
+  export type track_id_objectUpdateToOneWithWhereWithoutRepair_jobInput = {
+    where?: track_id_objectWhereInput
+    data: XOR<track_id_objectUpdateWithoutRepair_jobInput, track_id_objectUncheckedUpdateWithoutRepair_jobInput>
+  }
+
+  export type track_id_objectUpdateWithoutRepair_jobInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUpdateManyWithoutTrack_id_objectNestedInput
+    quality_check_used_in?: quality_checkUpdateManyWithoutTrack_id_objectNestedInput
+    product_single_result?: production_single_product_draftUpdateOneWithoutTrack_id_objectNestedInput
+  }
+
+  export type track_id_objectUncheckedUpdateWithoutRepair_jobInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUncheckedUpdateManyWithoutTrack_id_objectNestedInput
+    quality_check_used_in?: quality_checkUncheckedUpdateManyWithoutTrack_id_objectNestedInput
+    product_single_result?: production_single_product_draftUncheckedUpdateOneWithoutTrack_id_objectNestedInput
+  }
+
+  export type inventory_move_draftUpsertWithoutRepair_job_imoveInput = {
+    update: XOR<inventory_move_draftUpdateWithoutRepair_job_imoveInput, inventory_move_draftUncheckedUpdateWithoutRepair_job_imoveInput>
+    create: XOR<inventory_move_draftCreateWithoutRepair_job_imoveInput, inventory_move_draftUncheckedCreateWithoutRepair_job_imoveInput>
+    where?: inventory_move_draftWhereInput
+  }
+
+  export type inventory_move_draftUpdateToOneWithWhereWithoutRepair_job_imoveInput = {
+    where?: inventory_move_draftWhereInput
+    data: XOR<inventory_move_draftUpdateWithoutRepair_job_imoveInput, inventory_move_draftUncheckedUpdateWithoutRepair_job_imoveInput>
+  }
+
+  export type inventory_move_draftUpdateWithoutRepair_job_imoveInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUpdateOneWithoutImove_scrap_objNestedInput
+    quality_check_scrap_imove?: quality_checkUpdateOneWithoutImove_scrap_objNestedInput
+  }
+
+  export type inventory_move_draftUncheckedUpdateWithoutRepair_job_imoveInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_scrap_objNestedInput
+    quality_check_scrap_imove?: quality_checkUncheckedUpdateOneWithoutImove_scrap_objNestedInput
+  }
+
+  export type quality_checkUpsertWithWhereUniqueWithoutRepair_jobInput = {
+    where: quality_checkWhereUniqueInput
+    update: XOR<quality_checkUpdateWithoutRepair_jobInput, quality_checkUncheckedUpdateWithoutRepair_jobInput>
+    create: XOR<quality_checkCreateWithoutRepair_jobInput, quality_checkUncheckedCreateWithoutRepair_jobInput>
+  }
+
+  export type quality_checkUpdateWithWhereUniqueWithoutRepair_jobInput = {
+    where: quality_checkWhereUniqueInput
+    data: XOR<quality_checkUpdateWithoutRepair_jobInput, quality_checkUncheckedUpdateWithoutRepair_jobInput>
+  }
+
+  export type quality_checkUpdateManyWithWhereWithoutRepair_jobInput = {
+    where: quality_checkScalarWhereInput
+    data: XOR<quality_checkUpdateManyMutationInput, quality_checkUncheckedUpdateManyWithoutRepair_jobInput>
+  }
+
+  export type quality_checkScalarWhereInput = {
+    AND?: quality_checkScalarWhereInput | quality_checkScalarWhereInput[]
+    OR?: quality_checkScalarWhereInput[]
+    NOT?: quality_checkScalarWhereInput | quality_checkScalarWhereInput[]
+    org_id?: IntFilter<"quality_check"> | number
+    creation_date_time?: DateTimeFilter<"quality_check"> | Date | string
+    locator_id?: IntFilter<"quality_check"> | number
+    track_id?: StringFilter<"quality_check"> | string
+    checker_name?: StringFilter<"quality_check"> | string
+    customer?: StringFilter<"quality_check"> | string
+    total_ok?: FloatFilter<"quality_check"> | number
+    scrap_reason?: StringFilter<"quality_check"> | string
+    total_ng_scrap?: FloatFilter<"quality_check"> | number
+    imove_scrap_id?: IntNullableFilter<"quality_check"> | number | null
+    repair_reason?: StringFilter<"quality_check"> | string
+    total_ng_repair?: FloatFilter<"quality_check"> | number
+    repair_job_id?: StringNullableFilter<"quality_check"> | string | null
+  }
+
+  export type production_single_product_draftUpsertWithWhereUniqueWithoutRepair_jobInput = {
+    where: production_single_product_draftWhereUniqueInput
+    update: XOR<production_single_product_draftUpdateWithoutRepair_jobInput, production_single_product_draftUncheckedUpdateWithoutRepair_jobInput>
+    create: XOR<production_single_product_draftCreateWithoutRepair_jobInput, production_single_product_draftUncheckedCreateWithoutRepair_jobInput>
+  }
+
+  export type production_single_product_draftUpdateWithWhereUniqueWithoutRepair_jobInput = {
+    where: production_single_product_draftWhereUniqueInput
+    data: XOR<production_single_product_draftUpdateWithoutRepair_jobInput, production_single_product_draftUncheckedUpdateWithoutRepair_jobInput>
+  }
+
+  export type production_single_product_draftUpdateManyWithWhereWithoutRepair_jobInput = {
+    where: production_single_product_draftScalarWhereInput
+    data: XOR<production_single_product_draftUpdateManyMutationInput, production_single_product_draftUncheckedUpdateManyWithoutRepair_jobInput>
+  }
+
+  export type production_single_product_draftScalarWhereInput = {
+    AND?: production_single_product_draftScalarWhereInput | production_single_product_draftScalarWhereInput[]
+    OR?: production_single_product_draftScalarWhereInput[]
+    NOT?: production_single_product_draftScalarWhereInput | production_single_product_draftScalarWhereInput[]
+    org_id?: IntFilter<"production_single_product_draft"> | number
+    creation_date_time?: DateTimeFilter<"production_single_product_draft"> | Date | string
+    erp_id?: IntFilter<"production_single_product_draft"> | number
+    data?: JsonFilter<"production_single_product_draft">
+    track_id?: StringFilter<"production_single_product_draft"> | string
+    total_ok?: FloatFilter<"production_single_product_draft"> | number
+    scrap_reason?: StringFilter<"production_single_product_draft"> | string
+    total_ng_scrap?: FloatFilter<"production_single_product_draft"> | number
+    imove_scrap_id?: IntNullableFilter<"production_single_product_draft"> | number | null
+    repair_reason?: StringFilter<"production_single_product_draft"> | string
+    total_ng_repair?: FloatFilter<"production_single_product_draft"> | number
+    repair_job_id?: StringNullableFilter<"production_single_product_draft"> | string | null
+  }
+
+  export type track_id_objectCreateWithoutQuality_check_used_inInput = {
+    track_id: string
+    productId?: number
+    productName?: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyCreateNestedManyWithoutTrack_id_objectInput
+    repair_job?: repair_jobCreateNestedOneWithoutTrack_id_objectInput
+    product_single_result?: production_single_product_draftCreateNestedOneWithoutTrack_id_objectInput
+  }
+
+  export type track_id_objectUncheckedCreateWithoutQuality_check_used_inInput = {
+    track_id: string
+    productId?: number
+    productName?: string
+    track_type: string
+    creation_date_time?: Date | string
+    source_data: JsonNullValueInput | InputJsonValue
+    object_data: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUncheckedCreateNestedManyWithoutTrack_id_objectInput
+    repair_job?: repair_jobUncheckedCreateNestedOneWithoutTrack_id_objectInput
+    product_single_result?: production_single_product_draftUncheckedCreateNestedOneWithoutTrack_id_objectInput
+  }
+
+  export type track_id_objectCreateOrConnectWithoutQuality_check_used_inInput = {
+    where: track_id_objectWhereUniqueInput
+    create: XOR<track_id_objectCreateWithoutQuality_check_used_inInput, track_id_objectUncheckedCreateWithoutQuality_check_used_inInput>
+  }
+
+  export type inventory_move_draftCreateWithoutQuality_check_scrap_imoveInput = {
+    org_id: number
+    creation_date_time: Date | string
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftCreateNestedOneWithoutImove_scrap_objInput
+    repair_job_imove?: repair_jobCreateNestedOneWithoutImove_repair_objInput
+  }
+
+  export type inventory_move_draftUncheckedCreateWithoutQuality_check_scrap_imoveInput = {
+    org_id: number
+    creation_date_time: Date | string
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_scrap_objInput
+    repair_job_imove?: repair_jobUncheckedCreateNestedOneWithoutImove_repair_objInput
+  }
+
+  export type inventory_move_draftCreateOrConnectWithoutQuality_check_scrap_imoveInput = {
+    where: inventory_move_draftWhereUniqueInput
+    create: XOR<inventory_move_draftCreateWithoutQuality_check_scrap_imoveInput, inventory_move_draftUncheckedCreateWithoutQuality_check_scrap_imoveInput>
+  }
+
+  export type repair_jobCreateWithoutQuality_check_srcInput = {
+    org_id: number
+    creation_date_time: Date | string
+    starting_locator_id?: number
+    repair_status: string
+    track_id_object: track_id_objectCreateNestedOneWithoutRepair_jobInput
+    imove_repair_obj?: inventory_move_draftCreateNestedOneWithoutRepair_job_imoveInput
+    production_single_src?: production_single_product_draftCreateNestedManyWithoutRepair_jobInput
+  }
+
+  export type repair_jobUncheckedCreateWithoutQuality_check_srcInput = {
+    org_id: number
+    creation_date_time: Date | string
+    track_id: string
+    starting_locator_id?: number
+    imove_repair_id?: number | null
+    repair_status: string
+    production_single_src?: production_single_product_draftUncheckedCreateNestedManyWithoutRepair_jobInput
+  }
+
+  export type repair_jobCreateOrConnectWithoutQuality_check_srcInput = {
+    where: repair_jobWhereUniqueInput
+    create: XOR<repair_jobCreateWithoutQuality_check_srcInput, repair_jobUncheckedCreateWithoutQuality_check_srcInput>
+  }
+
+  export type track_id_objectUpsertWithoutQuality_check_used_inInput = {
+    update: XOR<track_id_objectUpdateWithoutQuality_check_used_inInput, track_id_objectUncheckedUpdateWithoutQuality_check_used_inInput>
+    create: XOR<track_id_objectCreateWithoutQuality_check_used_inInput, track_id_objectUncheckedCreateWithoutQuality_check_used_inInput>
+    where?: track_id_objectWhereInput
+  }
+
+  export type track_id_objectUpdateToOneWithWhereWithoutQuality_check_used_inInput = {
+    where?: track_id_objectWhereInput
+    data: XOR<track_id_objectUpdateWithoutQuality_check_used_inInput, track_id_objectUncheckedUpdateWithoutQuality_check_used_inInput>
+  }
+
+  export type track_id_objectUpdateWithoutQuality_check_used_inInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUpdateManyWithoutTrack_id_objectNestedInput
+    repair_job?: repair_jobUpdateOneWithoutTrack_id_objectNestedInput
+    product_single_result?: production_single_product_draftUpdateOneWithoutTrack_id_objectNestedInput
+  }
+
+  export type track_id_objectUncheckedUpdateWithoutQuality_check_used_inInput = {
+    track_id?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+    productName?: StringFieldUpdateOperationsInput | string
+    track_type?: StringFieldUpdateOperationsInput | string
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    source_data?: JsonNullValueInput | InputJsonValue
+    object_data?: JsonNullValueInput | InputJsonValue
+    track_id_history?: track_id_historyUncheckedUpdateManyWithoutTrack_id_objectNestedInput
+    repair_job?: repair_jobUncheckedUpdateOneWithoutTrack_id_objectNestedInput
+    product_single_result?: production_single_product_draftUncheckedUpdateOneWithoutTrack_id_objectNestedInput
+  }
+
+  export type inventory_move_draftUpsertWithoutQuality_check_scrap_imoveInput = {
+    update: XOR<inventory_move_draftUpdateWithoutQuality_check_scrap_imoveInput, inventory_move_draftUncheckedUpdateWithoutQuality_check_scrap_imoveInput>
+    create: XOR<inventory_move_draftCreateWithoutQuality_check_scrap_imoveInput, inventory_move_draftUncheckedCreateWithoutQuality_check_scrap_imoveInput>
+    where?: inventory_move_draftWhereInput
+  }
+
+  export type inventory_move_draftUpdateToOneWithWhereWithoutQuality_check_scrap_imoveInput = {
+    where?: inventory_move_draftWhereInput
+    data: XOR<inventory_move_draftUpdateWithoutQuality_check_scrap_imoveInput, inventory_move_draftUncheckedUpdateWithoutQuality_check_scrap_imoveInput>
+  }
+
+  export type inventory_move_draftUpdateWithoutQuality_check_scrap_imoveInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUpdateOneWithoutImove_scrap_objNestedInput
+    repair_job_imove?: repair_jobUpdateOneWithoutImove_repair_objNestedInput
+  }
+
+  export type inventory_move_draftUncheckedUpdateWithoutQuality_check_scrap_imoveInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_scrap_objNestedInput
+    repair_job_imove?: repair_jobUncheckedUpdateOneWithoutImove_repair_objNestedInput
+  }
+
+  export type repair_jobUpsertWithoutQuality_check_srcInput = {
+    update: XOR<repair_jobUpdateWithoutQuality_check_srcInput, repair_jobUncheckedUpdateWithoutQuality_check_srcInput>
+    create: XOR<repair_jobCreateWithoutQuality_check_srcInput, repair_jobUncheckedCreateWithoutQuality_check_srcInput>
+    where?: repair_jobWhereInput
+  }
+
+  export type repair_jobUpdateToOneWithWhereWithoutQuality_check_srcInput = {
+    where?: repair_jobWhereInput
+    data: XOR<repair_jobUpdateWithoutQuality_check_srcInput, repair_jobUncheckedUpdateWithoutQuality_check_srcInput>
+  }
+
+  export type repair_jobUpdateWithoutQuality_check_srcInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    repair_status?: StringFieldUpdateOperationsInput | string
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutRepair_jobNestedInput
+    imove_repair_obj?: inventory_move_draftUpdateOneWithoutRepair_job_imoveNestedInput
+    production_single_src?: production_single_product_draftUpdateManyWithoutRepair_jobNestedInput
+  }
+
+  export type repair_jobUncheckedUpdateWithoutQuality_check_srcInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    track_id?: StringFieldUpdateOperationsInput | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    imove_repair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_status?: StringFieldUpdateOperationsInput | string
+    production_single_src?: production_single_product_draftUncheckedUpdateManyWithoutRepair_jobNestedInput
+  }
+
   export type track_id_historyCreateWithoutTrack_id_objectInput = {
     update_date_time?: Date | string
     description?: string
@@ -9410,6 +14253,104 @@ export namespace Prisma {
   export type track_id_historyCreateManyTrack_id_objectInputEnvelope = {
     data: track_id_historyCreateManyTrack_id_objectInput | track_id_historyCreateManyTrack_id_objectInput[]
     skipDuplicates?: boolean
+  }
+
+  export type repair_jobCreateWithoutTrack_id_objectInput = {
+    org_id: number
+    creation_date_time: Date | string
+    starting_locator_id?: number
+    repair_status: string
+    imove_repair_obj?: inventory_move_draftCreateNestedOneWithoutRepair_job_imoveInput
+    quality_check_src?: quality_checkCreateNestedManyWithoutRepair_jobInput
+    production_single_src?: production_single_product_draftCreateNestedManyWithoutRepair_jobInput
+  }
+
+  export type repair_jobUncheckedCreateWithoutTrack_id_objectInput = {
+    org_id: number
+    creation_date_time: Date | string
+    starting_locator_id?: number
+    imove_repair_id?: number | null
+    repair_status: string
+    quality_check_src?: quality_checkUncheckedCreateNestedManyWithoutRepair_jobInput
+    production_single_src?: production_single_product_draftUncheckedCreateNestedManyWithoutRepair_jobInput
+  }
+
+  export type repair_jobCreateOrConnectWithoutTrack_id_objectInput = {
+    where: repair_jobWhereUniqueInput
+    create: XOR<repair_jobCreateWithoutTrack_id_objectInput, repair_jobUncheckedCreateWithoutTrack_id_objectInput>
+  }
+
+  export type quality_checkCreateWithoutTrack_id_objectInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutQuality_check_scrap_imoveInput
+    repair_job?: repair_jobCreateNestedOneWithoutQuality_check_srcInput
+  }
+
+  export type quality_checkUncheckedCreateWithoutTrack_id_objectInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+    repair_job_id?: string | null
+  }
+
+  export type quality_checkCreateOrConnectWithoutTrack_id_objectInput = {
+    where: quality_checkWhereUniqueInput
+    create: XOR<quality_checkCreateWithoutTrack_id_objectInput, quality_checkUncheckedCreateWithoutTrack_id_objectInput>
+  }
+
+  export type quality_checkCreateManyTrack_id_objectInputEnvelope = {
+    data: quality_checkCreateManyTrack_id_objectInput | quality_checkCreateManyTrack_id_objectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type production_single_product_draftCreateWithoutTrack_id_objectInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_scrap_imoveInput
+    repair_job?: repair_jobCreateNestedOneWithoutProduction_single_srcInput
+  }
+
+  export type production_single_product_draftUncheckedCreateWithoutTrack_id_objectInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+    repair_job_id?: string | null
+  }
+
+  export type production_single_product_draftCreateOrConnectWithoutTrack_id_objectInput = {
+    where: production_single_product_draftWhereUniqueInput
+    create: XOR<production_single_product_draftCreateWithoutTrack_id_objectInput, production_single_product_draftUncheckedCreateWithoutTrack_id_objectInput>
   }
 
   export type track_id_historyUpsertWithWhereUniqueWithoutTrack_id_objectInput = {
@@ -9438,6 +14379,92 @@ export namespace Prisma {
     data?: JsonFilter<"track_id_history">
   }
 
+  export type repair_jobUpsertWithoutTrack_id_objectInput = {
+    update: XOR<repair_jobUpdateWithoutTrack_id_objectInput, repair_jobUncheckedUpdateWithoutTrack_id_objectInput>
+    create: XOR<repair_jobCreateWithoutTrack_id_objectInput, repair_jobUncheckedCreateWithoutTrack_id_objectInput>
+    where?: repair_jobWhereInput
+  }
+
+  export type repair_jobUpdateToOneWithWhereWithoutTrack_id_objectInput = {
+    where?: repair_jobWhereInput
+    data: XOR<repair_jobUpdateWithoutTrack_id_objectInput, repair_jobUncheckedUpdateWithoutTrack_id_objectInput>
+  }
+
+  export type repair_jobUpdateWithoutTrack_id_objectInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    repair_status?: StringFieldUpdateOperationsInput | string
+    imove_repair_obj?: inventory_move_draftUpdateOneWithoutRepair_job_imoveNestedInput
+    quality_check_src?: quality_checkUpdateManyWithoutRepair_jobNestedInput
+    production_single_src?: production_single_product_draftUpdateManyWithoutRepair_jobNestedInput
+  }
+
+  export type repair_jobUncheckedUpdateWithoutTrack_id_objectInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    starting_locator_id?: IntFieldUpdateOperationsInput | number
+    imove_repair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_status?: StringFieldUpdateOperationsInput | string
+    quality_check_src?: quality_checkUncheckedUpdateManyWithoutRepair_jobNestedInput
+    production_single_src?: production_single_product_draftUncheckedUpdateManyWithoutRepair_jobNestedInput
+  }
+
+  export type quality_checkUpsertWithWhereUniqueWithoutTrack_id_objectInput = {
+    where: quality_checkWhereUniqueInput
+    update: XOR<quality_checkUpdateWithoutTrack_id_objectInput, quality_checkUncheckedUpdateWithoutTrack_id_objectInput>
+    create: XOR<quality_checkCreateWithoutTrack_id_objectInput, quality_checkUncheckedCreateWithoutTrack_id_objectInput>
+  }
+
+  export type quality_checkUpdateWithWhereUniqueWithoutTrack_id_objectInput = {
+    where: quality_checkWhereUniqueInput
+    data: XOR<quality_checkUpdateWithoutTrack_id_objectInput, quality_checkUncheckedUpdateWithoutTrack_id_objectInput>
+  }
+
+  export type quality_checkUpdateManyWithWhereWithoutTrack_id_objectInput = {
+    where: quality_checkScalarWhereInput
+    data: XOR<quality_checkUpdateManyMutationInput, quality_checkUncheckedUpdateManyWithoutTrack_id_objectInput>
+  }
+
+  export type production_single_product_draftUpsertWithoutTrack_id_objectInput = {
+    update: XOR<production_single_product_draftUpdateWithoutTrack_id_objectInput, production_single_product_draftUncheckedUpdateWithoutTrack_id_objectInput>
+    create: XOR<production_single_product_draftCreateWithoutTrack_id_objectInput, production_single_product_draftUncheckedCreateWithoutTrack_id_objectInput>
+    where?: production_single_product_draftWhereInput
+  }
+
+  export type production_single_product_draftUpdateToOneWithWhereWithoutTrack_id_objectInput = {
+    where?: production_single_product_draftWhereInput
+    data: XOR<production_single_product_draftUpdateWithoutTrack_id_objectInput, production_single_product_draftUncheckedUpdateWithoutTrack_id_objectInput>
+  }
+
+  export type production_single_product_draftUpdateWithoutTrack_id_objectInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_obj?: inventory_move_draftUpdateOneWithoutProduction_single_scrap_imoveNestedInput
+    repair_job?: repair_jobUpdateOneWithoutProduction_single_srcNestedInput
+  }
+
+  export type production_single_product_draftUncheckedUpdateWithoutTrack_id_objectInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type track_id_objectCreateWithoutTrack_id_historyInput = {
     track_id: string
     productId?: number
@@ -9446,6 +14473,9 @@ export namespace Prisma {
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
     object_data: JsonNullValueInput | InputJsonValue
+    repair_job?: repair_jobCreateNestedOneWithoutTrack_id_objectInput
+    quality_check_used_in?: quality_checkCreateNestedManyWithoutTrack_id_objectInput
+    product_single_result?: production_single_product_draftCreateNestedOneWithoutTrack_id_objectInput
   }
 
   export type track_id_objectUncheckedCreateWithoutTrack_id_historyInput = {
@@ -9456,6 +14486,9 @@ export namespace Prisma {
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
     object_data: JsonNullValueInput | InputJsonValue
+    repair_job?: repair_jobUncheckedCreateNestedOneWithoutTrack_id_objectInput
+    quality_check_used_in?: quality_checkUncheckedCreateNestedManyWithoutTrack_id_objectInput
+    product_single_result?: production_single_product_draftUncheckedCreateNestedOneWithoutTrack_id_objectInput
   }
 
   export type track_id_objectCreateOrConnectWithoutTrack_id_historyInput = {
@@ -9482,6 +14515,9 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
     object_data?: JsonNullValueInput | InputJsonValue
+    repair_job?: repair_jobUpdateOneWithoutTrack_id_objectNestedInput
+    quality_check_used_in?: quality_checkUpdateManyWithoutTrack_id_objectNestedInput
+    product_single_result?: production_single_product_draftUpdateOneWithoutTrack_id_objectNestedInput
   }
 
   export type track_id_objectUncheckedUpdateWithoutTrack_id_historyInput = {
@@ -9492,12 +14528,146 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
     object_data?: JsonNullValueInput | InputJsonValue
+    repair_job?: repair_jobUncheckedUpdateOneWithoutTrack_id_objectNestedInput
+    quality_check_used_in?: quality_checkUncheckedUpdateManyWithoutTrack_id_objectNestedInput
+    product_single_result?: production_single_product_draftUncheckedUpdateOneWithoutTrack_id_objectNestedInput
+  }
+
+  export type quality_checkCreateManyRepair_jobInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    track_id: string
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+  }
+
+  export type production_single_product_draftCreateManyRepair_jobInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+    track_id: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+  }
+
+  export type quality_checkUpdateWithoutRepair_jobInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput
+    imove_scrap_obj?: inventory_move_draftUpdateOneWithoutQuality_check_scrap_imoveNestedInput
+  }
+
+  export type quality_checkUncheckedUpdateWithoutRepair_jobInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    track_id?: StringFieldUpdateOperationsInput | string
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type quality_checkUncheckedUpdateManyWithoutRepair_jobInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    track_id?: StringFieldUpdateOperationsInput | string
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type production_single_product_draftUpdateWithoutRepair_jobInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutProduct_single_resultNestedInput
+    imove_scrap_obj?: inventory_move_draftUpdateOneWithoutProduction_single_scrap_imoveNestedInput
+  }
+
+  export type production_single_product_draftUncheckedUpdateWithoutRepair_jobInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    track_id?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type production_single_product_draftUncheckedUpdateManyWithoutRepair_jobInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    track_id?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
   }
 
   export type track_id_historyCreateManyTrack_id_objectInput = {
     update_date_time?: Date | string
     description?: string
     data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type quality_checkCreateManyTrack_id_objectInput = {
+    org_id: number
+    creation_date_time: Date | string
+    locator_id?: number
+    checker_name: string
+    customer: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+    repair_job_id?: string | null
   }
 
   export type track_id_historyUpdateWithoutTrack_id_objectInput = {
@@ -9516,6 +14686,51 @@ export namespace Prisma {
     update_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type quality_checkUpdateWithoutTrack_id_objectInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_obj?: inventory_move_draftUpdateOneWithoutQuality_check_scrap_imoveNestedInput
+    repair_job?: repair_jobUpdateOneWithoutQuality_check_srcNestedInput
+  }
+
+  export type quality_checkUncheckedUpdateWithoutTrack_id_objectInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type quality_checkUncheckedUpdateManyWithoutTrack_id_objectInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    locator_id?: IntFieldUpdateOperationsInput | number
+    checker_name?: StringFieldUpdateOperationsInput | string
+    customer?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 
@@ -9539,6 +14754,14 @@ export namespace Prisma {
      * @deprecated Use production_single_product_draftDefaultArgs instead
      */
     export type production_single_product_draftArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = production_single_product_draftDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use repair_jobDefaultArgs instead
+     */
+    export type repair_jobArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = repair_jobDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use quality_checkDefaultArgs instead
+     */
+    export type quality_checkArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = quality_checkDefaultArgs<ExtArgs>
     /**
      * @deprecated Use track_id_objectDefaultArgs instead
      */

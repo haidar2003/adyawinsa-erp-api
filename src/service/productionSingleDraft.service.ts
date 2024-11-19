@@ -21,6 +21,14 @@ export const createProductionSingleDraft = async (productionSingleDTO: any) => {
 				creation_date_time: productionSingleDTO.creation_date_time,
 				erp_id: productionSingleDTO.erp_id,
 				data: productionSingleDTO.data,
+
+				// TODO NEEDS TO BE WORKED ON.
+				total_ok: 0,
+				total_ng_repair: 0,
+				total_ng_scrap: 0,
+				track_id_object: {
+
+				}
 			},
 		});
 	} catch (error) {

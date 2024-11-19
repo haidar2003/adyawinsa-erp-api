@@ -147,7 +147,40 @@ exports.Prisma.Production_single_product_draftScalarFieldEnum = {
   org_id: 'org_id',
   creation_date_time: 'creation_date_time',
   erp_id: 'erp_id',
-  data: 'data'
+  data: 'data',
+  track_id: 'track_id',
+  total_ok: 'total_ok',
+  scrap_reason: 'scrap_reason',
+  total_ng_scrap: 'total_ng_scrap',
+  imove_scrap_id: 'imove_scrap_id',
+  repair_reason: 'repair_reason',
+  total_ng_repair: 'total_ng_repair',
+  repair_job_id: 'repair_job_id'
+};
+
+exports.Prisma.Repair_jobScalarFieldEnum = {
+  org_id: 'org_id',
+  creation_date_time: 'creation_date_time',
+  track_id: 'track_id',
+  starting_locator_id: 'starting_locator_id',
+  imove_repair_id: 'imove_repair_id',
+  repair_status: 'repair_status'
+};
+
+exports.Prisma.Quality_checkScalarFieldEnum = {
+  org_id: 'org_id',
+  creation_date_time: 'creation_date_time',
+  locator_id: 'locator_id',
+  track_id: 'track_id',
+  checker_name: 'checker_name',
+  customer: 'customer',
+  total_ok: 'total_ok',
+  scrap_reason: 'scrap_reason',
+  total_ng_scrap: 'total_ng_scrap',
+  imove_scrap_id: 'imove_scrap_id',
+  repair_reason: 'repair_reason',
+  total_ng_repair: 'total_ng_repair',
+  repair_job_id: 'repair_job_id'
 };
 
 exports.Prisma.Track_id_objectScalarFieldEnum = {
@@ -196,12 +229,19 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   inventory_move_draft: 'inventory_move_draft',
   shipment_draft: 'shipment_draft',
   material_receive_draft: 'material_receive_draft',
   production_single_product_draft: 'production_single_product_draft',
+  repair_job: 'repair_job',
+  quality_check: 'quality_check',
   track_id_object: 'track_id_object',
   track_id_history: 'track_id_history',
   track_id_stock: 'track_id_stock'

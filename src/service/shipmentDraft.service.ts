@@ -37,13 +37,13 @@ export const getAllShipmentDrafts = async () => {
 
 export const getFilteredShipmentDrafts = async (orgId: number, vendorId: number) => {
 	return await prisma.shipment_draft.findMany({
-	  where: {
-		org_id: orgId,
-		vendor_id: vendorId,
-	  },
-	  orderBy: {
-		creation_date_time: 'desc',
-	  },
+		where: {
+			org_id: orgId,
+			vendor_id: vendorId,
+		},
+		orderBy: {
+			creation_date_time: 'desc',
+		},
 	});
 };
 
