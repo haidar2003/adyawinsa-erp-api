@@ -17,10 +17,9 @@ model inventory_move_draft {
   data               Json     @db.Json
   
   production_single_scrap_imove production_single_product_draft? @relation("PRODUCT-SINGLE-SCRAP-IMOVE")
-  production_single_repair_imove production_single_product_draft? @relation("PRODUCT-SINGLE-REPAIR-IMOVE")
   quality_check_scrap_imove quality_check? @relation("QUALITY-SCRAP-IMOVE")
-  
-  // quality_check_repair_imove quality_check? @relation("QUALITY-REPAIR-TRACKID")
+
+  repair_job_imove repair_job? @relation("REPAIR-JOB-IMOVE")
 
   @@id([org_id, creation_date_time])
 }
@@ -63,10 +62,8 @@ model production_single_product_draft {
 
   repair_reason     String @default("")
   total_ng_repair   Float
-  repair_track_id_obj   track_id_object? @relation("PRODUCT-SINGLE-REPAIR-TRACKID", fields: [repair_track_id], references: [track_id])
-  repair_track_id   String? @unique
-  imove_repair_obj  inventory_move_draft? @relation("PRODUCT-SINGLE-REPAIR-IMOVE", fields: [imove_repair_id], references: [movement_id])
-  imove_repair_id   Int? @unique
+  repair_job        repair_job? @relation("PRODUCT-SINGLE-REPAIR-JOB", fields: [repair_job_id], references: [track_id])
+  repair_job_id     String? @unique
 
   @@id([org_id, creation_date_time])
 }
@@ -78,7 +75,12 @@ model repair_job {
   track_id_object   track_id_object @relation("REPAIR-TRACK-ID",fields: [track_id], references: [track_id])
   track_id          String @unique
 
-  quality_check     quality_check[] @relation("QUALITY-REPAIR-JOB")
+  starting_locator_id Int @default(-1)
+  imove_repair_obj  inventory_move_draft? @relation("REPAIR-JOB-IMOVE", fields: [imove_repair_id], references: [movement_id])
+  imove_repair_id   Int? @unique
+
+  quality_check_src           quality_check[] @relation("QUALITY-REPAIR-JOB")
+  production_single_src       production_single_product_draft[] @relation("PRODUCT-SINGLE-REPAIR-JOB")
 
   repair_status     String
 
@@ -108,9 +110,6 @@ model quality_check {
   repair_job        repair_job? @relation("QUALITY-REPAIR-JOB", fields: [repair_job_id], references: [track_id])
   repair_job_id     String?
 
-  // repair_track_id_object   track_id_object? @relation("QUALITY-REPAIR-TRACKID", fields: [repair_track_id], references: [track_id])
-  // repair_track_id   String? @unique
-
   @@id([org_id, creation_date_time])
 }
 
@@ -125,13 +124,8 @@ model track_id_object {
   track_id_history        track_id_history[]
 
   repair_job              repair_job? @relation("REPAIR-TRACK-ID")
-
-  quality_check           quality_check[] @relation("QUALITY-RESULT-TRACKID")
-
-  // quality_check_repair_source quality_check? @relation("QUALITY-REPAIR-TRACKID")
-
+  quality_check_used_in   quality_check[] @relation("QUALITY-RESULT-TRACKID")
   product_single_result   production_single_product_draft? @relation("PRODUCT-SINGLE-RESULT-TRACKID")
-  product_single_repair   production_single_product_draft? @relation("PRODUCT-SINGLE-REPAIR-TRACKID")
 }
 
 model track_id_history {
