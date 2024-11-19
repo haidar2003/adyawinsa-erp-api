@@ -15,16 +15,10 @@ export const postQualityCheck = async (req: Request, res: Response, next: NextFu
 	try {
 		const qualityCheckDraft = req.body;
 
-		const draftData = {
-			track_id: qualityCheckDraft.track_id || 'track-' + new Date().toISOString(),
-			track_type: qualityCheckDraft.track_type || '',
-			source_data: qualityCheckDraft.source_data || {},
-			object_data: {
-				...qualityCheckDraft
-			},
-		};
-
-		const result = await qualityCheckService.createQualityCheckObject(draftData);
+		const result = await qualityCheckService.createQualityCheckObject({
+			...qualityCheckDraft,
+			creation_date_time: qualityCheckDraft.creation_date_time ?? new Date().toISOString(),
+		});
 
 		// Kirim response
 		return res.json(result);

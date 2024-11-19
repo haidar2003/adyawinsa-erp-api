@@ -6,6 +6,8 @@ import authorizeToken from '../middleware/authorizeToken';
 import inventoryMoveDraftRouter from './inventoryMoveDraft.routes';
 import shipmentDraftRouter from './shipmentDraft.routes';
 import trackingRouter from './tracking.routes';
+import qualityRouter from './quality.routes';
+import repairRouter from './repair.routes';
 
 const router: Router = express.Router();
 
@@ -18,6 +20,8 @@ router.get('/', (req: Request, res: Response) => {
 router.use('/inventory-move-draft', inventoryMoveDraftRouter);
 router.use('/shipment-draft', shipmentDraftRouter);
 router.use('/tracking', trackingRouter);
+router.use('/quality', qualityRouter);
+router.use('/repair', repairRouter);
 
 // Routes below needs authentication
 router.use(authenticateToken);
