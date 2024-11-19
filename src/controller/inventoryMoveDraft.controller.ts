@@ -77,6 +77,157 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 	}
 };
 
+export const createInventoryMoveDraftDirectComplete = async (req: Request, res: Response, next: NextFunction) => {
+    
+	const imDraft = req.body.imDraft;
+
+	try {
+
+		const hydratedIMDraft = hydrateInventoryMove(imDraft);
+		const hydratedIMDraftErp = getInventoryMoveErpObjectFromHydratedCombinedData(hydratedIMDraft);
+
+		const reqBody = {
+			method: 'post',
+			maxBodyLength: Infinity,
+			headers: { 
+				'Content-Type': 'application/json'
+			},
+			url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
+			data: JSON.stringify({
+				'axiosConfig': {
+					'method': 'post',
+					'url': endpointApiUrl + '/api/v1/models/M_Movement',
+					'data': hydratedIMDraftErp,
+				}
+			})
+		};
+	
+		const response = await axios(reqBody);
+
+		console.log(response);
+
+		const shadowData = {
+			...response.data.returnBody,
+
+			// SHADOW VARIABLES
+			employeeNumber: hydratedIMDraft.employeeNumber,
+			materialMovementProductDict: hydratedIMDraft.materialMovementProductDict,
+			M_Locator_ID: hydratedIMDraft.M_Locator_ID,
+			M_LocatorTo_ID: hydratedIMDraft.M_LocatorTo_ID
+		};
+
+		const draftData = {
+			org_id: shadowData.AD_Org_ID.id,
+			creation_date_time: new Date(shadowData.Created),
+			movement_id: shadowData.id,
+			data: shadowData
+		};
+
+		const result = await inventoryMoveDraftService.createInventoryMoveDraft(draftData);
+
+		const currentDate = new Date();
+		currentDate.setHours(currentDate.getHours() + 7);
+		currentDate.setMinutes(currentDate.getMinutes() - 1);
+		const updateTimestamp = currentDate.toISOString();
+
+		// Ubah DocStatus ke 'Completed'
+		const updatedData = { 
+			...response.data.returnBody, 
+			DocStatus: {
+				propertyLabel: 'Document Status',
+				id: 'CO',
+				identifier: 'Completed',
+				'model-name': 'ad_ref_list'
+			},
+			IsApproved: true,
+			Processed: true,
+			Updated: updateTimestamp,
+			M_MovementLine: response.data.returnBody.M_MovementLine.map((line: any) => {
+				return {
+					...line,
+					Processed: true,
+					Updated: updateTimestamp
+				};
+			})
+		};
+
+		const hydratedData = hydrateInventoryMove(updatedData);
+
+		const movementId = response.data.returnBody.id;
+
+		// Update Supabase
+		try {
+			// Create stock if it doesn't exist (This is a safe operation)
+			await trackingService.createManyTrackIdStock(
+				hydratedIMDraft.M_Locator_ID, 
+				hydratedIMDraft.M_LocatorTo_ID, 
+				hydratedIMDraft.materialMovementProductDict
+			);
+
+			const additionalData = getTransferItems(
+				hydratedIMDraft.M_Locator_ID, 
+				hydratedIMDraft.M_LocatorTo_ID, 
+				hydratedIMDraft.materialMovementProductDict,
+				false
+			);
+
+			await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, hydratedData, additionalData);
+			
+		} catch (updateError: any) {
+			if (updateError instanceof PrismaClientKnownRequestError) {
+				console.error('Prisma update failed:', updateError);
+				return res.status(500).json({ error: 'Failed to update shadow database.', details: updateError.message });
+			}
+			console.error('Unexpected error during shadow update:', updateError);
+			return res.status(500).json({ error: 'Unexpected error during update' });
+		}
+
+		// Update server asli
+		const reqBody2 = {
+			method: 'post',
+			maxBodyLength: Infinity,
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
+			data: JSON.stringify({
+				axiosConfig: {
+					method: 'put',
+					url: `${endpointApiUrl}/api/v1/models/M_Movement/${movementId}`,
+					data: { 'doc-action': 'CO' },
+				}
+			})
+		};
+
+		try {
+			const response = await axios(reqBody2);
+
+			// FAILURE ROLLBACK
+			// If success === false / FAILED document complete,
+			// we roll back the stock changes.
+			if (response?.data?.success === false) {
+
+				const additionalData = getTransferItems(
+					hydratedIMDraft.M_Locator_ID, 
+					hydratedIMDraft.M_LocatorTo_ID, 
+					hydratedIMDraft.materialMovementProductDict,
+					true
+				);
+
+				await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, response.data.returnBody, additionalData);
+			}
+
+			return res.json(response.data);
+		} catch (apiError: any) {
+			console.error('Failed to update real server:', apiError);
+			return res.status(500).json({ error: 'Failed to update real server'});
+		}
+	} catch (error) {
+		console.log('Error in createInventoryMoveDraft controller: ', error);
+		next(error);
+	}
+};
+
 export const getInventoryMoveDraft = async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const { id } = req.params;

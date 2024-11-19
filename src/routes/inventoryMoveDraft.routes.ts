@@ -14,6 +14,12 @@ inventoryMoveDraftRouter.post('/',
 	inventoryMoveDraftController.createInventoryMoveDraft
 );
 
+// Routes
+inventoryMoveDraftRouter.post('/direct-complete', 
+	inventoryMoveDraftCreateValidationRules,
+	inventoryMoveDraftController.createInventoryMoveDraftDirectComplete
+);
+
 // Endpoint untuk mengambil semua
 inventoryMoveDraftRouter.get('/', inventoryMoveDraftController.getInventoryMoveDraftAll);
 
