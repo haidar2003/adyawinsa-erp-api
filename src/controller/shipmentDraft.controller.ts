@@ -55,7 +55,8 @@ export const createShipmentDraft = async (req: Request, res: Response, next: Nex
 			// SHADOW VARIABLES
 			customerRequestDocNo: hydratedShipmentDraft.customerRequestDocNo,
 			productTrackQuantityDict: hydratedShipmentDraft.productTrackQuantityDict,
-			M_Locator_ID: hydratedShipmentDraft.M_Locator_ID
+			M_Locator_ID: hydratedShipmentDraft.M_Locator_ID,
+			C_Order_ID: hydratedShipmentDraft.C_Order_ID
 		};
 
 		const draftData = {
@@ -470,13 +471,13 @@ export const updateShipmentDraftComplete = async (req: Request, res: Response, n
 				await trackingService.createManyTrackIdStock(
 					currentData.M_Locator_ID, 
 					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict
+					currentData.productTrackQuantityDict
 				);
 
 				const additionalData = getTransferItems(
 					currentData.M_Locator_ID, 
 					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict,
+					currentData.productTrackQuantityDict,
 					false
 				);
 
@@ -619,13 +620,13 @@ export const updateShipmentDraftReverse = async (req: Request, res: Response, ne
 				await trackingService.createManyTrackIdStock(
 					currentData.M_Locator_ID, 
 					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict
+					currentData.productTrackQuantityDict
 				);
 
 				const additionalData = getTransferItems(
 					currentData.M_Locator_ID, 
 					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict,
+					currentData.productTrackQuantityDict,
 					true
 				);
 
@@ -793,6 +794,7 @@ const getShipmentErpObjectFromHydratedCombinedData = (combinedData: any) => {
 		// SHADOW VARIABLES
 		'customerRequestDocNo': undefined,
 		'productTrackQuantityDict': undefined,
-		'M_Locator_ID': undefined
+		'M_Locator_ID': undefined,
+		'C_Order_ID': undefined
 	};
 };
