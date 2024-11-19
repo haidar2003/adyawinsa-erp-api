@@ -1,7 +1,6 @@
 import { prisma } from '../../prisma/client';
-import { InventoryMoveDraftDTO } from '../interfaces/inventoryMoveDraft.dto';
 
-export const createInventoryMoveDraft = async (InventoryMoveDraftDTO: InventoryMoveDraftDTO) => {
+export const createInventoryMoveDraft = async (InventoryMoveDraftDTO: any) => {
 	try {
 		const existingDraft = await prisma.inventory_move_draft.findUnique({
 			where: {
@@ -75,7 +74,7 @@ export const getInventoryMoveDraftByMovementId = async (movement_id: number) => 
 
 export const updateInventoryMoveDraftByMovementId = async (
 	movementId: number,
-	data: Partial<InventoryMoveDraftDTO['data']>,
+	data: Partial<any>,
 	additionalTransactData: any[] | undefined,
 ): Promise<any> => {
 	try {
