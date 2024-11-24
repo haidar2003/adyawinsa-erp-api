@@ -43,7 +43,13 @@ export const createQualityCheckObject = async (qualityCheckObjectDTO: any) => {
 export const getAllQualityCheckObjects = async () => {
 	return await prisma.quality_check.findMany({
 		include: {
-			track_id_object: true
+			track_id_object: true,
+			imove_scrap_obj: true,
+			repair_job: {
+				include: {
+					imove_repair_obj: true
+				}
+			}
 		}
 	});
 };

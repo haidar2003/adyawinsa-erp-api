@@ -54,7 +54,14 @@ export const createRepairJobObject = async (repairJobObjectDTO: any) => {
 };
 
 export const getAllRepairJobObjects = async () => {
-	return await prisma.repair_job.findMany();
+	return await prisma.repair_job.findMany({
+		include: {
+			track_id_object: true,
+			imove_repair_obj: true,
+			quality_check_src: true,
+			production_single_src: true
+		}
+	});
 };
 
 export const getRepairJobObject = async (repairJobOrgId: number, repairJobCDT: string) => {
