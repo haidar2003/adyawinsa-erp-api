@@ -295,6 +295,12 @@ export const updateShipmentDraftRegular = async (req: Request, res: Response, ne
 
 			try {
 				const response = await axios(reqBodyContinue);
+
+				// FAILURE ROLLBACK
+				// THERE IS NO PREVIOUS VERSION FOR CONTINUE ROLLBACK.
+				// CONSIDER IMPLEMENTING THIS OR REVERSING THE UPDATE ORDER (IDEMPIERE FIRST)
+				// IF THIS IS A COMMON ISSUE.
+
 				return res.json(response.data);
 			} catch (apiError: any) {
 				console.error('Failed to update real server:', apiError);
@@ -351,6 +357,14 @@ export const updateShipmentDraftRegular = async (req: Request, res: Response, ne
 
 				try {
 					const response = await axios(reqBody);
+
+					// FAILURE ROLLBACK
+					// If success === false / FAILED document complete,
+					// we roll back the stock changes.
+					if (response?.data?.success === false) {
+						await shipmentDraftService.updateShipmentDraftByMovementId(movementId, currentData, undefined);
+					}
+
 					return res.json(response.data);
 				} catch (apiError: any) {
 					console.error('Failed to update real server:', apiError);
@@ -429,6 +443,43 @@ export const updateShipmentDraftComplete = async (req: Request, res: Response, n
 
 			try {
 				const response = await axios(reqBodyContinue);
+
+				// FAILURE ROLLBACK
+				// If success === false / FAILED document complete,
+				// we roll back the stock changes.
+				if (response?.data?.success === false) {
+	
+					const additionalData = getTransferItems(
+						currentData.M_Locator_ID, 
+						'',
+						currentData.productTrackQuantityDict,
+						true
+					);
+
+					const rollbackTimestamp = new Date('1999-01-01').toISOString();
+					const updatedData = { 
+						...currentData, 
+						DocStatus: {
+							propertyLabel: 'Document Status',
+							id: 'DR',
+							identifier: 'Drafted',
+							'model-name': 'ad_ref_list'
+						},
+						IsApproved: true,
+						Processed: true,
+						Updated: rollbackTimestamp,
+						M_InOutLine: currentData.M_InOutLine.map((line: any) => {
+							return {
+								...line,
+								Processed: true,
+								Updated: rollbackTimestamp
+							};
+						})
+					};
+	
+					await shipmentDraftService.updateShipmentDraftByMovementId(movementId, updatedData, additionalData);
+				}
+
 				return res.json(response.data);
 			} catch (apiError: any) {
 				console.error('Failed to update real server:', apiError);
@@ -510,6 +561,22 @@ export const updateShipmentDraftComplete = async (req: Request, res: Response, n
 
 			try {
 				const response = await axios(reqBody);
+
+				// FAILURE ROLLBACK
+				// If success === false / FAILED document complete,
+				// we roll back the stock changes.
+				if (response?.data?.success === false) {
+	
+					const additionalData = getTransferItems(
+						currentData.M_Locator_ID, 
+						'',
+						currentData.productTrackQuantityDict,
+						true
+					);
+	
+					await shipmentDraftService.updateShipmentDraftByMovementId(movementId, currentData, additionalData);
+				}
+
 				return res.json(response.data);
 			} catch (apiError: any) {
 				console.error('Failed to update real server:', apiError);
@@ -579,6 +646,43 @@ export const updateShipmentDraftReverse = async (req: Request, res: Response, ne
 
 			try {
 				const response = await axios(reqBodyContinue);
+
+				// FAILURE ROLLBACK
+				// If success === false / FAILED document complete,
+				// we roll back the stock changes.
+				if (response?.data?.success === false) {
+	
+					const additionalData = getTransferItems(
+						currentData.M_Locator_ID, 
+						'',
+						currentData.productTrackQuantityDict,
+						false
+					);
+
+					const rollbackTimestamp = new Date('1999-01-01').toISOString();
+					const updatedData = { 
+						...currentData, 
+						DocStatus: {
+							propertyLabel: 'Document Status',
+							id: 'CO',
+							identifier: 'Completed',
+							'model-name': 'ad_ref_list'
+						},
+						IsApproved: true,
+						Processed: true,
+						Updated: rollbackTimestamp,
+						M_InOutLine: currentData.M_InOutLine.map((line: any) => {
+							return {
+								...line,
+								Processed: true,
+								Updated: rollbackTimestamp
+							};
+						})
+					};
+	
+					await shipmentDraftService.updateShipmentDraftByMovementId(movementId, updatedData, additionalData);
+				}
+
 				return res.json(response.data);
 			} catch (apiError: any) {
 				console.error('Failed to update real server:', apiError);
@@ -659,6 +763,22 @@ export const updateShipmentDraftReverse = async (req: Request, res: Response, ne
 
 			try {
 				const response = await axios(reqBody);
+
+				// FAILURE ROLLBACK
+				// If success === false / FAILED document complete,
+				// we roll back the stock changes.
+				if (response?.data?.success === false) {
+	
+					const additionalData = getTransferItems(
+						currentData.M_Locator_ID, 
+						'',
+						currentData.productTrackQuantityDict,
+						false
+					);
+	
+					await shipmentDraftService.updateShipmentDraftByMovementId(movementId, currentData, additionalData);
+				}
+
 				return res.json(response.data);
 			} catch (apiError: any) {
 				console.error('Failed to update real server:', apiError);

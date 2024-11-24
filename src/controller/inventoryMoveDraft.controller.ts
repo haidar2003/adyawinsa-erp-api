@@ -123,7 +123,7 @@ export const createInventoryMoveDraftDirectComplete = async (req: Request, res: 
 			data: shadowData
 		};
 
-		const result = await inventoryMoveDraftService.createInventoryMoveDraft(draftData);
+		await inventoryMoveDraftService.createInventoryMoveDraft(draftData);
 
 		const currentDate = new Date();
 		currentDate.setHours(currentDate.getHours() + 7);
@@ -442,6 +442,12 @@ export const updateInventoryMoveDraftRegular = async (req: Request, res: Respons
 
 			try {
 				const response = await axios(reqBodyContinue);
+
+				// FAILURE ROLLBACK
+				// THERE IS NO PREVIOUS VERSION FOR CONTINUE ROLLBACK.
+				// CONSIDER IMPLEMENTING THIS OR REVERSING THE UPDATE ORDER (IDEMPIERE FIRST)
+				// IF THIS IS A COMMON ISSUE.
+
 				return res.json(response.data);
 			} catch (apiError: any) {
 				console.error('Failed to update real server:', apiError);
