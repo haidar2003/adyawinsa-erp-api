@@ -55,8 +55,7 @@ export const createShipmentDraft = async (req: Request, res: Response, next: Nex
 			// SHADOW VARIABLES
 			customerRequestDocNo: hydratedShipmentDraft.customerRequestDocNo,
 			productTrackQuantityDict: hydratedShipmentDraft.productTrackQuantityDict,
-			M_Locator_ID: hydratedShipmentDraft.M_Locator_ID,
-			C_Order_ID: hydratedShipmentDraft.C_Order_ID
+			M_Locator_ID: hydratedShipmentDraft.M_Locator_ID
 		};
 
 		const draftData = {
@@ -883,7 +882,9 @@ const hydrateShipment = (combinedData: any) => {
 				'M_Locator_ID': combinedData.M_Locator_ID,
 				'M_Product_ID': Number(productIdCur),
 				'MovementQty': productIdToAmountDict[productIdCur],
+				'QtyEntered': productIdToAmountDict[productIdCur],
 				'Line': lineCounter + M_InOutLine.length,
+				'C_UOM_ID': combinedData.productTrackQuantityDict[productIdCur.toString()].UOM,
 				'C_OrderLine_ID': combinedData.productTrackQuantityDict[productIdCur.toString()].orderLine
 			});
 			lineCounter += 1;
@@ -917,7 +918,6 @@ const getShipmentErpObjectFromHydratedCombinedData = (combinedData: any) => {
 		// SHADOW VARIABLES
 		'customerRequestDocNo': undefined,
 		'productTrackQuantityDict': undefined,
-		'M_Locator_ID': undefined,
-		'C_Order_ID': undefined
+		'M_Locator_ID': undefined
 	};
 };
