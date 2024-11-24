@@ -209,7 +209,9 @@ export const getShipmentDraftAll = async (req: Request, res: Response, next: Nex
 				// Bandingkan untuk mendapat daftar ketidakkonsistenan
 				const enrichedDraft = {
 					...shadowDraft.data,
-					status: checkConsistencyStatus(shadowDraft.data, obj)
+					status: checkConsistencyStatus(shadowDraft.data, obj),
+					udtShadow: shadowDraft.data?.Updated,
+					udtErp: obj?.M_InOutLine?.[0]?.Updated,
 				};
 
 				// Push data ke finalDraftsList bersama dengan creation_date_time untuk sorting
@@ -811,9 +813,10 @@ export const deleteShipmentDraft = async (req: Request, res: Response, next: Nex
 // STARTER FUNCTIONS
 const checkConsistencyStatus = (shadowData: any, realData: any): 
 	'OK' | 'CONTINUE-UPDATE' | 'CONTINUE-COMPLETE' | 'CONTINUE-REVERSE' => {
-	if (shadowData?.Updated && realData?.Updated) {
+	// Since update date time is not updated in the ERP, we use first M_InOutLine Updated timestamp.
+	if (shadowData?.Updated && realData?.M_InOutLine?.[0]?.Updated) {
 		const shadowTimestamp = new Date(shadowData?.Updated);
-		const realTimestamp = new Date(realData?.Updated);
+		const realTimestamp = new Date(realData?.M_InOutLine?.[0]?.Updated);
 		if (shadowTimestamp > realTimestamp) {
 			const shadowDocStatus = shadowData.DocStatus?.id;
 			const realDocStatus = realData.DocStatus?.id;
