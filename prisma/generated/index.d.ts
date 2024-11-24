@@ -7688,16 +7688,22 @@ export namespace Prisma {
 
   export type Track_id_objectAvgAggregateOutputType = {
     productId: number | null
+    quantityProduced: number | null
+    unitsPerPallet: number | null
   }
 
   export type Track_id_objectSumAggregateOutputType = {
     productId: number | null
+    quantityProduced: number | null
+    unitsPerPallet: number | null
   }
 
   export type Track_id_objectMinAggregateOutputType = {
     track_id: string | null
     productId: number | null
     productName: string | null
+    quantityProduced: number | null
+    unitsPerPallet: number | null
     track_type: string | null
     creation_date_time: Date | null
   }
@@ -7706,6 +7712,8 @@ export namespace Prisma {
     track_id: string | null
     productId: number | null
     productName: string | null
+    quantityProduced: number | null
+    unitsPerPallet: number | null
     track_type: string | null
     creation_date_time: Date | null
   }
@@ -7714,6 +7722,8 @@ export namespace Prisma {
     track_id: number
     productId: number
     productName: number
+    quantityProduced: number
+    unitsPerPallet: number
     track_type: number
     creation_date_time: number
     source_data: number
@@ -7724,16 +7734,22 @@ export namespace Prisma {
 
   export type Track_id_objectAvgAggregateInputType = {
     productId?: true
+    quantityProduced?: true
+    unitsPerPallet?: true
   }
 
   export type Track_id_objectSumAggregateInputType = {
     productId?: true
+    quantityProduced?: true
+    unitsPerPallet?: true
   }
 
   export type Track_id_objectMinAggregateInputType = {
     track_id?: true
     productId?: true
     productName?: true
+    quantityProduced?: true
+    unitsPerPallet?: true
     track_type?: true
     creation_date_time?: true
   }
@@ -7742,6 +7758,8 @@ export namespace Prisma {
     track_id?: true
     productId?: true
     productName?: true
+    quantityProduced?: true
+    unitsPerPallet?: true
     track_type?: true
     creation_date_time?: true
   }
@@ -7750,6 +7768,8 @@ export namespace Prisma {
     track_id?: true
     productId?: true
     productName?: true
+    quantityProduced?: true
+    unitsPerPallet?: true
     track_type?: true
     creation_date_time?: true
     source_data?: true
@@ -7847,6 +7867,8 @@ export namespace Prisma {
     track_id: string
     productId: number
     productName: string
+    quantityProduced: number
+    unitsPerPallet: number
     track_type: string
     creation_date_time: Date
     source_data: JsonValue
@@ -7876,6 +7898,8 @@ export namespace Prisma {
     track_id?: boolean
     productId?: boolean
     productName?: boolean
+    quantityProduced?: boolean
+    unitsPerPallet?: boolean
     track_type?: boolean
     creation_date_time?: boolean
     source_data?: boolean
@@ -7891,6 +7915,8 @@ export namespace Prisma {
     track_id?: boolean
     productId?: boolean
     productName?: boolean
+    quantityProduced?: boolean
+    unitsPerPallet?: boolean
     track_type?: boolean
     creation_date_time?: boolean
     source_data?: boolean
@@ -7918,6 +7944,8 @@ export namespace Prisma {
       track_id: string
       productId: number
       productName: string
+      quantityProduced: number
+      unitsPerPallet: number
       track_type: string
       creation_date_time: Date
       source_data: Prisma.JsonValue
@@ -8326,6 +8354,8 @@ export namespace Prisma {
     readonly track_id: FieldRef<"track_id_object", 'String'>
     readonly productId: FieldRef<"track_id_object", 'Int'>
     readonly productName: FieldRef<"track_id_object", 'String'>
+    readonly quantityProduced: FieldRef<"track_id_object", 'Int'>
+    readonly unitsPerPallet: FieldRef<"track_id_object", 'Int'>
     readonly track_type: FieldRef<"track_id_object", 'String'>
     readonly creation_date_time: FieldRef<"track_id_object", 'DateTime'>
     readonly source_data: FieldRef<"track_id_object", 'Json'>
@@ -10646,6 +10676,8 @@ export namespace Prisma {
     track_id: 'track_id',
     productId: 'productId',
     productName: 'productName',
+    quantityProduced: 'quantityProduced',
+    unitsPerPallet: 'unitsPerPallet',
     track_type: 'track_type',
     creation_date_time: 'creation_date_time',
     source_data: 'source_data',
@@ -11249,6 +11281,8 @@ export namespace Prisma {
     track_id?: StringFilter<"track_id_object"> | string
     productId?: IntFilter<"track_id_object"> | number
     productName?: StringFilter<"track_id_object"> | string
+    quantityProduced?: IntFilter<"track_id_object"> | number
+    unitsPerPallet?: IntFilter<"track_id_object"> | number
     track_type?: StringFilter<"track_id_object"> | string
     creation_date_time?: DateTimeFilter<"track_id_object"> | Date | string
     source_data?: JsonFilter<"track_id_object">
@@ -11263,6 +11297,8 @@ export namespace Prisma {
     track_id?: SortOrder
     productId?: SortOrder
     productName?: SortOrder
+    quantityProduced?: SortOrder
+    unitsPerPallet?: SortOrder
     track_type?: SortOrder
     creation_date_time?: SortOrder
     source_data?: SortOrder
@@ -11281,6 +11317,8 @@ export namespace Prisma {
     NOT?: track_id_objectWhereInput | track_id_objectWhereInput[]
     productId?: IntFilter<"track_id_object"> | number
     productName?: StringFilter<"track_id_object"> | string
+    quantityProduced?: IntFilter<"track_id_object"> | number
+    unitsPerPallet?: IntFilter<"track_id_object"> | number
     track_type?: StringFilter<"track_id_object"> | string
     source_data?: JsonFilter<"track_id_object">
     object_data?: JsonFilter<"track_id_object">
@@ -11294,6 +11332,8 @@ export namespace Prisma {
     track_id?: SortOrder
     productId?: SortOrder
     productName?: SortOrder
+    quantityProduced?: SortOrder
+    unitsPerPallet?: SortOrder
     track_type?: SortOrder
     creation_date_time?: SortOrder
     source_data?: SortOrder
@@ -11312,6 +11352,8 @@ export namespace Prisma {
     track_id?: StringWithAggregatesFilter<"track_id_object"> | string
     productId?: IntWithAggregatesFilter<"track_id_object"> | number
     productName?: StringWithAggregatesFilter<"track_id_object"> | string
+    quantityProduced?: IntWithAggregatesFilter<"track_id_object"> | number
+    unitsPerPallet?: IntWithAggregatesFilter<"track_id_object"> | number
     track_type?: StringWithAggregatesFilter<"track_id_object"> | string
     creation_date_time?: DateTimeWithAggregatesFilter<"track_id_object"> | Date | string
     source_data?: JsonWithAggregatesFilter<"track_id_object">
@@ -11900,6 +11942,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -11914,6 +11958,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -11928,6 +11974,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -11942,6 +11990,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -11956,6 +12006,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -11966,6 +12018,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -11976,6 +12030,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -12677,6 +12733,8 @@ export namespace Prisma {
     track_id?: SortOrder
     productId?: SortOrder
     productName?: SortOrder
+    quantityProduced?: SortOrder
+    unitsPerPallet?: SortOrder
     track_type?: SortOrder
     creation_date_time?: SortOrder
     source_data?: SortOrder
@@ -12685,12 +12743,16 @@ export namespace Prisma {
 
   export type track_id_objectAvgOrderByAggregateInput = {
     productId?: SortOrder
+    quantityProduced?: SortOrder
+    unitsPerPallet?: SortOrder
   }
 
   export type track_id_objectMaxOrderByAggregateInput = {
     track_id?: SortOrder
     productId?: SortOrder
     productName?: SortOrder
+    quantityProduced?: SortOrder
+    unitsPerPallet?: SortOrder
     track_type?: SortOrder
     creation_date_time?: SortOrder
   }
@@ -12699,12 +12761,16 @@ export namespace Prisma {
     track_id?: SortOrder
     productId?: SortOrder
     productName?: SortOrder
+    quantityProduced?: SortOrder
+    unitsPerPallet?: SortOrder
     track_type?: SortOrder
     creation_date_time?: SortOrder
   }
 
   export type track_id_objectSumOrderByAggregateInput = {
     productId?: SortOrder
+    quantityProduced?: SortOrder
+    unitsPerPallet?: SortOrder
   }
 
   export type track_id_historyTrack_idUpdate_date_timeCompoundUniqueInput = {
@@ -13686,6 +13752,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -13699,6 +13767,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -13780,6 +13850,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -13793,6 +13865,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -13870,6 +13944,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -13883,6 +13959,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -14013,6 +14091,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -14026,6 +14106,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -14137,6 +14219,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -14150,6 +14234,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -14231,6 +14317,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -14244,6 +14332,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -14561,6 +14651,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -14574,6 +14666,8 @@ export namespace Prisma {
     track_id: string
     productId?: number
     productName?: string
+    quantityProduced?: number
+    unitsPerPallet?: number
     track_type: string
     creation_date_time?: Date | string
     source_data: JsonNullValueInput | InputJsonValue
@@ -14603,6 +14697,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue
@@ -14616,6 +14712,8 @@ export namespace Prisma {
     track_id?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
     productName?: StringFieldUpdateOperationsInput | string
+    quantityProduced?: IntFieldUpdateOperationsInput | number
+    unitsPerPallet?: IntFieldUpdateOperationsInput | number
     track_type?: StringFieldUpdateOperationsInput | string
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     source_data?: JsonNullValueInput | InputJsonValue

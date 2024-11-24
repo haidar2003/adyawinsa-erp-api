@@ -189,6 +189,8 @@ exports.Prisma.Track_id_objectScalarFieldEnum = {
   track_id: 'track_id',
   productId: 'productId',
   productName: 'productName',
+  quantityProduced: 'quantityProduced',
+  unitsPerPallet: 'unitsPerPallet',
   track_type: 'track_type',
   creation_date_time: 'creation_date_time',
   source_data: 'source_data',
