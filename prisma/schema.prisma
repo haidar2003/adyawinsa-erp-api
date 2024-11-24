@@ -119,6 +119,8 @@ model track_id_object {
   track_id                String @id
   productId               Int @default(-1)
   productName             String @default("")
+  quantityProduced        Int @default(0)
+  unitsPerPallet          Int @default(0)
   track_type              String
   creation_date_time      DateTime @unique(sort: Desc) @default(now())
   source_data             Json     @db.Json

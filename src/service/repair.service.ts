@@ -31,6 +31,8 @@ export const createRepairJobObject = async (repairJobObjectDTO: any) => {
 							source_list: repairJobObjectDTO.sourceList
 						},
 						object_data: {},
+						quantityProduced: repairJobObjectDTO.quantity,
+						unitsPerPallet: repairJobObjectDTO.unitsPerPallet,
 					}
 				},
 
