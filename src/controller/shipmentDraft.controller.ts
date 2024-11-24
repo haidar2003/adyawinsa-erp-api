@@ -210,7 +210,7 @@ export const getShipmentDraftAll = async (req: Request, res: Response, next: Nex
 					...shadowDraft.data,
 					status: checkConsistencyStatus(shadowDraft.data, obj),
 					udtShadow: shadowDraft.data?.Updated,
-					udtErp: obj?.M_InOutLine?.[0]?.Updated,
+					udtErp: getMaximumUpdateDateTime(obj),
 				};
 
 				// Push data ke finalDraftsList bersama dengan creation_date_time untuk sorting
@@ -810,12 +810,25 @@ export const deleteShipmentDraft = async (req: Request, res: Response, next: Nex
 
 // Helper Functions
 // STARTER FUNCTIONS
+
+function getMaximumUpdateDateTime(realData: any) {
+	let currentMaximum = realData?.Updated;
+
+	for (let i = 0; i < (realData?.M_InOutLine?.length ?? 0); i++) {
+		if (realData?.M_InOutLine?.[i]?.Updated && realData?.M_InOutLine?.[i]?.Updated > currentMaximum) {
+			currentMaximum = realData?.M_InOutLine?.[i]?.Updated;
+		}
+	}
+
+	return currentMaximum;
+}
+
 const checkConsistencyStatus = (shadowData: any, realData: any): 
 	'OK' | 'CONTINUE-UPDATE' | 'CONTINUE-COMPLETE' | 'CONTINUE-REVERSE' => {
 	// Since update date time is not updated in the ERP, we use first M_InOutLine Updated timestamp.
-	if (shadowData?.Updated && realData?.M_InOutLine?.[0]?.Updated) {
+	if (shadowData?.Updated && realData?.Updated) {
 		const shadowTimestamp = new Date(shadowData?.Updated);
-		const realTimestamp = new Date(realData?.M_InOutLine?.[0]?.Updated);
+		const realTimestamp = new Date(getMaximumUpdateDateTime(realData));
 		if (shadowTimestamp > realTimestamp) {
 			const shadowDocStatus = shadowData.DocStatus?.id;
 			const realDocStatus = realData.DocStatus?.id;
