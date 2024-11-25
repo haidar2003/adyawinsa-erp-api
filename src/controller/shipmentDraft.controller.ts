@@ -887,7 +887,7 @@ const hydrateShipment = (combinedData: any) => {
 	}
 
 	// STEP 3. For new products, we add new M_InOutLine items.
-	let lineCounter = 0;
+	let lineCounter = 1;
 	for (const productIdCur of Object.keys(productIdExistsDict)) {
 		if (!productIdExistsDict[productIdCur]) {
 			M_InOutLine.push({
