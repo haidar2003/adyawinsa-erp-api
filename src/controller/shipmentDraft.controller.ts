@@ -859,7 +859,11 @@ const hydrateShipment = (combinedData: any) => {
 	const M_InOutLine = JSON.parse(JSON.stringify(combinedData?.M_InOutLine ?? []));
 
 	// STEP 1. Get total amount for each product.
-	const productIdToAmountDict: {[key:string]: number} = {};
+	const productIdToVarObjectDict: {[key:string]: {
+		quantity: number,
+		QtyBox: number,
+		TypeBox: string,
+	}} = {};
 	const productIdExistsDict: {[key:string]: boolean} = {};
 	for (const productId of Object.keys(combinedData.productTrackQuantityDict)) {
 		let productIdQty = 0;
@@ -870,7 +874,11 @@ const hydrateShipment = (combinedData: any) => {
 				.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
 		}
 
-		productIdToAmountDict[productId] = productIdQty;
+		productIdToVarObjectDict[productId] = {
+			quantity: productIdQty,
+			QtyBox: combinedData.productTrackQuantityDict[productId].QtyBox,
+			TypeBox: combinedData.productTrackQuantityDict[productId].TypeBox,
+		};
 
 		if (productIdQty > 0) {
 			productIdExistsDict[productId] = false;
@@ -881,7 +889,10 @@ const hydrateShipment = (combinedData: any) => {
 	for (let i = 0; i < M_InOutLine.length; i++) {
 		const productIdCur = M_InOutLine[i].M_Product_ID?.id ?? M_InOutLine[i].M_Product_ID;
 
-		M_InOutLine[i].MovementQty = productIdToAmountDict?.[productIdCur] ?? 0;
+		M_InOutLine[i].MovementQty = productIdToVarObjectDict?.[productIdCur]?.quantity ?? 0;
+		M_InOutLine[i].QtyEntered = productIdToVarObjectDict?.[productIdCur]?.quantity ?? 0;
+		M_InOutLine[i].QtyBox = productIdToVarObjectDict?.[productIdCur]?.QtyBox ?? 0;
+		M_InOutLine[i].TypeBox = productIdToVarObjectDict?.[productIdCur]?.TypeBox ?? '';
 
 		productIdExistsDict[productIdCur] = true;
 	}
@@ -896,9 +907,11 @@ const hydrateShipment = (combinedData: any) => {
 				'IsActive': true,
 				'M_Locator_ID': combinedData.M_Locator_ID,
 				'M_Product_ID': Number(productIdCur),
-				'MovementQty': productIdToAmountDict[productIdCur],
-				'QtyEntered': productIdToAmountDict[productIdCur],
+				'MovementQty': productIdToVarObjectDict[productIdCur].quantity,
+				'QtyEntered': productIdToVarObjectDict[productIdCur].quantity,
 				'Line': lineCounter + M_InOutLine.length,
+				'QtyBox': combinedData.productTrackQuantityDict[productIdCur.toString()].QtyBox ?? 0,
+				'TypeBox': combinedData.productTrackQuantityDict[productIdCur.toString()].TypeBox ?? '',
 				'C_UOM_ID': combinedData.productTrackQuantityDict[productIdCur.toString()].UOM,
 				'C_OrderLine_ID': combinedData.productTrackQuantityDict[productIdCur.toString()].orderLine
 			});
