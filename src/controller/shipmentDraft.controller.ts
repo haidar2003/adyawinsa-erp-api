@@ -107,7 +107,7 @@ export const getShipmentDraft = async (req: Request, res: Response, next: NextFu
 						'url': `${endpointApiUrl}/api/v1/models/M_InOut/${movementId}`,
 						'params': {
 							'$orderby': 'Created desc',
-							'$expand': 'M_InOutLine',
+							'$expand': 'M_InOutLine,M_InOutConfirm',
 						}
 					}
 				})
@@ -122,6 +122,7 @@ export const getShipmentDraft = async (req: Request, res: Response, next: NextFu
 
 		// Bandingkan untuk mendapat daftar ketidakkonsistenan
 		const enrichedDraft = {
+			...realDraft,
 			...(shadowDraft.data as any),
 			status: checkConsistencyStatus(shadowDraft.data, realDraft)
 		};
