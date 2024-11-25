@@ -160,7 +160,7 @@ export const getShipmentDraftAll = async (req: Request, res: Response, next: Nex
 						'params': {
 							'$filter': 'AD_Org_ID eq ' + orgId + ' AND C_BPartner_ID eq ' + vendorId + ' AND IsSOTrx eq true',
 							'$orderby': 'Created desc',
-							'$expand': 'M_InOutLine',
+							'$expand': 'M_InOutLine,M_InOutConfirm',
 						}
 					}
 				})
@@ -207,6 +207,7 @@ export const getShipmentDraftAll = async (req: Request, res: Response, next: Nex
 			if (shadowDraft && shadowDraft.data) {
 				// Bandingkan untuk mendapat daftar ketidakkonsistenan
 				const enrichedDraft = {
+					...obj,
 					...shadowDraft.data,
 					status: checkConsistencyStatus(shadowDraft.data, obj),
 					udtShadow: shadowDraft.data?.Updated,
