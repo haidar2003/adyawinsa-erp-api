@@ -1025,7 +1025,7 @@ const hydrateInventoryMove = (combinedData: any) => {
 	}
 
 	// STEP 3. For new products, we add new M_MovementLine items.
-	let lineCounter = 0;
+	let lineCounter = 1 + M_MovementLine.length;
 	for (const productIdCur of Object.keys(productIdExistsDict)) {
 		if (!productIdExistsDict[productIdCur]) {
 			M_MovementLine.push({
@@ -1036,7 +1036,7 @@ const hydrateInventoryMove = (combinedData: any) => {
 				'M_LocatorTo_ID': combinedData.M_LocatorTo_ID,
 				'M_Product_ID': Number(productIdCur),
 				'MovementQty': productIdToAmountDict[productIdCur],
-				'Line': lineCounter + M_MovementLine.length,
+				'Line': lineCounter,
 				'BoxQty': 0,
 				'PalletQty': 0,
 			});

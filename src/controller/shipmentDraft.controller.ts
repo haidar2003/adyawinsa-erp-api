@@ -898,7 +898,7 @@ const hydrateShipment = (combinedData: any) => {
 	}
 
 	// STEP 3. For new products, we add new M_InOutLine items.
-	let lineCounter = 1;
+	let lineCounter = 1 + M_InOutLine.length;
 	for (const productIdCur of Object.keys(productIdExistsDict)) {
 		if (!productIdExistsDict[productIdCur]) {
 			M_InOutLine.push({
@@ -909,7 +909,7 @@ const hydrateShipment = (combinedData: any) => {
 				'M_Product_ID': Number(productIdCur),
 				'MovementQty': productIdToVarObjectDict[productIdCur].quantity,
 				'QtyEntered': productIdToVarObjectDict[productIdCur].quantity,
-				'Line': lineCounter + M_InOutLine.length,
+				'Line': lineCounter,
 				'QtyBox': combinedData.productTrackQuantityDict[productIdCur.toString()].QtyBox ?? 0,
 				'TypeBox': combinedData.productTrackQuantityDict[productIdCur.toString()].TypeBox ?? '',
 				'C_UOM_ID': combinedData.productTrackQuantityDict[productIdCur.toString()].UOM,

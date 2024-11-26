@@ -800,7 +800,7 @@ const hydrateMaterialReceive = (combinedData: any) => {
 	}
 
 	// STEP 3. For new products, we add new M_InOutLine items.
-	let lineCounter = 0;
+	let lineCounter = 1 + M_InOutLine.length;
 	for (const productIdCur of Object.keys(productIdExistsDict)) {
 		if (!productIdExistsDict[productIdCur]) {
 			M_InOutLine.push({
@@ -811,7 +811,7 @@ const hydrateMaterialReceive = (combinedData: any) => {
 				'M_LocatorTo_ID': combinedData.M_LocatorTo_ID,
 				'M_Product_ID': Number(productIdCur),
 				'MovementQty': productIdToAmountDict[productIdCur],
-				'Line': lineCounter + M_InOutLine.length,
+				'Line': lineCounter,
 				'BoxQty': 0,
 				'PalletQty': 0,
 			});
