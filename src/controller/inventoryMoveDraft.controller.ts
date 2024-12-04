@@ -83,8 +83,8 @@ export const createInventoryMoveDraftDirectComplete = async (req: Request, res: 
 
 	const connectTarget = imDraft.connectTarget; // "PROD" or "REPAIR" or "QUALITY"
 	const connectTargetString = connectTarget === 'PROD' ? 'production_single_scrap_imove' :
-		connectTarget === 'REPAIR' ? 'quality_check_scrap_imove' :
-			connectTarget === 'QUALITY' ? 'repair_job_imove' : '';
+		connectTarget === 'REPAIR' ? 'repair_job_imove' :
+			connectTarget === 'QUALITY' ? 'quality_check_scrap_imove' : '';
 	const connectTargetOrgId = imDraft.connectTargetOrgId;
 	const connectTargetCreationDateTime = imDraft.connectTargetCreationDateTime;
 
@@ -155,7 +155,7 @@ export const createInventoryMoveDraftDirectComplete = async (req: Request, res: 
 
 		// Ubah DocStatus ke 'Completed'
 		const updatedData = { 
-			...response.data.returnBody, 
+			...shadowData, 
 			DocStatus: {
 				propertyLabel: 'Document Status',
 				id: 'CO',
@@ -165,7 +165,7 @@ export const createInventoryMoveDraftDirectComplete = async (req: Request, res: 
 			IsApproved: true,
 			Processed: true,
 			Updated: updateTimestamp,
-			M_MovementLine: response.data.returnBody.M_MovementLine.map((line: any) => {
+			M_MovementLine: shadowData.M_MovementLine.map((line: any) => {
 				return {
 					...line,
 					Processed: true,
@@ -176,7 +176,7 @@ export const createInventoryMoveDraftDirectComplete = async (req: Request, res: 
 
 		const hydratedData = hydrateInventoryMove(updatedData);
 
-		const movementId = response.data.returnBody.id;
+		const movementId = shadowData.id;
 
 		// Update Supabase
 		try {
@@ -237,7 +237,7 @@ export const createInventoryMoveDraftDirectComplete = async (req: Request, res: 
 					true
 				);
 
-				await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, response.data.returnBody, additionalData);
+				await inventoryMoveDraftService.updateInventoryMoveDraftByMovementId(movementId, shadowData, additionalData);
 			}
 
 			return res.json(response.data);
