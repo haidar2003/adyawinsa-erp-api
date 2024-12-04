@@ -50,7 +50,11 @@ export const getQualityCheck = async (req: Request, res: Response, next: NextFun
 
 export const getQualityCheckList = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const qualityCheckList = await qualityCheckService.getAllQualityCheckObjects();
+		const { locatorId } = req.query;
+
+		// console.log("Getting quality checklist");
+
+		const qualityCheckList = await qualityCheckService.getAllQualityCheckObjects(String(locatorId));
 
 		// Kirim response
 		return res.json(qualityCheckList);

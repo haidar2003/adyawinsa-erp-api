@@ -182,7 +182,8 @@ exports.Prisma.Quality_checkScalarFieldEnum = {
   imove_scrap_id: 'imove_scrap_id',
   repair_reason: 'repair_reason',
   total_ng_repair: 'total_ng_repair',
-  repair_job_id: 'repair_job_id'
+  repair_job_id: 'repair_job_id',
+  status: 'status'
 };
 
 exports.Prisma.Track_id_objectScalarFieldEnum = {

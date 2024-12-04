@@ -40,8 +40,12 @@ export const createQualityCheckObject = async (qualityCheckObjectDTO: any) => {
 	}
 };
 
-export const getAllQualityCheckObjects = async () => {
+export const getAllQualityCheckObjects = async (locatorId: string) => {
+	// console.log("LOCATOR: ", locatorId);
 	return await prisma.quality_check.findMany({
+		where: {
+			locator_id: Number(locatorId)
+		},
 		include: {
 			track_id_object: true,
 			imove_scrap_obj: true,

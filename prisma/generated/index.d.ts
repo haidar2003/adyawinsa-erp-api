@@ -6616,6 +6616,7 @@ export namespace Prisma {
     repair_reason: string | null
     total_ng_repair: number | null
     repair_job_id: string | null
+    status: string | null
   }
 
   export type Quality_checkMaxAggregateOutputType = {
@@ -6632,6 +6633,7 @@ export namespace Prisma {
     repair_reason: string | null
     total_ng_repair: number | null
     repair_job_id: string | null
+    status: string | null
   }
 
   export type Quality_checkCountAggregateOutputType = {
@@ -6648,6 +6650,7 @@ export namespace Prisma {
     repair_reason: number
     total_ng_repair: number
     repair_job_id: number
+    status: number
     _all: number
   }
 
@@ -6684,6 +6687,7 @@ export namespace Prisma {
     repair_reason?: true
     total_ng_repair?: true
     repair_job_id?: true
+    status?: true
   }
 
   export type Quality_checkMaxAggregateInputType = {
@@ -6700,6 +6704,7 @@ export namespace Prisma {
     repair_reason?: true
     total_ng_repair?: true
     repair_job_id?: true
+    status?: true
   }
 
   export type Quality_checkCountAggregateInputType = {
@@ -6716,6 +6721,7 @@ export namespace Prisma {
     repair_reason?: true
     total_ng_repair?: true
     repair_job_id?: true
+    status?: true
     _all?: true
   }
 
@@ -6819,6 +6825,7 @@ export namespace Prisma {
     repair_reason: string
     total_ng_repair: number
     repair_job_id: string | null
+    status: string
     _count: Quality_checkCountAggregateOutputType | null
     _avg: Quality_checkAvgAggregateOutputType | null
     _sum: Quality_checkSumAggregateOutputType | null
@@ -6854,6 +6861,7 @@ export namespace Prisma {
     repair_reason?: boolean
     total_ng_repair?: boolean
     repair_job_id?: boolean
+    status?: boolean
     track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
     imove_scrap_obj?: boolean | quality_check$imove_scrap_objArgs<ExtArgs>
     repair_job?: boolean | quality_check$repair_jobArgs<ExtArgs>
@@ -6873,6 +6881,7 @@ export namespace Prisma {
     repair_reason?: boolean
     total_ng_repair?: boolean
     repair_job_id?: boolean
+    status?: boolean
   }
 
   export type quality_checkInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -6903,6 +6912,7 @@ export namespace Prisma {
       repair_reason: string
       total_ng_repair: number
       repair_job_id: string | null
+      status: string
     }, ExtArgs["result"]["quality_check"]>
     composites: {}
   }
@@ -7315,6 +7325,7 @@ export namespace Prisma {
     readonly repair_reason: FieldRef<"quality_check", 'String'>
     readonly total_ng_repair: FieldRef<"quality_check", 'Float'>
     readonly repair_job_id: FieldRef<"quality_check", 'String'>
+    readonly status: FieldRef<"quality_check", 'String'>
   }
     
 
@@ -10666,7 +10677,8 @@ export namespace Prisma {
     imove_scrap_id: 'imove_scrap_id',
     repair_reason: 'repair_reason',
     total_ng_repair: 'total_ng_repair',
-    repair_job_id: 'repair_job_id'
+    repair_job_id: 'repair_job_id',
+    status: 'status'
   };
 
   export type Quality_checkScalarFieldEnum = (typeof Quality_checkScalarFieldEnum)[keyof typeof Quality_checkScalarFieldEnum]
@@ -11187,6 +11199,7 @@ export namespace Prisma {
     repair_reason?: StringFilter<"quality_check"> | string
     total_ng_repair?: FloatFilter<"quality_check"> | number
     repair_job_id?: StringNullableFilter<"quality_check"> | string | null
+    status?: StringFilter<"quality_check"> | string
     track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
     imove_scrap_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
     repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
@@ -11206,6 +11219,7 @@ export namespace Prisma {
     repair_reason?: SortOrder
     total_ng_repair?: SortOrder
     repair_job_id?: SortOrderInput | SortOrder
+    status?: SortOrder
     track_id_object?: track_id_objectOrderByWithRelationInput
     imove_scrap_obj?: inventory_move_draftOrderByWithRelationInput
     repair_job?: repair_jobOrderByWithRelationInput
@@ -11229,6 +11243,7 @@ export namespace Prisma {
     repair_reason?: StringFilter<"quality_check"> | string
     total_ng_repair?: FloatFilter<"quality_check"> | number
     repair_job_id?: StringNullableFilter<"quality_check"> | string | null
+    status?: StringFilter<"quality_check"> | string
     track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
     imove_scrap_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
     repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
@@ -11248,6 +11263,7 @@ export namespace Prisma {
     repair_reason?: SortOrder
     total_ng_repair?: SortOrder
     repair_job_id?: SortOrderInput | SortOrder
+    status?: SortOrder
     _count?: quality_checkCountOrderByAggregateInput
     _avg?: quality_checkAvgOrderByAggregateInput
     _max?: quality_checkMaxOrderByAggregateInput
@@ -11272,6 +11288,7 @@ export namespace Prisma {
     repair_reason?: StringWithAggregatesFilter<"quality_check"> | string
     total_ng_repair?: FloatWithAggregatesFilter<"quality_check"> | number
     repair_job_id?: StringNullableWithAggregatesFilter<"quality_check"> | string | null
+    status?: StringWithAggregatesFilter<"quality_check"> | string
   }
 
   export type track_id_objectWhereInput = {
@@ -11840,6 +11857,7 @@ export namespace Prisma {
     total_ng_scrap: number
     repair_reason?: string
     total_ng_repair: number
+    status?: string
     track_id_object: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
     imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutQuality_check_scrap_imoveInput
     repair_job?: repair_jobCreateNestedOneWithoutQuality_check_srcInput
@@ -11859,6 +11877,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     repair_job_id?: string | null
+    status?: string
   }
 
   export type quality_checkUpdateInput = {
@@ -11872,6 +11891,7 @@ export namespace Prisma {
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     track_id_object?: track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput
     imove_scrap_obj?: inventory_move_draftUpdateOneWithoutQuality_check_scrap_imoveNestedInput
     repair_job?: repair_jobUpdateOneWithoutQuality_check_srcNestedInput
@@ -11891,6 +11911,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type quality_checkCreateManyInput = {
@@ -11907,6 +11928,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     repair_job_id?: string | null
+    status?: string
   }
 
   export type quality_checkUpdateManyMutationInput = {
@@ -11920,6 +11942,7 @@ export namespace Prisma {
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type quality_checkUncheckedUpdateManyInput = {
@@ -11936,6 +11959,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type track_id_objectCreateInput = {
@@ -12667,6 +12691,7 @@ export namespace Prisma {
     repair_reason?: SortOrder
     total_ng_repair?: SortOrder
     repair_job_id?: SortOrder
+    status?: SortOrder
   }
 
   export type quality_checkAvgOrderByAggregateInput = {
@@ -12692,6 +12717,7 @@ export namespace Prisma {
     repair_reason?: SortOrder
     total_ng_repair?: SortOrder
     repair_job_id?: SortOrder
+    status?: SortOrder
   }
 
   export type quality_checkMinOrderByAggregateInput = {
@@ -12708,6 +12734,7 @@ export namespace Prisma {
     repair_reason?: SortOrder
     total_ng_repair?: SortOrder
     repair_job_id?: SortOrder
+    status?: SortOrder
   }
 
   export type quality_checkSumOrderByAggregateInput = {
@@ -13580,6 +13607,7 @@ export namespace Prisma {
     total_ng_scrap: number
     repair_reason?: string
     total_ng_repair: number
+    status?: string
     track_id_object: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
     repair_job?: repair_jobCreateNestedOneWithoutQuality_check_srcInput
   }
@@ -13597,6 +13625,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     repair_job_id?: string | null
+    status?: string
   }
 
   export type quality_checkCreateOrConnectWithoutImove_scrap_objInput = {
@@ -13694,6 +13723,7 @@ export namespace Prisma {
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     track_id_object?: track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput
     repair_job?: repair_jobUpdateOneWithoutQuality_check_srcNestedInput
   }
@@ -13711,6 +13741,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type repair_jobUpsertWithoutImove_repair_objInput = {
@@ -14009,6 +14040,7 @@ export namespace Prisma {
     total_ng_scrap: number
     repair_reason?: string
     total_ng_repair: number
+    status?: string
     track_id_object: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
     imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutQuality_check_scrap_imoveInput
   }
@@ -14026,6 +14058,7 @@ export namespace Prisma {
     imove_scrap_id?: number | null
     repair_reason?: string
     total_ng_repair: number
+    status?: string
   }
 
   export type quality_checkCreateOrConnectWithoutRepair_jobInput = {
@@ -14179,6 +14212,7 @@ export namespace Prisma {
     repair_reason?: StringFilter<"quality_check"> | string
     total_ng_repair?: FloatFilter<"quality_check"> | number
     repair_job_id?: StringNullableFilter<"quality_check"> | string | null
+    status?: StringFilter<"quality_check"> | string
   }
 
   export type production_single_product_draftUpsertWithWhereUniqueWithoutRepair_jobInput = {
@@ -14469,6 +14503,7 @@ export namespace Prisma {
     total_ng_scrap: number
     repair_reason?: string
     total_ng_repair: number
+    status?: string
     imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutQuality_check_scrap_imoveInput
     repair_job?: repair_jobCreateNestedOneWithoutQuality_check_srcInput
   }
@@ -14486,6 +14521,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     repair_job_id?: string | null
+    status?: string
   }
 
   export type quality_checkCreateOrConnectWithoutTrack_id_objectInput = {
@@ -14736,6 +14772,7 @@ export namespace Prisma {
     imove_scrap_id?: number | null
     repair_reason?: string
     total_ng_repair: number
+    status?: string
   }
 
   export type production_single_product_draftCreateManyRepair_jobInput = {
@@ -14763,6 +14800,7 @@ export namespace Prisma {
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     track_id_object?: track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput
     imove_scrap_obj?: inventory_move_draftUpdateOneWithoutQuality_check_scrap_imoveNestedInput
   }
@@ -14780,6 +14818,7 @@ export namespace Prisma {
     imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type quality_checkUncheckedUpdateManyWithoutRepair_jobInput = {
@@ -14795,6 +14834,7 @@ export namespace Prisma {
     imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type production_single_product_draftUpdateWithoutRepair_jobInput = {
@@ -14858,6 +14898,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     repair_job_id?: string | null
+    status?: string
   }
 
   export type track_id_historyUpdateWithoutTrack_id_objectInput = {
@@ -14889,6 +14930,7 @@ export namespace Prisma {
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     imove_scrap_obj?: inventory_move_draftUpdateOneWithoutQuality_check_scrap_imoveNestedInput
     repair_job?: repair_jobUpdateOneWithoutQuality_check_srcNestedInput
   }
@@ -14906,6 +14948,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type quality_checkUncheckedUpdateManyWithoutTrack_id_objectInput = {
@@ -14921,6 +14964,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
   }
 
 

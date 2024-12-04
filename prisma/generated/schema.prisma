@@ -112,6 +112,8 @@ model quality_check {
   repair_job        repair_job? @relation("QUALITY-REPAIR-JOB", fields: [repair_job_id], references: [track_id])
   repair_job_id     String?
 
+  status            String @default("DRAFTED")
+
   @@id([org_id, creation_date_time])
 }
 
