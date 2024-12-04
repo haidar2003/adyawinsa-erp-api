@@ -82,9 +82,9 @@ export const createInventoryMoveDraftDirectComplete = async (req: Request, res: 
 	let imDraft = req.body.imDraft;
 
 	const connectTarget = imDraft.connectTarget; // "PROD" or "REPAIR" or "QUALITY"
-	const connectTargetString = connectTarget === "PROD" ? 'production_single_scrap_imove' :
-		connectTarget === "REPAIR" ? 'quality_check_scrap_imove' :
-		connectTarget === "QUALITY" ? 'repair_job_imove' : '';
+	const connectTargetString = connectTarget === 'PROD' ? 'production_single_scrap_imove' :
+		connectTarget === 'REPAIR' ? 'quality_check_scrap_imove' :
+			connectTarget === 'QUALITY' ? 'repair_job_imove' : '';
 	const connectTargetOrgId = imDraft.connectTargetOrgId;
 	const connectTargetCreationDateTime = imDraft.connectTargetCreationDateTime;
 
