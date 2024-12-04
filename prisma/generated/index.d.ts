@@ -6641,6 +6641,7 @@ export namespace Prisma {
     creation_date_time: number
     locator_id: number
     track_id: number
+    track_id_data: number
     checker_name: number
     customer: number
     total_ok: number
@@ -6712,6 +6713,7 @@ export namespace Prisma {
     creation_date_time?: true
     locator_id?: true
     track_id?: true
+    track_id_data?: true
     checker_name?: true
     customer?: true
     total_ok?: true
@@ -6815,7 +6817,8 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date
     locator_id: number
-    track_id: string
+    track_id: string | null
+    track_id_data: JsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -6852,6 +6855,7 @@ export namespace Prisma {
     creation_date_time?: boolean
     locator_id?: boolean
     track_id?: boolean
+    track_id_data?: boolean
     checker_name?: boolean
     customer?: boolean
     total_ok?: boolean
@@ -6862,7 +6866,7 @@ export namespace Prisma {
     total_ng_repair?: boolean
     repair_job_id?: boolean
     status?: boolean
-    track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+    track_id_object?: boolean | quality_check$track_id_objectArgs<ExtArgs>
     imove_scrap_obj?: boolean | quality_check$imove_scrap_objArgs<ExtArgs>
     repair_job?: boolean | quality_check$repair_jobArgs<ExtArgs>
   }, ExtArgs["result"]["quality_check"]>
@@ -6872,6 +6876,7 @@ export namespace Prisma {
     creation_date_time?: boolean
     locator_id?: boolean
     track_id?: boolean
+    track_id_data?: boolean
     checker_name?: boolean
     customer?: boolean
     total_ok?: boolean
@@ -6885,7 +6890,7 @@ export namespace Prisma {
   }
 
   export type quality_checkInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+    track_id_object?: boolean | quality_check$track_id_objectArgs<ExtArgs>
     imove_scrap_obj?: boolean | quality_check$imove_scrap_objArgs<ExtArgs>
     repair_job?: boolean | quality_check$repair_jobArgs<ExtArgs>
   }
@@ -6894,7 +6899,7 @@ export namespace Prisma {
   export type $quality_checkPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "quality_check"
     objects: {
-      track_id_object: Prisma.$track_id_objectPayload<ExtArgs>
+      track_id_object: Prisma.$track_id_objectPayload<ExtArgs> | null
       imove_scrap_obj: Prisma.$inventory_move_draftPayload<ExtArgs> | null
       repair_job: Prisma.$repair_jobPayload<ExtArgs> | null
     }
@@ -6902,7 +6907,8 @@ export namespace Prisma {
       org_id: number
       creation_date_time: Date
       locator_id: number
-      track_id: string
+      track_id: string | null
+      track_id_data: Prisma.JsonValue
       checker_name: string
       customer: string
       total_ok: number
@@ -7278,7 +7284,7 @@ export namespace Prisma {
   export interface Prisma__quality_checkClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    track_id_object<T extends track_id_objectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, track_id_objectDefaultArgs<ExtArgs>>): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    track_id_object<T extends quality_check$track_id_objectArgs<ExtArgs> = {}>(args?: Subset<T, quality_check$track_id_objectArgs<ExtArgs>>): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     imove_scrap_obj<T extends quality_check$imove_scrap_objArgs<ExtArgs> = {}>(args?: Subset<T, quality_check$imove_scrap_objArgs<ExtArgs>>): Prisma__inventory_move_draftClient<$Result.GetResult<Prisma.$inventory_move_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
@@ -7316,6 +7322,7 @@ export namespace Prisma {
     readonly creation_date_time: FieldRef<"quality_check", 'DateTime'>
     readonly locator_id: FieldRef<"quality_check", 'Int'>
     readonly track_id: FieldRef<"quality_check", 'String'>
+    readonly track_id_data: FieldRef<"quality_check", 'Json'>
     readonly checker_name: FieldRef<"quality_check", 'String'>
     readonly customer: FieldRef<"quality_check", 'String'>
     readonly total_ok: FieldRef<"quality_check", 'Float'>
@@ -7634,6 +7641,22 @@ export namespace Prisma {
      * Filter which quality_checks to delete
      */
     where?: quality_checkWhereInput
+  }
+
+
+  /**
+   * quality_check.track_id_object
+   */
+  export type quality_check$track_id_objectArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the track_id_object
+     */
+    select?: track_id_objectSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: track_id_objectInclude<ExtArgs> | null
+    where?: track_id_objectWhereInput
   }
 
 
@@ -10669,6 +10692,7 @@ export namespace Prisma {
     creation_date_time: 'creation_date_time',
     locator_id: 'locator_id',
     track_id: 'track_id',
+    track_id_data: 'track_id_data',
     checker_name: 'checker_name',
     customer: 'customer',
     total_ok: 'total_ok',
@@ -11189,7 +11213,8 @@ export namespace Prisma {
     org_id?: IntFilter<"quality_check"> | number
     creation_date_time?: DateTimeFilter<"quality_check"> | Date | string
     locator_id?: IntFilter<"quality_check"> | number
-    track_id?: StringFilter<"quality_check"> | string
+    track_id?: StringNullableFilter<"quality_check"> | string | null
+    track_id_data?: JsonFilter<"quality_check">
     checker_name?: StringFilter<"quality_check"> | string
     customer?: StringFilter<"quality_check"> | string
     total_ok?: FloatFilter<"quality_check"> | number
@@ -11200,7 +11225,7 @@ export namespace Prisma {
     total_ng_repair?: FloatFilter<"quality_check"> | number
     repair_job_id?: StringNullableFilter<"quality_check"> | string | null
     status?: StringFilter<"quality_check"> | string
-    track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+    track_id_object?: XOR<Track_id_objectNullableRelationFilter, track_id_objectWhereInput> | null
     imove_scrap_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
     repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
   }
@@ -11209,7 +11234,8 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     locator_id?: SortOrder
-    track_id?: SortOrder
+    track_id?: SortOrderInput | SortOrder
+    track_id_data?: SortOrder
     checker_name?: SortOrder
     customer?: SortOrder
     total_ok?: SortOrder
@@ -11234,7 +11260,8 @@ export namespace Prisma {
     org_id?: IntFilter<"quality_check"> | number
     creation_date_time?: DateTimeFilter<"quality_check"> | Date | string
     locator_id?: IntFilter<"quality_check"> | number
-    track_id?: StringFilter<"quality_check"> | string
+    track_id?: StringNullableFilter<"quality_check"> | string | null
+    track_id_data?: JsonFilter<"quality_check">
     checker_name?: StringFilter<"quality_check"> | string
     customer?: StringFilter<"quality_check"> | string
     total_ok?: FloatFilter<"quality_check"> | number
@@ -11244,7 +11271,7 @@ export namespace Prisma {
     total_ng_repair?: FloatFilter<"quality_check"> | number
     repair_job_id?: StringNullableFilter<"quality_check"> | string | null
     status?: StringFilter<"quality_check"> | string
-    track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+    track_id_object?: XOR<Track_id_objectNullableRelationFilter, track_id_objectWhereInput> | null
     imove_scrap_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
     repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
   }, "org_id_creation_date_time" | "imove_scrap_id">
@@ -11253,7 +11280,8 @@ export namespace Prisma {
     org_id?: SortOrder
     creation_date_time?: SortOrder
     locator_id?: SortOrder
-    track_id?: SortOrder
+    track_id?: SortOrderInput | SortOrder
+    track_id_data?: SortOrder
     checker_name?: SortOrder
     customer?: SortOrder
     total_ok?: SortOrder
@@ -11278,7 +11306,8 @@ export namespace Prisma {
     org_id?: IntWithAggregatesFilter<"quality_check"> | number
     creation_date_time?: DateTimeWithAggregatesFilter<"quality_check"> | Date | string
     locator_id?: IntWithAggregatesFilter<"quality_check"> | number
-    track_id?: StringWithAggregatesFilter<"quality_check"> | string
+    track_id?: StringNullableWithAggregatesFilter<"quality_check"> | string | null
+    track_id_data?: JsonWithAggregatesFilter<"quality_check">
     checker_name?: StringWithAggregatesFilter<"quality_check"> | string
     customer?: StringWithAggregatesFilter<"quality_check"> | string
     total_ok?: FloatWithAggregatesFilter<"quality_check"> | number
@@ -11850,6 +11879,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -11858,7 +11888,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     status?: string
-    track_id_object: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
+    track_id_object?: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
     imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutQuality_check_scrap_imoveInput
     repair_job?: repair_jobCreateNestedOneWithoutQuality_check_srcInput
   }
@@ -11867,7 +11897,8 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
-    track_id: string
+    track_id?: string | null
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -11884,6 +11915,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -11892,7 +11924,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
-    track_id_object?: track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput
+    track_id_object?: track_id_objectUpdateOneWithoutQuality_check_used_inNestedInput
     imove_scrap_obj?: inventory_move_draftUpdateOneWithoutQuality_check_scrap_imoveNestedInput
     repair_job?: repair_jobUpdateOneWithoutQuality_check_srcNestedInput
   }
@@ -11901,7 +11933,8 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
-    track_id?: StringFieldUpdateOperationsInput | string
+    track_id?: NullableStringFieldUpdateOperationsInput | string | null
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -11918,7 +11951,8 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
-    track_id: string
+    track_id?: string | null
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -11935,6 +11969,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -11949,7 +11984,8 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
-    track_id?: StringFieldUpdateOperationsInput | string
+    track_id?: NullableStringFieldUpdateOperationsInput | string | null
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -12672,6 +12708,11 @@ export namespace Prisma {
     quantity?: SortOrder
   }
 
+  export type Track_id_objectNullableRelationFilter = {
+    is?: track_id_objectWhereInput | null
+    isNot?: track_id_objectWhereInput | null
+  }
+
   export type quality_checkOrg_idCreation_date_timeCompoundUniqueInput = {
     org_id: number
     creation_date_time: Date | string
@@ -12682,6 +12723,7 @@ export namespace Prisma {
     creation_date_time?: SortOrder
     locator_id?: SortOrder
     track_id?: SortOrder
+    track_id_data?: SortOrder
     checker_name?: SortOrder
     customer?: SortOrder
     total_ok?: SortOrder
@@ -13172,10 +13214,12 @@ export namespace Prisma {
     connect?: repair_jobWhereUniqueInput
   }
 
-  export type track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput = {
+  export type track_id_objectUpdateOneWithoutQuality_check_used_inNestedInput = {
     create?: XOR<track_id_objectCreateWithoutQuality_check_used_inInput, track_id_objectUncheckedCreateWithoutQuality_check_used_inInput>
     connectOrCreate?: track_id_objectCreateOrConnectWithoutQuality_check_used_inInput
     upsert?: track_id_objectUpsertWithoutQuality_check_used_inInput
+    disconnect?: track_id_objectWhereInput | boolean
+    delete?: track_id_objectWhereInput | boolean
     connect?: track_id_objectWhereUniqueInput
     update?: XOR<XOR<track_id_objectUpdateToOneWithWhereWithoutQuality_check_used_inInput, track_id_objectUpdateWithoutQuality_check_used_inInput>, track_id_objectUncheckedUpdateWithoutQuality_check_used_inInput>
   }
@@ -13600,6 +13644,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -13608,7 +13653,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     status?: string
-    track_id_object: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
+    track_id_object?: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
     repair_job?: repair_jobCreateNestedOneWithoutQuality_check_srcInput
   }
 
@@ -13616,7 +13661,8 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
-    track_id: string
+    track_id?: string | null
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -13716,6 +13762,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -13724,7 +13771,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
-    track_id_object?: track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput
+    track_id_object?: track_id_objectUpdateOneWithoutQuality_check_used_inNestedInput
     repair_job?: repair_jobUpdateOneWithoutQuality_check_srcNestedInput
   }
 
@@ -13732,7 +13779,8 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
-    track_id?: StringFieldUpdateOperationsInput | string
+    track_id?: NullableStringFieldUpdateOperationsInput | string | null
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -14033,6 +14081,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -14041,7 +14090,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     status?: string
-    track_id_object: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
+    track_id_object?: track_id_objectCreateNestedOneWithoutQuality_check_used_inInput
     imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutQuality_check_scrap_imoveInput
   }
 
@@ -14049,7 +14098,8 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
-    track_id: string
+    track_id?: string | null
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -14202,7 +14252,8 @@ export namespace Prisma {
     org_id?: IntFilter<"quality_check"> | number
     creation_date_time?: DateTimeFilter<"quality_check"> | Date | string
     locator_id?: IntFilter<"quality_check"> | number
-    track_id?: StringFilter<"quality_check"> | string
+    track_id?: StringNullableFilter<"quality_check"> | string | null
+    track_id_data?: JsonFilter<"quality_check">
     checker_name?: StringFilter<"quality_check"> | string
     customer?: StringFilter<"quality_check"> | string
     total_ok?: FloatFilter<"quality_check"> | number
@@ -14496,6 +14547,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -14512,6 +14564,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -14763,7 +14816,8 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
-    track_id: string
+    track_id?: string | null
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -14793,6 +14847,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -14801,7 +14856,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
-    track_id_object?: track_id_objectUpdateOneRequiredWithoutQuality_check_used_inNestedInput
+    track_id_object?: track_id_objectUpdateOneWithoutQuality_check_used_inNestedInput
     imove_scrap_obj?: inventory_move_draftUpdateOneWithoutQuality_check_scrap_imoveNestedInput
   }
 
@@ -14809,7 +14864,8 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
-    track_id?: StringFieldUpdateOperationsInput | string
+    track_id?: NullableStringFieldUpdateOperationsInput | string | null
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -14825,7 +14881,8 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
-    track_id?: StringFieldUpdateOperationsInput | string
+    track_id?: NullableStringFieldUpdateOperationsInput | string | null
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -14889,6 +14946,7 @@ export namespace Prisma {
     org_id: number
     creation_date_time: Date | string
     locator_id?: number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name: string
     customer: string
     total_ok: number
@@ -14923,6 +14981,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -14939,6 +14998,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
@@ -14955,6 +15015,7 @@ export namespace Prisma {
     org_id?: IntFieldUpdateOperationsInput | number
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     locator_id?: IntFieldUpdateOperationsInput | number
+    track_id_data?: JsonNullValueInput | InputJsonValue
     checker_name?: StringFieldUpdateOperationsInput | string
     customer?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number

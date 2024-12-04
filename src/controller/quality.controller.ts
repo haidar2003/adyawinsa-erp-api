@@ -64,3 +64,19 @@ export const getQualityCheckList = async (req: Request, res: Response, next: Nex
 		next(error);
 	}
 };
+
+export const deleteQualityCheck = async (req: Request, res: Response, next: NextFunction) => {
+	try {
+		const qualityCheckDraft = req.body;
+
+		const result = await qualityCheckService.deleteQualityCheckObject({
+			...qualityCheckDraft
+		});
+
+		// Kirim response
+		return res.json(result);
+	} catch (error: any) {
+		console.error('Unexpected server error:', error);
+		next(error);
+	}
+};

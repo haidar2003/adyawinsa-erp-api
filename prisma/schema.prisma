@@ -94,8 +94,10 @@ model quality_check {
   creation_date_time DateTime @db.Timestamptz(6)
   locator_id        Int @default(-1)
 
-  track_id_object   track_id_object @relation("QUALITY-RESULT-TRACKID", fields: [track_id], references: [track_id])
-  track_id          String
+  track_id_object   track_id_object? @relation("QUALITY-RESULT-TRACKID", fields: [track_id], references: [track_id])
+  track_id          String?
+
+  track_id_data     Json    @default("{}") @db.Json 
 
   checker_name      String
   customer          String

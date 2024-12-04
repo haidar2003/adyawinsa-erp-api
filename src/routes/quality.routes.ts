@@ -20,4 +20,7 @@ qualityRouter.get('/', qualityController.getQualityCheckList);
 // Endpoint untuk mengambil berdasarkan ID
 qualityRouter.get('/:id', qualityController.getQualityCheck);
 
+// Endpoint untuk mengambil berdasarkan ID
+qualityRouter.post('/delete', qualityController.deleteQualityCheck);
+
 export default qualityRouter;

@@ -21,8 +21,10 @@ export const createQualityCheckObject = async (qualityCheckObjectDTO: any) => {
 				creation_date_time: qualityCheckObjectDTO.creation_date_time,
 				locator_id: qualityCheckObjectDTO.locator_id ?? -1,
 
-				// Assign existing track_id_object using track_id
-				track_id: qualityCheckObjectDTO.track_id,
+				// Assign existing track_id_object using track_id (optional)
+				track_id: qualityCheckObjectDTO?.track_id,
+
+				track_id_data: qualityCheckObjectDTO.track_id_data ?? {},
 
 				checker_name: qualityCheckObjectDTO.checker_name ?? '',
 				customer: qualityCheckObjectDTO.customer ?? '',
@@ -32,6 +34,8 @@ export const createQualityCheckObject = async (qualityCheckObjectDTO: any) => {
 				total_ng_scrap: qualityCheckObjectDTO.total_ng_scrap ?? 0,
 				repair_reason: qualityCheckObjectDTO.repair_reason ?? '',
 				total_ng_repair: qualityCheckObjectDTO.total_ng_repair ?? 0,
+
+				status: 'COMPLETED'
 			},
 		});
 	} catch (error) {
@@ -80,5 +84,16 @@ export const updateQualityCheckObject = async (qualityCheckObjectDTO: any) => {
 		data: {
 			...qualityCheckObjectDTO
 		}
+	});
+};
+
+export const deleteQualityCheckObject = async (qualityCheckObjectDTO: any) => {
+	return prisma.quality_check.delete({
+		where: {
+			org_id_creation_date_time: {
+				org_id: qualityCheckObjectDTO.org_id,
+				creation_date_time: qualityCheckObjectDTO.creation_date_time
+			}
+		},
 	});
 };

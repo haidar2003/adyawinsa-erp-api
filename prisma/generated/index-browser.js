@@ -174,6 +174,7 @@ exports.Prisma.Quality_checkScalarFieldEnum = {
   creation_date_time: 'creation_date_time',
   locator_id: 'locator_id',
   track_id: 'track_id',
+  track_id_data: 'track_id_data',
   checker_name: 'checker_name',
   customer: 'customer',
   total_ok: 'total_ok',
