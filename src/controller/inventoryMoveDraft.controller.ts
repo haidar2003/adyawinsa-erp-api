@@ -79,7 +79,21 @@ export const createInventoryMoveDraft = async (req: Request, res: Response, next
 
 export const createInventoryMoveDraftDirectComplete = async (req: Request, res: Response, next: NextFunction) => {
     
-	const imDraft = req.body.imDraft;
+	let imDraft = req.body.imDraft;
+
+	const connectTarget = imDraft.connectTarget; // "PROD" or "REPAIR" or "QUALITY"
+	const connectTargetString = connectTarget === "PROD" ? 'production_single_scrap_imove' :
+		connectTarget === "REPAIR" ? 'quality_check_scrap_imove' :
+		connectTarget === "QUALITY" ? 'repair_job_imove' : '';
+	const connectTargetOrgId = imDraft.connectTargetOrgId;
+	const connectTargetCreationDateTime = imDraft.connectTargetCreationDateTime;
+
+	imDraft = {
+		...imDraft,
+		connectTarget: undefined,
+		connectTargetOrgId: undefined,
+		connectTargetCreationDateTime: undefined,
+	};
 
 	try {
 
@@ -120,10 +134,19 @@ export const createInventoryMoveDraftDirectComplete = async (req: Request, res: 
 			org_id: shadowData.AD_Org_ID.id,
 			creation_date_time: new Date(shadowData.Created),
 			movement_id: shadowData.id,
-			data: shadowData
+			data: shadowData,
+			[connectTargetString]: {
+				connect: {
+					org_id_creation_date_time: {
+						org_id: connectTargetOrgId,
+						creation_date_time: connectTargetCreationDateTime,
+					},
+				}
+			}
+
 		};
 
-		await inventoryMoveDraftService.createInventoryMoveDraft(draftData);
+		await inventoryMoveDraftService.createInventoryMoveDraftDirectComplete(draftData);
 
 		const currentDate = new Date();
 		currentDate.setHours(currentDate.getHours() + 7);

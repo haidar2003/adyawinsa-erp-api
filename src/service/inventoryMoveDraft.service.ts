@@ -29,6 +29,30 @@ export const createInventoryMoveDraft = async (InventoryMoveDraftDTO: any) => {
 	}
 };
 
+export const createInventoryMoveDraftDirectComplete = async (InventoryMoveDraftDTO: any) => {
+	try {
+		const existingDraft = await prisma.inventory_move_draft.findUnique({
+			where: {
+				org_id_creation_date_time: {
+					org_id: InventoryMoveDraftDTO.org_id,
+					creation_date_time: InventoryMoveDraftDTO.creation_date_time,
+				},
+			},
+		});
+
+		if (existingDraft) {
+			throw new Error('Record already exists');
+		}
+
+		return await prisma.inventory_move_draft.create({
+			data: InventoryMoveDraftDTO,
+		});
+	} catch (error) {
+		console.error('Error:', error);
+		throw error;
+	}
+};
+
 
 export const getAllInventoryMoveDrafts = async () => {
 	return await prisma.inventory_move_draft.findMany();
