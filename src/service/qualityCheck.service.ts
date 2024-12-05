@@ -55,7 +55,8 @@ export const getAllQualityCheckObjects = async (locatorId: string) => {
 			imove_scrap_obj: true,
 			repair_job: {
 				include: {
-					imove_repair_obj: true
+					imove_repair_obj: true,
+					track_id_object: true,
 				}
 			}
 		}
