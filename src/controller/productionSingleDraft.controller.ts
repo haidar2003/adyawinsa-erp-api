@@ -24,7 +24,7 @@ export const productionSingleDraftUpdateValidationRules = [
 // Controllers
 export const createProductionSingleDraft = async (req: Request, res: Response, next: NextFunction) => {
     
-	const imDraft = req.body.imDraft;
+	const imDraft = req.body.sDraft;
 
 	try {
 
@@ -717,18 +717,13 @@ const hydrateProductionSingle = (combinedData: any) => {
 	// STEP 1. Get total amount for each product.
 	const productIdToAmountDict: {[key:string]: number} = {};
 	const productIdExistsDict: {[key:string]: boolean} = {};
-	for (const productId of Object.keys(combinedData.productTrackQuantityDict)) {
-		let productIdQty = 0;
+	for (const bomProducedObj of (combinedData.bomProduced ?? [])) {
+		const productId = bomProducedObj.productId;
+		const quantity = bomProducedObj.amount;
 
-		for (const trackId of Object.keys(combinedData.productTrackQuantityDict[productId].trackIdAndQuantityDict)) {
-			productIdQty = productIdQty +
-			combinedData.productTrackQuantityDict[productId].trackIdAndQuantityDict[trackId].trackIdList
-				.reduce((n: any, {quantity}: {quantity: number}) => n + quantity, 0);
-		}
+		productIdToAmountDict[productId] = quantity;
 
-		productIdToAmountDict[productId] = productIdQty;
-
-		if (productIdQty > 0) {
+		if (quantity > 0) {
 			productIdExistsDict[productId] = false;
 		}
 	}
@@ -746,17 +741,25 @@ const hydrateProductionSingle = (combinedData: any) => {
 	let lineCounter = 1 + M_ProductionLine.length;
 	for (const productIdCur of Object.keys(productIdExistsDict)) {
 		if (!productIdExistsDict[productIdCur]) {
+			const isUsed = Number(combinedData.M_Product_ID) !== Number(productIdCur);
+			const quantityAbs = Math.abs(productIdToAmountDict[productIdCur]);
 			M_ProductionLine.push({
 				'AD_Client_ID':  1000000,
 				'AD_Org_ID': combinedData.AD_Org_ID,
 				'IsActive': true,
 				'M_Locator_ID': combinedData.M_Locator_ID,
-				'M_LocatorTo_ID': combinedData.M_LocatorTo_ID,
 				'M_Product_ID': Number(productIdCur),
-				'MovementQty': productIdToAmountDict[productIdCur],
+				'MovementQty': quantityAbs * (isUsed ? -1 : 1),
 				'Line': lineCounter,
-				'BoxQty': 0,
-				'PalletQty': 0,
+				'M_AttributeSetInstance_ID': {
+					'propertyLabel': 'Attribute Set Instance',
+					'id': 0,
+					'model-name': 'm_attributesetinstance'
+				},
+				'Processed': false,
+				'PlannedQty': quantityAbs,
+				'QtyUsed': isUsed ? quantityAbs : undefined,
+				'IsEndProduct': !isUsed
 			});
 			lineCounter += 1;
 		}
