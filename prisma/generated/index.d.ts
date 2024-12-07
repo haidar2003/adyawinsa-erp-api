@@ -1788,6 +1788,7 @@ export namespace Prisma {
     creation_date_time?: boolean
     movement_id?: boolean
     data?: boolean
+    production_single_main_imove?: boolean | inventory_move_draft$production_single_main_imoveArgs<ExtArgs>
     production_single_scrap_imove?: boolean | inventory_move_draft$production_single_scrap_imoveArgs<ExtArgs>
     quality_check_scrap_imove?: boolean | inventory_move_draft$quality_check_scrap_imoveArgs<ExtArgs>
     repair_job_imove?: boolean | inventory_move_draft$repair_job_imoveArgs<ExtArgs>
@@ -1801,6 +1802,7 @@ export namespace Prisma {
   }
 
   export type inventory_move_draftInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    production_single_main_imove?: boolean | inventory_move_draft$production_single_main_imoveArgs<ExtArgs>
     production_single_scrap_imove?: boolean | inventory_move_draft$production_single_scrap_imoveArgs<ExtArgs>
     quality_check_scrap_imove?: boolean | inventory_move_draft$quality_check_scrap_imoveArgs<ExtArgs>
     repair_job_imove?: boolean | inventory_move_draft$repair_job_imoveArgs<ExtArgs>
@@ -1810,6 +1812,7 @@ export namespace Prisma {
   export type $inventory_move_draftPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "inventory_move_draft"
     objects: {
+      production_single_main_imove: Prisma.$production_single_product_draftPayload<ExtArgs> | null
       production_single_scrap_imove: Prisma.$production_single_product_draftPayload<ExtArgs> | null
       quality_check_scrap_imove: Prisma.$quality_checkPayload<ExtArgs> | null
       repair_job_imove: Prisma.$repair_jobPayload<ExtArgs> | null
@@ -2184,6 +2187,8 @@ export namespace Prisma {
   export interface Prisma__inventory_move_draftClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    production_single_main_imove<T extends inventory_move_draft$production_single_main_imoveArgs<ExtArgs> = {}>(args?: Subset<T, inventory_move_draft$production_single_main_imoveArgs<ExtArgs>>): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     production_single_scrap_imove<T extends inventory_move_draft$production_single_scrap_imoveArgs<ExtArgs> = {}>(args?: Subset<T, inventory_move_draft$production_single_scrap_imoveArgs<ExtArgs>>): Prisma__production_single_product_draftClient<$Result.GetResult<Prisma.$production_single_product_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     quality_check_scrap_imove<T extends inventory_move_draft$quality_check_scrap_imoveArgs<ExtArgs> = {}>(args?: Subset<T, inventory_move_draft$quality_check_scrap_imoveArgs<ExtArgs>>): Prisma__quality_checkClient<$Result.GetResult<Prisma.$quality_checkPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
@@ -2530,6 +2535,22 @@ export namespace Prisma {
      * Filter which inventory_move_drafts to delete
      */
     where?: inventory_move_draftWhereInput
+  }
+
+
+  /**
+   * inventory_move_draft.production_single_main_imove
+   */
+  export type inventory_move_draft$production_single_main_imoveArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the production_single_product_draft
+     */
+    select?: production_single_product_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: production_single_product_draftInclude<ExtArgs> | null
+    where?: production_single_product_draftWhereInput
   }
 
 
@@ -4429,6 +4450,7 @@ export namespace Prisma {
     org_id: number | null
     erp_id: number | null
     total_ok: number | null
+    imove_main_id: number | null
     total_ng_scrap: number | null
     imove_scrap_id: number | null
     total_ng_repair: number | null
@@ -4438,6 +4460,7 @@ export namespace Prisma {
     org_id: number | null
     erp_id: number | null
     total_ok: number | null
+    imove_main_id: number | null
     total_ng_scrap: number | null
     imove_scrap_id: number | null
     total_ng_repair: number | null
@@ -4449,6 +4472,7 @@ export namespace Prisma {
     erp_id: number | null
     track_id: string | null
     total_ok: number | null
+    imove_main_id: number | null
     scrap_reason: string | null
     total_ng_scrap: number | null
     imove_scrap_id: number | null
@@ -4463,6 +4487,7 @@ export namespace Prisma {
     erp_id: number | null
     track_id: string | null
     total_ok: number | null
+    imove_main_id: number | null
     scrap_reason: string | null
     total_ng_scrap: number | null
     imove_scrap_id: number | null
@@ -4478,6 +4503,7 @@ export namespace Prisma {
     data: number
     track_id: number
     total_ok: number
+    imove_main_id: number
     scrap_reason: number
     total_ng_scrap: number
     imove_scrap_id: number
@@ -4492,6 +4518,7 @@ export namespace Prisma {
     org_id?: true
     erp_id?: true
     total_ok?: true
+    imove_main_id?: true
     total_ng_scrap?: true
     imove_scrap_id?: true
     total_ng_repair?: true
@@ -4501,6 +4528,7 @@ export namespace Prisma {
     org_id?: true
     erp_id?: true
     total_ok?: true
+    imove_main_id?: true
     total_ng_scrap?: true
     imove_scrap_id?: true
     total_ng_repair?: true
@@ -4512,6 +4540,7 @@ export namespace Prisma {
     erp_id?: true
     track_id?: true
     total_ok?: true
+    imove_main_id?: true
     scrap_reason?: true
     total_ng_scrap?: true
     imove_scrap_id?: true
@@ -4526,6 +4555,7 @@ export namespace Prisma {
     erp_id?: true
     track_id?: true
     total_ok?: true
+    imove_main_id?: true
     scrap_reason?: true
     total_ng_scrap?: true
     imove_scrap_id?: true
@@ -4541,6 +4571,7 @@ export namespace Prisma {
     data?: true
     track_id?: true
     total_ok?: true
+    imove_main_id?: true
     scrap_reason?: true
     total_ng_scrap?: true
     imove_scrap_id?: true
@@ -4643,6 +4674,7 @@ export namespace Prisma {
     data: JsonValue
     track_id: string
     total_ok: number
+    imove_main_id: number | null
     scrap_reason: string
     total_ng_scrap: number
     imove_scrap_id: number | null
@@ -4677,6 +4709,7 @@ export namespace Prisma {
     data?: boolean
     track_id?: boolean
     total_ok?: boolean
+    imove_main_id?: boolean
     scrap_reason?: boolean
     total_ng_scrap?: boolean
     imove_scrap_id?: boolean
@@ -4684,6 +4717,7 @@ export namespace Prisma {
     total_ng_repair?: boolean
     repair_job_id?: boolean
     track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+    imove_main_obj?: boolean | production_single_product_draft$imove_main_objArgs<ExtArgs>
     imove_scrap_obj?: boolean | production_single_product_draft$imove_scrap_objArgs<ExtArgs>
     repair_job?: boolean | production_single_product_draft$repair_jobArgs<ExtArgs>
   }, ExtArgs["result"]["production_single_product_draft"]>
@@ -4695,6 +4729,7 @@ export namespace Prisma {
     data?: boolean
     track_id?: boolean
     total_ok?: boolean
+    imove_main_id?: boolean
     scrap_reason?: boolean
     total_ng_scrap?: boolean
     imove_scrap_id?: boolean
@@ -4705,6 +4740,7 @@ export namespace Prisma {
 
   export type production_single_product_draftInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     track_id_object?: boolean | track_id_objectDefaultArgs<ExtArgs>
+    imove_main_obj?: boolean | production_single_product_draft$imove_main_objArgs<ExtArgs>
     imove_scrap_obj?: boolean | production_single_product_draft$imove_scrap_objArgs<ExtArgs>
     repair_job?: boolean | production_single_product_draft$repair_jobArgs<ExtArgs>
   }
@@ -4714,6 +4750,7 @@ export namespace Prisma {
     name: "production_single_product_draft"
     objects: {
       track_id_object: Prisma.$track_id_objectPayload<ExtArgs>
+      imove_main_obj: Prisma.$inventory_move_draftPayload<ExtArgs> | null
       imove_scrap_obj: Prisma.$inventory_move_draftPayload<ExtArgs> | null
       repair_job: Prisma.$repair_jobPayload<ExtArgs> | null
     }
@@ -4724,6 +4761,7 @@ export namespace Prisma {
       data: Prisma.JsonValue
       track_id: string
       total_ok: number
+      imove_main_id: number | null
       scrap_reason: string
       total_ng_scrap: number
       imove_scrap_id: number | null
@@ -5097,6 +5135,8 @@ export namespace Prisma {
 
     track_id_object<T extends track_id_objectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, track_id_objectDefaultArgs<ExtArgs>>): Prisma__track_id_objectClient<$Result.GetResult<Prisma.$track_id_objectPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
+    imove_main_obj<T extends production_single_product_draft$imove_main_objArgs<ExtArgs> = {}>(args?: Subset<T, production_single_product_draft$imove_main_objArgs<ExtArgs>>): Prisma__inventory_move_draftClient<$Result.GetResult<Prisma.$inventory_move_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     imove_scrap_obj<T extends production_single_product_draft$imove_scrap_objArgs<ExtArgs> = {}>(args?: Subset<T, production_single_product_draft$imove_scrap_objArgs<ExtArgs>>): Prisma__inventory_move_draftClient<$Result.GetResult<Prisma.$inventory_move_draftPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     repair_job<T extends production_single_product_draft$repair_jobArgs<ExtArgs> = {}>(args?: Subset<T, production_single_product_draft$repair_jobArgs<ExtArgs>>): Prisma__repair_jobClient<$Result.GetResult<Prisma.$repair_jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
@@ -5135,6 +5175,7 @@ export namespace Prisma {
     readonly data: FieldRef<"production_single_product_draft", 'Json'>
     readonly track_id: FieldRef<"production_single_product_draft", 'String'>
     readonly total_ok: FieldRef<"production_single_product_draft", 'Float'>
+    readonly imove_main_id: FieldRef<"production_single_product_draft", 'Int'>
     readonly scrap_reason: FieldRef<"production_single_product_draft", 'String'>
     readonly total_ng_scrap: FieldRef<"production_single_product_draft", 'Float'>
     readonly imove_scrap_id: FieldRef<"production_single_product_draft", 'Int'>
@@ -5449,6 +5490,22 @@ export namespace Prisma {
      * Filter which production_single_product_drafts to delete
      */
     where?: production_single_product_draftWhereInput
+  }
+
+
+  /**
+   * production_single_product_draft.imove_main_obj
+   */
+  export type production_single_product_draft$imove_main_objArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the inventory_move_draft
+     */
+    select?: inventory_move_draftSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: inventory_move_draftInclude<ExtArgs> | null
+    where?: inventory_move_draftWhereInput
   }
 
 
@@ -10662,6 +10719,7 @@ export namespace Prisma {
     data: 'data',
     track_id: 'track_id',
     total_ok: 'total_ok',
+    imove_main_id: 'imove_main_id',
     scrap_reason: 'scrap_reason',
     total_ng_scrap: 'total_ng_scrap',
     imove_scrap_id: 'imove_scrap_id',
@@ -10864,6 +10922,7 @@ export namespace Prisma {
     creation_date_time?: DateTimeFilter<"inventory_move_draft"> | Date | string
     movement_id?: IntFilter<"inventory_move_draft"> | number
     data?: JsonFilter<"inventory_move_draft">
+    production_single_main_imove?: XOR<Production_single_product_draftNullableRelationFilter, production_single_product_draftWhereInput> | null
     production_single_scrap_imove?: XOR<Production_single_product_draftNullableRelationFilter, production_single_product_draftWhereInput> | null
     quality_check_scrap_imove?: XOR<Quality_checkNullableRelationFilter, quality_checkWhereInput> | null
     repair_job_imove?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
@@ -10874,6 +10933,7 @@ export namespace Prisma {
     creation_date_time?: SortOrder
     movement_id?: SortOrder
     data?: SortOrder
+    production_single_main_imove?: production_single_product_draftOrderByWithRelationInput
     production_single_scrap_imove?: production_single_product_draftOrderByWithRelationInput
     quality_check_scrap_imove?: quality_checkOrderByWithRelationInput
     repair_job_imove?: repair_jobOrderByWithRelationInput
@@ -10888,6 +10948,7 @@ export namespace Prisma {
     org_id?: IntFilter<"inventory_move_draft"> | number
     creation_date_time?: DateTimeFilter<"inventory_move_draft"> | Date | string
     data?: JsonFilter<"inventory_move_draft">
+    production_single_main_imove?: XOR<Production_single_product_draftNullableRelationFilter, production_single_product_draftWhereInput> | null
     production_single_scrap_imove?: XOR<Production_single_product_draftNullableRelationFilter, production_single_product_draftWhereInput> | null
     quality_check_scrap_imove?: XOR<Quality_checkNullableRelationFilter, quality_checkWhereInput> | null
     repair_job_imove?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
@@ -11035,6 +11096,7 @@ export namespace Prisma {
     data?: JsonFilter<"production_single_product_draft">
     track_id?: StringFilter<"production_single_product_draft"> | string
     total_ok?: FloatFilter<"production_single_product_draft"> | number
+    imove_main_id?: IntNullableFilter<"production_single_product_draft"> | number | null
     scrap_reason?: StringFilter<"production_single_product_draft"> | string
     total_ng_scrap?: FloatFilter<"production_single_product_draft"> | number
     imove_scrap_id?: IntNullableFilter<"production_single_product_draft"> | number | null
@@ -11042,6 +11104,7 @@ export namespace Prisma {
     total_ng_repair?: FloatFilter<"production_single_product_draft"> | number
     repair_job_id?: StringNullableFilter<"production_single_product_draft"> | string | null
     track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+    imove_main_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
     imove_scrap_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
     repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
   }
@@ -11053,6 +11116,7 @@ export namespace Prisma {
     data?: SortOrder
     track_id?: SortOrder
     total_ok?: SortOrder
+    imove_main_id?: SortOrderInput | SortOrder
     scrap_reason?: SortOrder
     total_ng_scrap?: SortOrder
     imove_scrap_id?: SortOrderInput | SortOrder
@@ -11060,6 +11124,7 @@ export namespace Prisma {
     total_ng_repair?: SortOrder
     repair_job_id?: SortOrderInput | SortOrder
     track_id_object?: track_id_objectOrderByWithRelationInput
+    imove_main_obj?: inventory_move_draftOrderByWithRelationInput
     imove_scrap_obj?: inventory_move_draftOrderByWithRelationInput
     repair_job?: repair_jobOrderByWithRelationInput
   }
@@ -11067,6 +11132,7 @@ export namespace Prisma {
   export type production_single_product_draftWhereUniqueInput = Prisma.AtLeast<{
     erp_id?: number
     track_id?: string
+    imove_main_id?: number
     imove_scrap_id?: number
     repair_job_id?: string
     org_id_creation_date_time?: production_single_product_draftOrg_idCreation_date_timeCompoundUniqueInput
@@ -11082,9 +11148,10 @@ export namespace Prisma {
     repair_reason?: StringFilter<"production_single_product_draft"> | string
     total_ng_repair?: FloatFilter<"production_single_product_draft"> | number
     track_id_object?: XOR<Track_id_objectRelationFilter, track_id_objectWhereInput>
+    imove_main_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
     imove_scrap_obj?: XOR<Inventory_move_draftNullableRelationFilter, inventory_move_draftWhereInput> | null
     repair_job?: XOR<Repair_jobNullableRelationFilter, repair_jobWhereInput> | null
-  }, "org_id_creation_date_time" | "erp_id" | "track_id" | "imove_scrap_id" | "repair_job_id">
+  }, "org_id_creation_date_time" | "erp_id" | "track_id" | "imove_main_id" | "imove_scrap_id" | "repair_job_id">
 
   export type production_single_product_draftOrderByWithAggregationInput = {
     org_id?: SortOrder
@@ -11093,6 +11160,7 @@ export namespace Prisma {
     data?: SortOrder
     track_id?: SortOrder
     total_ok?: SortOrder
+    imove_main_id?: SortOrderInput | SortOrder
     scrap_reason?: SortOrder
     total_ng_scrap?: SortOrder
     imove_scrap_id?: SortOrderInput | SortOrder
@@ -11116,6 +11184,7 @@ export namespace Prisma {
     data?: JsonWithAggregatesFilter<"production_single_product_draft">
     track_id?: StringWithAggregatesFilter<"production_single_product_draft"> | string
     total_ok?: FloatWithAggregatesFilter<"production_single_product_draft"> | number
+    imove_main_id?: IntNullableWithAggregatesFilter<"production_single_product_draft"> | number | null
     scrap_reason?: StringWithAggregatesFilter<"production_single_product_draft"> | string
     total_ng_scrap?: FloatWithAggregatesFilter<"production_single_product_draft"> | number
     imove_scrap_id?: IntNullableWithAggregatesFilter<"production_single_product_draft"> | number | null
@@ -11522,6 +11591,7 @@ export namespace Prisma {
     creation_date_time: Date | string
     movement_id: number
     data: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftCreateNestedOneWithoutImove_main_objInput
     production_single_scrap_imove?: production_single_product_draftCreateNestedOneWithoutImove_scrap_objInput
     quality_check_scrap_imove?: quality_checkCreateNestedOneWithoutImove_scrap_objInput
     repair_job_imove?: repair_jobCreateNestedOneWithoutImove_repair_objInput
@@ -11532,6 +11602,7 @@ export namespace Prisma {
     creation_date_time: Date | string
     movement_id: number
     data: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_main_objInput
     production_single_scrap_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_scrap_objInput
     quality_check_scrap_imove?: quality_checkUncheckedCreateNestedOneWithoutImove_scrap_objInput
     repair_job_imove?: repair_jobUncheckedCreateNestedOneWithoutImove_repair_objInput
@@ -11542,6 +11613,7 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUpdateOneWithoutImove_main_objNestedInput
     production_single_scrap_imove?: production_single_product_draftUpdateOneWithoutImove_scrap_objNestedInput
     quality_check_scrap_imove?: quality_checkUpdateOneWithoutImove_scrap_objNestedInput
     repair_job_imove?: repair_jobUpdateOneWithoutImove_repair_objNestedInput
@@ -11552,6 +11624,7 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_main_objNestedInput
     production_single_scrap_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_scrap_objNestedInput
     quality_check_scrap_imove?: quality_checkUncheckedUpdateOneWithoutImove_scrap_objNestedInput
     repair_job_imove?: repair_jobUncheckedUpdateOneWithoutImove_repair_objNestedInput
@@ -11701,6 +11774,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     track_id_object: track_id_objectCreateNestedOneWithoutProduct_single_resultInput
+    imove_main_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_main_imoveInput
     imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_scrap_imoveInput
     repair_job?: repair_jobCreateNestedOneWithoutProduction_single_srcInput
   }
@@ -11712,6 +11786,7 @@ export namespace Prisma {
     data: JsonNullValueInput | InputJsonValue
     track_id: string
     total_ok: number
+    imove_main_id?: number | null
     scrap_reason?: string
     total_ng_scrap: number
     imove_scrap_id?: number | null
@@ -11731,6 +11806,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     track_id_object?: track_id_objectUpdateOneRequiredWithoutProduct_single_resultNestedInput
+    imove_main_obj?: inventory_move_draftUpdateOneWithoutProduction_single_main_imoveNestedInput
     imove_scrap_obj?: inventory_move_draftUpdateOneWithoutProduction_single_scrap_imoveNestedInput
     repair_job?: repair_jobUpdateOneWithoutProduction_single_srcNestedInput
   }
@@ -11742,6 +11818,7 @@ export namespace Prisma {
     data?: JsonNullValueInput | InputJsonValue
     track_id?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
+    imove_main_id?: NullableIntFieldUpdateOperationsInput | number | null
     scrap_reason?: StringFieldUpdateOperationsInput | string
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11757,6 +11834,7 @@ export namespace Prisma {
     data: JsonNullValueInput | InputJsonValue
     track_id: string
     total_ok: number
+    imove_main_id?: number | null
     scrap_reason?: string
     total_ng_scrap: number
     imove_scrap_id?: number | null
@@ -11784,6 +11862,7 @@ export namespace Prisma {
     data?: JsonNullValueInput | InputJsonValue
     track_id?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
+    imove_main_id?: NullableIntFieldUpdateOperationsInput | number | null
     scrap_reason?: StringFieldUpdateOperationsInput | string
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -12514,6 +12593,7 @@ export namespace Prisma {
     data?: SortOrder
     track_id?: SortOrder
     total_ok?: SortOrder
+    imove_main_id?: SortOrder
     scrap_reason?: SortOrder
     total_ng_scrap?: SortOrder
     imove_scrap_id?: SortOrder
@@ -12526,6 +12606,7 @@ export namespace Prisma {
     org_id?: SortOrder
     erp_id?: SortOrder
     total_ok?: SortOrder
+    imove_main_id?: SortOrder
     total_ng_scrap?: SortOrder
     imove_scrap_id?: SortOrder
     total_ng_repair?: SortOrder
@@ -12537,6 +12618,7 @@ export namespace Prisma {
     erp_id?: SortOrder
     track_id?: SortOrder
     total_ok?: SortOrder
+    imove_main_id?: SortOrder
     scrap_reason?: SortOrder
     total_ng_scrap?: SortOrder
     imove_scrap_id?: SortOrder
@@ -12551,6 +12633,7 @@ export namespace Prisma {
     erp_id?: SortOrder
     track_id?: SortOrder
     total_ok?: SortOrder
+    imove_main_id?: SortOrder
     scrap_reason?: SortOrder
     total_ng_scrap?: SortOrder
     imove_scrap_id?: SortOrder
@@ -12563,6 +12646,7 @@ export namespace Prisma {
     org_id?: SortOrder
     erp_id?: SortOrder
     total_ok?: SortOrder
+    imove_main_id?: SortOrder
     total_ng_scrap?: SortOrder
     imove_scrap_id?: SortOrder
     total_ng_repair?: SortOrder
@@ -12904,6 +12988,12 @@ export namespace Prisma {
     quantity?: SortOrder
   }
 
+  export type production_single_product_draftCreateNestedOneWithoutImove_main_objInput = {
+    create?: XOR<production_single_product_draftCreateWithoutImove_main_objInput, production_single_product_draftUncheckedCreateWithoutImove_main_objInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutImove_main_objInput
+    connect?: production_single_product_draftWhereUniqueInput
+  }
+
   export type production_single_product_draftCreateNestedOneWithoutImove_scrap_objInput = {
     create?: XOR<production_single_product_draftCreateWithoutImove_scrap_objInput, production_single_product_draftUncheckedCreateWithoutImove_scrap_objInput>
     connectOrCreate?: production_single_product_draftCreateOrConnectWithoutImove_scrap_objInput
@@ -12920,6 +13010,12 @@ export namespace Prisma {
     create?: XOR<repair_jobCreateWithoutImove_repair_objInput, repair_jobUncheckedCreateWithoutImove_repair_objInput>
     connectOrCreate?: repair_jobCreateOrConnectWithoutImove_repair_objInput
     connect?: repair_jobWhereUniqueInput
+  }
+
+  export type production_single_product_draftUncheckedCreateNestedOneWithoutImove_main_objInput = {
+    create?: XOR<production_single_product_draftCreateWithoutImove_main_objInput, production_single_product_draftUncheckedCreateWithoutImove_main_objInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutImove_main_objInput
+    connect?: production_single_product_draftWhereUniqueInput
   }
 
   export type production_single_product_draftUncheckedCreateNestedOneWithoutImove_scrap_objInput = {
@@ -12952,6 +13048,16 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type production_single_product_draftUpdateOneWithoutImove_main_objNestedInput = {
+    create?: XOR<production_single_product_draftCreateWithoutImove_main_objInput, production_single_product_draftUncheckedCreateWithoutImove_main_objInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutImove_main_objInput
+    upsert?: production_single_product_draftUpsertWithoutImove_main_objInput
+    disconnect?: production_single_product_draftWhereInput | boolean
+    delete?: production_single_product_draftWhereInput | boolean
+    connect?: production_single_product_draftWhereUniqueInput
+    update?: XOR<XOR<production_single_product_draftUpdateToOneWithWhereWithoutImove_main_objInput, production_single_product_draftUpdateWithoutImove_main_objInput>, production_single_product_draftUncheckedUpdateWithoutImove_main_objInput>
+  }
+
   export type production_single_product_draftUpdateOneWithoutImove_scrap_objNestedInput = {
     create?: XOR<production_single_product_draftCreateWithoutImove_scrap_objInput, production_single_product_draftUncheckedCreateWithoutImove_scrap_objInput>
     connectOrCreate?: production_single_product_draftCreateOrConnectWithoutImove_scrap_objInput
@@ -12980,6 +13086,16 @@ export namespace Prisma {
     delete?: repair_jobWhereInput | boolean
     connect?: repair_jobWhereUniqueInput
     update?: XOR<XOR<repair_jobUpdateToOneWithWhereWithoutImove_repair_objInput, repair_jobUpdateWithoutImove_repair_objInput>, repair_jobUncheckedUpdateWithoutImove_repair_objInput>
+  }
+
+  export type production_single_product_draftUncheckedUpdateOneWithoutImove_main_objNestedInput = {
+    create?: XOR<production_single_product_draftCreateWithoutImove_main_objInput, production_single_product_draftUncheckedCreateWithoutImove_main_objInput>
+    connectOrCreate?: production_single_product_draftCreateOrConnectWithoutImove_main_objInput
+    upsert?: production_single_product_draftUpsertWithoutImove_main_objInput
+    disconnect?: production_single_product_draftWhereInput | boolean
+    delete?: production_single_product_draftWhereInput | boolean
+    connect?: production_single_product_draftWhereUniqueInput
+    update?: XOR<XOR<production_single_product_draftUpdateToOneWithWhereWithoutImove_main_objInput, production_single_product_draftUpdateWithoutImove_main_objInput>, production_single_product_draftUncheckedUpdateWithoutImove_main_objInput>
   }
 
   export type production_single_product_draftUncheckedUpdateOneWithoutImove_scrap_objNestedInput = {
@@ -13018,6 +13134,12 @@ export namespace Prisma {
     connect?: track_id_objectWhereUniqueInput
   }
 
+  export type inventory_move_draftCreateNestedOneWithoutProduction_single_main_imoveInput = {
+    create?: XOR<inventory_move_draftCreateWithoutProduction_single_main_imoveInput, inventory_move_draftUncheckedCreateWithoutProduction_single_main_imoveInput>
+    connectOrCreate?: inventory_move_draftCreateOrConnectWithoutProduction_single_main_imoveInput
+    connect?: inventory_move_draftWhereUniqueInput
+  }
+
   export type inventory_move_draftCreateNestedOneWithoutProduction_single_scrap_imoveInput = {
     create?: XOR<inventory_move_draftCreateWithoutProduction_single_scrap_imoveInput, inventory_move_draftUncheckedCreateWithoutProduction_single_scrap_imoveInput>
     connectOrCreate?: inventory_move_draftCreateOrConnectWithoutProduction_single_scrap_imoveInput
@@ -13048,6 +13170,16 @@ export namespace Prisma {
     upsert?: track_id_objectUpsertWithoutProduct_single_resultInput
     connect?: track_id_objectWhereUniqueInput
     update?: XOR<XOR<track_id_objectUpdateToOneWithWhereWithoutProduct_single_resultInput, track_id_objectUpdateWithoutProduct_single_resultInput>, track_id_objectUncheckedUpdateWithoutProduct_single_resultInput>
+  }
+
+  export type inventory_move_draftUpdateOneWithoutProduction_single_main_imoveNestedInput = {
+    create?: XOR<inventory_move_draftCreateWithoutProduction_single_main_imoveInput, inventory_move_draftUncheckedCreateWithoutProduction_single_main_imoveInput>
+    connectOrCreate?: inventory_move_draftCreateOrConnectWithoutProduction_single_main_imoveInput
+    upsert?: inventory_move_draftUpsertWithoutProduction_single_main_imoveInput
+    disconnect?: inventory_move_draftWhereInput | boolean
+    delete?: inventory_move_draftWhereInput | boolean
+    connect?: inventory_move_draftWhereUniqueInput
+    update?: XOR<XOR<inventory_move_draftUpdateToOneWithWhereWithoutProduction_single_main_imoveInput, inventory_move_draftUpdateWithoutProduction_single_main_imoveInput>, inventory_move_draftUncheckedUpdateWithoutProduction_single_main_imoveInput>
   }
 
   export type inventory_move_draftUpdateOneWithoutProduction_single_scrap_imoveNestedInput = {
@@ -13607,6 +13739,41 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type production_single_product_draftCreateWithoutImove_main_objInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    repair_reason?: string
+    total_ng_repair: number
+    track_id_object: track_id_objectCreateNestedOneWithoutProduct_single_resultInput
+    imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_scrap_imoveInput
+    repair_job?: repair_jobCreateNestedOneWithoutProduction_single_srcInput
+  }
+
+  export type production_single_product_draftUncheckedCreateWithoutImove_main_objInput = {
+    org_id: number
+    creation_date_time: Date | string
+    erp_id: number
+    data: JsonNullValueInput | InputJsonValue
+    track_id: string
+    total_ok: number
+    scrap_reason?: string
+    total_ng_scrap: number
+    imove_scrap_id?: number | null
+    repair_reason?: string
+    total_ng_repair: number
+    repair_job_id?: string | null
+  }
+
+  export type production_single_product_draftCreateOrConnectWithoutImove_main_objInput = {
+    where: production_single_product_draftWhereUniqueInput
+    create: XOR<production_single_product_draftCreateWithoutImove_main_objInput, production_single_product_draftUncheckedCreateWithoutImove_main_objInput>
+  }
+
   export type production_single_product_draftCreateWithoutImove_scrap_objInput = {
     org_id: number
     creation_date_time: Date | string
@@ -13618,6 +13785,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     track_id_object: track_id_objectCreateNestedOneWithoutProduct_single_resultInput
+    imove_main_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_main_imoveInput
     repair_job?: repair_jobCreateNestedOneWithoutProduction_single_srcInput
   }
 
@@ -13628,6 +13796,7 @@ export namespace Prisma {
     data: JsonNullValueInput | InputJsonValue
     track_id: string
     total_ok: number
+    imove_main_id?: number | null
     scrap_reason?: string
     total_ng_scrap: number
     repair_reason?: string
@@ -13708,6 +13877,47 @@ export namespace Prisma {
     create: XOR<repair_jobCreateWithoutImove_repair_objInput, repair_jobUncheckedCreateWithoutImove_repair_objInput>
   }
 
+  export type production_single_product_draftUpsertWithoutImove_main_objInput = {
+    update: XOR<production_single_product_draftUpdateWithoutImove_main_objInput, production_single_product_draftUncheckedUpdateWithoutImove_main_objInput>
+    create: XOR<production_single_product_draftCreateWithoutImove_main_objInput, production_single_product_draftUncheckedCreateWithoutImove_main_objInput>
+    where?: production_single_product_draftWhereInput
+  }
+
+  export type production_single_product_draftUpdateToOneWithWhereWithoutImove_main_objInput = {
+    where?: production_single_product_draftWhereInput
+    data: XOR<production_single_product_draftUpdateWithoutImove_main_objInput, production_single_product_draftUncheckedUpdateWithoutImove_main_objInput>
+  }
+
+  export type production_single_product_draftUpdateWithoutImove_main_objInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    track_id_object?: track_id_objectUpdateOneRequiredWithoutProduct_single_resultNestedInput
+    imove_scrap_obj?: inventory_move_draftUpdateOneWithoutProduction_single_scrap_imoveNestedInput
+    repair_job?: repair_jobUpdateOneWithoutProduction_single_srcNestedInput
+  }
+
+  export type production_single_product_draftUncheckedUpdateWithoutImove_main_objInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    erp_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    track_id?: StringFieldUpdateOperationsInput | string
+    total_ok?: FloatFieldUpdateOperationsInput | number
+    scrap_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_scrap?: FloatFieldUpdateOperationsInput | number
+    imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
+    repair_reason?: StringFieldUpdateOperationsInput | string
+    total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    repair_job_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type production_single_product_draftUpsertWithoutImove_scrap_objInput = {
     update: XOR<production_single_product_draftUpdateWithoutImove_scrap_objInput, production_single_product_draftUncheckedUpdateWithoutImove_scrap_objInput>
     create: XOR<production_single_product_draftCreateWithoutImove_scrap_objInput, production_single_product_draftUncheckedCreateWithoutImove_scrap_objInput>
@@ -13730,6 +13940,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     track_id_object?: track_id_objectUpdateOneRequiredWithoutProduct_single_resultNestedInput
+    imove_main_obj?: inventory_move_draftUpdateOneWithoutProduction_single_main_imoveNestedInput
     repair_job?: repair_jobUpdateOneWithoutProduction_single_srcNestedInput
   }
 
@@ -13740,6 +13951,7 @@ export namespace Prisma {
     data?: JsonNullValueInput | InputJsonValue
     track_id?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
+    imove_main_id?: NullableIntFieldUpdateOperationsInput | number | null
     scrap_reason?: StringFieldUpdateOperationsInput | string
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     repair_reason?: StringFieldUpdateOperationsInput | string
@@ -13862,11 +14074,37 @@ export namespace Prisma {
     create: XOR<track_id_objectCreateWithoutProduct_single_resultInput, track_id_objectUncheckedCreateWithoutProduct_single_resultInput>
   }
 
+  export type inventory_move_draftCreateWithoutProduction_single_main_imoveInput = {
+    org_id: number
+    creation_date_time: Date | string
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftCreateNestedOneWithoutImove_scrap_objInput
+    quality_check_scrap_imove?: quality_checkCreateNestedOneWithoutImove_scrap_objInput
+    repair_job_imove?: repair_jobCreateNestedOneWithoutImove_repair_objInput
+  }
+
+  export type inventory_move_draftUncheckedCreateWithoutProduction_single_main_imoveInput = {
+    org_id: number
+    creation_date_time: Date | string
+    movement_id: number
+    data: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_scrap_objInput
+    quality_check_scrap_imove?: quality_checkUncheckedCreateNestedOneWithoutImove_scrap_objInput
+    repair_job_imove?: repair_jobUncheckedCreateNestedOneWithoutImove_repair_objInput
+  }
+
+  export type inventory_move_draftCreateOrConnectWithoutProduction_single_main_imoveInput = {
+    where: inventory_move_draftWhereUniqueInput
+    create: XOR<inventory_move_draftCreateWithoutProduction_single_main_imoveInput, inventory_move_draftUncheckedCreateWithoutProduction_single_main_imoveInput>
+  }
+
   export type inventory_move_draftCreateWithoutProduction_single_scrap_imoveInput = {
     org_id: number
     creation_date_time: Date | string
     movement_id: number
     data: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftCreateNestedOneWithoutImove_main_objInput
     quality_check_scrap_imove?: quality_checkCreateNestedOneWithoutImove_scrap_objInput
     repair_job_imove?: repair_jobCreateNestedOneWithoutImove_repair_objInput
   }
@@ -13876,6 +14114,7 @@ export namespace Prisma {
     creation_date_time: Date | string
     movement_id: number
     data: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_main_objInput
     quality_check_scrap_imove?: quality_checkUncheckedCreateNestedOneWithoutImove_scrap_objInput
     repair_job_imove?: repair_jobUncheckedCreateNestedOneWithoutImove_repair_objInput
   }
@@ -13955,6 +14194,37 @@ export namespace Prisma {
     quality_check_used_in?: quality_checkUncheckedUpdateManyWithoutTrack_id_objectNestedInput
   }
 
+  export type inventory_move_draftUpsertWithoutProduction_single_main_imoveInput = {
+    update: XOR<inventory_move_draftUpdateWithoutProduction_single_main_imoveInput, inventory_move_draftUncheckedUpdateWithoutProduction_single_main_imoveInput>
+    create: XOR<inventory_move_draftCreateWithoutProduction_single_main_imoveInput, inventory_move_draftUncheckedCreateWithoutProduction_single_main_imoveInput>
+    where?: inventory_move_draftWhereInput
+  }
+
+  export type inventory_move_draftUpdateToOneWithWhereWithoutProduction_single_main_imoveInput = {
+    where?: inventory_move_draftWhereInput
+    data: XOR<inventory_move_draftUpdateWithoutProduction_single_main_imoveInput, inventory_move_draftUncheckedUpdateWithoutProduction_single_main_imoveInput>
+  }
+
+  export type inventory_move_draftUpdateWithoutProduction_single_main_imoveInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUpdateOneWithoutImove_scrap_objNestedInput
+    quality_check_scrap_imove?: quality_checkUpdateOneWithoutImove_scrap_objNestedInput
+    repair_job_imove?: repair_jobUpdateOneWithoutImove_repair_objNestedInput
+  }
+
+  export type inventory_move_draftUncheckedUpdateWithoutProduction_single_main_imoveInput = {
+    org_id?: IntFieldUpdateOperationsInput | number
+    creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    movement_id?: IntFieldUpdateOperationsInput | number
+    data?: JsonNullValueInput | InputJsonValue
+    production_single_scrap_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_scrap_objNestedInput
+    quality_check_scrap_imove?: quality_checkUncheckedUpdateOneWithoutImove_scrap_objNestedInput
+    repair_job_imove?: repair_jobUncheckedUpdateOneWithoutImove_repair_objNestedInput
+  }
+
   export type inventory_move_draftUpsertWithoutProduction_single_scrap_imoveInput = {
     update: XOR<inventory_move_draftUpdateWithoutProduction_single_scrap_imoveInput, inventory_move_draftUncheckedUpdateWithoutProduction_single_scrap_imoveInput>
     create: XOR<inventory_move_draftCreateWithoutProduction_single_scrap_imoveInput, inventory_move_draftUncheckedCreateWithoutProduction_single_scrap_imoveInput>
@@ -13971,6 +14241,7 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUpdateOneWithoutImove_main_objNestedInput
     quality_check_scrap_imove?: quality_checkUpdateOneWithoutImove_scrap_objNestedInput
     repair_job_imove?: repair_jobUpdateOneWithoutImove_repair_objNestedInput
   }
@@ -13980,6 +14251,7 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_main_objNestedInput
     quality_check_scrap_imove?: quality_checkUncheckedUpdateOneWithoutImove_scrap_objNestedInput
     repair_job_imove?: repair_jobUncheckedUpdateOneWithoutImove_repair_objNestedInput
   }
@@ -14059,6 +14331,7 @@ export namespace Prisma {
     creation_date_time: Date | string
     movement_id: number
     data: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftCreateNestedOneWithoutImove_main_objInput
     production_single_scrap_imove?: production_single_product_draftCreateNestedOneWithoutImove_scrap_objInput
     quality_check_scrap_imove?: quality_checkCreateNestedOneWithoutImove_scrap_objInput
   }
@@ -14068,6 +14341,7 @@ export namespace Prisma {
     creation_date_time: Date | string
     movement_id: number
     data: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_main_objInput
     production_single_scrap_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_scrap_objInput
     quality_check_scrap_imove?: quality_checkUncheckedCreateNestedOneWithoutImove_scrap_objInput
   }
@@ -14132,6 +14406,7 @@ export namespace Prisma {
     repair_reason?: string
     total_ng_repair: number
     track_id_object: track_id_objectCreateNestedOneWithoutProduct_single_resultInput
+    imove_main_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_main_imoveInput
     imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_scrap_imoveInput
   }
 
@@ -14142,6 +14417,7 @@ export namespace Prisma {
     data: JsonNullValueInput | InputJsonValue
     track_id: string
     total_ok: number
+    imove_main_id?: number | null
     scrap_reason?: string
     total_ng_scrap: number
     imove_scrap_id?: number | null
@@ -14216,6 +14492,7 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUpdateOneWithoutImove_main_objNestedInput
     production_single_scrap_imove?: production_single_product_draftUpdateOneWithoutImove_scrap_objNestedInput
     quality_check_scrap_imove?: quality_checkUpdateOneWithoutImove_scrap_objNestedInput
   }
@@ -14225,6 +14502,7 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_main_objNestedInput
     production_single_scrap_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_scrap_objNestedInput
     quality_check_scrap_imove?: quality_checkUncheckedUpdateOneWithoutImove_scrap_objNestedInput
   }
@@ -14292,6 +14570,7 @@ export namespace Prisma {
     data?: JsonFilter<"production_single_product_draft">
     track_id?: StringFilter<"production_single_product_draft"> | string
     total_ok?: FloatFilter<"production_single_product_draft"> | number
+    imove_main_id?: IntNullableFilter<"production_single_product_draft"> | number | null
     scrap_reason?: StringFilter<"production_single_product_draft"> | string
     total_ng_scrap?: FloatFilter<"production_single_product_draft"> | number
     imove_scrap_id?: IntNullableFilter<"production_single_product_draft"> | number | null
@@ -14340,6 +14619,7 @@ export namespace Prisma {
     creation_date_time: Date | string
     movement_id: number
     data: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftCreateNestedOneWithoutImove_main_objInput
     production_single_scrap_imove?: production_single_product_draftCreateNestedOneWithoutImove_scrap_objInput
     repair_job_imove?: repair_jobCreateNestedOneWithoutImove_repair_objInput
   }
@@ -14349,6 +14629,7 @@ export namespace Prisma {
     creation_date_time: Date | string
     movement_id: number
     data: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_main_objInput
     production_single_scrap_imove?: production_single_product_draftUncheckedCreateNestedOneWithoutImove_scrap_objInput
     repair_job_imove?: repair_jobUncheckedCreateNestedOneWithoutImove_repair_objInput
   }
@@ -14444,6 +14725,7 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUpdateOneWithoutImove_main_objNestedInput
     production_single_scrap_imove?: production_single_product_draftUpdateOneWithoutImove_scrap_objNestedInput
     repair_job_imove?: repair_jobUpdateOneWithoutImove_repair_objNestedInput
   }
@@ -14453,6 +14735,7 @@ export namespace Prisma {
     creation_date_time?: DateTimeFieldUpdateOperationsInput | Date | string
     movement_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
+    production_single_main_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_main_objNestedInput
     production_single_scrap_imove?: production_single_product_draftUncheckedUpdateOneWithoutImove_scrap_objNestedInput
     repair_job_imove?: repair_jobUncheckedUpdateOneWithoutImove_repair_objNestedInput
   }
@@ -14597,6 +14880,7 @@ export namespace Prisma {
     total_ng_scrap: number
     repair_reason?: string
     total_ng_repair: number
+    imove_main_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_main_imoveInput
     imove_scrap_obj?: inventory_move_draftCreateNestedOneWithoutProduction_single_scrap_imoveInput
     repair_job?: repair_jobCreateNestedOneWithoutProduction_single_srcInput
   }
@@ -14607,6 +14891,7 @@ export namespace Prisma {
     erp_id: number
     data: JsonNullValueInput | InputJsonValue
     total_ok: number
+    imove_main_id?: number | null
     scrap_reason?: string
     total_ng_scrap: number
     imove_scrap_id?: number | null
@@ -14718,6 +15003,7 @@ export namespace Prisma {
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
+    imove_main_obj?: inventory_move_draftUpdateOneWithoutProduction_single_main_imoveNestedInput
     imove_scrap_obj?: inventory_move_draftUpdateOneWithoutProduction_single_scrap_imoveNestedInput
     repair_job?: repair_jobUpdateOneWithoutProduction_single_srcNestedInput
   }
@@ -14728,6 +15014,7 @@ export namespace Prisma {
     erp_id?: IntFieldUpdateOperationsInput | number
     data?: JsonNullValueInput | InputJsonValue
     total_ok?: FloatFieldUpdateOperationsInput | number
+    imove_main_id?: NullableIntFieldUpdateOperationsInput | number | null
     scrap_reason?: StringFieldUpdateOperationsInput | string
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14836,6 +15123,7 @@ export namespace Prisma {
     data: JsonNullValueInput | InputJsonValue
     track_id: string
     total_ok: number
+    imove_main_id?: number | null
     scrap_reason?: string
     total_ng_scrap: number
     imove_scrap_id?: number | null
@@ -14905,6 +15193,7 @@ export namespace Prisma {
     repair_reason?: StringFieldUpdateOperationsInput | string
     total_ng_repair?: FloatFieldUpdateOperationsInput | number
     track_id_object?: track_id_objectUpdateOneRequiredWithoutProduct_single_resultNestedInput
+    imove_main_obj?: inventory_move_draftUpdateOneWithoutProduction_single_main_imoveNestedInput
     imove_scrap_obj?: inventory_move_draftUpdateOneWithoutProduction_single_scrap_imoveNestedInput
   }
 
@@ -14915,6 +15204,7 @@ export namespace Prisma {
     data?: JsonNullValueInput | InputJsonValue
     track_id?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
+    imove_main_id?: NullableIntFieldUpdateOperationsInput | number | null
     scrap_reason?: StringFieldUpdateOperationsInput | string
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14929,6 +15219,7 @@ export namespace Prisma {
     data?: JsonNullValueInput | InputJsonValue
     track_id?: StringFieldUpdateOperationsInput | string
     total_ok?: FloatFieldUpdateOperationsInput | number
+    imove_main_id?: NullableIntFieldUpdateOperationsInput | number | null
     scrap_reason?: StringFieldUpdateOperationsInput | string
     total_ng_scrap?: FloatFieldUpdateOperationsInput | number
     imove_scrap_id?: NullableIntFieldUpdateOperationsInput | number | null

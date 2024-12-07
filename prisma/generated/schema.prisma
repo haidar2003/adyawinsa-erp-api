@@ -16,6 +16,7 @@ model inventory_move_draft {
   movement_id        Int      @unique
   data               Json     @db.Json
   
+  production_single_main_imove production_single_product_draft? @relation("PRODUCT-SINGLE-MAIN-IMOVE")
   production_single_scrap_imove production_single_product_draft? @relation("PRODUCT-SINGLE-SCRAP-IMOVE")
   quality_check_scrap_imove quality_check? @relation("QUALITY-SCRAP-IMOVE")
 
@@ -54,6 +55,8 @@ model production_single_product_draft {
   track_id          String @unique
 
   total_ok          Float
+  imove_main_obj   inventory_move_draft? @relation("PRODUCT-SINGLE-MAIN-IMOVE", fields: [imove_main_id], references: [movement_id])
+  imove_main_id    Int? @unique
 
   scrap_reason      String @default("")
   total_ng_scrap    Float
