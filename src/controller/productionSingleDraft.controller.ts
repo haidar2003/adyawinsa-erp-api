@@ -2,7 +2,7 @@
 
 import { NextFunction } from 'express';
 import { Request, Response } from 'express-serve-static-core';
-import { body, validationResult } from 'express-validator';
+import { body } from 'express-validator';
 import * as productionSingleDraftService from '../service/productionSingleDraft.service';
 import axios from 'axios';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
@@ -55,13 +55,21 @@ export const createProductionSingleDraft = async (req: Request, res: Response, n
 			...response.data.returnBody,
 
 			// SHADOW VARIABLES
-			productTrackQuantityDict: hydratedProductionSingleDraft.productTrackQuantityDict,
+			'totalOk': hydratedProductionSingleDraft.totalOk,
+			'totalNgScrap': hydratedProductionSingleDraft.totalNgScrap,
+			'totalNgRepair': hydratedProductionSingleDraft.totalNgRepair,
+			'trackId': hydratedProductionSingleDraft.trackId,
+			'productId': hydratedProductionSingleDraft.productId,
+			'productName': hydratedProductionSingleDraft.productName,
+			'creationDateTime': hydratedProductionSingleDraft.creationDateTime,
+			'unitsPerPallet': hydratedProductionSingleDraft.unitsPerPallet,
+			'bomProduced': hydratedProductionSingleDraft.bomProduced,
 		};
 
 		const draftData = {
 			org_id: shadowData.AD_Org_ID.id,
 			creation_date_time: new Date(shadowData.Created),
-			movement_id: shadowData.id,
+			erp_id: shadowData.id,
 			data: shadowData
 		};
 
@@ -223,144 +231,6 @@ export const getProductionSingleDraftAll = async (req: Request, res: Response, n
 		// Kirim list berupa list of enrichedDraft
 		const sortedFinalDraftsList = finalDraftsList.map(item => item.enrichedDraft);
 		res.json(sortedFinalDraftsList);
-	} catch (error: any) {
-		console.error('Unexpected server error:', error);
-		next(error);
-	}
-};
-
-
-export const updateProductionSingleDraftRegular = async (req: Request, res: Response, next: NextFunction) => {
-	const currentDate = new Date();
-	currentDate.setHours(currentDate.getHours() + 7);
-	currentDate.setMinutes(currentDate.getMinutes() - 1);
-	const updateTimestamp = currentDate.toISOString();
-	
-	try {
-		const { id } = req.params;
-		const { continue: continueQuery } = req.query;
-		const data = req.body.data;
-
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(400).json({ errors: errors.array() });
-		}
-
-		const movementId = parseInt(id as string, 10);
-		if (isNaN(movementId)) {
-			return res.status(400).json({ error: 'Invalid movement ID' });
-		}
-
-		// Menentukan apakah akan melakukan sinkronisasi
-		const shouldContinue = continueQuery === 'true';
-
-		// Mengecek apakah data yang dituju ada di dalam Supabase
-		const shadowDraft = await productionSingleDraftService.getProductionSingleDraftByMovementId(movementId);
-		if (!shadowDraft) {
-			return res.status(404).json({ error: 'Movement draft not found in shadow database' });
-		}
-
-		// Ambil data yang ingin diupdate dari Supabase
-		const currentData = shadowDraft.data as any;
-		if (!currentData || typeof currentData !== 'object') {
-			return res.status(500).json({ error: 'Shadow draft data is null or invalid' });
-		}
-
-		if (shouldContinue) {
-			const hydratedErpData = getProductionSingleErpObjectFromHydratedCombinedData(currentData);
-
-			// Update server asli
-			const reqBodyContinue = {
-				method: 'post',
-				maxBodyLength: Infinity,
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
-				data: JSON.stringify({
-					axiosConfig: {
-						method: 'put',
-						url: `${endpointApiUrl}/api/v1/models/M_Production/${movementId}`,
-						data: hydratedErpData,
-					}
-				})
-			};
-
-			try {
-				const response = await axios(reqBodyContinue);
-				return res.json(response.data);
-			} catch (apiError: any) {
-				console.error('Failed to update real server:', apiError);
-				return res.status(500).json({ error: 'Failed to update real server', details: apiError.message });
-			}
-		} else {
-			// Wouldn't work if we add new keys
-			// const invalidKeys = Object.keys(data).filter(key => !(key in currentData));
-			// if (invalidKeys.length > 0) {
-			// 	return res.status(400).json({ error: 'Invalid keys in data', invalidKeys });
-			// }
-
-			// Ubah data dari Supabase menggunakan data yang dikirim pengguna
-			let updatedData = { ...currentData, ...data };
-
-			// Ubah data Updated
-			updatedData = {
-				...updatedData, 
-				Updated: updateTimestamp,
-				M_ProductionLine: updatedData.M_ProductionLine.map((line: any) => {
-					return {
-						...line,
-						Updated: updateTimestamp
-					};
-				})
-			};
-
-			const hydratedData = hydrateProductionSingle(updatedData);
-			const hydratedErpData = getProductionSingleErpObjectFromHydratedCombinedData(hydratedData);
-
-			// Update Supabase
-			try {
-				await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, hydratedData, undefined);
-
-				// Data ke server asli dari requestBody
-				const realServerData = hydratedErpData;
-
-				// Update server asli
-				const reqBody = {
-					method: 'post',
-					maxBodyLength: Infinity,
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					url: 'https://6v3itlqgyj.execute-api.ap-southeast-1.amazonaws.com/prod/erp-forwarder',
-					data: JSON.stringify({
-						axiosConfig: {
-							method: 'put',
-							url: `${endpointApiUrl}/api/v1/models/M_Production/${movementId}`,
-							data: realServerData,
-						}
-					})
-				};
-
-				try {
-					const response = await axios(reqBody);
-					return res.json(response.data);
-				} catch (apiError: any) {
-					console.error('Failed to update real server:', apiError);
-					return res.status(500).json({ error: 'Failed to update real server' });
-				}
-
-			} catch (updateError: any) {
-				if (updateError instanceof PrismaClientKnownRequestError) {
-					console.error('Prisma update failed:', updateError);
-					return res.status(500).json({ error: 'Failed to update shadow database'});
-				}
-				console.error('Unexpected error during shadow update:', updateError);
-				return res.status(500).json({ error: 'Unexpected error during update'});
-			}
-
-		}
-
 	} catch (error: any) {
 		console.error('Unexpected server error:', error);
 		next(error);
@@ -790,6 +660,14 @@ const getProductionSingleErpObjectFromHydratedCombinedData = (combinedData: any)
 		// ---
 
 		// SHADOW VARIABLES
-		'productTrackQuantityDict': undefined,
+		'totalOk': undefined,
+		'totalNgScrap': undefined,
+		'totalNgRepair': undefined,
+		'trackId': undefined,
+		'productId': undefined,
+		'productName': undefined,
+		'creationDateTime': undefined,
+		'unitsPerPallet': undefined,
+		'bomProduced': undefined,
 	};
 };

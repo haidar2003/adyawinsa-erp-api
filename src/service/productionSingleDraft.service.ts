@@ -22,13 +22,25 @@ export const createProductionSingleDraft = async (productionSingleDTO: any) => {
 				erp_id: productionSingleDTO.erp_id,
 				data: productionSingleDTO.data,
 
-				// TODO NEEDS TO BE WORKED ON.
-				total_ok: 0,
-				total_ng_repair: 0,
-				total_ng_scrap: 0,
-				track_id_object: {
+				total_ok: productionSingleDTO.data.totalOk,
+				total_ng_scrap: productionSingleDTO.data.totalNgScrap,
+				total_ng_repair: productionSingleDTO.data.totalNgRepair,
 
-				}
+				// Create new track_id_object
+				track_id_object: {
+					create: {
+						track_id: productionSingleDTO.data.trackId,
+						productId: productionSingleDTO.data.productId,
+						productName: productionSingleDTO.data.productName,
+						track_type: 'PROD',
+						source_data: {
+							source_list: productionSingleDTO.data.bomProduced,
+						},
+						object_data: {},
+						quantityProduced: productionSingleDTO.data.ProductionQty,
+						unitsPerPallet: productionSingleDTO.data.unitsPerPallet,
+					}
+				},
 			},
 		});
 	} catch (error) {
