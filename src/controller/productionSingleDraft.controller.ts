@@ -163,6 +163,7 @@ export const getProductionSingleDraftAll = async (req: Request, res: Response, n
 						'params': {
 							'$orderby': 'Created desc',
 							'$expand': 'M_ProductionLine',
+							'$top': 10
 						}
 					}
 				})
@@ -210,6 +211,8 @@ export const getProductionSingleDraftAll = async (req: Request, res: Response, n
 				// Bandingkan untuk mendapat daftar ketidakkonsistenan
 				const enrichedDraft = {
 					...shadowDraft.data,
+					...shadowDraft,
+					data: undefined,
 					status: checkConsistencyStatus(shadowDraft.data, obj)
 				};
 
@@ -331,18 +334,19 @@ export const updateProductionSingleDraftComplete = async (req: Request, res: Res
 			// Update Supabase
 			try {
 				// Create stock if it doesn't exist (This is a safe operation)
-				await trackingService.createManyTrackIdStock(
-					currentData.M_Locator_ID, 
-					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict
-				);
+				// await trackingService.createManyTrackIdStock(
+				// 	'',
+				// 	currentData.M_Locator_ID,
+					
+				// );
 
-				const additionalData = getTransferItems(
-					currentData.M_Locator_ID, 
-					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict,
-					false
-				);
+				// const additionalData = getTransferItems(
+				// 	'',
+				// 	currentData.M_Locator_ID, 
+				// 	currentData.materialMovementProductDict,
+				// 	false
+				// );
+				const additionalData = undefined;
 
 				await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, hydratedData, additionalData);
 			} catch (updateError: any) {
@@ -373,6 +377,44 @@ export const updateProductionSingleDraftComplete = async (req: Request, res: Res
 
 			try {
 				const response = await axios(reqBody);
+
+				// FAILURE ROLLBACK
+				// If success === false / FAILED document complete,
+				// we roll back the stock changes.
+				if (response?.data?.success === false) {
+
+					// const additionalData = getTransferItems(
+					// 	currentData.M_Locator_ID, 
+					// 	currentData.M_LocatorTo_ID, 
+					// 	currentData.materialMovementProductDict,
+					// 	true
+					// );
+					const additionalData = undefined;
+
+					const rollbackTimestamp = new Date('1999-01-01').toISOString();
+					const updatedData = { 
+						...currentData,
+						DocStatus: {
+							propertyLabel: 'Document Status',
+							id: 'DR',
+							identifier: 'Drafted',
+							'model-name': 'ad_ref_list'
+						},
+						IsApproved: false,
+						Processed: false,
+						Updated: rollbackTimestamp,
+						M_ProductionLine: currentData.M_ProductionLine.map((line: any) => {
+							return {
+								...line,
+								Processed: false,
+								Updated: rollbackTimestamp
+							};
+						})
+					};
+
+					await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, updatedData, additionalData);
+				}
+
 				return res.json(response.data);
 			} catch (apiError: any) {
 				console.error('Failed to update real server:', apiError);
@@ -480,18 +522,19 @@ export const updateProductionSingleDraftReverse = async (req: Request, res: Resp
 			// Update Supabase
 			try {
 				// Create stock if it doesn't exist (This is a safe operation)
-				await trackingService.createManyTrackIdStock(
-					currentData.M_Locator_ID, 
-					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict
-				);
+				// await trackingService.createManyTrackIdStock(
+				// 	'', 
+				// 	currentData.M_Locator_ID, 
+				// 	currentData.materialMovementProductDict
+				// );
 
-				const additionalData = getTransferItems(
-					currentData.M_Locator_ID, 
-					currentData.M_LocatorTo_ID, 
-					currentData.materialMovementProductDict,
-					true
-				);
+				// const additionalData = getTransferItems(
+				// 	'', 
+				// 	currentData.M_Locator_ID, 
+				// 	currentData.materialMovementProductDict,
+				// 	true
+				// );
+				const additionalData = undefined;
 
 				await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, hydratedData, additionalData);
 			} catch (updateError: any) {
@@ -522,6 +565,23 @@ export const updateProductionSingleDraftReverse = async (req: Request, res: Resp
 
 			try {
 				const response = await axios(reqBody);
+
+				// FAILURE ROLLBACK
+				// If success === false / FAILED document complete,
+				// we roll back the stock changes.
+				if (response?.data?.success === false) {
+
+					// const additionalData = getTransferItems(
+					// 	currentData.M_Locator_ID, 
+					// 	currentData.M_LocatorTo_ID, 
+					// 	currentData.materialMovementProductDict,
+					// 	true
+					// );
+					const additionalData = undefined;
+
+					await productionSingleDraftService.updateProductionSingleDraftByMovementId(movementId, currentData, additionalData);
+				}
+
 				return res.json(response.data);
 			} catch (apiError: any) {
 				console.error('Failed to update real server:', apiError);
