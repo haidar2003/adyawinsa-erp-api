@@ -51,7 +51,18 @@ export const createProductionSingleDraft = async (productionSingleDTO: any) => {
 
 
 export const getAllProductionSingleDrafts = async () => {
-	return await prisma.production_single_product_draft.findMany();
+	return await prisma.production_single_product_draft.findMany({
+		include: {
+			track_id_object: true,
+			imove_scrap_obj: true,
+			repair_job: {
+				include: {
+					imove_repair_obj: true,
+					track_id_object: true,
+				}
+			}
+		}
+	});
 };
 
 
