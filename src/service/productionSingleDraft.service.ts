@@ -23,6 +23,7 @@ export const createProductionSingleDraft = async (productionSingleDTO: any) => {
 				data: productionSingleDTO.data,
 
 				total_ok: productionSingleDTO.data.totalOk,
+				total_inspect: productionSingleDTO.data.totalInspect,
 				total_ng_scrap: productionSingleDTO.data.totalNgScrap,
 				total_ng_repair: productionSingleDTO.data.totalNgRepair,
 
@@ -37,7 +38,7 @@ export const createProductionSingleDraft = async (productionSingleDTO: any) => {
 							source_list: productionSingleDTO.data.bomProduced,
 						},
 						object_data: {},
-						quantityProduced: productionSingleDTO.data.ProductionQty,
+						quantityProduced: productionSingleDTO.data.totalOk + productionSingleDTO.data.totalInspect,
 						unitsPerPallet: productionSingleDTO.data.unitsPerPallet,
 					}
 				},

@@ -81,10 +81,13 @@ export const createInventoryMoveDraftDirectComplete = async (req: Request, res: 
     
 	let imDraft = req.body.imDraft;
 
-	const connectTarget = imDraft.connectTarget; // "PROD" or "REPAIR" or "QUALITY"
-	const connectTargetString = connectTarget === 'PROD' ? 'production_single_scrap_imove' :
-		connectTarget === 'REPAIR' ? 'repair_job_imove' :
-			connectTarget === 'QUALITY' ? 'quality_check_scrap_imove' : '';
+	const connectTarget = imDraft.connectTarget; // "PROD-OK" or "PROD-INSPECT" or "PROD-SCRAP" or "REPAIR" or "QUALITY-SCRAP"
+	const connectTargetString = 
+	connectTarget === 'PROD-OK' ? 'production_single_main_imove' :
+		connectTarget === 'PROD-INSPECT' ? 'production_single_inspect_imove' :
+			connectTarget === 'PROD-SCRAP' ? 'production_single_scrap_imove' :
+				connectTarget === 'REPAIR' ? 'repair_job_imove' :
+					connectTarget === 'QUALITY-SCRAP' ? 'quality_check_scrap_imove' : '';
 	const connectTargetOrgId = imDraft.connectTargetOrgId;
 	const connectTargetCreationDateTime = imDraft.connectTargetCreationDateTime;
 
@@ -146,7 +149,12 @@ export const createInventoryMoveDraftDirectComplete = async (req: Request, res: 
 
 		};
 
-		await inventoryMoveDraftService.createInventoryMoveDraftDirectComplete(draftData);
+		const resultDraft = await inventoryMoveDraftService.createInventoryMoveDraftDirectComplete(draftData);
+
+		if (!(connectTarget === 'PROD-SCRAP' || connectTarget === 'QUALITY-SCRAP')) {
+			res.status(response.status).json(resultDraft); 
+			return;
+		}
 
 		const currentDate = new Date();
 		currentDate.setHours(currentDate.getHours() + 7);

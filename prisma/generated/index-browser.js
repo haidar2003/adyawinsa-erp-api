@@ -151,6 +151,8 @@ exports.Prisma.Production_single_product_draftScalarFieldEnum = {
   track_id: 'track_id',
   total_ok: 'total_ok',
   imove_main_id: 'imove_main_id',
+  total_inspect: 'total_inspect',
+  imove_inspect_id: 'imove_inspect_id',
   scrap_reason: 'scrap_reason',
   total_ng_scrap: 'total_ng_scrap',
   imove_scrap_id: 'imove_scrap_id',

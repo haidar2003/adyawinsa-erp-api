@@ -6,8 +6,8 @@ import { body } from 'express-validator';
 import * as productionSingleDraftService from '../service/productionSingleDraft.service';
 import axios from 'axios';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
-import { getTransferItems } from '../service/tracking.service';
-import * as trackingService from '../service/tracking.service';
+// import { getTransferItems } from '../service/tracking.service';
+// import * as trackingService from '../service/tracking.service';
 
 const endpointApiUrl = process.env.ENDPOINT_ERP_API_URL ?? 'https://server.tricentrumfortuna.com:12';
 
@@ -56,6 +56,7 @@ export const createProductionSingleDraft = async (req: Request, res: Response, n
 
 			// SHADOW VARIABLES
 			'totalOk': hydratedProductionSingleDraft.totalOk,
+			'totalInspect': hydratedProductionSingleDraft.totalInspect,
 			'totalNgScrap': hydratedProductionSingleDraft.totalNgScrap,
 			'totalNgRepair': hydratedProductionSingleDraft.totalNgRepair,
 			'trackId': hydratedProductionSingleDraft.trackId,
@@ -721,6 +722,7 @@ const getProductionSingleErpObjectFromHydratedCombinedData = (combinedData: any)
 
 		// SHADOW VARIABLES
 		'totalOk': undefined,
+		'totalInspect': undefined,
 		'totalNgScrap': undefined,
 		'totalNgRepair': undefined,
 		'trackId': undefined,
